@@ -367,25 +367,25 @@ export default function ContactForm() {
               <div>
                 <div style={s("font:500 11px/1 'Instrument Sans',sans-serif;color:#8A7E70;margin-bottom:6px")}>{t("contact.side.phone_calls_label")}</div>
                 <div style={s("display:flex;flex-direction:column;gap:5px")}>
-                  <a href="tel:+353852680856" style={s("font:500 15px/1.3 'Instrument Sans',sans-serif;color:#1F1814;text-decoration:none")}>
-                    {CONTACT.phoneIE}{" "}
-                    <span style={s("font:400 12px/1 'Instrument Sans',sans-serif;color:#8A7E70")}>{t("contact.side.phone_lang_en")}</span>
-                  </a>
                   <a href="tel:+34622040285" style={s("font:500 15px/1.3 'Instrument Sans',sans-serif;color:#1F1814;text-decoration:none")}>
                     {CONTACT.phoneES}{" "}
                     <span style={s("font:400 12px/1 'Instrument Sans',sans-serif;color:#8A7E70")}>{t("contact.side.phone_lang_es")}</span>
+                  </a>
+                  <a href="tel:+353852680856" style={s("font:500 15px/1.3 'Instrument Sans',sans-serif;color:#1F1814;text-decoration:none")}>
+                    {CONTACT.phoneIE}{" "}
+                    <span style={s("font:400 12px/1 'Instrument Sans',sans-serif;color:#8A7E70")}>{t("contact.side.phone_lang_en")}</span>
                   </a>
                 </div>
               </div>
               <div>
                 <div style={s("font:500 11px/1 'Instrument Sans',sans-serif;color:#8A7E70;margin-bottom:6px")}>WhatsApp</div>
                 <div style={s("display:flex;flex-direction:column;gap:5px")}>
-                  <a href={CONTACT.whatsappUrl} target="_blank" rel="noopener noreferrer" style={s("font:500 15px/1.3 'Instrument Sans',sans-serif;color:#1F1814;text-decoration:none")}>
+                  <a href={CONTACT.whatsappES} target="_blank" rel="noopener noreferrer" style={s("font:500 15px/1.3 'Instrument Sans',sans-serif;color:#1F1814;text-decoration:none")}>
                     {CONTACT.phoneES}{" "}
                     <span style={s("font:400 12px/1 'Instrument Sans',sans-serif;color:#8A7E70")}>· Pablo</span>
                   </a>
-                  <a href="https://wa.me/34655556622" target="_blank" rel="noopener noreferrer" style={s("font:500 15px/1.3 'Instrument Sans',sans-serif;color:#1F1814;text-decoration:none")}>
-                    +34 655 556 622{" "}
+                  <a href={CONTACT.whatsappIE} target="_blank" rel="noopener noreferrer" style={s("font:500 15px/1.3 'Instrument Sans',sans-serif;color:#1F1814;text-decoration:none")}>
+                    {CONTACT.phoneIE}{" "}
                     <span style={s("font:400 12px/1 'Instrument Sans',sans-serif;color:#8A7E70")}>· Sergio</span>
                   </a>
                 </div>
