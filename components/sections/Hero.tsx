@@ -16,7 +16,7 @@ export default async function Hero() {
           <h1 className="dim-h1" style={s("font:400 60px/1.02 'Instrument Sans',sans-serif;color:#1F1814;letter-spacing:-.03em;text-wrap:balance;margin:0 0 6px")} dangerouslySetInnerHTML={{ __html: t.raw("home.hero.title1") }} />
           <h1 className="dim-h1" style={s("font:400 60px/1.02 'Instrument Sans',sans-serif;color:#1F1814;letter-spacing:-.03em;text-wrap:balance;margin:0 0 22px")}>{t("home.hero.title2")}</h1>
           <p style={s("font:400 17px/1.55 'Instrument Sans',sans-serif;color:#4A4036;max-width:480px;margin:0 0 32px")}>{t("home.hero.body")}</p>
-          <div className="dim-cta-stack" style={s("display:flex;gap:12px;align-items:center;flex-wrap:wrap")}>
+          <div className="dim-cta-stack dim-cta-left" style={s("display:flex;gap:12px;align-items:center;flex-wrap:wrap")}>
             <Hover
               as="button"
               base="font:600 14px/1 'Instrument Sans',sans-serif;color:#FAF6F0;background:#1F1814;padding:16px 24px;border-radius:999px;display:inline-flex;align-items:center;gap:8px;transition:transform .15s,background .15s"

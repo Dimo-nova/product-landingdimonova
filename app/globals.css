@@ -30,6 +30,7 @@
     .dim-h1-accent{font-size:38px!important}
     .dim-logo-grid{grid-template-columns:1fr!important;max-width:100%!important;gap:24px!important}
     .dim-cta-stack{flex-direction:column!important;align-items:center!important}
+    .dim-cta-left{align-items:flex-start!important}
     .dim-feat-inner{padding:28px 20px!important}
     .dim-shape-inner{padding:28px 20px!important}
     .dim-form-outer{padding-bottom:60px!important}
