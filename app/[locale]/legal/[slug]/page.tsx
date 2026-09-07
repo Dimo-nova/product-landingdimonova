@@ -1,4 +1,3 @@
-import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { routing } from "@/lib/routing";
 import { CONTACT } from "@/lib/config";
@@ -8,19 +7,19 @@ import Container from "@/components/ui/Container";
 const SLUGS = ["privacy", "cookies", "terms"] as const;
 type Slug = (typeof SLUGS)[number];
 
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return routing.locales.flatMap((locale) => SLUGS.map((slug) => ({ locale, slug })));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string; slug: string }> }) {
   const { locale, slug } = await params;
-  if (!SLUGS.includes(slug as Slug)) return {};
   return pageMetadata(locale, `/legal/${slug}`, `legal.${slug}.title`, "seo.home.desc");
 }
 
 export default async function LegalPage({ params }: { params: Promise<{ locale: string; slug: string }> }) {
   const { locale, slug } = await params;
-  if (!SLUGS.includes(slug as Slug)) notFound();
   setRequestLocale(locale);
   const t = await getTranslations("legal");
   return (

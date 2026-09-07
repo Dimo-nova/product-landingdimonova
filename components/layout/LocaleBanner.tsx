@@ -26,6 +26,7 @@ export default function LocaleBanner() {
       .map((l) => l.slice(0, 2).toLowerCase())
       .find((l): l is Locale => (routing.locales as readonly string[]).includes(l));
     if (match && match !== locale) setPreferred(match);
+    else setPreferred(null);
   }, [locale]);
 
   if (!preferred) return null;
@@ -48,7 +49,7 @@ export default function LocaleBanner() {
       <button type="button" className={styles.change} lang={preferred} onClick={() => router.replace(pathname, { locale: preferred })}>
         {BANNER_LABELS[preferred].change}
       </button>
-      <button type="button" className={styles.close} aria-label={BANNER_LABELS[preferred].close} onClick={dismiss}>×</button>
+      <button type="button" className={styles.close} lang={preferred} aria-label={BANNER_LABELS[preferred].close} onClick={dismiss}>×</button>
     </motion.div>
   );
 }

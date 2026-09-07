@@ -16,6 +16,7 @@ test("legal placeholder pages render in both locales", async ({ page }) => {
   await expect(page.getByRole("heading", { level: 1 })).toHaveText("Privacy policy");
   await page.goto("/es/legal/cookies");
   await expect(page.getByRole("heading", { level: 1 })).toHaveText("Política de cookies");
+  expect((await page.goto("/legal/nope"))?.status()).toBe(404);
 });
 
 test("footer language switcher options are readable when opened", async ({ page }) => {

@@ -34,7 +34,6 @@ export default function LangSwitcher() {
         type="button"
         className={styles.trigger}
         aria-label={t("language")}
-        aria-haspopup="menu"
         aria-expanded={open}
         onClick={() => setOpen((o) => !o)}
       >
@@ -42,12 +41,11 @@ export default function LangSwitcher() {
         <span>{locale.toUpperCase()}</span>
       </button>
       {open && (
-        <div className={styles.menu} role="menu">
+        <div className={styles.menu}>
           {routing.locales.map((code) => (
             <button
               key={code}
               type="button"
-              role="menuitem"
               data-lang={code}
               aria-current={code === locale}
               className={styles.item}
