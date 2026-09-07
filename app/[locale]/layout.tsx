@@ -10,6 +10,7 @@ import WhatsAppWidget from "@/components/WhatsAppWidget";
 import DemoModal from "@/components/DemoModal";
 import VideoModal from "@/components/VideoModal";
 import Providers from "@/components/layout/Providers";
+import LocaleBanner from "@/components/layout/LocaleBanner";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -31,6 +32,7 @@ export default async function LocaleLayout({
       <body>
         <NextIntlClientProvider>
           <Providers>
+            <LocaleBanner />
             <Header />
             {children}
             <Footer />
