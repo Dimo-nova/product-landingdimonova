@@ -12,7 +12,11 @@ type Props = {
 
 /**
  * Duplicates its children once and translates the track by -50%, so the loop is seamless.
- * The duplicate is aria-hidden: assistive tech reads the content once.
+ * The duplicate is aria-hidden: assistive tech reads the content once. It is also `inert`:
+ * aria-hidden alone only removes a subtree from the accessibility tree, it does not stop a
+ * sighted keyboard user from tabbing into it — which matters once children can be focusable
+ * (e.g. DifferentiatorBand's claim pills). `inert` additionally makes the whole duplicate
+ * unfocusable and unclickable, so Tab only ever visits the real, announced copy.
  */
 export default function Marquee({ children, speed = 40, direction = "left", pauseOnHover = true, className }: Props) {
   return (
@@ -23,7 +27,7 @@ export default function Marquee({ children, speed = 40, direction = "left", paus
     >
       <div className={styles.track}>
         <div className={styles.group}>{children}</div>
-        <div className={styles.group} aria-hidden="true">{children}</div>
+        <div className={styles.group} aria-hidden="true" inert>{children}</div>
       </div>
     </div>
   );

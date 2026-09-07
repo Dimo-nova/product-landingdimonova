@@ -5,7 +5,7 @@ import LogoStrip from "@/components/home/LogoStrip";
 import ServiceCards from "@/components/home/ServiceCards";
 import AiPanel from "@/components/home/AiPanel";
 import BalamoShowcase from "@/components/home/BalamoShowcase";
-import Differentiator from "@/components/sections/Differentiator";
+import DifferentiatorBand from "@/components/home/DifferentiatorBand";
 // import SocialProof from "@/components/sections/SocialProof";
 import PricingTeaser from "@/components/sections/PricingTeaser";
 import HomeCta from "@/components/sections/HomeCta";
@@ -25,7 +25,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       <ServiceCards />
       <AiPanel />
       <BalamoShowcase />
-      <Differentiator />
+      <DifferentiatorBand />
       {/* <SocialProof /> */}
       <PricingTeaser />
       <HomeCta />

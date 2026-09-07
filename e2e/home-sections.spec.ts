@@ -75,3 +75,26 @@ test("the home page does not overflow horizontally at a 390px viewport", async (
   );
   expect(overflow).toBe(true);
 });
+
+test("the differentiator band lists all ten claims", async ({ page }) => {
+  await page.goto("/");
+  const band = page.locator("[data-diff]");
+  const titles = await band.locator("[data-diff-item]:not([aria-hidden='true']) [data-diff-title]").allInnerTexts();
+  expect(new Set(titles).size).toBe(10);
+});
+
+test("hovering a claim reveals its explanation", async ({ page }) => {
+  // The claim pills live inside a continuously-scrolling Marquee track. Playwright's hover()
+  // first waits for the target to be "stable" (an identical bounding box across two
+  // animation frames) before it will move the mouse — a perpetually-translating ancestor
+  // never satisfies that, so the real pointer event is never dispatched and pauseOnHover
+  // (itself only reachable via that same pointer event) never gets a chance to run. This is
+  // exactly the situation Marquee's own reduced-motion styles are built for: freeze the
+  // track so the target is stationary, same as it would already be for a real user with the
+  // OS-level "reduce motion" preference on.
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.goto("/");
+  const item = page.locator("[data-diff-item]").first();
+  await item.hover();
+  await expect(item.locator("[data-diff-body]")).toBeVisible();
+});
