@@ -13,6 +13,7 @@ languages: English, Spanish, German, French, and Portuguese.
 ```bash
 npm install
 npm run dev        # starts on http://localhost:3100
+npm run sync:messages  # copy missing keys from en.json to the other locales
 ```
 
 ## Publish

@@ -19,7 +19,7 @@ keep it updated. Human-facing overview is in [`README.md`](./README.md).
 | Framework | Next.js 16 — App Router, `generateStaticParams`, `generateMetadata` |
 | Language | TypeScript (strict) |
 | i18n | `next-intl` · 5 locales: `en`, `es`, `de`, `fr`, `pt` · `localePrefix: "as-needed"` (English at `/`, others at `/es/`, `/de/`, etc.) |
-| Styling | Inline styles throughout (copied verbatim from the Claude Design export). `lib/style.ts` exports `s(css)` which parses a CSS string into `React.CSSProperties`. Global keyframes, media queries and `.dim-*` utility classes live in `app/globals.css`. |
+| Styling | **New shell + home (2026-09 redesign):** CSS Modules next to each component, design tokens as CSS custom properties in `app/globals.css`, `motion` (`motion/react`) inside `'use client'` islands only, `<MotionConfig reducedMotion="user">` in `components/layout/Providers.tsx`. **Legacy inner pages** (`components/sections/*`) still use inline styles via `lib/style.ts` `s()` + `components/Hover.tsx` until they are redesigned; the `.dim-*` rules at the bottom of `globals.css` exist only for them. |
 | Hover/focus | `components/Hover.tsx` — a client component that applies extra inline styles on `mouseenter`/`focus` and restores them on leave/blur (mirrors the `data-hover`/`data-focus` pattern from the old `app.js`). |
 | Routing helpers | `lib/routing.ts` — calls `createNavigation(routing)` and re-exports `Link`, `useRouter`, `usePathname`, `getPathname` from `next-intl/navigation`. Always import these wrappers, not the `next/navigation` originals. |
 | SEO helpers | `lib/meta.ts` — `pageMetadata(locale, path, titleKey, descKey)` returns a `Metadata` object with canonical URL, `alternates.languages` (hreflang), and OpenGraph fields. |
@@ -39,6 +39,9 @@ app/
     cases/page.tsx
     about/page.tsx
     contact/page.tsx
+    not-found.tsx         # localized 404
+    [...rest]/page.tsx    # catch-all that renders the localized 404 for unknown routes
+    legal/[slug]/page.tsx # placeholder terms/privacy/cookies pages
 ```
 
 ### Messages / translations
@@ -51,19 +54,27 @@ For HTML content (e.g. a paragraph with a `<br>`) use `t.raw(key)` and
 `dangerouslySetInnerHTML`. For arrays (feature lists, FAQ items) use
 `t.raw(key)` and cast to `string[]`.
 
-### Inline-style rule
+### Styling rule
 
-Styles are **never** in CSS classes — they are copied verbatim from
-`archive/_design_source.html` as template-literal strings and passed through
-`s(css)`. When porting new markup, copy the `style="…"` attribute value
-exactly and wrap it: `style={s("…")}`.
+New components: `Name.tsx` + `Name.module.css`, tokens from `:root` (`--brand`, `--ink`, `--cream`, …), fonts via `lib/fonts.ts` (`--font-display` Bricolage Grotesque, `--font-body` Instrument Sans). Never add inline styles or `dangerouslySetInnerHTML` to new code; rich strings use `t.rich`.
+
+Legacy: `archive/` and `s()` are only for the not-yet-redesigned inner pages. Do not port new markup from the archive.
+
+### Site-wide overlays
+
+`DemoModal`, `VideoModal`, `LocaleBanner`, `WhatsAppWidget` are mounted once in `app/[locale]/layout.tsx`. Open them from anywhere with `openDemo({ email?, source? })` / `openVideo({ src, title, poster?, orientation? })` from `lib/events.ts` (typed `window` CustomEvents `demo:open` / `video:open`). The legacy `dimonova:open-wa` event still opens the WhatsApp panel.
+
+### Services registry
+
+`lib/services.ts` is the single list of the 8 services (slugs `menu, ai, ordering, training, multi, reviews, daily, translate`). Copy lives in `messages/*.json` under `services.<slug>.{title,line}`. Mega-menu, footer and (phase 2) home cards read from it.
+
+### Messages workflow
+
+Write new keys in `messages/en.json` and `messages/es.json`, then run `npm run sync:messages` to copy the missing keys into `de`, `fr`, `pt` (they intentionally carry English until translated).
 
 ### WhatsApp widget state
 
-The WA panel (`waOpen` boolean) is managed in the `[locale]/layout.tsx` via a
-client wrapper component (`components/WAWidget.tsx` or similar). It toggles on
-the FAB click and on the "Continue" button. The "Continue" button links to
-`https://wa.me/<number>`.
+The WA panel state is managed by `components/WhatsAppWidget.tsx`, mounted once in `app/[locale]/layout.tsx`. It toggles on the FAB click, on the legacy `dimonova:open-wa` window event, and on the "Continue" button. The "Continue" button links to `https://wa.me/<number>`.
 
 ## Archive
 
@@ -81,19 +92,31 @@ archive:
 ## Commands
 
 ```bash
-npm run dev        # dev server on http://localhost:3000
-npm run build      # production build (static export)
-npm run test:e2e   # Playwright e2e on port 3100 (starts the server automatically)
+npm run dev            # dev server on http://localhost:3000
+npm run build          # production build (static export)
+npm run test:e2e       # Playwright e2e on port 3100 (starts the server automatically)
+npm run sync:messages  # copy missing keys from en.json to the other locales
 ```
+
+`.env.local` needs `RESEND_API_KEY`, `NOTION_TOKEN`, `NOTION_LEADS_DB_ID`
+(dummy values are enough for a local build) because `app/api/contact/route.ts`
+instantiates those clients at module scope.
 
 ## Testing
 
-Playwright e2e lives in `e2e/`. The suite covers:
+Playwright e2e lives in `e2e/`. Run with `npm run test:e2e`. The suite covers:
 
-- All six routes in English and one locale (ES)
-- Header scroll behaviour, mobile nav, WhatsApp widget
+- All routes in English and one locale (ES)
+- Header scroll behaviour, mega-menu, mobile nav, WhatsApp widget, locale banner, 404
 - Venue pill selection (contact page)
 - Full contact-form validation flow
+- Demo modal and video modal (open/close, focus trap, error fallback)
+
+Unit tests (Playwright `expect`, no browser) live next to the modules they
+cover and run separately: `npx playwright test -c playwright.unit.config.ts`.
+
+The message-sync script has its own Node test runner spec:
+`node --test scripts/sync-messages.test.mjs`.
 
 **Add a spec when you add behaviour.**
 
