@@ -11,4 +11,5 @@
 @media (prefers-reduced-motion: reduce) {
   .track { animation: none !important; }
   .wrap { overflow-x: auto; }
+  .group[aria-hidden="true"] { display: none; }
 }

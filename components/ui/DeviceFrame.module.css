@@ -1,6 +1,6 @@
 .frame {
-  position: relative; background: #111; border-radius: 40px; padding: 10px;
-  box-shadow: 0 40px 80px -40px rgba(15,14,13,.6), 0 0 0 1px rgba(255,255,255,.08) inset;
+  position: relative; background: var(--device-bezel); border-radius: 40px; padding: 10px;
+  box-shadow: var(--shadow-deep), 0 0 0 1px var(--on-dark-surface) inset;
 }
 .tablet { border-radius: 28px; padding: 12px; }
 .screen { position: relative; overflow: hidden; border-radius: 32px; display: block; }
@@ -8,6 +8,6 @@
 .screen img { display: block; width: 100%; height: auto; }
 .notch {
   position: absolute; top: 10px; left: 50%; transform: translateX(-50%);
-  width: 38%; height: 22px; background: #111; border-radius: 0 0 14px 14px; z-index: 1;
+  width: 38%; height: 22px; background: var(--device-bezel); border-radius: 0 0 14px 14px; z-index: 1;
 }
 .tablet .notch { display: none; }

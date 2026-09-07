@@ -6,8 +6,8 @@
 .sm { font-size: 13px; padding: 8px 14px; }
 .md { font-size: 15px; padding: 12px 20px; }
 
-.light { background: var(--paper); color: var(--ink); border-color: var(--mist); box-shadow: 0 6px 20px -12px rgba(15,14,13,.4); }
-.dark { background: rgba(255,255,255,.1); color: #fff; border-color: rgba(255,255,255,.2); }
+.light { background: var(--paper); color: var(--ink); border-color: var(--mist); box-shadow: var(--shadow-soft); }
+.dark { background: var(--on-dark-surface); color: var(--paper); border-color: var(--on-dark-border); }
 .outline { background: transparent; color: var(--ink); border-color: var(--mist); }
 .brand { background: var(--brand-soft); color: var(--brand-deep); }
 
