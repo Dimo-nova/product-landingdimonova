@@ -1,8 +1,8 @@
 import { setRequestLocale } from "next-intl/server";
 import { pageMetadata } from "@/lib/meta";
 import Hero from "@/components/home/Hero";
-import LogoStrip from "@/components/sections/LogoStrip";
-import FeaturesSummary from "@/components/sections/FeaturesSummary";
+import LogoStrip from "@/components/home/LogoStrip";
+import ServiceCards from "@/components/home/ServiceCards";
 import HowItWorks from "@/components/sections/HowItWorks";
 import Differentiator from "@/components/sections/Differentiator";
 // import SocialProof from "@/components/sections/SocialProof";
@@ -21,7 +21,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
     <main id="main" tabIndex={-1} className="dim-legacy">
       <Hero />
       <LogoStrip />
-      <FeaturesSummary />
+      <ServiceCards />
       <HowItWorks />
       <Differentiator />
       {/* <SocialProof /> */}
