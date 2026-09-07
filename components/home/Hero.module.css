@@ -1,0 +1,74 @@
+.section {
+  position: relative;
+  background: var(--ink);
+  border-radius: var(--radius-panel);
+  margin: 16px;
+  min-height: 88vh;
+  overflow: hidden;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 900px) {
+  .section { min-height: auto; }
+}
+
+@media (max-width: 640px) {
+  .section { margin: 8px; }
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  /* `.section` is a flex row; without min-width:0 a flex item can't shrink below its content's
+     min-content size, so this column (and the EmailCta row inside it) would push past the
+     card's own edge and get sliced off by `.section`'s overflow:hidden on narrow viewports. */
+  min-width: 0;
+  width: 100%;
+  max-width: 620px;
+  padding: clamp(32px, 6vw, 72px);
+  color: var(--paper);
+}
+
+.pillRow {
+  margin-bottom: 24px;
+}
+
+.title {
+  color: var(--paper);
+  margin: 0 0 20px;
+}
+
+.lead {
+  font-size: var(--text-lead);
+  color: rgba(255, 255, 255, .82);
+  max-width: 520px;
+  margin: 0 0 32px;
+}
+
+.cta {
+  margin-bottom: 16px;
+}
+
+.legal {
+  font-size: 13px;
+  color: rgba(255, 255, 255, .6);
+  margin: 0 0 28px;
+}
+
+.legal a {
+  color: var(--paper);
+  text-decoration: underline;
+}
+
+.dashboardLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--paper);
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.dashboardLink:hover { opacity: .82; }

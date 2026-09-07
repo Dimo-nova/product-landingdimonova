@@ -1,0 +1,31 @@
+.wrap {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.img {
+  animation: kenburns 20s var(--ease-out) alternate infinite;
+}
+
+@keyframes kenburns {
+  from { transform: scale(1); }
+  to { transform: scale(1.06); }
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, var(--ink) 0%, var(--ink) 20%, transparent 60%);
+}
+
+.overlayBottom {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, var(--ink) 0%, transparent 45%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .img { animation: none; }
+}

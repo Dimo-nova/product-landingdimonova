@@ -1,6 +1,6 @@
 import { setRequestLocale } from "next-intl/server";
 import { pageMetadata } from "@/lib/meta";
-import Hero from "@/components/sections/Hero";
+import Hero from "@/components/home/Hero";
 import LogoStrip from "@/components/sections/LogoStrip";
 import FeaturesSummary from "@/components/sections/FeaturesSummary";
 import HowItWorks from "@/components/sections/HowItWorks";

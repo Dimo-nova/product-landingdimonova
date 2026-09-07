@@ -1,0 +1,7 @@
+.form { display: flex; flex-direction: column; gap: 8px; max-width: 460px; }
+.row { display: flex; gap: 8px; background: var(--paper); border-radius: var(--radius-pill); padding: 6px; box-shadow: 0 20px 40px -24px rgba(15,14,13,.5); }
+.input { flex: 1; min-width: 0; border: 0; background: transparent; padding: 0 16px; font-size: 15px; color: var(--ink); }
+.input:focus { outline: none; }
+.row:focus-within { box-shadow: 0 0 0 3px var(--brand), 0 20px 40px -24px rgba(15,14,13,.5); }
+.error { font-size: 13px; color: var(--brand); font-weight: 600; }
+.onDark .error { color: #FFB3AA; }
