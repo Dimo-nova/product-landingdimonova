@@ -28,7 +28,7 @@ test.describe("desktop header", () => {
     const nav = page.getByRole("navigation", { name: "Main" });
     await expect(nav.getByRole("link", { name: "Pricing" })).toHaveAttribute("href", "/pricing");
     await expect(nav.getByRole("link", { name: "About" })).toHaveAttribute("href", "/about");
-    await expect(page.getByRole("link", { name: "Client login" })).toHaveAttribute("href", "https://menuadmin.dimonova.com");
+    await expect(page.getByRole("banner").getByRole("link", { name: "Client login" })).toHaveAttribute("href", "https://menuadmin.dimonova.com");
     await page.getByRole("banner").getByRole("button", { name: "Request a demo" }).click();
     await expect(page.getByRole("dialog", { name: "Book your demo" })).toBeVisible();
   });
