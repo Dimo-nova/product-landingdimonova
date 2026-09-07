@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type KeyboardEvent } from "react";
 import { useTranslations } from "next-intl";
 import styles from "./AiDemo.module.css";
 
@@ -43,6 +43,7 @@ export default function AiDemo() {
   const [checked, setChecked] = useState<boolean[]>(() => new Array((allRows[0] ?? []).length).fill(true));
 
   const pausedRef = useRef(false);
+  const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
 
   useEffect(() => {
     let cancelled = false;
@@ -147,6 +148,34 @@ export default function AiDemo() {
 
   const rows = allRows[tab] ?? [];
 
+  const focusTab = (i: number) => {
+    setTab(i);
+    tabRefs.current[i]?.focus();
+  };
+
+  const handleTabKeyDown = (e: KeyboardEvent<HTMLButtonElement>) => {
+    const count = tabs.length;
+    let target: number | null = null;
+    switch (e.key) {
+      case "ArrowRight":
+        target = (tab + 1) % count;
+        break;
+      case "ArrowLeft":
+        target = (tab - 1 + count) % count;
+        break;
+      case "Home":
+        target = 0;
+        break;
+      case "End":
+        target = count - 1;
+        break;
+      default:
+        return;
+    }
+    e.preventDefault();
+    focusTab(target);
+  };
+
   return (
     <div
       className={styles.demo}
@@ -158,6 +187,7 @@ export default function AiDemo() {
         {tabs.map((label, i) => (
           <button
             key={label}
+            ref={(el) => { tabRefs.current[i] = el; }}
             type="button"
             role="tab"
             id={`ai-demo-tab-${i}`}
@@ -166,6 +196,7 @@ export default function AiDemo() {
             tabIndex={i === tab ? 0 : -1}
             className={[styles.tab, i === tab && styles.tabActive].filter(Boolean).join(" ")}
             onClick={() => setTab(i)}
+            onKeyDown={handleTabKeyDown}
           >
             {label}
           </button>

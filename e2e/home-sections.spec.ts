@@ -37,6 +37,23 @@ test("the AI section cycles its tabs and applies a change", async ({ page }) => 
   await expect(demo).toContainText("Translate the menu into German");
 });
 
+test("the AI tabs are fully operable with the keyboard", async ({ page }) => {
+  await page.goto("/");
+  const tabs = page.locator("[data-ai-demo]").getByRole("tab");
+  await tabs.first().focus();
+  await expect(tabs.first()).toBeFocused();
+  await page.keyboard.press("ArrowRight");
+  await expect(tabs.nth(1)).toBeFocused();
+  await expect(tabs.nth(1)).toHaveAttribute("aria-selected", "true");
+  await page.keyboard.press("End");
+  await expect(tabs.nth(2)).toBeFocused();
+  await expect(tabs.nth(2)).toHaveAttribute("aria-selected", "true");
+  await page.keyboard.press("ArrowRight");
+  await expect(tabs.first()).toBeFocused();
+  await page.keyboard.press("Home");
+  await expect(tabs.first()).toBeFocused();
+});
+
 test("the AI section explains that nothing is written without approval", async ({ page }) => {
   await page.goto("/");
   await expect(page.locator("#ai")).toContainText("Nothing is written to your menu until someone says yes.");
