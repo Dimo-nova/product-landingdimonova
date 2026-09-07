@@ -1,3 +1,4 @@
+.root { position: static; }
 .nav { display: flex; align-items: center; gap: 4px; }
 .item {
   display: inline-flex; align-items: center; gap: 6px;
@@ -28,8 +29,8 @@
   flex: none; width: 40px; height: 40px; border-radius: 12px;
   display: grid; place-items: center; background: var(--brand-soft); color: var(--brand-deep);
 }
-.cardTitle { font-weight: 600; font-size: 15px; margin: 0 0 2px; }
-.cardLine { font-size: 13px; color: var(--ink-2); margin: 0; line-height: 1.4; }
+.cardTitle { display: block; font-weight: 600; font-size: 15px; margin: 0 0 2px; }
+.cardLine { display: block; font-size: 13px; color: var(--ink-2); margin: 0; line-height: 1.4; }
 
 .clients { display: grid; grid-template-columns: 1.2fr 1fr; gap: 24px; }
 .featured {

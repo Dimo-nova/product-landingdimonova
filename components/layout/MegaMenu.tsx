@@ -49,6 +49,12 @@ export default function MegaMenu() {
 
   const isActive = (href: string) => pathname === href || pathname.startsWith(href + "/");
 
+  // While a panel is open, every other top-level item (the other triggers and the plain links)
+  // drops out of the Tab sequence. Without this, Tab from inside an open panel would step through
+  // the remaining nav items — themselves still inside `root` — before ever reaching something
+  // that isn't part of the mega menu, so the "focus left it" blur-close below would need far more
+  // Tabs than a user would expect to fire. Mouse/hover interaction is unaffected: tabIndex only
+  // changes keyboard tab order.
   const trigger = (key: Key, label: string) => (
     <button
       type="button"
@@ -56,9 +62,10 @@ export default function MegaMenu() {
       className={styles.item}
       aria-expanded={open === key}
       aria-controls={`mega-${key}`}
+      tabIndex={open && open !== key ? -1 : undefined}
       onMouseEnter={() => scheduleOpen(key)}
       onMouseLeave={scheduleClose}
-      onClick={() => (open === key ? close(key) : (clearTimers(), setOpen(key)))}
+      onClick={() => { if (open === key) return; clearTimers(); setOpen(key); }}
     >
       {label}
       <Chevron />
@@ -66,13 +73,13 @@ export default function MegaMenu() {
   );
 
   const link = (href: string, label: string) => (
-    <Link href={href} className={styles.item} aria-current={isActive(href) ? "page" : undefined} onMouseEnter={scheduleClose}>
+    <Link href={href} className={styles.item} aria-current={isActive(href) ? "page" : undefined} tabIndex={open ? -1 : undefined} onMouseEnter={scheduleClose}>
       {label}
     </Link>
   );
 
   return (
-    <>
+    <div className={styles.root} onBlur={(e) => { if (open && !e.currentTarget.contains(e.relatedTarget as Node | null)) close(); }}>
       <nav className={styles.nav} aria-label="Main">
         {trigger("products", t("nav.products"))}
         {link("/pricing", t("nav.pricing"))}
@@ -103,8 +110,8 @@ export default function MegaMenu() {
                       <Link key={s.slug} href={s.href} className={styles.card} onClick={() => close()}>
                         <span className={styles.icon}><ServiceIcon slug={s.slug} size={22} /></span>
                         <span>
-                          <p className={styles.cardTitle}>{t(`services.${s.slug}.title`)}</p>
-                          <p className={styles.cardLine}>{t(`services.${s.slug}.line`)}</p>
+                          <span className={styles.cardTitle}>{t(`services.${s.slug}.title`)}</span>
+                          <span className={styles.cardLine}>{t(`services.${s.slug}.line`)}</span>
                         </span>
                       </Link>
                     ))}
@@ -136,6 +143,6 @@ export default function MegaMenu() {
           </motion.div>
         )}
       </AnimatePresence>
-    </>
+    </div>
   );
 }
