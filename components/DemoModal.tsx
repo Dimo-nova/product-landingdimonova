@@ -4,13 +4,14 @@ import { useLocale, useTranslations } from "next-intl";
 import { motion } from "motion/react";
 import Modal from "@/components/ui/Modal";
 import Button from "@/components/ui/Button";
+import { Link } from "@/lib/routing";
 import { DEMO_OPEN, useWindowEvent, type DemoOpenPayload } from "@/lib/events";
 import { CONTACT } from "@/lib/config";
 import styles from "./DemoModal.module.css";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 type Status = "idle" | "sending" | "success" | "error";
-type Errors = Partial<Record<"name" | "email" | "venue", string>>;
+type Errors = Partial<Record<"name" | "email" | "venue" | "consent", string>>;
 
 export default function DemoModal() {
   const t = useTranslations("modal.demo");
@@ -61,6 +62,7 @@ export default function DemoModal() {
     if (!em) e.email = t("errRequired");
     else if (!EMAIL_RE.test(em)) e.email = t("errEmail");
     if (!String(fd.get("venue") ?? "").trim()) e.venue = t("errRequired");
+    if (fd.get("consent") !== "yes") e.consent = t("consentRequired");
     return e;
   }
 
@@ -158,6 +160,21 @@ export default function DemoModal() {
                   ))}
                 </div>
               </fieldset>
+
+              <div className={styles.field}>
+                <label htmlFor="demo-consent" className={styles.consent}>
+                  <input
+                    type="checkbox"
+                    id="demo-consent"
+                    name="consent"
+                    value="yes"
+                    aria-invalid={!!errors.consent || undefined}
+                    aria-describedby={errors.consent ? "demo-consent-err" : undefined}
+                  />
+                  <span>{t.rich("consent", { link: (chunks) => <Link href="/legal/privacy">{chunks}</Link> })}</span>
+                </label>
+                {err("consent")}
+              </div>
 
               <div className={styles.actions}>
                 <Button type="submit" size="lg" disabled={status === "sending"}>

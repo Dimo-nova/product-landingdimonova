@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useTranslations, useLocale } from "next-intl";
 import { s } from "@/lib/style";
 import Hover from "./Hover";
+import { Link } from "@/lib/routing";
 import { CONTACT } from "@/lib/config";
 
 const EMAIL_RE = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
@@ -13,6 +14,7 @@ interface Errors {
   name?: string;
   email?: string;
   venue?: string;
+  consent?: string;
 }
 
 export default function ContactForm() {
@@ -26,6 +28,7 @@ export default function ContactForm() {
   const [message, setMessage] = useState("");
   const [menuUrl, setMenuUrl] = useState("");
   const [menuFile, setMenuFile] = useState<File | null>(null);
+  const [consent, setConsent] = useState(false);
   const [errors, setErrors] = useState<Errors>({});
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
@@ -38,6 +41,7 @@ export default function ContactForm() {
     if (!email.trim()) next.email = t("errors.email_required");
     else if (!EMAIL_RE.test(email)) next.email = t("errors.email_invalid");
     if (!venue.trim()) next.venue = t("errors.venue");
+    if (!consent) next.consent = t("modal.demo.consentRequired");
     setErrors(next);
     if (Object.keys(next).length > 0) return;
 
@@ -53,6 +57,7 @@ export default function ContactForm() {
       fd.append("message", message);
       fd.append("menuUrl", menuUrl);
       fd.append("locale", locale);
+      fd.append("consent", "yes");
       if (menuFile) fd.append("menuFile", menuFile);
 
       const res = await fetch("/api/contact", { method: "POST", body: fd });
@@ -77,6 +82,7 @@ export default function ContactForm() {
     setMenuUrl("");
     setMenuFile(null);
     setVtype("restaurant");
+    setConsent(false);
     setErrors({});
     setSubmitted(false);
   }
@@ -312,6 +318,41 @@ export default function ContactForm() {
                     placeholder={t("contact.form.message_ph")}
                     style={s("width:100%;padding:14px 16px;background:#FAF6F0;border:1px solid #E8E0D2;border-radius:10px;font:400 14px/1.5 'Instrument Sans',sans-serif;color:#1F1814;resize:vertical;transition:border-color .15s,box-shadow .15s;box-sizing:border-box")}
                   />
+                </div>
+
+                {/* Consent */}
+                <div>
+                  <label
+                    htmlFor="contact-consent"
+                    style={s("display:flex;align-items:flex-start;gap:10px;font:400 13px/1.5 'Instrument Sans',sans-serif;color:#4A4036;cursor:pointer")}
+                  >
+                    <input
+                      type="checkbox"
+                      id="contact-consent"
+                      name="consent"
+                      value="yes"
+                      checked={consent}
+                      onChange={(e) => {
+                        setConsent(e.target.checked);
+                        if (errors.consent) setErrors((prev) => ({ ...prev, consent: undefined }));
+                      }}
+                      aria-invalid={!!errors.consent || undefined}
+                      aria-describedby={errors.consent ? "contact-consent-err" : undefined}
+                      style={s("width:18px;height:18px;margin-top:2px;flex:none;accent-color:#1F1814")}
+                    />
+                    <span>
+                      {t.rich("modal.demo.consent", {
+                        link: (chunks) => (
+                          <Link href="/legal/privacy" style={s("color:#1F1814;text-decoration:underline")}>
+                            {chunks}
+                          </Link>
+                        ),
+                      })}
+                    </span>
+                  </label>
+                  {errors.consent && (
+                    <div id="contact-consent-err" style={s("font:400 12px/1.4 'Instrument Sans',sans-serif;color:#B8523A;margin-top:6px;margin-left:28px")}>{errors.consent}</div>
+                  )}
                 </div>
 
                 {/* Footer: disclaimer + submit */}

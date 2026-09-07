@@ -20,6 +20,9 @@
 }
 .pill input:checked + span { background: var(--ink); color: #fff; border-color: var(--ink); }
 .pill input:focus-visible + span { outline: 3px solid var(--brand); outline-offset: 3px; }
+.consent { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; line-height: 1.5; color: var(--ink-2); cursor: pointer; }
+.consent input { width: 18px; height: 18px; margin-top: 2px; flex: none; accent-color: var(--ink); }
+.consent a { color: var(--ink); text-decoration: underline; }
 .actions { margin-top: 8px; display: grid; }
 .state { text-align: center; padding: 24px 0 8px; }
 .tick { width: 64px; height: 64px; margin: 0 auto 16px; border-radius: 50%; background: var(--ok); color: #fff; display: grid; place-items: center; font-size: 30px; }

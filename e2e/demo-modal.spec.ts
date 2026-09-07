@@ -50,6 +50,7 @@ test("submits to /api/contact and shows success", async ({ page }) => {
   await dialog.getByLabel("Restaurant name").fill("Bar Ana");
   await dialog.getByLabel("2–5").check();
   await dialog.getByLabel("On my website").check();
+  await dialog.locator("#demo-consent").check();
   await dialog.getByRole("button", { name: "Book demo" }).click();
   await expect(dialog.getByText("Done. We'll write to you today.")).toBeVisible();
   expect(posted).toEqual({ name: "Ana", email: "ana@bar.es", venue: "Bar Ana", locations: "2-5", menuToday: "web", source: "header", vtype: "restaurant", locale: "en" });
@@ -63,6 +64,7 @@ test("shows the error state with WhatsApp fallback on 500", async ({ page }) => 
   await dialog.getByLabel("Tu nombre").fill("Ana");
   await dialog.getByLabel("Email").fill("ana@bar.es");
   await dialog.getByLabel("Nombre del restaurante").fill("Bar Ana");
+  await dialog.locator("#demo-consent").check();
   await dialog.getByRole("button", { name: "Pedir demo" }).click();
   await expect(dialog.getByText("No ha ido.")).toBeVisible();
   await expect(dialog.getByRole("link", { name: "Abrir WhatsApp" })).toHaveAttribute("href", /wa\.me\/34/);
@@ -78,6 +80,7 @@ test("focus stays inside the dialog through sending, success and retry", async (
   await dialog.getByLabel("Your name").fill("Ana");
   await dialog.getByLabel("Email").fill("ana@bar.es");
   await dialog.getByLabel("Restaurant name").fill("Bar Ana");
+  await dialog.locator("#demo-consent").check();
   await dialog.getByRole("button", { name: "Book demo" }).click();
   // while sending, the active element is inside the dialog
   const insideWhileSending = await page.evaluate(() => !!document.activeElement?.closest("[role=dialog]"));
@@ -110,4 +113,46 @@ test("focus is trapped: Shift+Tab from the first field reaches the close button,
   await expect(dialog.getByRole("button", { name: "Book demo" })).toBeFocused();
   await page.keyboard.press("Tab");
   await expect(dialog.getByRole("button", { name: "Close" })).toBeFocused();
+});
+
+test("consent checkbox blocks submission when unticked and no request is sent", async ({ page }) => {
+  let calls = 0;
+  await page.route("**/api/contact", async (route) => {
+    calls++;
+    await route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ ok: true }) });
+  });
+  await page.goto("/");
+  await open(page);
+  const dialog = page.getByRole("dialog", { name: "Book your demo" });
+  await dialog.getByLabel("Your name").fill("Ana");
+  await dialog.getByLabel("Email").fill("ana@bar.es");
+  await dialog.getByLabel("Restaurant name").fill("Bar Ana");
+  await dialog.getByRole("button", { name: "Book demo" }).click();
+  await expect(dialog.getByText("Please accept the privacy policy")).toBeVisible();
+  expect(calls).toBe(0);
+});
+
+test("ticking consent lets the submission through", async ({ page }) => {
+  await page.route("**/api/contact", (route) => route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ ok: true }) }));
+  await page.goto("/");
+  await open(page);
+  const dialog = page.getByRole("dialog", { name: "Book your demo" });
+  await dialog.getByLabel("Your name").fill("Ana");
+  await dialog.getByLabel("Email").fill("ana@bar.es");
+  await dialog.getByLabel("Restaurant name").fill("Bar Ana");
+  await dialog.locator("#demo-consent").check();
+  await dialog.getByRole("button", { name: "Book demo" }).click();
+  await expect(dialog.getByText("Done. We'll write to you today.")).toBeVisible();
+});
+
+test("consent checkbox is reachable and toggleable by keyboard", async ({ page }) => {
+  await page.goto("/");
+  await open(page);
+  const dialog = page.getByRole("dialog", { name: "Book your demo" });
+  const checkbox = dialog.locator("#demo-consent");
+  await checkbox.focus();
+  await expect(checkbox).toBeFocused();
+  await expect(checkbox).not.toBeChecked();
+  await page.keyboard.press("Space");
+  await expect(checkbox).toBeChecked();
 });

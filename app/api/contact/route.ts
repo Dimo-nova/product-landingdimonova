@@ -26,10 +26,20 @@ export async function POST(req: NextRequest) {
   const menuUrl = (fd.get("menuUrl") as string)?.trim() ?? "";
   const locale = (fd.get("locale") as string) ?? "es";
   const menuFile = fd.get("menuFile") as File | null;
+  const consent = (fd.get("consent") as string) ?? "";
 
   if (!name || !email || !venue) {
     return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
   }
+
+  // The client already blocks submission without consent, but the server must not rely on
+  // that — GDPR art. 7(1) requires the operator to be able to demonstrate consent was given,
+  // so a request that skips (or forges) the checkbox is rejected here too.
+  if (consent !== "yes") {
+    return NextResponse.json({ error: "consent_required" }, { status: 400 });
+  }
+
+  const consentTimestamp = new Date().toISOString();
 
   // Prepare file attachment for email
   let attachments: { filename: string; content: Buffer }[] = [];
@@ -49,6 +59,7 @@ export async function POST(req: NextRequest) {
     menuToday ? `Carta hoy: ${menuToday}` : "",
     source ? `Origen: ${source}` : "",
     fileNote ? `Archivo adjunto: ${fileNote}` : "",
+    `Consentimiento: aceptado el ${consentTimestamp}`,
   ].filter(Boolean);
   const notionMessage = [message, ...extraLines].filter(Boolean).join("\n");
 
@@ -96,6 +107,7 @@ export async function POST(req: NextRequest) {
           ${menuToday ? `<tr><td style="padding:4px 12px 4px 0;color:#666">Carta hoy</td><td>${esc(menuToday)}</td></tr>` : ""}
           ${source ? `<tr><td style="padding:4px 12px 4px 0;color:#666">Origen</td><td>${esc(source)}</td></tr>` : ""}
           <tr><td style="padding:4px 12px 4px 0;color:#666">Idioma</td><td>${esc(locale)}</td></tr>
+          <tr><td style="padding:4px 12px 4px 0;color:#666">Consentimiento</td><td>${esc(`aceptado el ${consentTimestamp}`)}</td></tr>
         </table>
       `,
     });

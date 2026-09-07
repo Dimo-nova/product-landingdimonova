@@ -45,8 +45,29 @@ test("valid submit shows success state", async ({ page }) => {
   await page.getByLabel(/your name/i).fill("Test User");
   await page.getByLabel(/venue name/i).fill("The Test Pub");
   await page.getByLabel(/email/i).fill("test@example.com");
+  await page.locator("#contact-consent").check();
   await page.getByRole("main").getByRole("button", { name: /request a demo/i }).click();
   await expect(page.getByText(/we'll be in touch/i)).toBeVisible();
+});
+
+test("unticked consent blocks submission with an inline error", async ({ page }) => {
+  await page.goto("/contact");
+  await page.getByLabel(/your name/i).fill("Test User");
+  await page.getByLabel(/venue name/i).fill("The Test Pub");
+  await page.getByLabel(/email/i).fill("test@example.com");
+  await page.getByRole("main").getByRole("button", { name: /request a demo/i }).click();
+  await expect(page.getByText("Please accept the privacy policy")).toBeVisible();
+});
+
+// The client already blocks submission without a ticked box, but the server must not rely on
+// that (GDPR art. 7(1) accountability). Post straight to the API, bypassing the form entirely,
+// to prove the guard lives server-side too.
+test("the API rejects a request with no consent field", async ({ request }) => {
+  const res = await request.post("/api/contact", {
+    multipart: { name: "Ana", email: "ana@bar.es", venue: "Bar Ana", vtype: "restaurant" },
+  });
+  expect(res.status()).toBe(400);
+  await expect(res.json()).resolves.toEqual({ error: "consent_required" });
 });
 
 test("success state has send another button that resets form", async ({ page }) => {
@@ -55,6 +76,7 @@ test("success state has send another button that resets form", async ({ page }) 
   await page.getByLabel(/your name/i).fill("Test User");
   await page.getByLabel(/venue name/i).fill("The Test Pub");
   await page.getByLabel(/email/i).fill("test@example.com");
+  await page.locator("#contact-consent").check();
   await page.getByRole("main").getByRole("button", { name: /request a demo/i }).click();
   await expect(page.getByText(/we'll be in touch/i)).toBeVisible();
   await page.getByRole("button", { name: /send another/i }).click();
