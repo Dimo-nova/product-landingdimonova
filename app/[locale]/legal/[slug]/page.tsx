@@ -13,7 +13,6 @@ const NAV_LABELS: Record<LegalSlug, { es: string; en: string }> = {
   privacy: { es: "Privacidad", en: "Privacy" },
   terms: { es: "Términos", en: "Terms" },
   cookies: { es: "Cookies", en: "Cookies" },
-  refunds: { es: "Reembolsos", en: "Refunds" },
 };
 
 function isLegalSlug(slug: string): slug is LegalSlug {

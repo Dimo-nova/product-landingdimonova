@@ -1,12 +1,11 @@
 import { test, expect } from "@playwright/test";
 
-const SLUGS = ["privacy", "terms", "cookies", "refunds"] as const;
+const SLUGS = ["privacy", "terms", "cookies"] as const;
 
 const TITLES: Record<(typeof SLUGS)[number], { en: string; es: string }> = {
   privacy: { en: "Privacy policy", es: "Política de privacidad" },
   terms: { en: "Legal notice and terms of use", es: "Aviso legal y condiciones de uso" },
   cookies: { en: "Cookie policy", es: "Política de cookies" },
-  refunds: { en: "Refunds and cancellations", es: "Reembolsos y cancelaciones" },
 };
 
 for (const slug of SLUGS) {
@@ -41,13 +40,12 @@ test("English privacy page mentions Standard Contractual Clauses", async ({ page
   await expect(page.locator("main")).toContainText("Standard Contractual Clauses");
 });
 
-test("footer legal column links to all four documents", async ({ page }) => {
+test("footer legal column links to all three documents", async ({ page }) => {
   await page.goto("/");
   const footer = page.locator("footer");
   await expect(footer.getByRole("link", { name: "Privacy" })).toHaveAttribute("href", "/legal/privacy");
   await expect(footer.getByRole("link", { name: "Cookies" })).toHaveAttribute("href", "/legal/cookies");
   await expect(footer.getByRole("link", { name: "Terms" })).toHaveAttribute("href", "/legal/terms");
-  await expect(footer.getByRole("link", { name: "Refunds" })).toHaveAttribute("href", "/legal/refunds");
 });
 
 test("footer shows the business-identity line", async ({ page }) => {

@@ -48,7 +48,6 @@ export default async function Footer() {
                 <li><Link href="/legal/privacy">{t("footer.privacy")}</Link></li>
                 <li><Link href="/legal/cookies">{t("footer.cookies")}</Link></li>
                 <li><Link href="/legal/terms">{t("footer.terms")}</Link></li>
-                <li><Link href="/legal/refunds">{t("footer.refunds")}</Link></li>
               </ul>
             </div>
             <div className={styles.col}>

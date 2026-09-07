@@ -43,7 +43,7 @@ Status legend: `[ ]` not started · `[~]` in progress · `[x]` done
 
 - [x] **Wire up the contact form.** It posts to `/api/contact`, which creates a Notion lead and sends an email notification via Resend.
 - [x] **Make the WhatsApp widget real.** Point "Continue to WhatsApp" at `https://wa.me/<number>` with the real number.
-- [x] Add real **legal pages** — Privacy, Terms, Cookies and Refunds are written in full (`content/legal/`) and linked from the footer. `COMPANY` identity fields in `lib/config.ts` are still `«PENDIENTE»` placeholders — fill them with the real registered company data before deploy (see `.superpowers/sdd/legal-report.md`).
+- [x] Add real **legal pages** — Privacy, Terms and Cookies are written in full (`content/legal/`) and linked from the footer. `COMPANY` identity fields in `lib/config.ts` are still `«PENDIENTE»` placeholders — fill them with the real registered company data before deploy (see `.superpowers/sdd/legal-report.md`).
 - [ ] Add an **`og:image`** for social sharing previews.
 
 ## 🔎 Before launch — quality

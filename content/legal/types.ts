@@ -1,6 +1,6 @@
 import { COMPANY } from "@/lib/config";
 
-export type LegalSlug = "privacy" | "terms" | "cookies" | "refunds";
+export type LegalSlug = "privacy" | "terms" | "cookies";
 
 /**
  * Registry-details fragment as its own sentence, e.g. " Datos registrales: X." — appended

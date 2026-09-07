@@ -6,7 +6,6 @@ test("footer has 5 columns, service links, legal links and the wordmark", async 
   await expect(footer.getByRole("heading", { level: 2 })).toHaveCount(5);
   await expect(footer.getByRole("link", { name: "Digital menu" })).toHaveAttribute("href", "/features#menu");
   await expect(footer.getByRole("link", { name: "Privacy" })).toHaveAttribute("href", "/legal/privacy");
-  await expect(footer.getByRole("link", { name: "Refunds" })).toHaveAttribute("href", "/legal/refunds");
   await expect(footer.getByRole("link", { name: "WhatsApp Spain" })).toHaveAttribute("href", /wa\.me\/34/);
   const mark = footer.locator("[data-wordmark]");
   await expect(mark).toBeVisible();
