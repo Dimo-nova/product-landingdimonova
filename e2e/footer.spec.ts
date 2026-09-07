@@ -17,3 +17,18 @@ test("legal placeholder pages render in both locales", async ({ page }) => {
   await page.goto("/es/legal/cookies");
   await expect(page.getByRole("heading", { level: 1 })).toHaveText("Política de cookies");
 });
+
+test("footer language switcher options are readable when opened", async ({ page }) => {
+  await page.goto("/");
+  const footer = page.locator("footer");
+  await footer.locator('button[aria-label="Choose language"]').click();
+  const option = footer.locator("[data-lang='es']");
+  await expect(option).toBeVisible();
+  const { color, bg } = await option.evaluate((el) => {
+    const cs = getComputedStyle(el);
+    const menu = getComputedStyle(el.parentElement as Element);
+    return { color: cs.color, bg: menu.backgroundColor };
+  });
+  expect(color).not.toBe(bg);
+  expect(color).not.toBe("rgb(255, 255, 255)");
+});
