@@ -3,7 +3,7 @@ import { pageMetadata } from "@/lib/meta";
 import Hero from "@/components/home/Hero";
 import LogoStrip from "@/components/home/LogoStrip";
 import ServiceCards from "@/components/home/ServiceCards";
-import HowItWorks from "@/components/sections/HowItWorks";
+import AiPanel from "@/components/home/AiPanel";
 import Differentiator from "@/components/sections/Differentiator";
 // import SocialProof from "@/components/sections/SocialProof";
 import PricingTeaser from "@/components/sections/PricingTeaser";
@@ -22,7 +22,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       <Hero />
       <LogoStrip />
       <ServiceCards />
-      <HowItWorks />
+      <AiPanel />
       <Differentiator />
       {/* <SocialProof /> */}
       <PricingTeaser />

@@ -67,8 +67,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: rgba(255, 255, 255, .9);
-  background-image: repeating-linear-gradient(135deg, rgba(255, 255, 255, .14) 0 10px, transparent 10px 20px);
+  color: var(--on-dark-text);
+  background-image: repeating-linear-gradient(135deg, var(--on-dark-surface) 0 10px, transparent 10px 20px);
   transition: transform .3s var(--ease-out);
 }
 
@@ -93,7 +93,7 @@
 }
 
 .body p {
-  color: rgba(255, 255, 255, .85);
+  color: var(--on-dark-text);
   font-size: 15px;
   line-height: 1.4;
   margin: 0;

@@ -1,0 +1,190 @@
+.demo {
+  background: var(--ink-raised);
+  border: 1px solid var(--on-dark-border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-deep);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.tablist {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.tab {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--on-dark-muted);
+  background: transparent;
+  border: 1px solid var(--on-dark-border);
+  border-radius: var(--radius-pill);
+  padding: 8px 14px;
+  cursor: pointer;
+  transition: background .2s, color .2s, border-color .2s;
+}
+
+.tab:hover {
+  color: var(--paper);
+  border-color: var(--on-dark-text);
+}
+
+.tabActive {
+  background: var(--brand);
+  border-color: var(--brand);
+  color: var(--paper);
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.bubble {
+  align-self: flex-start;
+  max-width: 100%;
+  background: var(--on-dark-surface);
+  border: 1px solid var(--on-dark-border);
+  border-radius: var(--radius-card) var(--radius-card) var(--radius-card) 4px;
+  padding: 14px 16px;
+  color: var(--paper);
+  font-size: 14px;
+  line-height: 1.5;
+  min-height: 1.5em;
+}
+
+.caret {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  margin-left: 2px;
+  background: var(--brand);
+  vertical-align: -0.15em;
+  animation: aiCaretBlink 1s step-end infinite;
+}
+
+@keyframes aiCaretBlink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+.card {
+  background: var(--on-dark-surface);
+  border: 1px solid var(--on-dark-border);
+  border-radius: var(--radius-card);
+  padding: 16px;
+}
+
+.cardTitle {
+  margin: 0 0 12px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--on-dark-muted);
+}
+
+.rows {
+  list-style: none;
+  margin: 0 0 16px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 20px 1fr auto;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+}
+
+.tick {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  flex: none;
+  border-radius: 5px;
+  border: 1.5px solid var(--on-dark-border);
+  color: var(--paper);
+  font-size: 12px;
+  line-height: 1;
+  transition: background .2s, border-color .2s;
+}
+
+.tickOn {
+  background: var(--brand);
+  border-color: var(--brand);
+}
+
+.rowLabel {
+  color: var(--paper);
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.rowChange {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.rowBefore {
+  color: var(--on-dark-muted);
+  text-decoration: line-through;
+}
+
+.arrow {
+  color: var(--on-dark-muted);
+}
+
+.rowAfter {
+  color: var(--paper);
+  font-weight: 700;
+}
+
+.apply {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background: var(--brand);
+  color: var(--paper);
+  font-weight: 600;
+  font-size: 14px;
+  border-radius: var(--radius-pill);
+  padding: 12px 18px;
+  transform: scale(1);
+  transition: transform .15s var(--ease-out), background .15s;
+}
+
+.applyPressed {
+  transform: scale(0.97);
+  background: var(--brand-deep);
+}
+
+.toast {
+  min-height: 1.4em;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--on-dark-text);
+  opacity: 0;
+  transition: opacity .3s var(--ease-out);
+}
+
+.toastShow {
+  opacity: 1;
+}

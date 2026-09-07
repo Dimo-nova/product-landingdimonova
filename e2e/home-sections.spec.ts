@@ -24,3 +24,20 @@ test("the logo strip renders each client logo once for assistive tech", async ({
   // Marquee's aria-hidden="true" duplicate group is pruned, so it correctly counts 1.
   await expect(strip.getByRole("img", { name: "Bálamo" })).toHaveCount(1);
 });
+
+test("the AI section cycles its tabs and applies a change", async ({ page }) => {
+  await page.goto("/#ai");
+  const demo = page.locator("[data-ai-demo]");
+  await expect(demo).toBeVisible();
+  const tabs = demo.getByRole("tab");
+  await expect(tabs).toHaveCount(3);
+  await expect(tabs.first()).toHaveAttribute("aria-selected", "true");
+  await tabs.nth(1).click();
+  await expect(tabs.nth(1)).toHaveAttribute("aria-selected", "true");
+  await expect(demo).toContainText("Translate the menu into German");
+});
+
+test("the AI section explains that nothing is written without approval", async ({ page }) => {
+  await page.goto("/");
+  await expect(page.locator("#ai")).toContainText("Nothing is written to your menu until someone says yes.");
+});

@@ -1,0 +1,85 @@
+.section {
+  background: var(--ink);
+  border-radius: var(--radius-panel);
+  margin: 16px;
+  padding: clamp(40px, 6vw, 88px);
+  color: var(--paper);
+}
+
+@media (max-width: 640px) {
+  .section { margin: 8px; }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(32px, 6vw, 80px);
+  align-items: center;
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.copy {
+  max-width: 520px;
+}
+
+.eyebrow {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--brand);
+  margin: 0 0 16px;
+}
+
+.title {
+  color: var(--paper);
+  margin: 0 0 20px;
+}
+
+.body {
+  font-size: var(--text-lead);
+  color: var(--on-dark-text);
+  margin: 0 0 32px;
+}
+
+.steps {
+  list-style: none;
+  margin: 0 0 40px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--paper);
+}
+
+.stepNum {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--on-dark-surface);
+  border: 1px solid var(--on-dark-border);
+  color: var(--brand);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.demoCol {
+  min-width: 0;
+}
