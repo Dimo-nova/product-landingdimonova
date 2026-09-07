@@ -77,6 +77,21 @@ test.describe("desktop header", () => {
     await header.locator("[data-lang='es']").click();
     await expect(page).toHaveURL(/\/es(\/|$)/);
   });
+
+  test("language dropdown options are readable (header)", async ({ page }) => {
+    await page.goto("/");
+    const header = page.getByRole("banner");
+    await header.locator('button[aria-label="Choose language"]').click();
+    const option = header.locator("[data-lang='es']");
+    await expect(option).toBeVisible();
+    const { color, bg } = await option.evaluate((el) => {
+      const cs = getComputedStyle(el);
+      const menu = getComputedStyle(el.parentElement as Element);
+      return { color: cs.color, bg: menu.backgroundColor };
+    });
+    // Simple contrast check: verify color is not the same as background
+    expect(color).not.toBe(bg);
+  });
 });
 
 test.describe("mobile header", () => {

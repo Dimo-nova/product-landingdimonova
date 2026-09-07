@@ -21,22 +21,46 @@ test("legal placeholder pages render in both locales", async ({ page }) => {
   expect((await page.goto("/legal/nope"))?.status()).toBe(404);
 });
 
+function contrast(fg: string, bg: string): number {
+  const parse = (c: string) => (c.match(/[\d.]+/g) ?? []).slice(0, 3).map(Number);
+  const lum = (rgb: number[]) =>
+    0.2126 * chan(rgb[0]) + 0.7152 * chan(rgb[1]) + 0.0722 * chan(rgb[2]);
+  const chan = (v: number) => {
+    const s = v / 255;
+    return s <= 0.03928 ? s / 12.92 : Math.pow((s + 0.055) / 1.055, 2.4);
+  };
+  const a = lum(parse(fg)), b = lum(parse(bg));
+  const [hi, lo] = a > b ? [a, b] : [b, a];
+  return (hi + 0.05) / (lo + 0.05);
+}
+
 test("footer language switcher options are readable when opened", async ({ page }) => {
   await page.goto("/");
   const footer = page.locator("footer");
   await footer.locator('button[aria-label="Choose language"]').click();
-  const option = footer.locator("[data-lang='es']");
-  await expect(option).toBeVisible();
-  const { color, bg } = await option.evaluate((el) => {
-    const cs = getComputedStyle(el);
-    const menu = getComputedStyle(el.parentElement as Element);
-    return { color: cs.color, bg: menu.backgroundColor };
-  });
-  expect(color).not.toBe(bg);
-  expect(color).not.toBe("rgb(255, 255, 255)");
 
-  const box = await option.boundingBox();
-  expect(box).not.toBeNull();
-  expect(box!.width).toBeGreaterThan(0);
-  expect(box!.height).toBeGreaterThan(0);
+  const locales = ["en", "es", "de", "fr", "pt"];
+  for (const lang of locales) {
+    const option = footer.locator(`[data-lang='${lang}']`);
+    await expect(option).toBeVisible();
+    const { color, bg } = await option.evaluate((el) => {
+      const cs = getComputedStyle(el);
+      const menu = getComputedStyle(el.parentElement as Element);
+      return { color: cs.color, bg: menu.backgroundColor };
+    });
+
+    // Check bounding box
+    const box = await option.boundingBox();
+    expect(box, `${lang}: bounding box exists`).not.toBeNull();
+    expect(box!.width, `${lang}: bounding box width > 0`).toBeGreaterThan(0);
+    expect(box!.height, `${lang}: bounding box height > 0`).toBeGreaterThan(0);
+
+    // Check contrast ratio
+    const ratio = contrast(color, bg);
+    expect(ratio, `${lang}: contrast ratio ${ratio.toFixed(2)} >= 4.5`).toBeGreaterThanOrEqual(4.5);
+
+    // Verify no alpha < 1 (fully opaque)
+    const hasAlpha = color.includes("/") && parseFloat(color.split("/")[1]) < 1;
+    expect(hasAlpha, `${lang}: color should be fully opaque`).toBe(false);
+  }
 });
