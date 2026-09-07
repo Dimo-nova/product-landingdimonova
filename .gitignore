@@ -10,5 +10,6 @@ next-env.d.ts
 .superpowers
 docs/*
 !docs/superpowers/
+!docs/compliance/
 .env.local
 tsconfig.tsbuildinfo
