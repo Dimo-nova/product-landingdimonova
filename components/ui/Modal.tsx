@@ -20,6 +20,14 @@ export default function Modal({ open, onClose, labelledBy, children, tone = "lig
   const dialogRef = useRef<HTMLDivElement>(null);
   const restoreRef = useRef<HTMLElement | null>(null);
 
+  // Hold the latest onClose in a ref so the trap effect below can depend on
+  // `open` alone. Keying it on `onClose` too would re-run the effect on every
+  // parent re-render that passes a new inline closure (e.g. `onClose={() =>
+  // setOpen(false)}`), which restores focus to the opener and re-focuses the
+  // first control mid-open — yanking focus out of whatever the user is typing in.
+  const onCloseRef = useRef(onClose);
+  useEffect(() => { onCloseRef.current = onClose; }, [onClose]);
+
   useEffect(() => {
     if (!open) return;
     restoreRef.current = document.activeElement as HTMLElement | null;
@@ -34,7 +42,7 @@ export default function Modal({ open, onClose, labelledBy, children, tone = "lig
     initial?.focus();
 
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") { e.preventDefault(); onClose(); return; }
+      if (e.key === "Escape") { e.preventDefault(); onCloseRef.current(); return; }
       if (e.key !== "Tab") return;
       const list = focusables();
       if (list.length === 0) return;
@@ -48,7 +56,7 @@ export default function Modal({ open, onClose, labelledBy, children, tone = "lig
       document.body.style.overflow = prevOverflow;
       restoreRef.current?.focus?.();
     };
-  }, [open, onClose]);
+  }, [open]);
 
   return (
     <AnimatePresence>
