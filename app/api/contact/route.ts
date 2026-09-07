@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Client } from "@notionhq/client";
 import { Resend } from "resend";
+import { esc, safeUrl } from "@/lib/html";
 
 const notion = new Client({ auth: process.env.NOTION_TOKEN });
 const resend = new Resend(process.env.RESEND_API_KEY);
@@ -74,26 +75,27 @@ export async function POST(req: NextRequest) {
 
   // Email notification
   try {
+    const menuUrlHref = safeUrl(menuUrl);
     await resend.emails.send({
       from: "Dimonova Web <noreply@dimonova.com>",
       to: "pablo@dimonova.com",
-      subject: `Nuevo lead: ${venue} — ${name}`,
+      subject: `Nuevo lead: ${venue.replace(/[\r\n]+/g, " ")} — ${name.replace(/[\r\n]+/g, " ")}`,
       attachments,
       html: `
         <h2 style="font-family:sans-serif">Nuevo lead desde dimonova.com</h2>
         <table style="font-family:sans-serif;font-size:14px;border-collapse:collapse">
-          <tr><td style="padding:4px 12px 4px 0;color:#666">Nombre</td><td><strong>${name}</strong></td></tr>
-          <tr><td style="padding:4px 12px 4px 0;color:#666">Email</td><td><a href="mailto:${email}">${email}</a></td></tr>
-          <tr><td style="padding:4px 12px 4px 0;color:#666">Local</td><td>${venue}</td></tr>
-          <tr><td style="padding:4px 12px 4px 0;color:#666">Tipo</td><td>${vtypeMap[vtype] ?? vtype}</td></tr>
-          ${phone ? `<tr><td style="padding:4px 12px 4px 0;color:#666">Teléfono</td><td>${phone}</td></tr>` : ""}
-          ${message ? `<tr><td style="padding:4px 12px 4px 0;color:#666;vertical-align:top">Mensaje</td><td>${message}</td></tr>` : ""}
-          ${menuUrl ? `<tr><td style="padding:4px 12px 4px 0;color:#666">Menú actual</td><td><a href="${menuUrl}">${menuUrl}</a></td></tr>` : ""}
-          ${fileNote ? `<tr><td style="padding:4px 12px 4px 0;color:#666">Archivo</td><td>${fileNote} (adjunto)</td></tr>` : ""}
-          ${locations ? `<tr><td style="padding:4px 12px 4px 0;color:#666">Locales</td><td>${locations}</td></tr>` : ""}
-          ${menuToday ? `<tr><td style="padding:4px 12px 4px 0;color:#666">Carta hoy</td><td>${menuToday}</td></tr>` : ""}
-          ${source ? `<tr><td style="padding:4px 12px 4px 0;color:#666">Origen</td><td>${source}</td></tr>` : ""}
-          <tr><td style="padding:4px 12px 4px 0;color:#666">Idioma</td><td>${locale}</td></tr>
+          <tr><td style="padding:4px 12px 4px 0;color:#666">Nombre</td><td><strong>${esc(name)}</strong></td></tr>
+          <tr><td style="padding:4px 12px 4px 0;color:#666">Email</td><td><a href="mailto:${esc(email)}">${esc(email)}</a></td></tr>
+          <tr><td style="padding:4px 12px 4px 0;color:#666">Local</td><td>${esc(venue)}</td></tr>
+          <tr><td style="padding:4px 12px 4px 0;color:#666">Tipo</td><td>${esc(vtypeMap[vtype] ?? vtype)}</td></tr>
+          ${phone ? `<tr><td style="padding:4px 12px 4px 0;color:#666">Teléfono</td><td>${esc(phone)}</td></tr>` : ""}
+          ${message ? `<tr><td style="padding:4px 12px 4px 0;color:#666;vertical-align:top">Mensaje</td><td>${esc(message)}</td></tr>` : ""}
+          ${menuUrl ? `<tr><td style="padding:4px 12px 4px 0;color:#666">Menú actual</td><td>${menuUrlHref ? `<a href="${menuUrlHref}">${esc(menuUrl)}</a>` : esc(menuUrl)}</td></tr>` : ""}
+          ${fileNote ? `<tr><td style="padding:4px 12px 4px 0;color:#666">Archivo</td><td>${esc(fileNote)} (adjunto)</td></tr>` : ""}
+          ${locations ? `<tr><td style="padding:4px 12px 4px 0;color:#666">Locales</td><td>${esc(locations)}</td></tr>` : ""}
+          ${menuToday ? `<tr><td style="padding:4px 12px 4px 0;color:#666">Carta hoy</td><td>${esc(menuToday)}</td></tr>` : ""}
+          ${source ? `<tr><td style="padding:4px 12px 4px 0;color:#666">Origen</td><td>${esc(source)}</td></tr>` : ""}
+          <tr><td style="padding:4px 12px 4px 0;color:#666">Idioma</td><td>${esc(locale)}</td></tr>
         </table>
       `,
     });
