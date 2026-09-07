@@ -8,7 +8,7 @@
     "home": "Início",
     "whatsapp": "WhatsApp",
     "demo": "Pedir uma demo",
-    "products": "Products",
+    "products": "Features",
     "clients": "Clients",
     "resources": "Resources",
     "clientAccess": "Client login",
@@ -79,7 +79,7 @@
     },
     "diff": {
       "eyebrow": "A diferença",
-      "title": "Isto não é <em style=\"font-family:'Instrument Serif',serif;font-style:italic;color:#B8523A\">mais uma ferramenta</em> para aprender. É um serviço.",
+      "title": "Isto não é <em style=\"font-family:var(--font-instrument-serif),serif;font-style:italic;color:#B8523A\">mais uma ferramenta</em> para aprender. É um serviço.",
       "body": "A maioria dos produtos de ementa digital dá-te um editor, um centro de ajuda e um período de teste gratuito. Nós não — criamo-la, integramo-la no teu site e sentamo-nos com a tua equipa para lhe explicar tudo.",
       "p1": "Criamos a tua ementa a partir do que tiveres — PDF, foto, documento.",
       "p2": "Desenhamo-la a condizer com a tua marca e o teu espaço.",
@@ -120,7 +120,7 @@
       "eyebrow": "01 · A ementa digital",
       "title": "Uma ementa com a cara do teu espaço, não de uma app de entregas.",
       "body": "Fotos, descrições, alergénios, preços, secções, sugestões do dia — bem compostos. Carrega depressa no telemóvel. Vive dentro do teu site atual, para que os clientes nunca sintam que foram encaminhados para uma ferramenta externa.",
-      "p1": "<strong style=\"font-weight:600\">Integrada, não redirecionada.</strong> Vive em <span style=\"font-family:'Instrument Serif',serif;font-style:italic\">oteuespaco.pt/ementa</span>, não num URL genérico.",
+      "p1": "<strong style=\"font-weight:600\">Integrada, não redirecionada.</strong> Vive em <span style=\"font-family:var(--font-instrument-serif),serif;font-style:italic\">oteuespaco.pt/ementa</span>, não num URL genérico.",
       "p2": "<strong style=\"font-weight:600\">Alergénios e etiquetas alimentares</strong> em cada prato, filtráveis para os clientes.",
       "p3": "<strong style=\"font-weight:600\">Códigos QR opcionais</strong> — cartões de mesa, cartazes, cartões de visita — levam diretamente até ela.",
       "p4": "<strong style=\"font-weight:600\">Os estados de esgotado</strong> retiram um prato instantaneamente durante o serviço."
@@ -176,7 +176,7 @@
   },
   "pricing": {
     "eyebrow": "Preços",
-    "title": "Preços à medida para <em style=\"font-family:'Instrument Serif',serif;font-style:italic;color:#B8523A\">o teu</em> espaço.",
+    "title": "Preços à medida para <em style=\"font-family:var(--font-instrument-serif),serif;font-style:italic;color:#B8523A\">o teu</em> espaço.",
     "intro": "Fala-nos do teu espaço e construímos um valor à tua medida. Isto é o que está sempre incluído.",
     "included": {
       "eyebrow": "O que está sempre incluído",
@@ -221,7 +221,7 @@
   },
   "cases": {
     "eyebrow": "Casos de sucesso",
-    "title": "Espaços reais. <em style=\"font-family:'Instrument Serif',serif;font-style:italic;color:#B8523A\">Ementas reais.</em> Resultados reais.",
+    "title": "Espaços reais. <em style=\"font-family:var(--font-instrument-serif),serif;font-style:italic;color:#B8523A\">Ementas reais.</em> Resultados reais.",
     "intro": "Os casos e testemunhos estão a ser recolhidos junto de clientes atuais. Histórias reais vão substituir cada um dos exemplos abaixo à medida que forem aprovadas.",
     "note": "<strong style=\"font-weight:600;color:#1F1814\">Nota de exemplo:</strong> todos os nomes de clientes, citações e métricas nesta página são exemplos. O conteúdo real entra aqui quando estiver disponível.",
     "featured": {
@@ -289,7 +289,7 @@
   },
   "contact": {
     "eyebrow": "Contacto",
-    "title": "Fala-nos do teu espaço. <em style=\"font-family:'Instrument Serif',serif;font-style:italic;color:#B8523A\">Nós fazemos o resto.</em>",
+    "title": "Fala-nos do teu espaço. <em style=\"font-family:var(--font-instrument-serif),serif;font-style:italic;color:#B8523A\">Nós fazemos o resto.</em>",
     "intro": "Uma demo dura normalmente 20 minutos — mostramos-te o painel, percorremos configurações reais e damos-te um orçamento na chamada.",
     "success": {
       "title": "Recebido. Entramos em contacto.",
@@ -375,7 +375,7 @@
     "label_ie": "(Irlanda)",
     "label_es": "(Espanha)",
     "rights": "© 2026 Dimonova. Todos os direitos reservados.",
-    "colProduct": "Product",
+    "colProduct": "Features",
     "colCompany": "Company",
     "colResources": "Resources",
     "colLegal": "Legal",

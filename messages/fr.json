@@ -8,7 +8,7 @@
     "home": "Accueil",
     "whatsapp": "WhatsApp",
     "demo": "Demander une démo",
-    "products": "Products",
+    "products": "Features",
     "clients": "Clients",
     "resources": "Resources",
     "clientAccess": "Client login",
@@ -79,7 +79,7 @@
     },
     "diff": {
       "eyebrow": "La différence",
-      "title": "Ce n'est pas <em style=\"font-family:'Instrument Serif',serif;font-style:italic;color:#B8523A\">un autre outil</em> à apprendre. C'est un service.",
+      "title": "Ce n'est pas <em style=\"font-family:var(--font-instrument-serif),serif;font-style:italic;color:#B8523A\">un autre outil</em> à apprendre. C'est un service.",
       "body": "La plupart des produits de carte numérique te donnent un éditeur, un centre d'aide et un essai gratuit. Pas nous — nous la créons, l'intégrons à ton site et nous asseyons avec ton équipe pour tout lui expliquer.",
       "p1": "Nous créons ta carte à partir de ce que tu as — PDF, photo, document.",
       "p2": "Nous la mettons en forme pour qu'elle corresponde à ta marque et ton établissement.",
@@ -120,7 +120,7 @@
       "eyebrow": "01 · La carte numérique",
       "title": "Une carte qui ressemble à ton établissement, pas à une appli de livraison.",
       "body": "Photos, descriptions, allergènes, prix, sections, suggestions du jour — bien composés. Se charge vite sur mobile. Vit dans ton site existant, pour que les clients ne se sentent jamais renvoyés vers un outil tiers.",
-      "p1": "<strong style=\"font-weight:600\">Intégrée, pas redirigée.</strong> Vit sur <span style=\"font-family:'Instrument Serif',serif;font-style:italic\">tonetablissement.fr/carte</span>, pas sur une URL générique.",
+      "p1": "<strong style=\"font-weight:600\">Intégrée, pas redirigée.</strong> Vit sur <span style=\"font-family:var(--font-instrument-serif),serif;font-style:italic\">tonetablissement.fr/carte</span>, pas sur une URL générique.",
       "p2": "<strong style=\"font-weight:600\">Allergènes et étiquettes alimentaires</strong> sur chaque plat, filtrables pour les clients.",
       "p3": "<strong style=\"font-weight:600\">QR codes optionnels</strong> — cartons de table, affiches, cartes de visite — y mènent directement.",
       "p4": "<strong style=\"font-weight:600\">Les états « en rupture »</strong> retirent un plat instantanément pendant le service."
@@ -176,7 +176,7 @@
   },
   "pricing": {
     "eyebrow": "Tarifs",
-    "title": "Des prix personnalisés pour <em style=\"font-family:'Instrument Serif',serif;font-style:italic;color:#B8523A\">ton</em> établissement.",
+    "title": "Des prix personnalisés pour <em style=\"font-family:var(--font-instrument-serif),serif;font-style:italic;color:#B8523A\">ton</em> établissement.",
     "intro": "Parle-nous de ton établissement et nous construisons un chiffre autour de tes besoins. Voici ce qui est toujours inclus.",
     "included": {
       "eyebrow": "Ce qui est toujours inclus",
@@ -221,7 +221,7 @@
   },
   "cases": {
     "eyebrow": "Études de cas",
-    "title": "De vrais établissements. <em style=\"font-family:'Instrument Serif',serif;font-style:italic;color:#B8523A\">De vraies cartes.</em> De vrais résultats.",
+    "title": "De vrais établissements. <em style=\"font-family:var(--font-instrument-serif),serif;font-style:italic;color:#B8523A\">De vraies cartes.</em> De vrais résultats.",
     "intro": "Les études de cas et témoignages sont en cours de collecte auprès de clients actuels. De vraies histoires remplaceront chacun des exemples ci-dessous au fur et à mesure de leur validation.",
     "note": "<strong style=\"font-weight:600;color:#1F1814\">Note sur les exemples :</strong> tous les noms de clients, citations et chiffres de cette page sont des exemples. Le contenu réel viendra ici une fois fourni.",
     "featured": {
@@ -289,7 +289,7 @@
   },
   "contact": {
     "eyebrow": "Contact",
-    "title": "Parle-nous de ton établissement. <em style=\"font-family:'Instrument Serif',serif;font-style:italic;color:#B8523A\">On s'occupe du reste.</em>",
+    "title": "Parle-nous de ton établissement. <em style=\"font-family:var(--font-instrument-serif),serif;font-style:italic;color:#B8523A\">On s'occupe du reste.</em>",
     "intro": "Une démo dure en général 20 minutes — on te montre le tableau de bord, on parcourt de vraies installations et on te fait un devis lors de l'appel.",
     "success": {
       "title": "Bien reçu. On te recontacte.",
@@ -375,7 +375,7 @@
     "label_ie": "(Irlande)",
     "label_es": "(Espagne)",
     "rights": "© 2026 Dimonova. Tous droits réservés.",
-    "colProduct": "Product",
+    "colProduct": "Features",
     "colCompany": "Company",
     "colResources": "Resources",
     "colLegal": "Legal",

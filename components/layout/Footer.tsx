@@ -67,7 +67,7 @@ export default async function Footer() {
           </div>
         </div>
         <Reveal>
-          <div className={styles.wordmark} data-wordmark aria-hidden="true">DIMONOVA</div>
+          <img className={styles.wordmark} data-wordmark src="/assets/logo_horizontal.svg" alt="" aria-hidden="true" />
         </Reveal>
       </Container>
     </footer>

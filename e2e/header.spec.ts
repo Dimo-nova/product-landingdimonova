@@ -3,7 +3,7 @@ import { test, expect } from "@playwright/test";
 test.describe("desktop header", () => {
   test("mega menu opens on hover and lists the 8 services", async ({ page }) => {
     await page.goto("/");
-    const products = page.getByRole("button", { name: "Products" });
+    const products = page.getByRole("navigation", { name: "Main" }).getByRole("button", { name: "Features" });
     await products.hover();
     const panel = page.locator("#mega-products");
     await expect(panel).toBeVisible();
@@ -60,7 +60,7 @@ test.describe("desktop header", () => {
 
   test("mega menu closes when focus leaves it", async ({ page }) => {
     await page.goto("/");
-    const products = page.getByRole("button", { name: "Products" });
+    const products = page.getByRole("navigation", { name: "Main" }).getByRole("button", { name: "Features" });
     await products.focus();
     await page.keyboard.press("Enter");
     await expect(page.locator("#mega-products")).toBeVisible();
@@ -88,7 +88,7 @@ test.describe("mobile header", () => {
     await page.getByRole("button", { name: "Open menu" }).click();
     const panel = page.getByRole("dialog", { name: "Menu" });
     await expect(panel).toBeVisible();
-    await panel.getByRole("button", { name: "Products" }).click();
+    await panel.getByRole("button", { name: "Features" }).click();
     await expect(panel.getByRole("link", { name: /Digital menu/ })).toBeVisible();
     await panel.getByRole("link", { name: "Pricing" }).click();
     await expect(page).toHaveURL("/pricing");

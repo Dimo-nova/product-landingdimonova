@@ -8,7 +8,7 @@
     "home": "Home",
     "whatsapp": "WhatsApp",
     "demo": "Request a demo",
-    "products": "Products",
+    "products": "Features",
     "clients": "Clients",
     "resources": "Resources",
     "clientAccess": "Client login",
@@ -79,7 +79,7 @@
     },
     "diff": {
       "eyebrow": "The difference",
-      "title": "This isn't <em style=\"font-family:'Instrument Serif',serif;font-style:italic;color:#B8523A\">another tool</em> to learn. It's a service.",
+      "title": "This isn't <em style=\"font-family:var(--font-instrument-serif),serif;font-style:italic;color:#B8523A\">another tool</em> to learn. It's a service.",
       "body": "Most digital menu products give you a builder, a help centre, and a free trial. We don't — we build it, set it up, and walk your team through it.",
       "p1": "We build your menu from whatever you have — PDF, photo, doc.",
       "p2": "We style it to match your brand and venue.",
@@ -120,7 +120,7 @@
       "eyebrow": "01 · The digital menu",
       "title": "A menu that looks like your venue, not a takeaway app.",
       "body": "Photos, descriptions, allergens, prices, sections, daily specials — properly typeset. Loads fast on a phone. Lives inside your existing website, so diners never feel handed off to a third-party tool.",
-      "p1": "<strong style=\"font-weight:600\">Embedded, not redirected.</strong> Lives at <span style=\"font-family:'Instrument Serif',serif;font-style:italic\">yourvenue.com/menu</span>, not a generic URL.",
+      "p1": "<strong style=\"font-weight:600\">Embedded, not redirected.</strong> Lives at <span style=\"font-family:var(--font-instrument-serif),serif;font-style:italic\">yourvenue.com/menu</span>, not a generic URL.",
       "p2": "<strong style=\"font-weight:600\">Allergens &amp; dietary tags</strong> on every dish, filterable for diners.",
       "p3": "<strong style=\"font-weight:600\">Optional QR codes</strong> — table cards, posters, business cards — point straight to it.",
       "p4": "<strong style=\"font-weight:600\">Sold-out states</strong> flip a dish off instantly during service."
@@ -176,7 +176,7 @@
   },
   "pricing": {
     "eyebrow": "Pricing",
-    "title": "Priced around <em style=\"font-family:'Instrument Serif',serif;font-style:italic;color:#B8523A\">your</em> venue.",
+    "title": "Priced around <em style=\"font-family:var(--font-instrument-serif),serif;font-style:italic;color:#B8523A\">your</em> venue.",
     "intro": "Tell us about your venue and we'll build a number around it. Here's what that always covers.",
     "included": {
       "eyebrow": "What's always included",
@@ -221,7 +221,7 @@
   },
   "cases": {
     "eyebrow": "Case studies",
-    "title": "Real venues. <em style=\"font-family:'Instrument Serif',serif;font-style:italic;color:#B8523A\">Real menus.</em> Real results.",
+    "title": "Real venues. <em style=\"font-family:var(--font-instrument-serif),serif;font-style:italic;color:#B8523A\">Real menus.</em> Real results.",
     "intro": "Case studies and testimonials are being collected from current clients. Real stories will replace each of the placeholders below as they're approved.",
     "note": "<strong style=\"font-weight:600;color:#1F1814\">Placeholder note:</strong> all client names, quotes, and metrics on this page are placeholders. Real content drops in here when supplied.",
     "featured": {
@@ -289,7 +289,7 @@
   },
   "contact": {
     "eyebrow": "Contact",
-    "title": "Tell us about your venue. <em style=\"font-family:'Instrument Serif',serif;font-style:italic;color:#B8523A\">We'll do the rest.</em>",
+    "title": "Tell us about your venue. <em style=\"font-family:var(--font-instrument-serif),serif;font-style:italic;color:#B8523A\">We'll do the rest.</em>",
     "intro": "A demo is usually 20 minutes — we'll show you the dashboard, walk through real venue setups, and quote you on the call.",
     "success": {
       "title": "Got it. We'll be in touch.",
@@ -375,7 +375,7 @@
     "label_ie": "(Ireland)",
     "label_es": "(Spain)",
     "rights": "© 2026 Dimonova. All rights reserved.",
-    "colProduct": "Product",
+    "colProduct": "Features",
     "colCompany": "Company",
     "colResources": "Resources",
     "colLegal": "Legal",

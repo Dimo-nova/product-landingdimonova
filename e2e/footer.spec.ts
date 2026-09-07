@@ -7,7 +7,9 @@ test("footer has 5 columns, service links, legal links and the wordmark", async 
   await expect(footer.getByRole("link", { name: "Digital menu" })).toHaveAttribute("href", "/features#menu");
   await expect(footer.getByRole("link", { name: "Privacy" })).toHaveAttribute("href", "/legal/privacy");
   await expect(footer.getByRole("link", { name: "WhatsApp Spain" })).toHaveAttribute("href", /wa\.me\/34/);
-  await expect(footer.locator("[data-wordmark]")).toHaveText("DIMONOVA");
+  const mark = footer.locator("[data-wordmark]");
+  await expect(mark).toBeVisible();
+  await expect(mark).toHaveAttribute("src", "/assets/logo_horizontal.svg");
   await expect(footer).toContainText(`© ${new Date().getFullYear()} Dimonova`);
 });
 
@@ -32,4 +34,9 @@ test("footer language switcher options are readable when opened", async ({ page 
   });
   expect(color).not.toBe(bg);
   expect(color).not.toBe("rgb(255, 255, 255)");
+
+  const box = await option.boundingBox();
+  expect(box).not.toBeNull();
+  expect(box!.width).toBeGreaterThan(0);
+  expect(box!.height).toBeGreaterThan(0);
 });

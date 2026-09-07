@@ -2,6 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { usePathname, useRouter, routing } from "@/lib/routing";
+import { FlagIcon } from "@/components/icons/FlagIcons";
 import styles from "./LangSwitcher.module.css";
 
 const LABELS: Record<string, string> = { en: "English", es: "Español", de: "Deutsch", fr: "Français", pt: "Português" };
@@ -51,7 +52,7 @@ export default function LangSwitcher() {
               className={styles.item}
               onClick={() => pick(code)}
             >
-              <span className={styles.code}>{code.toUpperCase()}</span>
+              <FlagIcon locale={code} />
               <span>{LABELS[code]}</span>
             </button>
           ))}

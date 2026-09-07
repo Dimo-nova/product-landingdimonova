@@ -1,4 +1,4 @@
-.footer { background: var(--ink); color: rgba(255,255,255,.72); overflow: hidden; }
+.footer { background: var(--ink); color: rgba(255,255,255,.72); }
 .top { padding: 72px 0 40px; }
 .grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 32px; }
 .col h2 { font-family: var(--font-body); font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.5); margin: 0 0 16px; }
@@ -7,12 +7,8 @@
 .col a:hover { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
 .lang { margin-top: 16px; }
 .lang > div > button { color: #fff; border-color: rgba(255,255,255,.3); }
+.lang > div > button:hover { border-color: #fff; }
 .rule { border: 0; border-top: 1px solid rgba(255,255,255,.12); margin: 40px 0 20px; }
 .meta { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; font-size: 12px; color: rgba(255,255,255,.5); }
-.wordmark {
-  display: block; margin: 24px 0 -0.16em; padding: 0;
-  font-family: var(--font-display); font-weight: 800; line-height: .8;
-  font-size: clamp(64px, 18vw, 320px); letter-spacing: -0.04em;
-  color: rgba(255,255,255,.95); text-align: center; user-select: none;
-}
+.wordmark { display: block; width: min(100%, 900px); height: auto; margin: 32px auto 8px; user-select: none; }
 @media (max-width: 959px) { .grid { grid-template-columns: repeat(2, 1fr); } }

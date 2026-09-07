@@ -17,4 +17,3 @@
 }
 .item:hover { background: var(--cream); }
 .item[aria-current="true"] { color: var(--brand-deep); font-weight: 600; }
-.code { width: 24px; font-weight: 600; font-size: 12px; letter-spacing: .04em; }

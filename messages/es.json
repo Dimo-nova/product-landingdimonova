@@ -8,7 +8,7 @@
     "home": "Inicio",
     "whatsapp": "WhatsApp",
     "demo": "Solicitar una demo",
-    "products": "Productos",
+    "products": "Características",
     "clients": "Clientes",
     "resources": "Recursos",
     "clientAccess": "Acceso clientes",
@@ -79,7 +79,7 @@
     },
     "diff": {
       "eyebrow": "La diferencia",
-      "title": "Esto no es <em style=\"font-family:'Instrument Serif',serif;font-style:italic;color:#B8523A\">otra herramienta</em> que aprender. Es un servicio.",
+      "title": "Esto no es <em style=\"font-family:var(--font-instrument-serif),serif;font-style:italic;color:#B8523A\">otra herramienta</em> que aprender. Es un servicio.",
       "body": "La mayoría de productos de cartas digitales te dan un editor, un centro de ayuda y una prueba gratis. Nosotros no — la creamos, la integramos en tu web y nos sentamos con tu equipo para explicársela.",
       "p1": "Creamos tu carta con lo que tengas — PDF, foto o documento.",
       "p2": "La diseñamos a juego con tu marca y tu local.",
@@ -120,7 +120,7 @@
       "eyebrow": "01 · La carta digital",
       "title": "Una carta con la cara de tu local, no de una app de comida a domicilio.",
       "body": "Fotos, descripciones, alérgenos, precios, secciones y sugerencias del día — bien maquetados. Carga rápido en el móvil. Vive dentro de tu web actual, así los clientes nunca sienten que los mandan a una herramienta externa.",
-      "p1": "<strong style=\"font-weight:600\">Integrada, no redirigida.</strong> Vive en <span style=\"font-family:'Instrument Serif',serif;font-style:italic\">tulocal.com/carta</span>, no en una URL genérica.",
+      "p1": "<strong style=\"font-weight:600\">Integrada, no redirigida.</strong> Vive en <span style=\"font-family:var(--font-instrument-serif),serif;font-style:italic\">tulocal.com/carta</span>, no en una URL genérica.",
       "p2": "<strong style=\"font-weight:600\">Alérgenos y etiquetas dietéticas</strong> en cada plato, filtrables para los clientes.",
       "p3": "<strong style=\"font-weight:600\">Códigos QR opcionales</strong> — tarjetas de mesa, carteles, tarjetas de visita — que llevan directos a ella.",
       "p4": "<strong style=\"font-weight:600\">Estados de agotado</strong> que ocultan un plato al instante durante el servicio."
@@ -176,7 +176,7 @@
   },
   "pricing": {
     "eyebrow": "Precios",
-    "title": "Precios a medida para <em style=\"font-family:'Instrument Serif',serif;font-style:italic;color:#B8523A\">tu</em> local.",
+    "title": "Precios a medida para <em style=\"font-family:var(--font-instrument-serif),serif;font-style:italic;color:#B8523A\">tu</em> local.",
     "intro": "Cuéntanos sobre tu local y construiremos un número a medida. Esto es lo que siempre incluye.",
     "included": {
       "eyebrow": "Qué incluye siempre",
@@ -221,7 +221,7 @@
   },
   "cases": {
     "eyebrow": "Casos de éxito",
-    "title": "Locales reales. <em style=\"font-family:'Instrument Serif',serif;font-style:italic;color:#B8523A\">Cartas reales.</em> Resultados reales.",
+    "title": "Locales reales. <em style=\"font-family:var(--font-instrument-serif),serif;font-style:italic;color:#B8523A\">Cartas reales.</em> Resultados reales.",
     "intro": "Estamos recopilando casos y testimonios de clientes actuales. Las historias reales irán sustituyendo cada uno de los ejemplos de abajo a medida que se aprueben.",
     "note": "<strong style=\"font-weight:600;color:#1F1814\">Nota de ejemplo:</strong> todos los nombres, citas y métricas de esta página son de ejemplo. El contenido real se incorporará aquí cuando esté disponible.",
     "featured": {
@@ -289,7 +289,7 @@
   },
   "contact": {
     "eyebrow": "Contacto",
-    "title": "Cuéntanos sobre tu local. <em style=\"font-family:'Instrument Serif',serif;font-style:italic;color:#B8523A\">Nosotros hacemos el resto.</em>",
+    "title": "Cuéntanos sobre tu local. <em style=\"font-family:var(--font-instrument-serif),serif;font-style:italic;color:#B8523A\">Nosotros hacemos el resto.</em>",
     "intro": "Una demo suele durar 20 minutos — te enseñamos el panel, repasamos casos reales y te presupuestamos en la llamada.",
     "success": {
       "title": "Recibido. Te escribimos pronto.",
@@ -375,7 +375,7 @@
     "label_ie": "(Irlanda)",
     "label_es": "(España)",
     "rights": "© 2026 Dimonova. Todos los derechos reservados.",
-    "colProduct": "Producto",
+    "colProduct": "Características",
     "colCompany": "Empresa",
     "colResources": "Recursos",
     "colLegal": "Legal",

@@ -8,7 +8,7 @@
     "home": "Start",
     "whatsapp": "WhatsApp",
     "demo": "Demo anfragen",
-    "products": "Products",
+    "products": "Features",
     "clients": "Clients",
     "resources": "Resources",
     "clientAccess": "Client login",
@@ -79,7 +79,7 @@
     },
     "diff": {
       "eyebrow": "Der Unterschied",
-      "title": "Das ist kein <em style=\"font-family:'Instrument Serif',serif;font-style:italic;color:#B8523A\">weiteres Tool</em>, das du lernen musst. Es ist ein Service.",
+      "title": "Das ist kein <em style=\"font-family:var(--font-instrument-serif),serif;font-style:italic;color:#B8523A\">weiteres Tool</em>, das du lernen musst. Es ist ein Service.",
       "body": "Die meisten Anbieter digitaler Speisekarten geben dir einen Editor, ein Hilfecenter und eine kostenlose Testphase. Wir nicht — wir bauen sie, richten sie ein und zeigen deinem Team, wie es geht.",
       "p1": "Wir erstellen deine Karte aus dem, was du hast — PDF, Foto, Dokument.",
       "p2": "Wir gestalten sie passend zu deiner Marke und deinem Lokal.",
@@ -120,7 +120,7 @@
       "eyebrow": "01 · Die digitale Karte",
       "title": "Eine Karte, die aussieht wie dein Lokal, nicht wie eine Lieferdienst-App.",
       "body": "Fotos, Beschreibungen, Allergene, Preise, Bereiche, Tagesempfehlungen — sauber gesetzt. Lädt schnell auf dem Handy. Lebt in deiner bestehenden Website, sodass Gäste nie das Gefühl haben, an ein Fremdtool weitergereicht zu werden.",
-      "p1": "<strong style=\"font-weight:600\">Eingebunden, nicht weitergeleitet.</strong> Lebt unter <span style=\"font-family:'Instrument Serif',serif;font-style:italic\">deinlokal.de/karte</span>, nicht unter einer generischen URL.",
+      "p1": "<strong style=\"font-weight:600\">Eingebunden, nicht weitergeleitet.</strong> Lebt unter <span style=\"font-family:var(--font-instrument-serif),serif;font-style:italic\">deinlokal.de/karte</span>, nicht unter einer generischen URL.",
       "p2": "<strong style=\"font-weight:600\">Allergene & Ernährungshinweise</strong> bei jedem Gericht, für Gäste filterbar.",
       "p3": "<strong style=\"font-weight:600\">Optionale QR-Codes</strong> — Tischkarten, Plakate, Visitenkarten — führen direkt dorthin.",
       "p4": "<strong style=\"font-weight:600\">Ausverkauft-Status</strong> blendet ein Gericht während des Service sofort aus."
@@ -176,7 +176,7 @@
   },
   "pricing": {
     "eyebrow": "Preise",
-    "title": "Preise passend für <em style=\"font-family:'Instrument Serif',serif;font-style:italic;color:#B8523A\">dein</em> Lokal.",
+    "title": "Preise passend für <em style=\"font-family:var(--font-instrument-serif),serif;font-style:italic;color:#B8523A\">dein</em> Lokal.",
     "intro": "Erzähl uns von deinem Lokal und wir erstellen ein passendes Angebot. Das ist immer enthalten.",
     "included": {
       "eyebrow": "Was immer enthalten ist",
@@ -221,7 +221,7 @@
   },
   "cases": {
     "eyebrow": "Referenzen",
-    "title": "Echte Lokale. <em style=\"font-family:'Instrument Serif',serif;font-style:italic;color:#B8523A\">Echte Karten.</em> Echte Ergebnisse.",
+    "title": "Echte Lokale. <em style=\"font-family:var(--font-instrument-serif),serif;font-style:italic;color:#B8523A\">Echte Karten.</em> Echte Ergebnisse.",
     "intro": "Fallstudien und Testimonials werden derzeit von aktuellen Kunden gesammelt. Echte Geschichten ersetzen nach Freigabe nach und nach jeden der Platzhalter unten.",
     "note": "<strong style=\"font-weight:600;color:#1F1814\">Hinweis zu Platzhaltern:</strong> alle Kundennamen, Zitate und Kennzahlen auf dieser Seite sind Platzhalter. Echte Inhalte kommen hier hinein, sobald sie vorliegen.",
     "featured": {
@@ -289,7 +289,7 @@
   },
   "contact": {
     "eyebrow": "Kontakt",
-    "title": "Erzähl uns von deinem Lokal. <em style=\"font-family:'Instrument Serif',serif;font-style:italic;color:#B8523A\">Den Rest machen wir.</em>",
+    "title": "Erzähl uns von deinem Lokal. <em style=\"font-family:var(--font-instrument-serif),serif;font-style:italic;color:#B8523A\">Den Rest machen wir.</em>",
     "intro": "Eine Demo dauert meist 20 Minuten — wir zeigen dir das Dashboard, gehen echte Einrichtungen durch und machen dir im Gespräch ein Angebot.",
     "success": {
       "title": "Erhalten. Wir melden uns.",
@@ -375,7 +375,7 @@
     "label_ie": "(Irland)",
     "label_es": "(Spanien)",
     "rights": "© 2026 Dimonova. Alle Rechte vorbehalten.",
-    "colProduct": "Product",
+    "colProduct": "Features",
     "colCompany": "Company",
     "colResources": "Resources",
     "colLegal": "Legal",
