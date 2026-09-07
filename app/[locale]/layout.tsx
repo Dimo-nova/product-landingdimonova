@@ -1,6 +1,6 @@
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
-import { setRequestLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { routing } from "@/lib/routing";
 import { fontVars } from "@/lib/fonts";
 import "../globals.css";
@@ -26,10 +26,12 @@ export default async function LocaleLayout({
   const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) notFound();
   setRequestLocale(locale);
+  const t = await getTranslations({ locale });
 
   return (
     <html lang={locale} className={fontVars}>
       <body>
+        <a href="#main" className="u-visually-hidden skip-link">{t("common.skipToContent")}</a>
         <NextIntlClientProvider>
           <Providers>
             <LocaleBanner />

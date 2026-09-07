@@ -12,7 +12,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
   const { locale } = await params;
   setRequestLocale(locale);
   return (
-    <main className="dim-legacy">
+    <main id="main" tabIndex={-1} className="dim-legacy">
       <ContactHero />
       <ContactForm />
     </main>

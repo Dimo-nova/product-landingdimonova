@@ -43,7 +43,7 @@ export default async function LegalPage({ params }: { params: Promise<{ locale: 
   const otherSlugs = LEGAL_SLUGS.filter((s) => s !== slug);
 
   return (
-    <main>
+    <main id="main" tabIndex={-1}>
       <Container>
         <div className={styles.page}>
           <nav className={styles.docNav} aria-label={isEs ? "Otros documentos legales" : "Other legal documents"}>

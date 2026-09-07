@@ -43,7 +43,7 @@ export default async function Hero() {
         <div className="dim-hero-visual" style={s("position:relative;height:600px;display:flex;align-items:center;justify-content:center")}>
           <div style={s("position:relative;width:285px;background:#1F1814;border-radius:42px;padding:9px;box-shadow:0 40px 80px -32px rgba(31,24,20,.4)")}>
             <div style={s("position:relative;width:100%;background:#FAF6F0;border-radius:34px;overflow:hidden")}>
-              <img src={imgSrc("hero", locale)} alt="" style={s("width:100%;display:block")} />
+              <img src={imgSrc("hero", locale)} alt={t("alt.hero")} style={s("width:100%;display:block")} />
             </div>
           </div>
         </div>

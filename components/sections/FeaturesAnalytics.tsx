@@ -20,7 +20,7 @@ export default async function FeaturesAnalytics() {
         </div>
 
         {/* Analytics visual */}
-        <img src={imgSrc("manager_data", locale)} alt="" style={s("width:100%;border-radius:18px;display:block;box-shadow:0 30px 60px -28px rgba(31,24,20,.18)")} />
+        <img src={imgSrc("manager_data", locale)} alt={t("alt.managerData")} style={s("width:100%;border-radius:18px;display:block;box-shadow:0 30px 60px -28px rgba(31,24,20,.18)")} />
       </div>
     </section>
   );

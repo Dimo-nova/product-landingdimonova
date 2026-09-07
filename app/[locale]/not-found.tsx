@@ -10,7 +10,7 @@ export const metadata: Metadata = { title: "404 · Dimonova", robots: { index: f
 export default async function NotFound() {
   const t = await getTranslations("notFound");
   return (
-    <main className={styles.wrap}>
+    <main id="main" tabIndex={-1} className={styles.wrap}>
       <Container>
         <div className={styles.inner}>
           <div>

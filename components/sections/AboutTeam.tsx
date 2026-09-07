@@ -10,12 +10,12 @@ export default async function AboutTeam() {
 
       <div style={s("display:grid;grid-template-columns:repeat(2,1fr);gap:20px;max-width:560px")}>
         <div>
-          <img src="/assets/pablo_headshot.jpeg" alt="Pablo" style={s("aspect-ratio:1;width:100%;object-fit:cover;border-radius:14px;display:block")} />
+          <img src="/assets/pablo_headshot.jpeg" alt="Pablo, co-owner" style={s("aspect-ratio:1;width:100%;object-fit:cover;border-radius:14px;display:block")} />
           <div style={s("font:500 16px/1.2 'Instrument Sans',sans-serif;color:#1F1814;margin-top:14px")}>Pablo</div>
           <div style={s("font:400 13px/1.4 'Instrument Sans',sans-serif;color:#8A7E70;margin-top:4px")}>Co-owner</div>
         </div>
         <div>
-          <img src="/assets/sergio_headshot.jpg" alt="Sergio" style={s("aspect-ratio:1;width:100%;object-fit:cover;border-radius:14px;display:block")} />
+          <img src="/assets/sergio_headshot.jpg" alt="Sergio, co-owner" style={s("aspect-ratio:1;width:100%;object-fit:cover;border-radius:14px;display:block")} />
           <div style={s("font:500 16px/1.2 'Instrument Sans',sans-serif;color:#1F1814;margin-top:14px")}>Sergio</div>
           <div style={s("font:400 13px/1.4 'Instrument Sans',sans-serif;color:#8A7E70;margin-top:4px")}>Co-owner</div>
         </div>

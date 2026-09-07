@@ -33,7 +33,7 @@ export default async function FeaturesHero() {
             <div style={s("position:relative;width:300px;background:#1F1814;border-radius:42px;padding:9px;box-shadow:0 40px 80px -32px rgba(31,24,20,.4)")}>
               <div style={s("position:relative;width:100%;background:#FAF6F0;border-radius:34px;overflow:hidden")}>
                 <div style={s("position:absolute;top:10px;left:50%;transform:translateX(-50%);width:90px;height:22px;background:#1F1814;border-radius:12px;z-index:2")}></div>
-                <img src={imgSrc("features", locale)} alt="" style={s("width:100%;display:block")} />
+                <img src={imgSrc("features", locale)} alt={t("alt.features")} style={s("width:100%;display:block")} />
               </div>
             </div>
           </div>

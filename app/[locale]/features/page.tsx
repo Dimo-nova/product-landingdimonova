@@ -15,7 +15,7 @@ export default async function FeaturesPage({ params }: { params: Promise<{ local
   const { locale } = await params;
   setRequestLocale(locale);
   return (
-    <main className="dim-legacy">
+    <main id="main" tabIndex={-1} className="dim-legacy">
       <FeaturesHero />
       <FeaturesDashboard />
       <FeaturesAnalytics />

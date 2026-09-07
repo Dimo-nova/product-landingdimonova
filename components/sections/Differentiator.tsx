@@ -33,7 +33,7 @@ export default async function Differentiator() {
           {/* product shot placeholder card */}
           <div style={s("background:#fff;border:1px solid #E8E0D2;border-radius:20px;padding:14px;box-shadow:0 30px 60px -28px rgba(31,24,20,.2)")}>
             <div style={s("aspect-ratio:4/3;border-radius:12px;overflow:hidden")}>
-              <img src="/assets/servicio.png" alt="" style={s("width:100%;height:100%;object-fit:cover;display:block")} />
+              <img src="/assets/servicio.png" alt={t("alt.servicio")} style={s("width:100%;height:100%;object-fit:cover;display:block")} />
             </div>
             <div style={s("display:flex;justify-content:space-between;align-items:center;padding:14px 6px 4px")}>
               <div>

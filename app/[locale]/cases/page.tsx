@@ -26,7 +26,7 @@ export default async function CasesPage({ params }: { params: Promise<{ locale: 
   const { locale } = await params;
   setRequestLocale(locale);
   return (
-    <main className="dim-legacy">
+    <main id="main" tabIndex={-1} className="dim-legacy">
       <CasesHero />
       <CasesFeatured />
       <CasesGrid />
