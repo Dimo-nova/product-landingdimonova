@@ -27,7 +27,7 @@ export default function Header() {
       <Container>
         <div className={styles.bar}>
           <Link href="/" className={styles.logo} aria-label="Dimonova">
-            <img src="/assets/logo_horizontal.svg" alt="Dimonova" width={100} height={40} />
+            <img src="/assets/logo_horizontal.svg" alt="Dimonova" width={143} height={60} />
           </Link>
           <div className={styles.center}>
             <MegaMenu />
