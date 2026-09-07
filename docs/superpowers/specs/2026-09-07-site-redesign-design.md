@@ -1,7 +1,8 @@
 # Rediseño web Dimonova — spec de diseño
 
 Fecha: 2026-09-07
-Estado: aprobado en conversación, pendiente de revisión escrita
+Estado: fase 1 implementada y fusionada a `main`. Fase 2 en curso.
+Corrección 2026-09-07: la descripción del sistema de reseñas era incorrecta. Verificado en `reviews-app/app/r/[token]/review-flow.tsx`: las reseñas negativas también se redirigen a Google tras pedir el motivo. No hay filtrado. Copy corregido en §5.3, §5.5 y §5.8.
 Alcance de este spec: sistema visual, header, footer, home, modales, banner de idioma, 404.
 Fuera de alcance (specs posteriores): páginas interiores (features, pricing, cases, about, contact), proxy `/admin`.
 
@@ -176,7 +177,7 @@ Grid 4 columnas × 2 filas (2 columnas en tablet, carrusel horizontal con scroll
 | `ordering` | Comandero | Integrado con tu TPV, impresoras y pago en mesa. | Ordering | Wired to your POS, printers and pay-at-table. |
 | `training` | Formación y soporte | Ilimitado. Con vídeos de todo el panel. | Training & support | Unlimited. With videos of the whole dashboard. |
 | `multi` | Multirestaurante | Un panel. Todos tus locales. | Multi-venue | One dashboard. All your venues. |
-| `reviews` | Reseñas inteligentes | Las buenas a Google. Las malas, a ti primero. | Smart reviews | Good ones go to Google. Bad ones come to you first. |
+| `reviews` | Reseñas inteligentes | Sabes qué falló antes de que lo publiquen. Todas acaban en Google. | Smart reviews | You know what went wrong before it is posted. Every review still reaches Google. |
 | `daily` | Menú del día | Cámbialo cada mañana desde el móvil. | Daily menu | Change it every morning from your phone. |
 | `translate` | Traducciones con IA | Toda la carta, todos los idiomas, un clic. | AI translations | Whole menu, every language, one click. |
 
@@ -204,7 +205,7 @@ Izquierda: `DeviceFrame phone` con captura real de `https://carta.balamorestaura
 
 Reseñas · Tablets VIP · Vinos de la semana · Integración bodega · Soporte ilimitado
 
-Derecha: eyebrow "Caso: Bálamo Restaurante" · `h2` "Bálamo no quería una carta. Quería la suya." / "Bálamo didn't want a menu. They wanted theirs." · párrafo (carta en su web y en las tablets de la zona VIP, promoción semanal de vinos, reseñas filtradas, integración con su software de bodega, soporte sin límite) · link "Ver el caso →" (`/cases`) · separador · 3 cifras grandes con etiqueta. **Placeholder** hasta recibir datos reales: "—" con etiquetas "platos gestionados", "idiomas", "tiempo medio de cambio".
+Derecha: eyebrow "Caso: Bálamo Restaurante" · `h2` "Bálamo no quería una carta. Quería la suya." / "Bálamo didn't want a menu. They wanted theirs." · párrafo (carta en su web y en las tablets de la zona VIP, promoción semanal de vinos, reseñas asociadas a camarero y zona, integración con su software de bodega, soporte sin límite) · link "Ver el caso →" (`/cases`) · separador · 3 cifras grandes con etiqueta. **Placeholder** hasta recibir datos reales: "—" con etiquetas "platos gestionados", "idiomas", "tiempo medio de cambio".
 
 Logo Bálamo (`public/assets/Logos/balamo.svg`) pequeño junto al eyebrow.
 
@@ -259,7 +260,7 @@ export const providers = {
 
 Prompt (clave `home.aiCompare.prompt`, ES y EN; el ES se usa en `/es`, el EN en el resto):
 
-> Tengo un restaurante con [N] mesas y estoy valorando contratar Dimonova (dimonova.com). Es un servicio llave en mano: ellos montan la carta digital dentro de mi web con mi estética exacta (no plantillas), la mantienen, forman a mi equipo con vídeos y en persona, y el soporte es ilimitado sin contar consultas. Incluye panel con asistente de IA para cambios en bloque y traducciones, comandero integrado con mi TPV e impresoras con pago en mesa, sistema de reseñas que envía las buenas a Google y las malas a mí primero, menú del día, promociones y eventos, y gestión multirestaurante desde un panel. Compáralo con un generador de cartas QR self-service con plantillas. Dime con honestidad para qué tipo de restaurante compensa la inversión en un servicio gestionado como este y para cuál no, y qué preguntas debería hacerles antes de contratar.
+> Tengo un restaurante con [N] mesas y estoy valorando contratar Dimonova (dimonova.com). Es un servicio llave en mano: ellos montan la carta digital dentro de mi web con mi estética exacta (no plantillas), la mantienen, forman a mi equipo con vídeos y en persona, y el soporte es ilimitado sin contar consultas. Incluye panel con asistente de IA para cambios en bloque y traducciones, comandero integrado con mi TPV e impresoras con pago en mesa, sistema de reseñas que pregunta el motivo antes de redirigir a Google y deja cada reseña asociada al camarero y a la zona, menú del día, promociones y eventos, y gestión multirestaurante desde un panel. Compáralo con un generador de cartas QR self-service con plantillas. Dime con honestidad para qué tipo de restaurante compensa la inversión en un servicio gestionado como este y para cuál no, y qué preguntas debería hacerles antes de contratar.
 
 Links `target="_blank" rel="noopener noreferrer"`.
 
