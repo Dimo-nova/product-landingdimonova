@@ -14,7 +14,10 @@ type Props = {
   closeLabel: string;
 };
 
-const FOCUSABLE = 'a[href],button:not([disabled]),input:not([disabled]),select:not([disabled]),textarea:not([disabled]),[tabindex]:not([tabindex="-1"])';
+// input:not([disabled],[type="hidden"]) — a type="hidden" input matches the CSS selector but
+// browsers never let it receive real focus, so it must be excluded here or it silently
+// swallows the initial-focus/Tab-trap target (see DemoModal's hidden locale/source/vtype fields).
+const FOCUSABLE = 'a[href],button:not([disabled]),input:not([disabled],[type="hidden"]),select:not([disabled]),textarea:not([disabled]),[tabindex]:not([tabindex="-1"])';
 
 export default function Modal({ open, onClose, labelledBy, children, tone = "light", maxWidth = "560px", closeLabel }: Props) {
   const dialogRef = useRef<HTMLDivElement>(null);

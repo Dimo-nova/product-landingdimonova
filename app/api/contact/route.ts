@@ -39,6 +39,18 @@ export async function POST(req: NextRequest) {
     fileNote = menuFile.name;
   }
 
+  const locations = (fd.get("locations") as string)?.trim() ?? "";
+  const menuToday = (fd.get("menuToday") as string)?.trim() ?? "";
+  const source = (fd.get("source") as string)?.trim() ?? "";
+
+  const extraLines = [
+    locations ? `Locales: ${locations}` : "",
+    menuToday ? `Carta hoy: ${menuToday}` : "",
+    source ? `Origen: ${source}` : "",
+    fileNote ? `Archivo adjunto: ${fileNote}` : "",
+  ].filter(Boolean);
+  const notionMessage = [message, ...extraLines].filter(Boolean).join("\n");
+
   // Notion record
   try {
     await notion.pages.create({
@@ -49,9 +61,8 @@ export async function POST(req: NextRequest) {
         Local: { rich_text: [{ text: { content: venue } }] },
         "Tipo de local": { select: { name: vtypeMap[vtype] ?? "Otro" } },
         ...(phone ? { Teléfono: { phone_number: phone } } : {}),
-        ...(message ? { Mensaje: { rich_text: [{ text: { content: message } }] } } : {}),
         ...(menuUrl ? { "URL menú actual": { url: menuUrl } } : {}),
-        ...(fileNote ? { Mensaje: { rich_text: [{ text: { content: (message ? message + "\n\n" : "") + `Archivo adjunto: ${fileNote}` } }] } } : {}),
+        ...(notionMessage ? { Mensaje: { rich_text: [{ text: { content: notionMessage } }] } } : {}),
         Estado: { select: { name: "Nuevo" } },
         Idioma: { rich_text: [{ text: { content: locale } }] },
       },
@@ -79,6 +90,9 @@ export async function POST(req: NextRequest) {
           ${message ? `<tr><td style="padding:4px 12px 4px 0;color:#666;vertical-align:top">Mensaje</td><td>${message}</td></tr>` : ""}
           ${menuUrl ? `<tr><td style="padding:4px 12px 4px 0;color:#666">Menú actual</td><td><a href="${menuUrl}">${menuUrl}</a></td></tr>` : ""}
           ${fileNote ? `<tr><td style="padding:4px 12px 4px 0;color:#666">Archivo</td><td>${fileNote} (adjunto)</td></tr>` : ""}
+          ${locations ? `<tr><td style="padding:4px 12px 4px 0;color:#666">Locales</td><td>${locations}</td></tr>` : ""}
+          ${menuToday ? `<tr><td style="padding:4px 12px 4px 0;color:#666">Carta hoy</td><td>${menuToday}</td></tr>` : ""}
+          ${source ? `<tr><td style="padding:4px 12px 4px 0;color:#666">Origen</td><td>${source}</td></tr>` : ""}
           <tr><td style="padding:4px 12px 4px 0;color:#666">Idioma</td><td>${locale}</td></tr>
         </table>
       `,
