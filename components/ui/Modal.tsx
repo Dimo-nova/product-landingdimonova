@@ -26,14 +26,11 @@ export default function Modal({ open, onClose, labelledBy, children, tone = "lig
     const prevOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
 
-    // Focus the first focusable element that is not the close button, else the dialog.
-    // The close button is excluded from the trap boundaries (not just initial focus) so
-    // Tab/Shift+Tab cycle through the content only; Escape remains the keyboard path to close.
     const focusables = () =>
-      Array.from(dialogRef.current?.querySelectorAll<HTMLElement>(FOCUSABLE) ?? []).filter(
-        (el) => !el.hasAttribute("data-modal-close")
-      );
-    const initial = focusables()[0] ?? dialogRef.current;
+      Array.from(dialogRef.current?.querySelectorAll<HTMLElement>(FOCUSABLE) ?? []);
+    // Initial focus skips the close button so the first *content* control is focused;
+    // the close button stays inside the Tab cycle (it is first in DOM order).
+    const initial = focusables().find((el) => !el.hasAttribute("data-modal-close")) ?? dialogRef.current;
     initial?.focus();
 
     const onKey = (e: KeyboardEvent) => {
