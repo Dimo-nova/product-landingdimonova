@@ -31,7 +31,8 @@
   "common": {
     "chat_wa": "Conversar no WhatsApp",
     "demo": "Pedir uma demo",
-    "demo_arrow": "Pedir uma demo →"
+    "demo_arrow": "Pedir uma demo →",
+    "skipToContent": "Skip to content"
   },
   "home": {
     "hero": {
@@ -459,7 +460,9 @@
       "retry": "Try again",
       "whatsapp": "Open WhatsApp",
       "errRequired": "Required",
-      "errEmail": "Enter a valid email"
+      "errEmail": "Enter a valid email",
+      "consent": "I have read and accept the <link>privacy policy</link>. We will only use your details to answer your enquiry.",
+      "consentRequired": "Please accept the privacy policy"
     },
     "video": {
       "close": "Close video",
@@ -490,5 +493,12 @@
       "title": "Terms of service"
     },
     "placeholder": "This page is being written. Contact us at {email} if you need it now."
+  },
+  "alt": {
+    "hero": "A restaurant's digital menu open on a phone, showing dishes with photos, prices and allergen tags.",
+    "features": "A dish detail screen on the digital menu, showing a photo, price, allergen list and suggested pairings.",
+    "dishes": "The restaurant's dish-management screen, listing menu items with availability toggles, categories and prices.",
+    "managerData": "The manager dashboard showing active dish counts, categories and a most-viewed-dishes ranking.",
+    "servicio": "A restaurant staff member checking the digital menu dashboard on a tablet at the venue."
   }
 }

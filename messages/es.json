@@ -30,6 +30,7 @@
   },
   "common": {
     "chat_wa": "Chatea por WhatsApp",
+    "skipToContent": "Saltar al contenido",
     "demo": "Solicitar una demo",
     "demo_arrow": "Solicitar una demo →"
   },
@@ -459,7 +460,9 @@
       "retry": "Reintentar",
       "whatsapp": "Abrir WhatsApp",
       "errRequired": "Obligatorio",
-      "errEmail": "Escribe un email válido"
+      "errEmail": "Escribe un email válido",
+      "consent": "He leído y acepto la <link>política de privacidad</link>. Solo usaremos tus datos para responder a tu solicitud.",
+      "consentRequired": "Tienes que aceptar la política de privacidad"
     },
     "video": {
       "close": "Cerrar vídeo",
@@ -490,5 +493,12 @@
       "title": "Términos del servicio"
     },
     "placeholder": "Esta página se está redactando. Escríbenos a {email} si la necesitas ya."
+  },
+  "alt": {
+    "hero": "El menú digital de un restaurante abierto en un móvil, con platos con fotos, precios y alérgenos.",
+    "features": "La ficha de un plato del menú digital, con foto, precio, alérgenos y platos recomendados para acompañar.",
+    "dishes": "La pantalla de gestión de platos del restaurante, con disponibilidad, categorías y precios.",
+    "managerData": "El panel del gestor con el número de platos activos, las categorías y un ranking de los platos más vistos.",
+    "servicio": "Una persona del equipo del restaurante consultando el panel del menú digital en una tablet."
   }
 }
