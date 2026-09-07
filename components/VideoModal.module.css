@@ -1,0 +1,4 @@
+.frame { background: #000; border-radius: var(--radius-panel); overflow: hidden; }
+.video { display: block; width: 100%; height: auto; max-height: calc(100vh - 32px); background: #000; }
+.fallback { padding: 40px; text-align: center; color: #fff; }
+.fallback a { color: var(--brand); font-weight: 600; }

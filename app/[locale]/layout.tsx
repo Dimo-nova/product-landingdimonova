@@ -8,6 +8,7 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import WhatsAppWidget from "@/components/WhatsAppWidget";
 import DemoModal from "@/components/DemoModal";
+import VideoModal from "@/components/VideoModal";
 import Providers from "@/components/layout/Providers";
 
 export function generateStaticParams() {
@@ -35,6 +36,7 @@ export default async function LocaleLayout({
             <Footer />
             <WhatsAppWidget />
             <DemoModal />
+            <VideoModal />
           </Providers>
         </NextIntlClientProvider>
       </body>
