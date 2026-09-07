@@ -25,3 +25,11 @@ test("design tokens and next/font variables are applied on :root", async ({ page
   expect(fonts.instrumentVar).not.toBe("");
   expect(fonts.bodyFamily).toMatch(/Instrument/i);
 });
+
+test("no third-party font requests", async ({ page }) => {
+  const external: string[] = [];
+  page.on("request", (r) => { const u = new URL(r.url()); if (u.host !== "localhost:3100") external.push(r.url()); });
+  await page.goto("/");
+  await page.waitForLoadState("networkidle");
+  expect(external).toEqual([]);
+});

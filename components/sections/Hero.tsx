@@ -23,7 +23,7 @@ export default async function Hero() {
               hover="background:#2D2520;transform:translateY(-1px)"
             >
               <Link href="/contact" style={s("display:contents;color:inherit;text-decoration:none")}>
-                <span>{t("common.demo")}</span>{" "}<span style={s("font-family:'Instrument Serif',serif;font-style:italic")}>→</span>
+                <span>{t("common.demo")}</span>{" "}<span style={s("font-family:var(--font-instrument-serif),serif;font-style:italic")}>→</span>
               </Link>
             </Hover>
             <OpenWAButton label={t("common.chat_wa")} variant="light" />

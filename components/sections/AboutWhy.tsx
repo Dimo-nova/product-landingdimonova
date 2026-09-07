@@ -16,7 +16,7 @@ export default async function AboutWhy() {
 
         <div style={s("background:#F1E8DA;border-radius:20px;padding:32px;align-self:stretch;display:flex;flex-direction:column;justify-content:space-between;min-height:340px")}>
           <div style={s("font:500 11px/1 'Instrument Sans',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#1F1814;margin-bottom:18px")}>{t("about.why.aside_label")}</div>
-          <div style={s("font:400 30px/1.25 'Instrument Serif',serif;font-style:italic;color:#1F1814")}>{t("about.why.aside_quote")}</div>
+          <div style={s("font:400 30px/1.25 var(--font-instrument-serif),serif;font-style:italic;color:#1F1814")}>{t("about.why.aside_quote")}</div>
           <div style={s("font:500 12px/1 'Instrument Sans',sans-serif;color:#8A7E70;letter-spacing:.16em;text-transform:uppercase;margin-top:32px")}>{t("about.why.aside_sign")}</div>
         </div>
       </div>

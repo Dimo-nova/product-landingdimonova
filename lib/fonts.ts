@@ -1,4 +1,4 @@
-import { Bricolage_Grotesque, Instrument_Sans } from "next/font/google";
+import { Bricolage_Grotesque, Instrument_Sans, Instrument_Serif } from "next/font/google";
 
 export const bricolage = Bricolage_Grotesque({
   subsets: ["latin"],
@@ -14,5 +14,14 @@ export const instrument = Instrument_Sans({
   variable: "--font-instrument",
 });
 
+/** Legacy inner pages only (they ask for the family by name). Remove with them in phase 4. */
+export const instrumentSerif = Instrument_Serif({
+  subsets: ["latin"],
+  weight: ["400"],
+  style: ["normal", "italic"],
+  display: "swap",
+  variable: "--font-instrument-serif",
+});
+
 /** Class string to place on <html> so the CSS variables exist everywhere. */
-export const fontVars = `${bricolage.variable} ${instrument.variable}`;
+export const fontVars = `${bricolage.variable} ${instrument.variable} ${instrumentSerif.variable}`;

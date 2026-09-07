@@ -37,7 +37,7 @@ export default async function CasesGrid() {
                 </div>
                 <div>
                   <div style={s("font:500 9px/1 'Instrument Sans',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#8A7E70")}>{t("cases.grid.result")}</div>
-                  <div style={s("font-family:'Instrument Serif',serif;font-style:italic;font-size:14px;color:#5C6B4E;margin-top:4px")}>{t("cases.grid.result_value")}</div>
+                  <div style={s("font-family:var(--font-instrument-serif),serif;font-style:italic;font-size:14px;color:#5C6B4E;margin-top:4px")}>{t("cases.grid.result_value")}</div>
                 </div>
               </div>
             </div>

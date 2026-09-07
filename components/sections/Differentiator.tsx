@@ -40,7 +40,7 @@ export default async function Differentiator() {
                 <div style={s("font:500 14px/1.2 'Instrument Sans',sans-serif;color:#1F1814")}>{t("home.diff.card_title")}</div>
                 <div style={s("font:400 12px/1.4 'Instrument Sans',sans-serif;color:#8A7E70;margin-top:2px")}>{t("home.diff.card_body")}</div>
               </div>
-              <div style={s("font-family:'Instrument Serif',serif;font-style:italic;font-size:18px;color:#5C6B4E")}>5–7 days</div>
+              <div style={s("font-family:var(--font-instrument-serif),serif;font-style:italic;font-size:18px;color:#5C6B4E")}>5–7 days</div>
             </div>
           </div>
         </div>

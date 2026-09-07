@@ -15,22 +15,22 @@ export default async function FeaturesOnboarding() {
 
         <div className="dim-stack4-md" style={s("display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-bottom:64px")}>
           <div style={s("background:#2A2118;border:1px solid #3A2F26;border-radius:14px;padding:24px;min-height:200px")}>
-            <div style={s("font:400 32px/1 'Instrument Serif',serif;font-style:italic;color:#D69B7F;margin-bottom:14px")}>i.</div>
+            <div style={s("font:400 32px/1 var(--font-instrument-serif),serif;font-style:italic;color:#D69B7F;margin-bottom:14px")}>i.</div>
             <div style={s("font:600 16px/1.25 'Instrument Sans',sans-serif;color:#FAF6F0;margin-bottom:8px")}>{t("features.f4.c1_title")}</div>
             <div style={s("font:400 13px/1.6 'Instrument Sans',sans-serif;color:#B8A89A")}>{t("features.f4.c1_body")}</div>
           </div>
           <div style={s("background:#2A2118;border:1px solid #3A2F26;border-radius:14px;padding:24px;min-height:200px")}>
-            <div style={s("font:400 32px/1 'Instrument Serif',serif;font-style:italic;color:#D69B7F;margin-bottom:14px")}>ii.</div>
+            <div style={s("font:400 32px/1 var(--font-instrument-serif),serif;font-style:italic;color:#D69B7F;margin-bottom:14px")}>ii.</div>
             <div style={s("font:600 16px/1.25 'Instrument Sans',sans-serif;color:#FAF6F0;margin-bottom:8px")}>{t("features.f4.c2_title")}</div>
             <div style={s("font:400 13px/1.6 'Instrument Sans',sans-serif;color:#B8A89A")}>{t("features.f4.c2_body")}</div>
           </div>
           <div style={s("background:#2A2118;border:1px solid #3A2F26;border-radius:14px;padding:24px;min-height:200px")}>
-            <div style={s("font:400 32px/1 'Instrument Serif',serif;font-style:italic;color:#D69B7F;margin-bottom:14px")}>iii.</div>
+            <div style={s("font:400 32px/1 var(--font-instrument-serif),serif;font-style:italic;color:#D69B7F;margin-bottom:14px")}>iii.</div>
             <div style={s("font:600 16px/1.25 'Instrument Sans',sans-serif;color:#FAF6F0;margin-bottom:8px")}>{t("features.f4.c3_title")}</div>
             <div style={s("font:400 13px/1.6 'Instrument Sans',sans-serif;color:#B8A89A")}>{t("features.f4.c3_body")}</div>
           </div>
           <div style={s("background:#2A2118;border:1px solid #3A2F26;border-radius:14px;padding:24px;min-height:200px")}>
-            <div style={s("font:400 32px/1 'Instrument Serif',serif;font-style:italic;color:#D69B7F;margin-bottom:14px")}>iv.</div>
+            <div style={s("font:400 32px/1 var(--font-instrument-serif),serif;font-style:italic;color:#D69B7F;margin-bottom:14px")}>iv.</div>
             <div style={s("font:600 16px/1.25 'Instrument Sans',sans-serif;color:#FAF6F0;margin-bottom:8px")}>{t("features.f4.c4_title")}</div>
             <div style={s("font:400 13px/1.6 'Instrument Sans',sans-serif;color:#B8A89A")}>{t("features.f4.c4_body")}</div>
           </div>
