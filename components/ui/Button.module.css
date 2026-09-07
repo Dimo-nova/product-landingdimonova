@@ -1,0 +1,23 @@
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  font-family: var(--font-body); font-weight: 600; line-height: 1;
+  border-radius: var(--radius-pill); border: 1.5px solid transparent;
+  white-space: nowrap; cursor: pointer;
+  transition: background var(--dur) var(--ease-out), color .2s, border-color .2s, transform .2s var(--ease-out), box-shadow .2s;
+}
+.btn:disabled { opacity: .55; cursor: not-allowed; }
+.md { font-size: 14px; padding: 12px 18px; }
+.lg { font-size: 16px; padding: 16px 24px; }
+
+.solid { background: var(--brand); color: #fff; }
+.solid:hover:not(:disabled) { background: var(--brand-deep); transform: translateY(-1px); }
+
+.outline { background: transparent; color: var(--ink); border-color: var(--mist); }
+.outline:hover:not(:disabled) { border-color: var(--ink); }
+.onDark.outline { color: #fff; border-color: rgba(255,255,255,.35); }
+.onDark.outline:hover:not(:disabled) { border-color: #fff; }
+
+.ghost { background: transparent; color: var(--ink); padding-inline: 10px; }
+.ghost:hover:not(:disabled) { background: var(--cream); }
+.onDark.ghost { color: #fff; }
+.onDark.ghost:hover:not(:disabled) { background: rgba(255,255,255,.1); }

@@ -7,6 +7,7 @@ import "../globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppWidget from "@/components/WhatsAppWidget";
+import Providers from "@/components/layout/Providers";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -27,10 +28,12 @@ export default async function LocaleLayout({
     <html lang={locale} className={fontVars}>
       <body>
         <NextIntlClientProvider>
-          <Header />
-          {children}
-          <Footer />
-          <WhatsAppWidget />
+          <Providers>
+            <Header />
+            {children}
+            <Footer />
+            <WhatsAppWidget />
+          </Providers>
         </NextIntlClientProvider>
       </body>
     </html>
