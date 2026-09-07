@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/lib/routing";
 import { openDemo } from "@/lib/events";
+import { ADMIN_URL } from "@/lib/config";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
 import MegaMenu from "./MegaMenu";
@@ -33,7 +34,7 @@ export default function Header() {
           </div>
           <div className={styles.right}>
             <LangSwitcher />
-            <Button variant="outline" href="https://menuadmin.dimonova.com" external>{t("clientAccess")}</Button>
+            <Button variant="outline" href={ADMIN_URL} external>{t("clientAccess")}</Button>
             <Button onClick={() => openDemo({ source: "header" })}>{t("demo")}</Button>
           </div>
           <MobileNav />

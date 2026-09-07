@@ -1,6 +1,6 @@
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/lib/routing";
-import { CONTACT } from "@/lib/config";
+import { CONTACT, ADMIN_URL } from "@/lib/config";
 import { SERVICES } from "@/lib/services";
 import Container from "@/components/ui/Container";
 import Reveal from "@/components/ui/Reveal";
@@ -39,7 +39,7 @@ export default async function Footer() {
                 <li><Link href="/features#training">{t("nav.mega.tutorials")}</Link></li>
                 <li><Link href="/pricing#faq">{t("nav.mega.faq")}</Link></li>
                 <li><Link href="/#ai-compare">{t("nav.mega.aiCompare")}</Link></li>
-                <li><a href="https://menuadmin.dimonova.com" target="_blank" rel="noopener noreferrer">{t("nav.clientAccess")}</a></li>
+                <li><a href={ADMIN_URL} target="_blank" rel="noopener noreferrer">{t("nav.clientAccess")}</a></li>
               </ul>
             </div>
             <div className={styles.col}>

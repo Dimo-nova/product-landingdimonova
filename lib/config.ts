@@ -5,3 +5,6 @@ export const CONTACT = {
   whatsappES: "https://wa.me/34622040285", // Pablo
   whatsappIE: "https://wa.me/353852680856", // Sergio
 } as const;
+
+/** Client dashboard (panel-admin). Linked from the header, mobile nav and footer. */
+export const ADMIN_URL = "https://menuadmin.dimonova.com";

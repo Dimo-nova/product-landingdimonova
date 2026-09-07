@@ -5,6 +5,7 @@ import { AnimatePresence, motion } from "motion/react";
 import { Link, usePathname } from "@/lib/routing";
 import { SERVICES } from "@/lib/services";
 import { openDemo } from "@/lib/events";
+import { ADMIN_URL } from "@/lib/config";
 import Button from "@/components/ui/Button";
 import LangSwitcher from "./LangSwitcher";
 import styles from "./MobileNav.module.css";
@@ -84,7 +85,7 @@ export default function MobileNav() {
             </div>
             <div className={styles.ctas}>
               <Button size="lg" onClick={() => { setOpen(false); openDemo({ source: "header" }); }}>{t("nav.demo")}</Button>
-              <Button size="lg" variant="outline" href="https://menuadmin.dimonova.com" external>{t("nav.clientAccess")}</Button>
+              <Button size="lg" variant="outline" href={ADMIN_URL} external>{t("nav.clientAccess")}</Button>
               <LangSwitcher />
             </div>
           </motion.div>
