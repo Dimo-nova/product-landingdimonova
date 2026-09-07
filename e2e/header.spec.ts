@@ -43,8 +43,9 @@ test.describe("desktop header", () => {
 
   test("language switch changes URL locale", async ({ page }) => {
     await page.goto("/");
-    await page.locator('button[aria-label="Choose language"]').click();
-    await page.locator("[data-lang='es']").first().click();
+    const header = page.getByRole("banner");
+    await header.locator('button[aria-label="Choose language"]').click();
+    await header.locator("[data-lang='es']").click();
     await expect(page).toHaveURL(/\/es(\/|$)/);
   });
 });
