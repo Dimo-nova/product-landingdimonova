@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import { AnimatePresence, motion } from "motion/react";
 import { Link, usePathname } from "@/lib/routing";
@@ -7,6 +7,7 @@ import { SERVICES } from "@/lib/services";
 import { openDemo } from "@/lib/events";
 import { ADMIN_URL } from "@/lib/config";
 import Button from "@/components/ui/Button";
+import { useFocusTrap } from "@/lib/useFocusTrap";
 import LangSwitcher from "./LangSwitcher";
 import styles from "./MobileNav.module.css";
 
@@ -17,9 +18,12 @@ export default function MobileNav() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [section, setSection] = useState<Key | null>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
 
   // Close when the route changes.
   useEffect(() => { setOpen(false); }, [pathname]);
+
+  useFocusTrap(panelRef, open, () => panelRef.current?.querySelector<HTMLElement>("[data-mobile-close]") ?? undefined);
 
   useEffect(() => {
     if (!open) return;
@@ -49,6 +53,7 @@ export default function MobileNav() {
       <AnimatePresence>
         {open && (
           <motion.div
+            ref={panelRef}
             className={styles.panel}
             role="dialog"
             aria-modal="true"
@@ -60,7 +65,7 @@ export default function MobileNav() {
           >
             <div className={styles.top}>
               <img src="/assets/logo_horizontal.svg" alt="Dimonova" height={40} width={100} />
-              <button type="button" className={styles.close} aria-label={t("nav.closeMenu")} onClick={() => setOpen(false)}>×</button>
+              <button type="button" className={styles.close} aria-label={t("nav.closeMenu")} onClick={() => setOpen(false)} data-mobile-close>×</button>
             </div>
             <div className={styles.body}>
               {acc("products", t("nav.products"),

@@ -2,6 +2,7 @@
 import { useEffect, useRef } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { EASE_OUT } from "@/lib/motion";
+import { focusables, useFocusTrap } from "@/lib/useFocusTrap";
 import styles from "./Modal.module.css";
 
 type Props = {
@@ -14,16 +15,10 @@ type Props = {
   closeLabel: string;
 };
 
-// input:not([disabled],[type="hidden"]) — a type="hidden" input matches the CSS selector but
-// browsers never let it receive real focus, so it must be excluded here or it silently
-// swallows the initial-focus/Tab-trap target (see DemoModal's hidden locale/source/vtype fields).
-const FOCUSABLE = 'a[href],button:not([disabled]),input:not([disabled],[type="hidden"]),select:not([disabled]),textarea:not([disabled]),[tabindex]:not([tabindex="-1"])';
-
 export default function Modal({ open, onClose, labelledBy, children, tone = "light", maxWidth = "560px", closeLabel }: Props) {
   const dialogRef = useRef<HTMLDivElement>(null);
-  const restoreRef = useRef<HTMLElement | null>(null);
 
-  // Hold the latest onClose in a ref so the trap effect below can depend on
+  // Hold the latest onClose in a ref so the Escape effect below can depend on
   // `open` alone. Keying it on `onClose` too would re-run the effect on every
   // parent re-render that passes a new inline closure (e.g. `onClose={() =>
   // setOpen(false)}`), which restores focus to the opener and re-focuses the
@@ -31,33 +26,20 @@ export default function Modal({ open, onClose, labelledBy, children, tone = "lig
   const onCloseRef = useRef(onClose);
   useEffect(() => { onCloseRef.current = onClose; }, [onClose]);
 
+  // Initial focus skips the close button so the first *content* control is focused;
+  // the close button stays inside the Tab cycle (it is first in DOM order).
+  useFocusTrap(dialogRef, open, () => focusables(dialogRef.current).find((el) => !el.hasAttribute("data-modal-close")));
+
   useEffect(() => {
     if (!open) return;
-    restoreRef.current = document.activeElement as HTMLElement | null;
     const prevOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
 
-    const focusables = () =>
-      Array.from(dialogRef.current?.querySelectorAll<HTMLElement>(FOCUSABLE) ?? []);
-    // Initial focus skips the close button so the first *content* control is focused;
-    // the close button stays inside the Tab cycle (it is first in DOM order).
-    const initial = focusables().find((el) => !el.hasAttribute("data-modal-close")) ?? dialogRef.current;
-    initial?.focus();
-
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") { e.preventDefault(); onCloseRef.current(); return; }
-      if (e.key !== "Tab") return;
-      const list = focusables();
-      if (list.length === 0) return;
-      const first = list[0], last = list[list.length - 1];
-      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
-      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
-    };
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") { e.preventDefault(); onCloseRef.current(); } };
     document.addEventListener("keydown", onKey);
     return () => {
       document.removeEventListener("keydown", onKey);
       document.body.style.overflow = prevOverflow;
-      restoreRef.current?.focus?.();
     };
   }, [open]);
 

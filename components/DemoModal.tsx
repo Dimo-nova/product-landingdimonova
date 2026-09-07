@@ -1,5 +1,5 @@
 "use client";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { motion } from "motion/react";
 import Modal from "@/components/ui/Modal";
@@ -25,6 +25,11 @@ export default function DemoModal() {
   const [source, setSource] = useState("");
   const [status, setStatus] = useState<Status>("idle");
   const [errors, setErrors] = useState<Errors>({});
+  const formRef = useRef<HTMLFormElement>(null);
+  const stateRef = useRef<HTMLDivElement>(null);
+  // Tracks whether the current session hit an error, so returning to "idle" via "Try again"
+  // (but not the modal's own initial open) knows to move focus back to the name field.
+  const wasErrorRef = useRef(false);
 
   useWindowEvent<DemoOpenPayload>(DEMO_OPEN, useCallback((d) => {
     setEmail(d?.email ?? "");
@@ -32,8 +37,19 @@ export default function DemoModal() {
     setSource(d?.source ?? "");
     setStatus("idle");
     setErrors({});
+    wasErrorRef.current = false;
     setOpen(true);
   }, []));
+
+  useEffect(() => {
+    if (status === "success" || status === "error") {
+      stateRef.current?.focus();
+      if (status === "error") wasErrorRef.current = true;
+    } else if (status === "idle" && wasErrorRef.current) {
+      wasErrorRef.current = false;
+      document.getElementById("demo-name")?.focus();
+    }
+  }, [status]);
 
   const close = useCallback(() => setOpen(false), []);
   const waUrl = locale === "es" ? CONTACT.whatsappES : CONTACT.whatsappIE;
@@ -50,6 +66,7 @@ export default function DemoModal() {
 
   async function onSubmit(ev: React.FormEvent<HTMLFormElement>) {
     ev.preventDefault();
+    if (status === "sending") return;
     const form = ev.currentTarget;
     const fd = new FormData(form);
     setEmail(String(fd.get("email") ?? ""));
@@ -62,6 +79,10 @@ export default function DemoModal() {
     setErrors(e);
     if (Object.keys(e).length) return;
     setStatus("sending");
+    // Move focus into the form itself before the submit button becomes `disabled` on the next
+    // render — a disabled element that still had focus would otherwise be force-blurred to
+    // <body> by the browser, letting Tab escape the dialog.
+    form.focus();
     try {
       const res = await fetch("/api/contact", { method: "POST", body: fd });
       setStatus(res.ok ? "success" : "error");
@@ -84,14 +105,14 @@ export default function DemoModal() {
         */}
         <h2 id="demo-title" className="u-visually-hidden">{t("title")}</h2>
         {status === "success" ? (
-          <div className={styles.state} role="status">
+          <div ref={stateRef} tabIndex={-1} className={styles.state} role="status">
             <motion.div className={styles.tick} initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ type: "spring", stiffness: 300, damping: 18 }}>✓</motion.div>
             <p className={styles.title}>{t("successTitle")}</p>
             <p className={styles.lead}>{t("successBody")}</p>
             <div className={styles.stateActions}><Button onClick={close}>{t("close")}</Button></div>
           </div>
         ) : status === "error" ? (
-          <div className={styles.state} role="alert">
+          <div ref={stateRef} tabIndex={-1} className={styles.state} role="alert">
             <p className={styles.title}>{t("errorTitle")}</p>
             <p className={styles.lead}>{t("errorBody")}</p>
             <div className={styles.stateActions}>
@@ -103,23 +124,23 @@ export default function DemoModal() {
           <>
             <p className={styles.title}>{t("title")}</p>
             <p className={styles.lead}>{t("lead")}</p>
-            <form className={styles.form} onSubmit={onSubmit} noValidate>
+            <form ref={formRef} tabIndex={-1} className={styles.form} onSubmit={onSubmit} noValidate aria-busy={status === "sending" || undefined}>
               <input type="hidden" name="locale" value={locale} />
               <input type="hidden" name="source" value={source} />
               <input type="hidden" name="vtype" value="restaurant" />
 
               {/* Name is first so it receives initial focus; email is prefilled when it came from the hero. */}
-              <Field id="name" label={t("name")} defaultValue={savedValues.name} error={err("name")} invalid={!!errors.name} disabled={status === "sending"} />
-              <Field id="email" type="email" label={t("email")} defaultValue={email} error={err("email")} invalid={!!errors.email} disabled={status === "sending"} />
-              <Field id="venue" label={t("venue")} defaultValue={savedValues.venue} error={err("venue")} invalid={!!errors.venue} disabled={status === "sending"} />
-              <Field id="phone" type="tel" label={t("phone")} defaultValue={savedValues.phone} disabled={status === "sending"} />
+              <Field id="name" label={t("name")} defaultValue={savedValues.name} error={err("name")} invalid={!!errors.name} sending={status === "sending"} />
+              <Field id="email" type="email" label={t("email")} defaultValue={email} error={err("email")} invalid={!!errors.email} sending={status === "sending"} />
+              <Field id="venue" label={t("venue")} defaultValue={savedValues.venue} error={err("venue")} invalid={!!errors.venue} sending={status === "sending"} />
+              <Field id="phone" type="tel" label={t("phone")} defaultValue={savedValues.phone} sending={status === "sending"} />
 
               <fieldset className={styles.field} style={{ border: 0, padding: 0, margin: 0 }}>
                 <legend className={styles.label}>{t("locations")}</legend>
                 <div className={styles.pills}>
                   {[["1", t("locations1")], ["2-5", t("locations2")], ["6+", t("locations6")]].map(([v, l], i) => (
                     <label key={v} className={styles.pill}>
-                      <input type="radio" name="locations" value={v} defaultChecked={i === 0} disabled={status === "sending"} />
+                      <input type="radio" name="locations" value={v} defaultChecked={i === 0} />
                       <span>{l}</span>
                     </label>
                   ))}
@@ -131,7 +152,7 @@ export default function DemoModal() {
                 <div className={styles.pills}>
                   {[["pdf", t("menuPdf")], ["web", t("menuWeb")], ["other-system", t("menuOther")]].map(([v, l]) => (
                     <label key={v} className={styles.pill}>
-                      <input type="radio" name="menuToday" value={v} disabled={status === "sending"} />
+                      <input type="radio" name="menuToday" value={v} />
                       <span>{l}</span>
                     </label>
                   ))}
@@ -151,9 +172,9 @@ export default function DemoModal() {
   );
 }
 
-function Field({ id, label, type = "text", defaultValue, error, invalid, disabled }: {
+function Field({ id, label, type = "text", defaultValue, error, invalid, sending }: {
   id: "name" | "email" | "venue" | "phone"; label: string; type?: string; defaultValue?: string;
-  error?: React.ReactNode; invalid?: boolean; disabled?: boolean;
+  error?: React.ReactNode; invalid?: boolean; sending?: boolean;
 }) {
   return (
     <div className={styles.field}>
@@ -164,7 +185,7 @@ function Field({ id, label, type = "text", defaultValue, error, invalid, disable
         type={type}
         className={styles.input}
         defaultValue={defaultValue}
-        disabled={disabled}
+        readOnly={sending}
         aria-invalid={invalid || undefined}
         aria-describedby={invalid ? `demo-${id}-err` : undefined}
         autoComplete={id === "email" ? "email" : id === "phone" ? "tel" : id === "name" ? "name" : "organization"}
