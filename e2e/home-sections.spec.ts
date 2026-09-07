@@ -41,3 +41,20 @@ test("the AI section explains that nothing is written without approval", async (
   await page.goto("/");
   await expect(page.locator("#ai")).toContainText("Nothing is written to your menu until someone says yes.");
 });
+
+test("the Bálamo case shows the real menu and its five pills", async ({ page }) => {
+  await page.goto("/#balamo");
+  const s = page.locator("#balamo");
+  await expect(s.getByAltText(/Bálamo's digital menu/)).toBeVisible();
+  await expect(s.locator("[data-balamo-pill]")).toHaveCount(5);
+  await expect(s.getByRole("link", { name: "See the case" })).toHaveAttribute("href", "/cases");
+});
+
+test("the home page does not overflow horizontally at a 390px viewport", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/");
+  const overflow = await page.evaluate(
+    () => document.documentElement.scrollWidth <= window.innerWidth + 1,
+  );
+  expect(overflow).toBe(true);
+});

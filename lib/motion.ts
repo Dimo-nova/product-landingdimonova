@@ -28,7 +28,7 @@ export const lift = {
   transition: { duration: 0.25, ease: EASE_OUT } as Transition,
 };
 
-export const bob = (delay = 0): { animate: Record<string, unknown>; transition: Transition } => ({
+export const bob = (delay = 0): { animate: { y: number[] }; transition: Transition } => ({
   animate: { y: [0, -6, 0] },
   transition: { duration: 5, ease: "easeInOut", repeat: Infinity, delay },
 });
