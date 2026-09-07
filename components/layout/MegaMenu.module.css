@@ -1,0 +1,43 @@
+.nav { display: flex; align-items: center; gap: 4px; }
+.item {
+  display: inline-flex; align-items: center; gap: 6px;
+  height: 40px; padding: 0 14px; border-radius: var(--radius-pill);
+  font-size: 14px; font-weight: 600; color: var(--ink);
+}
+.item:hover, .item[aria-expanded="true"], .item[aria-current="page"] { background: var(--cream); }
+.chev { width: 10px; height: 10px; transition: transform .2s; }
+.item[aria-expanded="true"] .chev { transform: rotate(180deg); }
+
+.panel {
+  position: absolute; left: 0; right: 0; top: 100%; z-index: 60;
+  background: var(--paper); border-radius: 0 0 24px 24px;
+  box-shadow: 0 30px 60px -30px rgba(15,14,13,.35);
+  border-top: 1px solid var(--mist);
+}
+.inner { padding: 28px var(--gutter) 32px; }
+.title { font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-2); margin: 0 0 18px; }
+
+.grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.card {
+  display: flex; gap: 14px; align-items: flex-start;
+  padding: 14px; border-radius: 16px; color: var(--ink);
+  transition: background .2s;
+}
+.card:hover { background: var(--cream); }
+.icon {
+  flex: none; width: 40px; height: 40px; border-radius: 12px;
+  display: grid; place-items: center; background: var(--brand-soft); color: var(--brand-deep);
+}
+.cardTitle { font-weight: 600; font-size: 15px; margin: 0 0 2px; }
+.cardLine { font-size: 13px; color: var(--ink-2); margin: 0; line-height: 1.4; }
+
+.clients { display: grid; grid-template-columns: 1.2fr 1fr; gap: 24px; }
+.featured {
+  display: block; padding: 20px; border-radius: 20px; background: var(--ink); color: #fff;
+}
+.featured h3 { font-size: 22px; margin-bottom: 6px; }
+.featured p { color: rgba(255,255,255,.75); margin: 0 0 14px; font-size: 14px; }
+.featuredCta { font-weight: 600; color: var(--brand); }
+.list { display: flex; flex-direction: column; gap: 4px; }
+.list a { padding: 12px 14px; border-radius: 12px; font-weight: 600; font-size: 15px; color: var(--ink); }
+.list a:hover { background: var(--cream); }
