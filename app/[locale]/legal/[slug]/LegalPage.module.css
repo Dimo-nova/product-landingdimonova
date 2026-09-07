@@ -1,0 +1,16 @@
+.page { max-width: 72ch; margin: 0 auto; padding: 80px 0 120px; }
+.page h1 { font-family: var(--font-display); }
+.docNav { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-bottom: 24px; }
+.docNav a { font-size: 14px; color: var(--ink-2); text-decoration: underline; text-underline-offset: 3px; }
+.docNav a:hover { color: var(--ink); }
+.updated { margin-top: 12px; font-size: 13px; color: var(--ink-2); }
+.intro { margin-top: 20px; font-size: var(--text-lead); color: var(--ink-2); line-height: 1.6; }
+.page section { margin-top: 48px; }
+.page h2 { font-size: 22px; margin-bottom: 16px; }
+.page p { line-height: 1.7; color: var(--ink-2); margin: 0 0 16px; }
+.page ul { line-height: 1.7; color: var(--ink-2); margin: 0 0 16px; padding-left: 20px; }
+.page li { margin-bottom: 6px; }
+.tableWrap { overflow-x: auto; margin-bottom: 16px; }
+.page table { border-collapse: collapse; width: 100%; min-width: 480px; font-size: 14px; }
+.page th { background: var(--cream); text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--mist); white-space: nowrap; }
+.page td { padding: 10px 12px; border-bottom: 1px solid var(--mist); vertical-align: top; }

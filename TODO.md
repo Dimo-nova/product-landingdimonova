@@ -43,7 +43,7 @@ Status legend: `[ ]` not started · `[~]` in progress · `[x]` done
 
 - [x] **Wire up the contact form.** It posts to `/api/contact`, which creates a Notion lead and sends an email notification via Resend.
 - [x] **Make the WhatsApp widget real.** Point "Continue to WhatsApp" at `https://wa.me/<number>` with the real number.
-- [~] Add real **legal pages** — placeholder pages exist at `/legal/[slug]` and are linked from the footer; real Terms / Privacy / Cookies texts are pending.
+- [x] Add real **legal pages** — Privacy, Terms, Cookies and Refunds are written in full (`content/legal/`) and linked from the footer. `COMPANY` identity fields in `lib/config.ts` are still `«PENDIENTE»` placeholders — fill them with the real registered company data before deploy (see `.superpowers/sdd/legal-report.md`).
 - [ ] Add an **`og:image`** for social sharing previews.
 
 ## 🔎 Before launch — quality
@@ -57,7 +57,7 @@ Status legend: `[ ]` not started · `[~]` in progress · `[x]` done
 - [ ] Connect a **custom domain** in Vercel.
 - [ ] Cookie-consent banner if analytics/marketing cookies are added.
 - [x] Escape user-supplied strings in the HTML email built in `app/api/contact/route.ts`.
-- [ ] Prune unused message keys (`footer.tagline`, `footer.col_*`, `footer.label_*`, `footer.rights`, `wa.disclaimer`, `banner.change`, `banner.close`) when the inner pages are redesigned.
+- [ ] Prune unused message keys (`footer.tagline`, `footer.col_*`, `footer.label_*`, `footer.rights`, `wa.disclaimer`, `banner.change`, `banner.close`) when the inner pages are redesigned. Also unused since the legal page switched to `content/legal/`: `legal.privacy.title`, `legal.cookies.title`, `legal.terms.title`, `legal.placeholder`.
 
 ---
 See `CLAUDE.md` for architecture/dev notes and `README.md` for the human overview.

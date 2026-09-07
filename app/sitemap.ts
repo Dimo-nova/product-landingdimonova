@@ -12,6 +12,7 @@ const PAGES = [
   { path: "/legal/privacy", priority: 0.3 },
   { path: "/legal/cookies", priority: 0.3 },
   { path: "/legal/terms", priority: 0.3 },
+  { path: "/legal/refunds", priority: 0.3 },
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

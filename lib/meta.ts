@@ -10,16 +10,12 @@ function canonicalPath(locale: string, path: string): string {
     : `/${locale}${path}`;
 }
 
-export async function pageMetadata(
+export function buildMetadata(
   locale: string,
   path: string, // e.g. "" for home, "/features"
-  titleKey: string,
-  descKey: string,
-): Promise<Metadata> {
-  const t = await getTranslations({ locale });
-  const title = t(titleKey);
-  const description = t(descKey);
-
+  title: string,
+  description: string,
+): Metadata {
   const canonical = `${BASE}${canonicalPath(locale, path)}`;
 
   const languages: Record<string, string> = {};
@@ -43,4 +39,17 @@ export async function pageMetadata(
       locale,
     },
   };
+}
+
+export async function pageMetadata(
+  locale: string,
+  path: string, // e.g. "" for home, "/features"
+  titleKey: string,
+  descKey: string,
+): Promise<Metadata> {
+  const t = await getTranslations({ locale });
+  const title = t(titleKey);
+  const description = t(descKey);
+
+  return buildMetadata(locale, path, title, description);
 }

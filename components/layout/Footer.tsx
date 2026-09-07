@@ -1,6 +1,6 @@
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/lib/routing";
-import { CONTACT, ADMIN_URL } from "@/lib/config";
+import { CONTACT, ADMIN_URL, COMPANY } from "@/lib/config";
 import { SERVICES } from "@/lib/services";
 import Container from "@/components/ui/Container";
 import Reveal from "@/components/ui/Reveal";
@@ -48,6 +48,7 @@ export default async function Footer() {
                 <li><Link href="/legal/privacy">{t("footer.privacy")}</Link></li>
                 <li><Link href="/legal/cookies">{t("footer.cookies")}</Link></li>
                 <li><Link href="/legal/terms">{t("footer.terms")}</Link></li>
+                <li><Link href="/legal/refunds">{t("footer.refunds")}</Link></li>
               </ul>
             </div>
             <div className={styles.col}>
@@ -64,6 +65,9 @@ export default async function Footer() {
           <div className={styles.meta}>
             <span>{t("footer.copyright", { year })}</span>
             <span>{t("footer.madeIn")}</span>
+          </div>
+          <div className={styles.business} data-business-details>
+            {COMPANY.legalName} · {COMPANY.taxId} · {COMPANY.address}
           </div>
         </div>
         <Reveal>
