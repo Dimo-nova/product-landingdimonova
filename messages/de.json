@@ -7,7 +7,26 @@
     "contact": "Kontakt",
     "home": "Start",
     "whatsapp": "WhatsApp",
-    "demo": "Demo anfragen"
+    "demo": "Demo anfragen",
+    "products": "Products",
+    "clients": "Clients",
+    "resources": "Resources",
+    "clientAccess": "Client login",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "language": "Choose language",
+    "mega": {
+      "productsTitle": "Everything we run for you",
+      "clientsFeatured": "Bálamo Restaurante",
+      "clientsFeaturedLine": "Their menu, their look, on the web and on the VIP tablets.",
+      "clientsFeaturedCta": "See the case",
+      "clientsAll": "All case studies",
+      "clientsVideos": "Video reviews",
+      "tutorials": "Tutorials",
+      "faq": "FAQ",
+      "aiCompare": "Compare with AI",
+      "contact": "Contact"
+    }
   },
   "common": {
     "chat_wa": "Per WhatsApp chatten",
@@ -355,7 +374,19 @@
     "col_contact": "Kontakt",
     "label_ie": "(Irland)",
     "label_es": "(Spanien)",
-    "rights": "© 2026 Dimonova. Alle Rechte vorbehalten."
+    "rights": "© 2026 Dimonova. Alle Rechte vorbehalten.",
+    "colProduct": "Product",
+    "colCompany": "Company",
+    "colResources": "Resources",
+    "colLegal": "Legal",
+    "colContact": "Contact",
+    "privacy": "Privacy",
+    "cookies": "Cookies",
+    "terms": "Terms",
+    "whatsappEs": "WhatsApp Spain",
+    "whatsappIe": "WhatsApp Ireland",
+    "madeIn": "Made in Dublin and Madrid",
+    "copyright": "© {year} Dimonova. All rights reserved."
   },
   "wa": {
     "name": "Dimonova-Team",
@@ -366,5 +397,97 @@
     "chip_cafe": "Ich führe ein Café",
     "continue": "Weiter zu WhatsApp",
     "disclaimer": "+353 (0)1 555 0199 · Prototyp, öffnet nicht wirklich"
+  },
+  "services": {
+    "menu": {
+      "title": "Digital menu",
+      "line": "On your site, in your style, to the pixel."
+    },
+    "ai": {
+      "title": "Dashboard + AI",
+      "line": "Change the whole menu in one sentence."
+    },
+    "ordering": {
+      "title": "Ordering",
+      "line": "Wired to your POS, printers and pay-at-table."
+    },
+    "training": {
+      "title": "Training & support",
+      "line": "Unlimited. With videos of the whole dashboard."
+    },
+    "multi": {
+      "title": "Multi-venue",
+      "line": "One dashboard. All your venues."
+    },
+    "reviews": {
+      "title": "Smart reviews",
+      "line": "Good ones go to Google. Bad ones come to you first."
+    },
+    "daily": {
+      "title": "Daily menu",
+      "line": "Change it every morning from your phone."
+    },
+    "translate": {
+      "title": "AI translations",
+      "line": "Whole menu, every language, one click."
+    }
+  },
+  "modal": {
+    "demo": {
+      "title": "Book your demo",
+      "lead": "We'll write to you today and run it whenever suits you.",
+      "name": "Your name",
+      "email": "Email",
+      "venue": "Restaurant name",
+      "phone": "Phone (optional)",
+      "locations": "How many venues?",
+      "locations1": "1",
+      "locations2": "2–5",
+      "locations6": "6+",
+      "menuToday": "How is your menu today? (optional)",
+      "menuPdf": "PDF / paper",
+      "menuWeb": "On my website",
+      "menuOther": "Another system",
+      "submit": "Book demo",
+      "sending": "Sending…",
+      "successTitle": "Done. We'll write to you today.",
+      "successBody": "Check your inbox (and spam, just in case).",
+      "close": "Close",
+      "errorTitle": "That didn't go through.",
+      "errorBody": "Try again, or message us on WhatsApp.",
+      "retry": "Try again",
+      "whatsapp": "Open WhatsApp",
+      "errRequired": "Required",
+      "errEmail": "Enter a valid email"
+    },
+    "video": {
+      "close": "Close video",
+      "unavailable": "Can't play this right now.",
+      "openDirect": "Open the video"
+    }
+  },
+  "banner": {
+    "change": "Switch",
+    "close": "Dismiss"
+  },
+  "notFound": {
+    "title": "This dish isn't on the menu.",
+    "body": "We may have moved it, or it never existed. Try one of these.",
+    "home": "Back to home",
+    "products": "See products",
+    "demo": "Book a demo",
+    "menuHint": "Looking for a restaurant's menu? Menus live on each restaurant's own domain, not here."
+  },
+  "legal": {
+    "privacy": {
+      "title": "Privacy policy"
+    },
+    "cookies": {
+      "title": "Cookie policy"
+    },
+    "terms": {
+      "title": "Terms of service"
+    },
+    "placeholder": "This page is being written. Contact us at {email} if you need it now."
   }
 }

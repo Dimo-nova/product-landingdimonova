@@ -7,7 +7,26 @@
     "contact": "Contacto",
     "home": "Inicio",
     "whatsapp": "WhatsApp",
-    "demo": "Solicitar una demo"
+    "demo": "Solicitar una demo",
+    "products": "Productos",
+    "clients": "Clientes",
+    "resources": "Recursos",
+    "clientAccess": "Acceso clientes",
+    "openMenu": "Abrir menú",
+    "closeMenu": "Cerrar menú",
+    "language": "Elegir idioma",
+    "mega": {
+      "productsTitle": "Todo lo que gestionamos por ti",
+      "clientsFeatured": "Bálamo Restaurante",
+      "clientsFeaturedLine": "Su carta, su estética, en la web y en las tablets VIP.",
+      "clientsFeaturedCta": "Ver el caso",
+      "clientsAll": "Todos los casos",
+      "clientsVideos": "Reseñas en vídeo",
+      "tutorials": "Tutoriales",
+      "faq": "Preguntas frecuentes",
+      "aiCompare": "Compara con IA",
+      "contact": "Contacto"
+    }
   },
   "common": {
     "chat_wa": "Chatea por WhatsApp",
@@ -355,7 +374,19 @@
     "col_contact": "Contacto",
     "label_ie": "(Irlanda)",
     "label_es": "(España)",
-    "rights": "© 2026 Dimonova. Todos los derechos reservados."
+    "rights": "© 2026 Dimonova. Todos los derechos reservados.",
+    "colProduct": "Producto",
+    "colCompany": "Empresa",
+    "colResources": "Recursos",
+    "colLegal": "Legal",
+    "colContact": "Contacto",
+    "privacy": "Privacidad",
+    "cookies": "Cookies",
+    "terms": "Términos",
+    "whatsappEs": "WhatsApp España",
+    "whatsappIe": "WhatsApp Irlanda",
+    "madeIn": "Hecho en Dublín y Madrid",
+    "copyright": "© {year} Dimonova. Todos los derechos reservados."
   },
   "wa": {
     "name": "Equipo de Dimonova",
@@ -366,5 +397,97 @@
     "chip_cafe": "Llevo una cafetería",
     "continue": "Continuar en WhatsApp",
     "disclaimer": "+353 (0)1 555 0199 · prototipo, no se abrirá de verdad"
+  },
+  "services": {
+    "menu": {
+      "title": "Carta digital",
+      "line": "En tu web, con tu estética, al píxel."
+    },
+    "ai": {
+      "title": "Panel + IA",
+      "line": "Cambia toda la carta en una frase."
+    },
+    "ordering": {
+      "title": "Comandero",
+      "line": "Integrado con tu TPV, impresoras y pago en mesa."
+    },
+    "training": {
+      "title": "Formación y soporte",
+      "line": "Ilimitado. Con vídeos de todo el panel."
+    },
+    "multi": {
+      "title": "Multirestaurante",
+      "line": "Un panel. Todos tus locales."
+    },
+    "reviews": {
+      "title": "Reseñas inteligentes",
+      "line": "Las buenas a Google. Las malas, a ti primero."
+    },
+    "daily": {
+      "title": "Menú del día",
+      "line": "Cámbialo cada mañana desde el móvil."
+    },
+    "translate": {
+      "title": "Traducciones con IA",
+      "line": "Toda la carta, todos los idiomas, un clic."
+    }
+  },
+  "modal": {
+    "demo": {
+      "title": "Pide tu demo",
+      "lead": "Te escribimos hoy y la hacemos cuando te venga bien.",
+      "name": "Tu nombre",
+      "email": "Email",
+      "venue": "Nombre del restaurante",
+      "phone": "Teléfono (opcional)",
+      "locations": "¿Cuántos locales?",
+      "locations1": "1",
+      "locations2": "2–5",
+      "locations6": "6+",
+      "menuToday": "¿Cómo tienes la carta hoy? (opcional)",
+      "menuPdf": "PDF / papel",
+      "menuWeb": "En mi web",
+      "menuOther": "Otro sistema",
+      "submit": "Pedir demo",
+      "sending": "Enviando…",
+      "successTitle": "Hecho. Te escribimos hoy.",
+      "successBody": "Revisa tu bandeja de entrada (y el spam, por si acaso).",
+      "close": "Cerrar",
+      "errorTitle": "No ha ido.",
+      "errorBody": "Prueba otra vez o escríbenos por WhatsApp.",
+      "retry": "Reintentar",
+      "whatsapp": "Abrir WhatsApp",
+      "errRequired": "Obligatorio",
+      "errEmail": "Escribe un email válido"
+    },
+    "video": {
+      "close": "Cerrar vídeo",
+      "unavailable": "No se puede reproducir ahora.",
+      "openDirect": "Abrir el vídeo"
+    }
+  },
+  "banner": {
+    "change": "Cambiar",
+    "close": "Cerrar"
+  },
+  "notFound": {
+    "title": "Este plato no está en la carta.",
+    "body": "Puede que lo hayamos cambiado de sitio, o que nunca existiera. Pasa esto.",
+    "home": "Volver al inicio",
+    "products": "Ver productos",
+    "demo": "Pedir demo",
+    "menuHint": "¿Buscabas la carta de un restaurante? Las cartas viven en el dominio de cada restaurante, no aquí."
+  },
+  "legal": {
+    "privacy": {
+      "title": "Política de privacidad"
+    },
+    "cookies": {
+      "title": "Política de cookies"
+    },
+    "terms": {
+      "title": "Términos del servicio"
+    },
+    "placeholder": "Esta página se está redactando. Escríbenos a {email} si la necesitas ya."
   }
 }
