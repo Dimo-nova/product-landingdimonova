@@ -13,8 +13,10 @@ export default async function Hero() {
       <div className="dim-hero-grid" style={s("display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center")}>
         <div>
           <div style={s("font:500 11px/1 'Instrument Sans',sans-serif;letter-spacing:.22em;text-transform:uppercase;color:#B8523A;margin-bottom:24px")}>{t("home.hero.eyebrow")}</div>
-          <h1 className="dim-h1" style={s("font:400 60px/1.02 'Instrument Sans',sans-serif;color:#1F1814;letter-spacing:-.03em;text-wrap:balance;margin:0 0 6px")} dangerouslySetInnerHTML={{ __html: t.raw("home.hero.title1") }} />
-          <h1 className="dim-h1" style={s("font:400 60px/1.02 'Instrument Sans',sans-serif;color:#1F1814;letter-spacing:-.03em;text-wrap:balance;margin:0 0 22px")}>{t("home.hero.title2")}</h1>
+          <h1 className="dim-h1" style={s("font:400 60px/1.02 'Instrument Sans',sans-serif;color:#1F1814;letter-spacing:-.03em;text-wrap:balance;margin:0 0 22px")}>
+            <span style={s("display:block;margin-bottom:6px")} dangerouslySetInnerHTML={{ __html: t.raw("home.hero.title1") }} />
+            <span style={s("display:block")}>{t("home.hero.title2")}</span>
+          </h1>
           <p style={s("font:400 17px/1.55 'Instrument Sans',sans-serif;color:#4A4036;max-width:480px;margin:0 0 32px")}>{t("home.hero.body")}</p>
           <div className="dim-cta-stack dim-cta-left" style={s("display:flex;gap:12px;align-items:center;flex-wrap:wrap")}>
             <Hover

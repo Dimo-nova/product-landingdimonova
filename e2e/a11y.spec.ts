@@ -59,12 +59,7 @@ for (const path of ["/", "/features", "/about"]) {
   });
 }
 
-// Home renders its hero title as two separate <h1> elements (components/sections/Hero.tsx:16-17)
-// — a pre-existing heading-structure issue recorded in docs/compliance/2026-09-07-audit.md rather
-// than fixed here (the brief: report heading violations, don't restructure legacy copy). /features
-// and /about don't share that issue, so the "exactly one <h1>" regression check covers those two;
-// the audit records the finding on "/" instead of silently asserting it away here.
-for (const path of ["/features", "/about"]) {
+for (const path of ["/", "/features", "/about"]) {
   test(`${path} has exactly one <h1>`, async ({ page }) => {
     await page.goto(path);
     const count = await page.locator("h1").count();

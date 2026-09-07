@@ -1,5 +1,5 @@
 .page { max-width: 72ch; margin: 0 auto; padding: 80px 0 120px; }
-.page h1 { font-family: var(--font-display); }
+.page h1 { font-family: var(--font-display); font-size: clamp(30px, 4vw, 46px); line-height: 1.08; }
 .docNav { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-bottom: 24px; }
 .docNav a { font-size: 14px; color: var(--ink-2); text-decoration: underline; text-underline-offset: 3px; }
 .docNav a:hover { color: var(--ink); }
