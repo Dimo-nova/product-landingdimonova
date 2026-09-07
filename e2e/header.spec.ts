@@ -41,6 +41,35 @@ test.describe("desktop header", () => {
     await expect(header).toHaveAttribute("data-scrolled", "true");
   });
 
+  test("compaction is stable inside the threshold band", async ({ page }) => {
+    await page.goto("/");
+    const header = page.getByRole("banner");
+    await page.evaluate(() => window.scrollTo(0, 30));
+    await page.waitForTimeout(300);
+    await expect(header).toHaveAttribute("data-scrolled", "false");
+    await page.evaluate(() => window.scrollTo(0, 200));
+    await page.waitForTimeout(300);
+    await expect(header).toHaveAttribute("data-scrolled", "true");
+    await page.evaluate(() => window.scrollTo(0, 40));
+    await page.waitForTimeout(300);
+    await expect(header).toHaveAttribute("data-scrolled", "true"); // stays compact until < 24
+    await page.evaluate(() => window.scrollTo(0, 0));
+    await page.waitForTimeout(300);
+    await expect(header).toHaveAttribute("data-scrolled", "false");
+  });
+
+  test("mega menu closes when focus leaves it", async ({ page }) => {
+    await page.goto("/");
+    const products = page.getByRole("button", { name: "Products" });
+    await products.focus();
+    await page.keyboard.press("Enter");
+    await expect(page.locator("#mega-products")).toBeVisible();
+    // Tab through every link in the panel and out the other side
+    const links = await page.locator("#mega-products a").count();
+    for (let i = 0; i < links + 2; i++) await page.keyboard.press("Tab");
+    await expect(page.locator("#mega-products")).toBeHidden();
+  });
+
   test("language switch changes URL locale", async ({ page }) => {
     await page.goto("/");
     const header = page.getByRole("banner");
@@ -63,5 +92,19 @@ test.describe("mobile header", () => {
     await expect(panel.getByRole("link", { name: /Digital menu/ })).toBeVisible();
     await panel.getByRole("link", { name: "Pricing" }).click();
     await expect(page).toHaveURL("/pricing");
+  });
+
+  test("mobile panel traps focus and restores it on Escape", async ({ page }) => {
+    await page.goto("/");
+    const toggle = page.getByRole("button", { name: "Open menu" });
+    await toggle.click();
+    const panel = page.getByRole("dialog", { name: "Menu" });
+    await expect(panel.getByRole("button", { name: "Close menu" })).toBeFocused();
+    await page.keyboard.press("Shift+Tab");
+    const inside = await page.evaluate(() => !!document.activeElement?.closest('[role=dialog][aria-label="Menu"]'));
+    expect(inside).toBe(true);
+    await page.keyboard.press("Escape");
+    await expect(panel).toBeHidden();
+    await expect(toggle).toBeFocused();
   });
 });

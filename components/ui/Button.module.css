@@ -9,8 +9,8 @@
 .md { font-size: 14px; padding: 12px 18px; }
 .lg { font-size: 16px; padding: 16px 24px; }
 
-.solid { background: var(--brand); color: #fff; }
-.solid:hover:not(:disabled) { background: var(--brand-deep); transform: translateY(-1px); }
+.solid { background: var(--brand); color: var(--ink); }
+.solid:hover:not(:disabled) { background: var(--brand-deep); color: #fff; transform: translateY(-1px); }
 
 .outline { background: transparent; color: var(--ink); border-color: var(--mist); }
 .outline:hover:not(:disabled) { border-color: var(--ink); }
