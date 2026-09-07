@@ -75,13 +75,17 @@ export default function HeroBgMock({ alt }: { alt: string }) {
       <div className={styles.stage}>
         <motion.div
           className={[styles.ring, styles.ringSmall].join(" ")}
+          aria-hidden="true"
+          style={{ scaleY: 0.78 }}
           animate={{ rotate: 360 }}
-          transition={{ duration: 90, ease: "linear", repeat: Infinity }}
+          transition={{ duration: 120, ease: "linear", repeat: Infinity }}
         />
         <motion.div
           className={[styles.ring, styles.ringLarge].join(" ")}
+          aria-hidden="true"
+          style={{ scaleY: 0.78 }}
           animate={{ rotate: -360 }}
-          transition={{ duration: 90, ease: "linear", repeat: Infinity }}
+          transition={{ duration: 120, ease: "linear", repeat: Infinity }}
         />
 
         <div className={styles.card}>

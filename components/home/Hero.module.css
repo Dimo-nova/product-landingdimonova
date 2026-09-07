@@ -42,7 +42,7 @@
 
 .lead {
   font-size: var(--text-lead);
-  color: rgba(255, 255, 255, .82);
+  color: var(--on-dark-text);
   max-width: 520px;
   margin: 0 0 32px;
 }
@@ -53,7 +53,7 @@
 
 .legal {
   font-size: 13px;
-  color: rgba(255, 255, 255, .6);
+  color: var(--on-dark-muted);
   margin: 0 0 28px;
 }
 

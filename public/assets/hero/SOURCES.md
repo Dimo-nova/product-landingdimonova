@@ -10,3 +10,4 @@
 - **Original dimensions:** 4032 × 2268 px
 - **Date downloaded:** 2026-09-07
 - **Notes:** Real photograph, not a placeholder. Depicts the pub room of the Red Lion, Ampney St Peter (UK). No attribution required by the licence; credited here as good practice.
+- **2026-09-08:** Re-encoded with `magick hero-stock.jpg -strip hero-stock.jpg` to remove the original EXIF metadata (device model, GPS location block) before publishing; image bytes/dimensions otherwise unchanged. Licence and attribution above are unaffected.

@@ -3,7 +3,7 @@
   inset: 0;
   z-index: 0;
   overflow: hidden;
-  background: radial-gradient(120% 120% at 78% 30%, #201d1a 0%, var(--ink) 60%);
+  background: radial-gradient(120% 120% at 78% 30%, var(--ink-raised) 0%, var(--ink) 60%);
   display: flex;
   align-items: center;
   justify-content: flex-end;

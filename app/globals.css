@@ -31,6 +31,11 @@
   --shadow-hover: 0 20px 40px -20px rgba(15, 14, 13, .35);
   --on-dark-surface: rgba(255, 255, 255, .10);
   --on-dark-border: rgba(255, 255, 255, .22);
+  --on-dark-text: rgba(255, 255, 255, .82);
+  --on-dark-muted: rgba(255, 255, 255, .60);
+  --on-dark-danger: #FFB3AA;
+  --ink-raised: #201D1A;
+  --shadow-cta: 0 20px 40px -24px rgba(15, 14, 13, .5);
   --shadow-soft: 0 6px 20px -12px rgba(15, 14, 13, .4);
   --shadow-deep: 0 40px 80px -40px rgba(15, 14, 13, .6);
   --device-bezel: #111111;
