@@ -10,17 +10,18 @@ export const CONTACT = {
 export const ADMIN_URL = "https://menuadmin.dimonova.com";
 
 /**
- * Legal identity of the operator, required by art. 10 LSSI-CE and GDPR art. 13.
- * PENDING: every «...» value must be replaced with the real registered data before deploy.
+ * Legal identity of the operator, published as required by art. 10 LSSI-CE and GDPR art. 13.
+ * Sole trader: there are no company-registry details, so `registry` is intentionally empty
+ * and the legal documents omit that sentence when it is.
  */
 export const COMPANY = {
   tradingName: "Dimonova",
-  legalName: "«PENDIENTE: razón social»",
-  legalForm: "«PENDIENTE: forma jurídica»",
-  taxId: "«PENDIENTE: NIF/CIF/VAT»",
-  address: "«PENDIENTE: domicilio social completo»",
-  registry: "«PENDIENTE: datos registrales»",
-  jurisdiction: "«PENDIENTE: país y tribunales competentes»",
+  legalName: "Pablo López Busto",
+  legalForm: "empresario individual (autónomo)",
+  taxId: "48205194T",
+  address: "Calle San Vicente 9, 1.º A, 28220 Majadahonda, Madrid, España",
+  registry: "",
+  jurisdiction: "España, con sumisión a los juzgados y tribunales de Madrid",
   email: CONTACT.email,
 } as const;
 

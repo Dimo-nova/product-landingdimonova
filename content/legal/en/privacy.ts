@@ -1,4 +1,5 @@
 import { COMPANY, LEGAL_UPDATED } from "@/lib/config";
+import { registrySentence } from "../types";
 import type { LegalDoc } from "../types";
 
 export const privacy: LegalDoc = {
@@ -13,7 +14,7 @@ export const privacy: LegalDoc = {
       blocks: [
         {
           kind: "p",
-          text: `The controller of your data is ${COMPANY.legalName} (${COMPANY.legalForm}), tax ID ${COMPANY.taxId}, registered at ${COMPANY.address}. Registry details: ${COMPANY.registry}. You can contact us at ${COMPANY.email}.`,
+          text: `The controller of your data is ${COMPANY.legalName} (${COMPANY.legalForm}), tax ID ${COMPANY.taxId}, registered at ${COMPANY.address}.${registrySentence("Registry details")} You can contact us at ${COMPANY.email}.`,
         },
         {
           kind: "p",

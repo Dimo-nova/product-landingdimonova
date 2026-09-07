@@ -1,4 +1,5 @@
 import { COMPANY, LEGAL_UPDATED } from "@/lib/config";
+import { registryClause } from "../types";
 import type { LegalDoc } from "../types";
 
 export const terms: LegalDoc = {
@@ -13,7 +14,7 @@ export const terms: LegalDoc = {
       blocks: [
         {
           kind: "p",
-          text: `Este sitio web es operado bajo el nombre comercial "${COMPANY.tradingName}" por ${COMPANY.legalName} (${COMPANY.legalForm}), con NIF/CIF ${COMPANY.taxId}, domicilio social en ${COMPANY.address} y datos registrales: ${COMPANY.registry}. Puedes contactarnos en ${COMPANY.email}.`,
+          text: `Este sitio web es operado bajo el nombre comercial "${COMPANY.tradingName}" por ${COMPANY.legalName} (${COMPANY.legalForm}), con NIF/CIF ${COMPANY.taxId}, domicilio social en ${COMPANY.address}${registryClause(" y datos registrales")}. Puedes contactarnos en ${COMPANY.email}.`,
         },
       ],
     },
@@ -97,7 +98,7 @@ export const terms: LegalDoc = {
       blocks: [
         {
           kind: "p",
-          text: `Estas condiciones se rigen por la ley de ${COMPANY.jurisdiction}. Como nuestros clientes contratan en condición de empresa, ambas partes se someten a los tribunales de ${COMPANY.jurisdiction}.`,
+          text: `Estas condiciones se rigen por la ley de ${COMPANY.jurisdiction}. Como nuestros clientes contratan en condición de empresa, ambas partes quedan sometidas a dicha jurisdicción.`,
         },
         {
           kind: "p",

@@ -1,4 +1,5 @@
 import { COMPANY, LEGAL_UPDATED } from "@/lib/config";
+import { registryClause } from "../types";
 import type { LegalDoc } from "../types";
 
 export const terms: LegalDoc = {
@@ -13,7 +14,7 @@ export const terms: LegalDoc = {
       blocks: [
         {
           kind: "p",
-          text: `This website is operated under the trading name "${COMPANY.tradingName}" by ${COMPANY.legalName} (${COMPANY.legalForm}), tax ID ${COMPANY.taxId}, registered address ${COMPANY.address}, registry details: ${COMPANY.registry}. You can contact us at ${COMPANY.email}.`,
+          text: `This website is operated under the trading name "${COMPANY.tradingName}" by ${COMPANY.legalName} (${COMPANY.legalForm}), tax ID ${COMPANY.taxId}, registered address ${COMPANY.address}${registryClause(", registry details")}. You can contact us at ${COMPANY.email}.`,
         },
       ],
     },
@@ -97,7 +98,7 @@ export const terms: LegalDoc = {
       blocks: [
         {
           kind: "p",
-          text: `These terms are governed by the law of ${COMPANY.jurisdiction}. Because our clients contract as businesses, both parties submit to the courts of ${COMPANY.jurisdiction}.`,
+          text: "These terms are governed by Spanish law, with submission to the courts of Madrid. Because our clients contract as businesses, both parties are subject to that jurisdiction.",
         },
         {
           kind: "p",
