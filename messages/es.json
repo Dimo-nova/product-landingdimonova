@@ -40,7 +40,15 @@
       "title1": "Una carta digital",
       "title2": "optimizada para tu local.",
       "body": "Creamos tu carta digital, la adaptamos a tu marca, la integramos en tu web actual y formamos a tu equipo. Tú cambias un plato en dos toques.",
-      "avatars": "La eligen locales independientes<br>de todo el país"
+      "avatars": "La eligen locales independientes<br>de todo el país",
+      "playPill": "Cómo empezó Dimonova",
+      "title": "Nosotros nos ocupamos. Tú <mark>creces</mark>.",
+      "lead": "Carta digital, comandero y reseñas a medida de tu restaurante, montados y cuidados 24/7 por un equipo de frikis de confianza. Sin plantillas. Listo para escalar.",
+      "emailPlaceholder": "Tu email",
+      "cta": "Pedir demo",
+      "legal": "Solo usamos tu email para contactarte. <link>Privacidad</link>.",
+      "clientLink": "¿Ya eres cliente? Acceder al panel",
+      "emailInvalid": "Escribe un email válido"
     },
     "viz": {
       "dash_label": "Panel · en vivo",
@@ -51,7 +59,8 @@
     },
     "logos": {
       "label": "Locales que ya confían en Dimonova",
-      "placeholder": "logo del local"
+      "placeholder": "logo del local",
+      "title": "Confían en nosotros"
     },
     "feat": {
       "eyebrow": "Lo que incluye",
@@ -80,7 +89,7 @@
     },
     "diff": {
       "eyebrow": "La diferencia",
-      "title": "Esto no es <em style=\"font-family:var(--font-instrument-serif),serif;font-style:italic;color:#B8523A\">otra herramienta</em> que aprender. Es un servicio.",
+      "title": "Lo que nadie más hace.",
       "body": "La mayoría de productos de cartas digitales te dan un editor, un centro de ayuda y una prueba gratis. Nosotros no — la creamos, la integramos en tu web y nos sentamos con tu equipo para explicársela.",
       "p1": "Creamos tu carta con lo que tengas — PDF, foto o documento.",
       "p2": "La diseñamos a juego con tu marca y tu local.",
@@ -89,7 +98,50 @@
       "card_badge": "imagen del producto",
       "card_pill": "Sesión de incorporación — visual",
       "card_title": "Puesta en marcha rápida",
-      "card_body": "Del contrato firmado a la carta en línea en días, no semanas."
+      "card_body": "Del contrato firmado a la carta en línea en días, no semanas.",
+      "lead": "Lo que una plantilla no te puede dar y una cola de soporte no te va a hacer.",
+      "items": [
+        {
+          "title": "Personalización al píxel",
+          "body": "Tus tipografías, tus colores, tus espacios. No una plantilla con tu logo encima."
+        },
+        {
+          "title": "Eventos y promociones",
+          "body": "Los configuras una vez y aparecen y desaparecen solos."
+        },
+        {
+          "title": "Soporte sin límite de consultas",
+          "body": "Pregunta las veces que necesites. Nadie lleva la cuenta."
+        },
+        {
+          "title": "Formación en tu local",
+          "body": "Vamos y formamos al equipo en sus propios dispositivos."
+        },
+        {
+          "title": "Integración con tu software",
+          "body": "TPV, impresoras, bodega, reservas. Conectamos lo que ya usas."
+        },
+        {
+          "title": "Multirestaurante",
+          "body": "Un panel, todos los locales, permisos por local."
+        },
+        {
+          "title": "Sin plantillas",
+          "body": "Cada carta se monta para un restaurante. El tuyo."
+        },
+        {
+          "title": "Cambios el mismo día",
+          "body": "Nos lo dices por la mañana y entra para el servicio de la noche."
+        },
+        {
+          "title": "Tablets, QR o web",
+          "body": "La carta va donde miren tus comensales."
+        },
+        {
+          "title": "Alguien al otro lado",
+          "body": "Una persona que conoce tu local, no un chatbot."
+        }
+      ]
     },
     "proof": {
       "quote": "Testimonio de ejemplo — el típico comentario de «ya no tenemos que preocuparnos por la carta». Aquí irá una cita real de un cliente.",
@@ -111,6 +163,139 @@
       "eyebrow": "Cuando quieras",
       "title": "Pongamos tu carta en línea.",
       "body": "Una demo de 20 minutos. Te enseñamos el panel, repasamos casos reales y respondemos tus preguntas. Sin compromiso."
+    },
+    "services": {
+      "title": "Todo lo que necesita tu restaurante. Y alguien que lo gestione.",
+      "lead": "Ocho cosas que montamos, conectamos y mantenemos por ti."
+    },
+    "ai": {
+      "eyebrow": "Panel + IA",
+      "title": "Dile a la carta lo que quieres. Ya está.",
+      "body": "Tu equipo hace cambios en bloque en segundos y tú los apruebas. No se escribe nada en tu carta hasta que alguien dice que sí.",
+      "steps": [
+        "Escríbelo",
+        "Revisa el cambio",
+        "Aplica"
+      ],
+      "cta": "Ver cómo funciona",
+      "demo": {
+        "tabs": [
+          "Cambios en bloque",
+          "Traducciones",
+          "Descripciones"
+        ],
+        "prompts": [
+          "Sube un 5 % todos los vinos",
+          "Traduce la carta al alemán",
+          "Escribe la descripción del pulpo a la brasa"
+        ],
+        "rows": [
+          [
+            [
+              "Rioja Reserva",
+              "18,00 €",
+              "18,90 €"
+            ],
+            [
+              "Albariño",
+              "16,00 €",
+              "16,80 €"
+            ],
+            [
+              "Ribera del Duero",
+              "21,00 €",
+              "22,05 €"
+            ],
+            [
+              "Cava Brut",
+              "14,00 €",
+              "14,70 €"
+            ]
+          ],
+          [
+            [
+              "Pulpo a la brasa",
+              "—",
+              "Gegrillter Oktopus"
+            ],
+            [
+              "Croquetas de jamón",
+              "—",
+              "Schinkenkroketten"
+            ],
+            [
+              "Tarta de queso",
+              "—",
+              "Käsekuchen"
+            ],
+            [
+              "Vermut de la casa",
+              "—",
+              "Hausgemachter Wermut"
+            ]
+          ],
+          [
+            [
+              "Pulpo a la brasa",
+              "Sin descripción",
+              "Pulpo gallego a la brasa sobre crema de patata y pimentón ahumado."
+            ]
+          ]
+        ],
+        "proposed": "Cambios propuestos",
+        "apply": "Aplicar seleccionados",
+        "toast": "{count} platos actualizados"
+      }
+    },
+    "balamo": {
+      "eyebrow": "Caso: Bálamo Restaurante",
+      "title": "Bálamo no quería una carta. Quería la suya.",
+      "body": "Su carta vive en su propia web y en las tablets de la zona VIP, con su tipografía y sus colores exactos. Cada semana sube la selección del sumiller como promoción. Las reseñas vuelven etiquetadas por camarero y por zona. Se entiende con el software que ya usan para la bodega. Y el soporte no tiene límite de consultas.",
+      "cta": "Ver el caso",
+      "pills": [
+        "Reseñas",
+        "Tablets VIP",
+        "Vinos de la semana",
+        "Integración bodega",
+        "Soporte ilimitado"
+      ],
+      "stats": [
+        {
+          "value": "—",
+          "label": "platos gestionados"
+        },
+        {
+          "value": "—",
+          "label": "idiomas"
+        },
+        {
+          "value": "—",
+          "label": "tiempo medio para cambiar un plato"
+        }
+      ]
+    },
+    "reviews": {
+      "title": "Lo dicen ellos.",
+      "badge": "{rating} en Google",
+      "pending": "Reseñas muy pronto.",
+      "more": "Leer más",
+      "less": "Ver menos",
+      "viewOnGoogle": "Verla en Google",
+      "playVideo": "Reproducir la reseña de {name}",
+      "prev": "Reseña anterior",
+      "next": "Reseña siguiente"
+    },
+    "aiCompare": {
+      "title": "Pregúntale a quien no trabaja aquí.",
+      "lead": "Abre la pregunta en la IA que ya usas. Nosotros no tocamos la respuesta.",
+      "copy": "Copiar la pregunta",
+      "copied": "Copiado",
+      "prompt": "Tengo un restaurante de unas 20 mesas y estoy valorando contratar Dimonova (dimonova.com). Es un servicio llave en mano: montan la carta digital dentro de mi propia web con mi estética exacta y no a partir de una plantilla, la mantienen actualizada, forman a mi equipo con vídeos y en persona, y el soporte no tiene límite de consultas. Incluye panel con asistente de IA para cambios en bloque y traducciones, comandero integrado con mi TPV y las impresoras de cocina con pago en mesa, un sistema de reseñas que pregunta al comensal descontento qué ha fallado antes de enviar a todo el mundo a Google y etiqueta cada reseña por camarero y por zona, menú del día, promociones y eventos, y gestión multirestaurante desde un panel. Compáralo con un generador de cartas QR self-service basado en plantillas. Dime con honestidad para qué tipo de restaurante compensa la inversión en un servicio gestionado así y para cuál no, y qué debería preguntarles antes de firmar."
+    },
+    "finalCta": {
+      "title": "Nosotros nos ocupamos. Tú creces.",
+      "lead": "Déjanos tu email y te enseñamos cómo quedaría tu carta.",
+      "whatsapp": "o escríbenos por WhatsApp"
     }
   },
   "features": {
@@ -498,6 +683,10 @@
     "features": "La ficha de un plato del menú digital, con foto, precio, alérgenos y platos recomendados para acompañar.",
     "dishes": "La pantalla de gestión de platos del restaurante, con disponibilidad, categorías y precios.",
     "managerData": "El panel del gestor con el número de platos activos, las categorías y un ranking de los platos más vistos.",
-    "servicio": "Una persona del equipo del restaurante consultando el panel del menú digital en una tablet."
+    "servicio": "Una persona del equipo del restaurante consultando el panel del menú digital en una tablet.",
+    "heroMock": "La carta digital de Bálamo abierta en un móvil, con fotos de platos y la estética del propio restaurante.",
+    "heroPhoto": "Una sala de restaurante en pleno servicio, vista desde el pase.",
+    "balamoPhone": "La carta digital de Bálamo en un móvil: su logo, la sección de bienvenida y las fotos de sus platos.",
+    "serviceCard": "{title} dentro del panel de Dimonova."
   }
 }
