@@ -89,7 +89,7 @@
     },
     "diff": {
       "eyebrow": "A diferença",
-      "title": "Isto não é <em style=\"font-family:var(--font-instrument-serif),serif;font-style:italic;color:#B8523A\">mais uma ferramenta</em> para aprender. É um serviço.",
+      "title": "What nobody else does.",
       "body": "A maioria dos produtos de ementa digital dá-te um editor, um centro de ajuda e um período de teste gratuito. Nós não — criamo-la, integramo-la no teu site e sentamo-nos com a tua equipa para lhe explicar tudo.",
       "p1": "Criamos a tua ementa a partir do que tiveres — PDF, foto, documento.",
       "p2": "Desenhamo-la a condizer com a tua marca e o teu espaço.",
@@ -607,7 +607,7 @@
     },
     "reviews": {
       "title": "Smart reviews",
-      "line": "Good ones go to Google. Bad ones come to you first."
+      "line": "You know what went wrong before it is posted. Every review still reaches Google."
     },
     "daily": {
       "title": "Daily menu",

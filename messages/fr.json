@@ -89,7 +89,7 @@
     },
     "diff": {
       "eyebrow": "La différence",
-      "title": "Ce n'est pas <em style=\"font-family:var(--font-instrument-serif),serif;font-style:italic;color:#B8523A\">un autre outil</em> à apprendre. C'est un service.",
+      "title": "What nobody else does.",
       "body": "La plupart des produits de carte numérique te donnent un éditeur, un centre d'aide et un essai gratuit. Pas nous — nous la créons, l'intégrons à ton site et nous asseyons avec ton équipe pour tout lui expliquer.",
       "p1": "Nous créons ta carte à partir de ce que tu as — PDF, photo, document.",
       "p2": "Nous la mettons en forme pour qu'elle corresponde à ta marque et ton établissement.",
@@ -607,7 +607,7 @@
     },
     "reviews": {
       "title": "Smart reviews",
-      "line": "Good ones go to Google. Bad ones come to you first."
+      "line": "You know what went wrong before it is posted. Every review still reaches Google."
     },
     "daily": {
       "title": "Daily menu",

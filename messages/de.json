@@ -89,7 +89,7 @@
     },
     "diff": {
       "eyebrow": "Der Unterschied",
-      "title": "Das ist kein <em style=\"font-family:var(--font-instrument-serif),serif;font-style:italic;color:#B8523A\">weiteres Tool</em>, das du lernen musst. Es ist ein Service.",
+      "title": "What nobody else does.",
       "body": "Die meisten Anbieter digitaler Speisekarten geben dir einen Editor, ein Hilfecenter und eine kostenlose Testphase. Wir nicht — wir bauen sie, richten sie ein und zeigen deinem Team, wie es geht.",
       "p1": "Wir erstellen deine Karte aus dem, was du hast — PDF, Foto, Dokument.",
       "p2": "Wir gestalten sie passend zu deiner Marke und deinem Lokal.",
@@ -607,7 +607,7 @@
     },
     "reviews": {
       "title": "Smart reviews",
-      "line": "Good ones go to Google. Bad ones come to you first."
+      "line": "You know what went wrong before it is posted. Every review still reaches Google."
     },
     "daily": {
       "title": "Daily menu",
