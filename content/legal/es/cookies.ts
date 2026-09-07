@@ -27,8 +27,8 @@ export const cookies: LegalDoc = {
             [
               "NEXT_LOCALE",
               "Propia, técnica/preferencia",
-              "Guarda el idioma en el que estás leyendo el sitio para que aparezca en ese idioma en tu próxima visita",
-              "1 año",
+              "Guarda el idioma que eliges con el selector de idiomas, para que el resto de páginas se muestren en ese idioma. Solo se crea si cambias el idioma a mano: si te limitas a navegar, no se instala",
+              "De sesión: se borra al cerrar el navegador",
             ],
             [
               "dim-lang-dismissed",

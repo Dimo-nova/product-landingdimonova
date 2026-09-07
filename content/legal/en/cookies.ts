@@ -27,8 +27,8 @@ export const cookies: LegalDoc = {
             [
               "NEXT_LOCALE",
               "First-party, technical/preference",
-              "Stores the language you are reading the site in, so you land on it next time",
-              "1 year",
+              "Stores the language you pick in the language selector, so the rest of the pages are shown in it. It is only created if you change the language yourself: simply browsing the site does not set it",
+              "Session: deleted when you close your browser",
             ],
             [
               "dim-lang-dismissed",
