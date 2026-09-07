@@ -12,7 +12,8 @@ languages: English, Spanish, German, French, and Portuguese.
 
 ```bash
 npm install
-npm run dev        # starts on http://localhost:3100
+npm run dev            # starts on http://localhost:3000
+npm run test:e2e       # Playwright e2e, served on http://localhost:3100
 npm run sync:messages  # copy missing keys from en.json to the other locales
 ```
 

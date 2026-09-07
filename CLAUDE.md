@@ -7,7 +7,8 @@ Guidance for Claude (and other agents) working in this repo.
 A **marketing site** for Dimonova — a done-for-you digital-menu service for
 restaurants, pubs and cafés. It is built with **Next.js 16, TypeScript, App
 Router, and SSG** (static site generation). All routes are statically rendered
-at build time.
+at build time except the `[...rest]` catch-all that serves the localized 404
+on demand.
 
 **Open tasks live in [`TODO.md`](./TODO.md)** — check it before starting work and
 keep it updated. Human-facing overview is in [`README.md`](./README.md).
@@ -56,7 +57,7 @@ For HTML content (e.g. a paragraph with a `<br>`) use `t.raw(key)` and
 
 ### Styling rule
 
-New components: `Name.tsx` + `Name.module.css`, tokens from `:root` (`--brand`, `--ink`, `--cream`, …), fonts via `lib/fonts.ts` (`--font-display` Bricolage Grotesque, `--font-body` Instrument Sans). Never add inline styles or `dangerouslySetInnerHTML` to new code; rich strings use `t.rich`.
+New components: `Name.tsx` + `Name.module.css`, tokens from `:root` (`--brand`, `--ink`, `--cream`, …), fonts via `lib/fonts.ts` (`--font-display` Bricolage Grotesque, `--font-body` Instrument Sans). Never add inline styles to new code except for genuinely dynamic values (e.g. `Modal` `maxWidth`) or one-off layout on placeholder pages, nor `dangerouslySetInnerHTML`; rich strings use `t.rich`.
 
 Legacy: `archive/` and `s()` are only for the not-yet-redesigned inner pages. Do not port new markup from the archive.
 
