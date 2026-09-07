@@ -1,0 +1,14 @@
+.pill {
+  display: inline-flex; align-items: center; gap: 8px;
+  border-radius: var(--radius-pill); border: 1px solid transparent;
+  font-weight: 600; white-space: nowrap; line-height: 1;
+}
+.sm { font-size: 13px; padding: 8px 14px; }
+.md { font-size: 15px; padding: 12px 20px; }
+
+.light { background: var(--paper); color: var(--ink); border-color: var(--mist); box-shadow: 0 6px 20px -12px rgba(15,14,13,.4); }
+.dark { background: rgba(255,255,255,.1); color: #fff; border-color: rgba(255,255,255,.2); }
+.outline { background: transparent; color: var(--ink); border-color: var(--mist); }
+.brand { background: var(--brand-soft); color: var(--brand-deep); }
+
+a.pill:hover { border-color: currentColor; }

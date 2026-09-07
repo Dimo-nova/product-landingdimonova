@@ -1,0 +1,14 @@
+.wrap { overflow: hidden; width: 100%; }
+.track { display: flex; width: max-content; will-change: transform; }
+.group { display: flex; align-items: center; gap: var(--marquee-gap, 32px); padding-right: var(--marquee-gap, 32px); }
+.left .track { animation: marquee-left var(--marquee-duration, 40s) linear infinite; }
+.right .track { animation: marquee-right var(--marquee-duration, 40s) linear infinite; }
+.wrap[data-pause="true"]:hover .track { animation-play-state: paused; }
+
+@keyframes marquee-left { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@keyframes marquee-right { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .track { animation: none !important; }
+  .wrap { overflow-x: auto; }
+}
