@@ -1,3 +1,8 @@
+/* Legacy-only: the not-yet-redesigned inner pages still reference 'Instrument Serif' by family
+   name. @import must precede all other rules, so it lives here rather than in the legacy block
+   below. Remove this once phase 4 replaces those pages (see TODO.md). */
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap');
+
 /* ==== Design tokens (spec §3.1) ==== */
 :root {
   --brand: #FE5243;
@@ -54,7 +59,7 @@ h1 { font-size: var(--text-h1); font-weight: 800; }
 h2 { font-size: var(--text-h2); font-weight: 700; }
 h3 { font-size: var(--text-h3); font-weight: 700; }
 
-:focus-visible { outline: 3px solid var(--brand); outline-offset: 3px; border-radius: 4px; }
+:focus-visible { outline: 3px solid var(--brand); outline-offset: 3px; }
 
 .u-visually-hidden {
   position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px;
@@ -66,11 +71,11 @@ h3 { font-size: var(--text-h3); font-weight: 700; }
 }
 
 /* ==== Legacy (inner pages, removed in the inner-pages phase) ==== */
+  .dim-legacy{background:#FAF6F0}
   .dim-page{animation:dimFade .42s cubic-bezier(.22,.61,.36,1) both}
   @keyframes dimFade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
   @keyframes dimPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
   @keyframes dimRise{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
-  .dim-wa-pulse{animation:dimPulse 2.4s ease-in-out infinite}
   .dim-pop{animation:dimRise .25s ease both}
   @media (max-width:900px){
     .dim-hero-grid{grid-template-columns:1fr!important}

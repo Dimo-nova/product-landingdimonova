@@ -15,7 +15,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
   const { locale } = await params;
   setRequestLocale(locale);
   return (
-    <main>
+    <main className="dim-legacy">
       <AboutHero />
       <AboutWhy />
       <AboutPrinciples />

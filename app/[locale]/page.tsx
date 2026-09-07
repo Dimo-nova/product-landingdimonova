@@ -18,7 +18,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
   const { locale } = await params;
   setRequestLocale(locale);
   return (
-    <main>
+    <main className="dim-legacy">
       <Hero />
       <LogoStrip />
       <FeaturesSummary />

@@ -7,7 +7,7 @@ Status legend: `[ ]` not started · `[~]` in progress · `[x]` done
 - [x] Phase 1 — base: tokens, fonts, UI kit, header + mega-menu, footer + wordmark, demo/video modals, locale banner, 404, legal placeholders
 - [ ] Phase 2 — home (hero B + C variants, 8 service cards, AI panel, Bálamo showcase, differentiator band, reviews, AI compare, final CTA)
 - [ ] Phase 3 — content: stock hero photo, service screenshots, Bálamo phone capture, reviews JSON, videos to Supabase bucket, real numbers, OG image; pick hero B or C
-- [ ] Phase 4 — inner pages on the new system; delete `lib/style.ts`, `components/Hover.tsx`, `components/sections/*`, legacy `.dim-*` CSS
+- [ ] Phase 4 — inner pages on the new system; delete `lib/style.ts`, `components/Hover.tsx`, `components/sections/*`, legacy `.dim-*` CSS; remove the legacy Instrument Serif `@import` and `.dim-legacy`
 - [ ] Phase 5 — `/admin` proxy to menuadmin (basePath + webhook-preserving rewrite)
 
 ## ✅ Completed — Next.js port
@@ -41,7 +41,7 @@ Status legend: `[ ]` not started · `[~]` in progress · `[x]` done
 
 ## 🔌 Before launch — functional
 
-- [ ] **Wire up the contact form.** It currently validates and shows a success state but sends nothing. Post to a form service (e.g. Formspree, Vercel serverless function + email provider).
+- [x] **Wire up the contact form.** It posts to `/api/contact`, which creates a Notion lead and sends an email notification via Resend.
 - [x] **Make the WhatsApp widget real.** Point "Continue to WhatsApp" at `https://wa.me/<number>` with the real number.
 - [~] Add real **legal pages** — placeholder pages exist at `/legal/[slug]` and are linked from the footer; real Terms / Privacy / Cookies texts are pending.
 - [ ] Add an **`og:image`** for social sharing previews.
@@ -56,7 +56,7 @@ Status legend: `[ ]` not started · `[~]` in progress · `[x]` done
 - [ ] Add **analytics** (Vercel Analytics / Plausible).
 - [ ] Connect a **custom domain** in Vercel.
 - [ ] Cookie-consent banner if analytics/marketing cookies are added.
-- [ ] Escape user-supplied strings in the HTML email built in `app/api/contact/route.ts`.
+- [x] Escape user-supplied strings in the HTML email built in `app/api/contact/route.ts`.
 - [ ] Prune unused message keys (`footer.tagline`, `footer.col_*`, `footer.label_*`, `footer.rights`, `wa.disclaimer`, `banner.change`, `banner.close`) when the inner pages are redesigned.
 
 ---

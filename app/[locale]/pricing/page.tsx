@@ -15,7 +15,7 @@ export default async function PricingPage({ params }: { params: Promise<{ locale
   const { locale } = await params;
   setRequestLocale(locale);
   return (
-    <main>
+    <main className="dim-legacy">
       <PricingHero />
       <PricingIncluded />
       <PricingShape />
