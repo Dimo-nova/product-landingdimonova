@@ -412,29 +412,50 @@
   },
   "cases": {
     "eyebrow": "Casos de éxito",
-    "title": "Locales reales. <em>Cartas reales.</em> Resultados reales.",
-    "intro": "Estamos recopilando casos y testimonios de clientes actuales. Las historias reales irán sustituyendo cada uno de los ejemplos de abajo a medida que se aprueben.",
-    "note": "<strong>Nota de ejemplo:</strong> todos los nombres, citas y métricas de esta página son de ejemplo. El contenido real se incorporará aquí cuando esté disponible.",
-    "featured": {
-      "eyebrow": "Destacado · Pub",
-      "quote": "«Cita de ejemplo sobre cómo el equipo por fin puede actualizar la carta sin esperar a la agencia web.»",
-      "body": "Historia de cliente de ejemplo — un párrafo que describe el local antes de Dimonova, el cambio después y un resultado concreto (cambios más rápidos, más vistas de la carta, un plato que los sorprendió).",
-      "client": "Nombre del cliente",
-      "role": "Cargo · Nombre del local",
-      "photo_badge": "foto del local",
-      "photo_pill": "Foto del local destacado"
+    "title": "Tres locales. <em>Tres cartas reales.</em>",
+    "intro": "Tres restaurantes, tres problemas distintos. Esto es lo que tenía cada uno antes, lo que construimos para ellos y lo que tienen ahora.",
+    "steps": {
+      "before": "Antes",
+      "work": "Qué hicimos",
+      "result": "Resultado"
     },
-    "grid": {
-      "photo": "foto del local",
-      "type_restaurant": "Restaurante",
-      "type_pub": "Pub",
-      "type_cafe": "Cafetería",
-      "venue": "Nombre del local (ejemplo)",
-      "summary": "Resumen en una línea de lo que cambió para ellos — ejemplo hasta que llegue el contenido real.",
-      "live_since": "En línea desde",
-      "live_value": "Por definir",
-      "result": "Resultado",
-      "result_value": "ejemplo"
+    "items": {
+      "calsot": {
+        "name": "Calsot",
+        "type": "Restaurante catalán, Madrid",
+        "before": "Un restaurante de comida catalana muy famoso en Madrid, con la carta montada sobre un SaaS. Sin personalidad y difícil de usar: ver la carta era una agonía, y faltaba mucha información y muchas fotos. No tenían a nadie que pudiera hacerles algo profesional.",
+        "work": "Nos encargamos nosotros de la carta y la rehicimos: un diseño con la cara del restaurante, una carta por la que se puede navegar de verdad, y la información de los platos y las fotos que nunca estuvieron.",
+        "result": "Fuera el SaaS. Ahora la carta tiene la personalidad del restaurante, se lee sin esfuerzo y lleva la información y las fotos que faltaban.",
+        "tags": [
+          "Adiós al SaaS",
+          "Diseño a medida",
+          "Fotos e información de los platos"
+        ]
+      },
+      "pulperia": {
+        "name": "La Pulpería",
+        "type": "Restaurante, Majadahonda, Madrid",
+        "before": "Un restaurante de renombre en Majadahonda, Madrid. No tenían carta digital, pero veían su valor. De nuevo, no había nadie técnico de su lado que pudiera hacérsela.",
+        "work": "Nos encargamos de todo. Les compramos un dominio, conectamos la carta digital al mismo y le dimos personalidad, integrándola con sus promociones, sus raciones y su menú diario.",
+        "result": "Una carta digital propia, en su propio dominio, con las promociones, las raciones y el menú diario en un mismo sitio. Nada que montar por su parte.",
+        "tags": [
+          "Dominio propio",
+          "Menú diario",
+          "Promociones y raciones"
+        ]
+      },
+      "balamo": {
+        "name": "Bálamo",
+        "type": "Marisquería",
+        "before": "La marisquería más grande de España. Ya tenían carta digital SaaS, pero no estaba adaptada a sus necesidades: la integración con su sistema de vinos era difícil de entender para el usuario y la interfaz no estaba preparada para tablet.",
+        "work": "Les creamos una carta digital completamente personalizada y hecha a medida para su zona VIP, que usará tablets para ver la carta. Tenían gran cantidad de material gráfico de los platos, fotos y vídeos, así que lo optimizamos todo y adaptamos la carta para mostrarlo de una forma muy atractiva.",
+        "result": "Una carta hecha para las tablets de su zona VIP, que muestra sus fotos y vídeos a la altura de un restaurante de ese calibre.",
+        "tags": [
+          "Zona VIP en tablet",
+          "Desarrollo a medida",
+          "Fotos y vídeos optimizados"
+        ]
+      }
     },
     "cta": {
       "title": "¿Quieres ser el próximo caso de éxito?"
@@ -541,8 +562,8 @@
       "desc": "Una tarifa de configuración única y luego una suscripción mensual fija. Hosting, soporte y actualizaciones incluidos."
     },
     "cases": {
-      "title": "Casos de éxito — Dimonova",
-      "desc": "Locales reales, menús reales, resultados reales. Cómo restaurantes, pubs y cafeterías independientes usan Dimonova."
+      "title": "Casos de éxito · Dimonova",
+      "desc": "Lo que hicimos para Calsot, La Pulpería y Bálamo: qué tenía cada local antes, qué construimos y qué tienen ahora."
     },
     "about": {
       "title": "Sobre nosotros — Dimonova",

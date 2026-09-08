@@ -12,11 +12,8 @@ test("the skip link is the first tab stop on / and moves focus to #main", async 
   expect(activeId).toBe("main");
 });
 
-// The six real pages. `/cases` is deliberately excluded: it redirects home while
-// CASES_PUBLISHED is false (see app/[locale]/cases/page.tsx), so it never renders its own
-// content — sweeping it would just re-check "/" a second time. Don't add it back until that
-// redirect is lifted.
-const PAGES = ["/", "/features", "/pricing", "/about", "/contact", "/legal/privacy"];
+// Every real page, with /legal/privacy standing in for the three legal documents.
+const PAGES = ["/", "/features", "/pricing", "/cases", "/about", "/contact", "/legal/privacy"];
 
 for (const path of PAGES) {
   test(`every <img> on ${path} has an alt attribute`, async ({ page }) => {
@@ -92,7 +89,7 @@ for (const path of PAGES) {
 // ("PageHero-module__aBcDe__eyebrow"), so this matches on the local name after the last "__"
 // rather than the exact hash, and stays correct across rebuilds. The contrast formula mirrors
 // the `contrast()` helper in e2e/footer.spec.ts.
-const EYEBROW_PAGES = ["/features", "/pricing", "/about", "/"];
+const EYEBROW_PAGES = ["/features", "/pricing", "/cases", "/about", "/"];
 
 for (const path of EYEBROW_PAGES) {
   test(`every eyebrow label on ${path} meets 4.5:1 contrast`, async ({ page }) => {

@@ -74,16 +74,40 @@ test("the pricing FAQ reveals a question's answer on click, with no JavaScript r
   await expect(answer).toBeVisible();
 });
 
-// Cases page: hidden on purpose (see app/[locale]/cases/page.tsx, CASES_PUBLISHED) until real
-// case studies exist, per commit 514d840. The page underneath is rebuilt on the new design
-// system but every venue in it is an invented placeholder, so this route must keep redirecting
-// home rather than rendering its content.
+// Cases page: published (CASES_PUBLISHED is true in lib/config.ts) now that the owner supplied
+// three real case studies. Every placeholder venue, the "example" disclaimer and the invented
+// stats are gone — the page names the three real clients and nothing else. If a venue name ever
+// disappears from these assertions, the copy has drifted back towards placeholders.
+const CASE_VENUES = ["Calsot", "La Pulpería", "Bálamo"];
 
-test("the cases page is not published yet and redirects home", async ({ page }) => {
+test("the cases page renders with exactly one h1", async ({ page }) => {
   await page.goto("/cases");
-  await expect(page).toHaveURL("/");
-  await page.goto("/es/cases");
-  await expect(page).toHaveURL("/es");
+  await expect(page).toHaveURL("/cases");
+  await expect(page.locator("h1")).toHaveCount(1);
+});
+
+test("the cases page names the three real venues, in both locales", async ({ page }) => {
+  for (const path of ["/cases", "/es/cases"]) {
+    await page.goto(path);
+    for (const venue of CASE_VENUES) {
+      await expect(page.locator("main").getByRole("heading", { name: venue, exact: true })).toBeVisible();
+    }
+  }
+});
+
+test("the cases page carries no placeholder copy", async ({ page }) => {
+  await page.goto("/cases");
+  const text = (await page.locator("main").innerText()).toLowerCase();
+  for (const word of ["placeholder", "tbd", "venue name"]) {
+    expect(text, `"${word}" is still on the cases page`).not.toContain(word);
+  }
+});
+
+test("each case reads before, what we did, result", async ({ page }) => {
+  await page.goto("/cases");
+  for (const label of ["Before", "What we did", "Result"]) {
+    await expect(page.locator("main").getByRole("heading", { name: label, exact: true })).toHaveCount(CASE_VENUES.length);
+  }
 });
 
 // About page: the team section (two real headshots, Pablo and Sergio) is rebuilt on the current

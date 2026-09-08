@@ -7,8 +7,9 @@ const PAGES = [
   { path: "", priority: 1.0 },
   { path: "/features", priority: 0.8 },
   { path: "/pricing", priority: 0.8 },
-  // /cases redirects home while CASES_PUBLISHED is false (see lib/config.ts and
-  // app/[locale]/cases/page.tsx) — listing it here would just point crawlers at "/" again.
+  // Gated on the same flag as the page itself (see lib/config.ts and
+  // app/[locale]/cases/page.tsx): while CASES_PUBLISHED is false /cases redirects home, and
+  // listing it here would just point crawlers at "/" again.
   ...(CASES_PUBLISHED ? [{ path: "/cases", priority: 0.7 }] : []),
   { path: "/about", priority: 0.7 },
   { path: "/contact", priority: 0.6 },

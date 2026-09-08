@@ -5,7 +5,6 @@ import { pageMetadata } from "@/lib/meta";
 import { CASES_PUBLISHED } from "@/lib/config";
 import Container from "@/components/ui/Container";
 import PageHero from "@/components/page/PageHero";
-import CardGrid from "@/components/page/CardGrid";
 import Eyebrow from "@/components/page/Eyebrow";
 import PageCta from "@/components/page/PageCta";
 import styles from "./page.module.css";
@@ -20,90 +19,72 @@ const richTitle = {
   em: (chunks: ReactNode) => <em className={styles.accent}>{chunks}</em>,
 };
 
-// Maps the <strong> tag embedded in cases.note to a real component instead of dangerouslySetInnerHTML.
-const richNote = {
-  strong: (chunks: ReactNode) => <strong className={styles.noteStrong}>{chunks}</strong>,
-};
+/**
+ * The three real clients, in the order the owner supplied them. Copy lives in
+ * `messages/*.json` under `cases.items.<slug>` — nothing on this page is invented, so if a
+ * fact isn't in those strings it doesn't belong here (no view counts, no dates, no quotes).
+ *
+ * `logo` points at the same files the home page's LogoStrip uses. Despite its "-neg" name,
+ * logo-calsot-neg.png is dark ink (#1D1D1D) on transparent, exactly like the two SVGs, so all
+ * three sit on the same light --cream plate.
+ */
+const CASES = [
+  { slug: "calsot", logo: "/assets/Logos/logo-calsot-neg.png" },
+  { slug: "pulperia", logo: "/assets/Logos/lapulperia.svg" },
+  { slug: "balamo", logo: "/assets/Logos/balamo.svg" },
+] as const;
 
-// This page's content is almost entirely placeholder: cases.note (rendered below, inside the
-// hero) is the visible disclaimer that says so. Keep it visible and keep every venue below as an
-// invented placeholder — do not substitute the three real clients (Bálamo, La Pulpería, Calçots)
-// for them. Naming a real client needs that client's written permission, which the owner is
-// tracking separately; see TODO.md.
-const GRID_TYPES = ["type_restaurant", "type_pub", "type_cafe", "type_restaurant", "type_pub", "type_cafe"] as const;
+/** Every case reads the same way: what they had, what we built, what they have now. */
+const STEPS = ["before", "work", "result"] as const;
 
 export default async function CasesPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   setRequestLocale(locale);
-  // See CASES_PUBLISHED's doc comment in lib/config.ts for why this redirects home. To publish
-  // this page, flip that flag to true. See TODO.md.
+  // See CASES_PUBLISHED's doc comment in lib/config.ts. The flag is true now that real cases
+  // exist, but the gate stays: it is the one switch that pulls the page (and its sitemap entry)
+  // if the owner ever needs to take it down.
   if (!CASES_PUBLISHED) redirect({ href: "/", locale });
   const t = await getTranslations();
 
   return (
     <main id="main" tabIndex={-1}>
-      <PageHero eyebrow={t("cases.eyebrow")} title={t.rich("cases.title", richTitle)} intro={t("cases.intro")}>
-        <p className={styles.note}>{t.rich("cases.note", richNote)}</p>
-      </PageHero>
+      <PageHero eyebrow={t("cases.eyebrow")} title={t.rich("cases.title", richTitle)} intro={t("cases.intro")} />
 
-      {/* Featured case — a one-off two-column panel (content + photo placeholder), not reused
-          elsewhere, per the plan's "inline featured block" instruction. */}
-      <section className={styles.featuredSection}>
+      <section className={styles.section}>
         <Container>
-          <div className={styles.featuredPanel}>
-            <div className={styles.featuredContent}>
-              <div>
-                <Eyebrow>{t("cases.featured.eyebrow")}</Eyebrow>
-                <p className={styles.quote}>{t("cases.featured.quote")}</p>
-                <p className={styles.body}>{t("cases.featured.body")}</p>
-              </div>
-              <div className={styles.person}>
-                <div className={styles.avatar} aria-hidden="true" />
-                <div>
-                  <p className={styles.personName}>{t("cases.featured.client")}</p>
-                  <p className={styles.personRole}>{t("cases.featured.role")}</p>
-                </div>
-              </div>
-            </div>
-            <div className={styles.featuredPhoto}>
-              <span className={styles.photoBadge}>{t("cases.featured.photo_badge")}</span>
-              <span className={styles.photoPill}>{t("cases.featured.photo_pill")}</span>
-            </div>
-          </div>
-        </Container>
-      </section>
-
-      {/* Grid of placeholder venues. Reuses CardGrid purely for its responsive-grid behaviour —
-          each item pairs a photo placeholder with a two-column stats footer, a shape Card's
-          title/body/footer signature doesn't fit, so the items are built inline (same call as
-          PricingIncluded in Task 3). */}
-      <section className={styles.gridSection}>
-        <Container>
-          <CardGrid columns={3}>
-            {GRID_TYPES.map((type, i) => (
-              // eslint-disable-next-line react/no-array-index-key -- all six cards render identical placeholder copy, no stable identity to key on
-              <div key={i} className={styles.venueCard}>
-                <div className={styles.venuePhoto}>
-                  <span className={styles.photoBadge}>{t("cases.grid.photo")}</span>
-                </div>
-                <div className={styles.venueBody}>
-                  <p className={styles.venueType}>{t(`cases.grid.${type}`)}</p>
-                  <p className={styles.venueName}>{t("cases.grid.venue")}</p>
-                  <p className={styles.venueSummary}>{t("cases.grid.summary")}</p>
-                  <div className={styles.stats}>
-                    <div>
-                      <p className={styles.statLabel}>{t("cases.grid.live_since")}</p>
-                      <p className={styles.statValue}>{t("cases.grid.live_value")}</p>
-                    </div>
-                    <div>
-                      <p className={styles.statLabel}>{t("cases.grid.result")}</p>
-                      <p className={styles.statResult}>{t("cases.grid.result_value")}</p>
-                    </div>
+          <ol className={styles.list}>
+            {CASES.map(({ slug, logo }) => (
+              <li key={slug} className={styles.case}>
+                <div className={styles.aside}>
+                  <div className={styles.logoPlate}>
+                    {/* alt="": the venue name sits in the <h2> immediately after, so real alt
+                        text here would just announce the name twice. Same call as
+                        BalamoShowcase's logo on the home page. */}
+                    {/* eslint-disable-next-line @next/next/no-img-element -- next/image would need dangerouslyAllowSVG for two of the three logos; LogoStrip and BalamoShowcase use plain <img> for the same files. */}
+                    <img src={logo} alt="" className={styles.logo} />
                   </div>
+                  <Eyebrow className={styles.type}>{t(`cases.items.${slug}.type`)}</Eyebrow>
+                  <h2 className={styles.name}>{t(`cases.items.${slug}.name`)}</h2>
+                  <ul className={styles.tags}>
+                    {(t.raw(`cases.items.${slug}.tags`) as string[]).map((tag) => (
+                      <li key={tag} className={styles.tag}>
+                        {tag}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-              </div>
+
+                <div className={styles.steps}>
+                  {STEPS.map((step) => (
+                    <div key={step} className={styles.step}>
+                      <h3 className={styles.stepLabel}>{t(`cases.steps.${step}`)}</h3>
+                      <p className={styles.stepBody}>{t(`cases.items.${slug}.${step}`)}</p>
+                    </div>
+                  ))}
+                </div>
+              </li>
             ))}
-          </CardGrid>
+          </ol>
         </Container>
       </section>
 

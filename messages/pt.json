@@ -411,33 +411,54 @@
     }
   },
   "cases": {
-    "eyebrow": "Casos de sucesso",
-    "title": "Espaços reais. <em>Ementas reais.</em> Resultados reais.",
-    "intro": "Os casos e testemunhos estão a ser recolhidos junto de clientes atuais. Histórias reais vão substituir cada um dos exemplos abaixo à medida que forem aprovadas.",
-    "note": "<strong>Nota de exemplo:</strong> todos os nomes de clientes, citações e métricas nesta página são exemplos. O conteúdo real entra aqui quando estiver disponível.",
-    "featured": {
-      "eyebrow": "Em destaque · Pub",
-      "quote": "«Citação de exemplo sobre como a equipa consegue finalmente atualizar a ementa sem esperar pela agência web.»",
-      "body": "História de cliente de exemplo — um parágrafo a descrever o espaço antes da Dimonova, a mudança depois e um resultado concreto (alterações mais rápidas, mais visualizações, um prato que os surpreendeu).",
-      "client": "Nome do cliente",
-      "role": "Cargo · Nome do espaço",
-      "photo_badge": "foto do espaço",
-      "photo_pill": "Foto do espaço em destaque"
+    "eyebrow": "Case studies",
+    "title": "Three venues. <em>Three real menus.</em>",
+    "intro": "Three restaurants, three different problems. Here is what each one had before, what we built for them, and what they have now.",
+    "steps": {
+      "before": "Before",
+      "work": "What we did",
+      "result": "Result"
     },
-    "grid": {
-      "photo": "foto do espaço",
-      "type_restaurant": "Restaurante",
-      "type_pub": "Pub",
-      "type_cafe": "Café",
-      "venue": "Nome do espaço (exemplo)",
-      "summary": "Resumo numa linha do que mudou para eles — exemplo até chegar o conteúdo real.",
-      "live_since": "Online desde",
-      "live_value": "Por definir",
-      "result": "Resultado",
-      "result_value": "exemplo"
+    "items": {
+      "calsot": {
+        "name": "Calsot",
+        "type": "Catalan restaurant, Madrid",
+        "before": "A very well known Catalan restaurant in Madrid, running its menu on an off the shelf SaaS. No personality, hard to use, and a lot of information and photos missing. Reading the menu was an ordeal. They had nobody who could build them something professional.",
+        "work": "We took the menu over and rebuilt it: a design that looks like the restaurant, a menu you can actually move through, and the dish information and photos that were never there.",
+        "result": "The SaaS menu is gone. Their menu now carries the restaurant's own personality, it reads easily, and the information and photos that were missing are in it.",
+        "tags": [
+          "Replaced a SaaS menu",
+          "Custom design",
+          "Photos and dish information"
+        ]
+      },
+      "pulperia": {
+        "name": "La Pulpería",
+        "type": "Restaurant, Majadahonda, Madrid",
+        "before": "A restaurant of real standing in Majadahonda, Madrid. They had no digital menu at all, but they could see the value of one. Again, nobody technical on their side who could build it for them.",
+        "work": "We handled all of it. We bought them a domain, connected the digital menu to it and gave it personality, with their promotions, their sharing plates and their daily menu built in.",
+        "result": "A digital menu of their own, on their own domain, with promotions, sharing plates and the daily menu in one place. Nothing left for them to set up.",
+        "tags": [
+          "Own domain",
+          "Daily menu",
+          "Promotions and sharing plates"
+        ]
+      },
+      "balamo": {
+        "name": "Bálamo",
+        "type": "Seafood restaurant",
+        "before": "The largest seafood restaurant in Spain. They already had a SaaS digital menu, but it was not adapted to what they needed: the integration with their wine system was hard for a guest to understand, and the interface was not built for tablet.",
+        "work": "We built them a completely custom digital menu, made to measure for their VIP area, which will use tablets to show it. They had a lot of graphic material for the dishes, photos and video, so we optimised all of it and adapted the menu to show it off.",
+        "result": "A menu built for the tablets in their VIP area, presenting their photos and video in a way that meets the standard of a restaurant of that calibre.",
+        "tags": [
+          "VIP area on tablet",
+          "Custom build",
+          "Photo and video optimised"
+        ]
+      }
     },
     "cta": {
-      "title": "Queres ser o próximo caso de sucesso?"
+      "title": "Want to be the next case study?"
     }
   },
   "about": {
@@ -541,8 +562,8 @@
       "desc": "Uma taxa de configuração única e depois uma subscrição mensal fixa. Alojamento, suporte e atualizações incluídos."
     },
     "cases": {
-      "title": "Casos de estudo — Dimonova",
-      "desc": "Espaços reais, menus reais, resultados reais. Como restaurantes, pubs e cafés independentes usam o Dimonova."
+      "title": "Case studies · Dimonova",
+      "desc": "What we built for Calsot, La Pulpería and Bálamo: what each venue had before, what we did, and what they have now."
     },
     "about": {
       "title": "Sobre nós — Dimonova",
