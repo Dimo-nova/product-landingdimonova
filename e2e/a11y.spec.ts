@@ -11,7 +11,13 @@ test("the skip link is the first tab stop on / and moves focus to #main", async 
   expect(activeId).toBe("main");
 });
 
-for (const path of ["/", "/features", "/about"]) {
+// The six real pages. `/cases` is deliberately excluded: it redirects home while
+// CASES_PUBLISHED is false (see app/[locale]/cases/page.tsx), so it never renders its own
+// content — sweeping it would just re-check "/" a second time. Don't add it back until that
+// redirect is lifted.
+const PAGES = ["/", "/features", "/pricing", "/about", "/contact", "/legal/privacy"];
+
+for (const path of PAGES) {
   test(`every <img> on ${path} has an alt attribute`, async ({ page }) => {
     await page.goto(path);
     const offenders = await page.evaluate(() => {
@@ -28,7 +34,7 @@ for (const path of ["/", "/features", "/about"]) {
   });
 }
 
-for (const path of ["/", "/features", "/about"]) {
+for (const path of PAGES) {
   test(`every <button> and <a> has an accessible name on ${path}`, async ({ page }) => {
     await page.goto(path);
     const offenders = await page.evaluate(() => {
@@ -59,10 +65,21 @@ for (const path of ["/", "/features", "/about"]) {
   });
 }
 
-for (const path of ["/", "/features", "/about"]) {
+for (const path of PAGES) {
   test(`${path} has exactly one <h1>`, async ({ page }) => {
     await page.goto(path);
     const count = await page.locator("h1").count();
     expect(count).toBe(1);
+  });
+}
+
+for (const path of PAGES) {
+  test(`${path} does not overflow horizontally at a 390px viewport`, async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto(path);
+    const overflow = await page.evaluate(
+      () => document.documentElement.scrollWidth - window.innerWidth,
+    );
+    expect(overflow, `document.documentElement.scrollWidth exceeds window.innerWidth by ${overflow}px on ${path}`).toBeLessThanOrEqual(1);
   });
 }

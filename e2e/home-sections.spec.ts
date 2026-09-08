@@ -75,6 +75,16 @@ test("the AI demo pluralizes the toast for the single-row descriptions tab", asy
   // cycle for this tab.
   await page.goto("/#ai");
   const demo = page.locator("[data-ai-demo]");
+  // Same two guards as "the AI section cycles its tabs and applies a change" above: center
+  // the demo so useInView's -100px margin doesn't misread anchor-scroll placement as out of
+  // view, then hover to pause the automatic hand-off (AiDemo's hoveredRef gate) so the click
+  // below and the assertions after it aren't racing the auto-advance timer. Without these
+  // this test was intermittently flaky under parallel load — it passed in isolation because
+  // there was no contention delaying the click past the point the demo was actually in view
+  // or past HOLD_MS, but under load either gate could still be closed (or could have already
+  // fired and moved on) by the time the click landed.
+  await demo.scrollIntoViewIfNeeded();
+  await demo.hover();
   const tabs = demo.getByRole("tab");
   await tabs.nth(2).click();
   await expect(demo).toContainText(/1 dish updated/, { timeout: 10000 });
