@@ -79,6 +79,11 @@
 
 .body {
   flex: 1;
+  /* Its own solid ground rather than the card's --brand -> --brand-deep gradient showing
+     through: that gradient is roughly 2.6:1 to 4.4:1 for white text depending on where in
+     the card it lands, below the 4.5:1 normal-size text needs. --brand-darkest is dark
+     enough that 100%-white body text clears AA regardless of position. */
+  background: var(--brand-darkest);
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -93,7 +98,7 @@
 }
 
 .body p {
-  color: var(--on-dark-text);
+  color: var(--paper);
   font-size: 15px;
   line-height: 1.4;
   margin: 0;

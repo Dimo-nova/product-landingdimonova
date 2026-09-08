@@ -9,6 +9,23 @@ test("the eight service cards link to their feature anchors", async ({ page }) =
   await expect(grid.getByRole("link", { name: /Smart reviews/ })).toHaveAttribute("href", "/features#reviews");
 });
 
+test("the service card body text meets AA contrast", async ({ page }) => {
+  await page.goto("/");
+  const ratio = await page.locator("#services a").first().evaluate((card) => {
+    const body = card.querySelector("[data-card-body]") as HTMLElement;
+    const lum = (c: string) => {
+      const [r, g, b] = (c.match(/[\d.]+/g) ?? []).slice(0, 3).map(Number);
+      const ch = (v: number) => { const s = v / 255; return s <= 0.03928 ? s / 12.92 : Math.pow((s + 0.055) / 1.055, 2.4); };
+      return 0.2126 * ch(r) + 0.7152 * ch(g) + 0.0722 * ch(b);
+    };
+    const fg = lum(getComputedStyle(body).color);
+    const bg = lum(getComputedStyle(body.parentElement as Element).backgroundColor);
+    const [hi, lo] = fg > bg ? [fg, bg] : [bg, fg];
+    return (hi + 0.05) / (lo + 0.05);
+  });
+  expect(ratio).toBeGreaterThanOrEqual(4.5);
+});
+
 test("no card claims that bad reviews are withheld from Google", async ({ page }) => {
   await page.goto("/");
   const text = (await page.locator("#services").innerText()).toLowerCase();

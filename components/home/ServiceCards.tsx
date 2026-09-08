@@ -29,7 +29,7 @@ export default async function ServiceCards() {
                   </div>
                   <div className={styles.body}>
                     <h3>{title}</h3>
-                    <p>{t(`services.${service.slug}.line`)}</p>
+                    <p data-card-body>{t(`services.${service.slug}.line`)}</p>
                   </div>
                 </Link>
               </Reveal>

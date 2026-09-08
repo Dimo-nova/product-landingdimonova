@@ -8,7 +8,10 @@
 .btn:disabled { opacity: .55; cursor: not-allowed; }
 .md { font-size: 14px; padding: 12px 18px; }
 .lg { font-size: 16px; padding: 16px 24px; }
-.xl { font-size: 18px; padding: 18px 28px; }
+/* 19px/700 rather than the md/lg sizes' inherited 600: on the coral --solid background this
+   needs to clear the "large text" bold threshold (18.66px bold) to pass at 3:1, since 18px/600
+   is still normal text and the coral only measures ~3.2:1. */
+.xl { font-size: 19px; font-weight: 700; padding: 18px 28px; }
 
 .solid { background: var(--brand); color: #fff; }
 .solid:hover:not(:disabled) { background: var(--brand-deep); color: #fff; transform: translateY(-1px); }

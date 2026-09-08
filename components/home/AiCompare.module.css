@@ -15,11 +15,13 @@
   margin: 0;
 }
 
-/* White text on coral is a weak combination for small copy, so the lead line is pinned at
-   18px semibold and nothing smaller is ever placed directly on this background. */
+/* White text on coral is a weak combination for small copy. 18px/600 is still normal-size
+   text under WCAG's large-text threshold (18.66px bold) and only measures ~3.2:1 here, which
+   doesn't clear it — so the lead line is pinned at 19px/700, which qualifies as large text
+   and passes at the coral's ~3:1. Nothing smaller is ever placed directly on this background. */
 .lead {
-  font-size: 18px;
-  font-weight: 600;
+  font-size: 19px;
+  font-weight: 700;
   line-height: 1.5;
   color: var(--paper);
   margin: 16px 0 0;

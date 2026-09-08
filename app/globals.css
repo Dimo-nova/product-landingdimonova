@@ -3,6 +3,10 @@
   --brand: #FE5243;
   --brand-deep: #C93A2B;
   --brand-soft: #FFE9E5;
+  /* Solid ground for text sitting where the --brand -> --brand-deep gradient would otherwise
+     show through (e.g. ServiceCards' body copy): dark enough that 100%-white text clears the
+     4.5:1 AA ratio for normal-size text, which the gradient itself does not at every point. */
+  --brand-darkest: #A82D1B;
   --ink: #0F0E0D;
   --ink-2: #4A4744;
   --paper: #FFFFFF;
