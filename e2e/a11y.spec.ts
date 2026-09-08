@@ -1,4 +1,5 @@
 import { test, expect } from "@playwright/test";
+import AxeBuilder from "@axe-core/playwright";
 
 test("the skip link is the first tab stop on / and moves focus to #main", async ({ page }) => {
   await page.goto("/");
@@ -131,5 +132,43 @@ for (const path of EYEBROW_PAGES) {
     for (const { text, ratio } of results) {
       expect(ratio, `eyebrow "${text}" on ${path} has contrast ${ratio.toFixed(2)}, needs >= 4.5`).toBeGreaterThanOrEqual(4.5);
     }
+  });
+}
+
+// axe sweep, wcag2a + wcag2aa only. This is a broader net than the hand-rolled checks above —
+// those check four things the shared components satisfy by construction (alt text, accessible
+// names, one <h1>, no horizontal overflow), which is exactly why they never caught the eyebrow
+// contrast regression a human reviewer found on every inner page. Do not lower the tag set, and
+// do not disable a rule wholesale to make this pass — the one exception below is scoped to a
+// single, named, owner-approved selector.
+//
+// Solid buttons (components/ui/Button.tsx `variant="solid"`, e.g. "Request a demo") render white
+// text on the --brand coral background at ~3.22:1 (only the `xl` size's bold 700 weight clears
+// AA's "large text" 3:1 threshold — see the comment on `.xl` in Button.module.css). The owner
+// reviewed this and explicitly kept it rather than darkening the coral or the text, so it is
+// filtered out of the axe results below by selector instead of fixed or globally disabled. Every
+// other color-contrast finding must still fail this suite — see the Footer.module.css `.business`
+// fix in this same review pass for an example of one that was fixed instead.
+const SOLID_BUTTON_CLASS = "__solid"; // CSS module hash looks like "Button-module__XXXXXX__solid"
+
+for (const path of PAGES) {
+  test(`${path} has no axe wcag2a/wcag2aa violations`, async ({ page }) => {
+    await page.goto(path);
+    const results = await new AxeBuilder({ page })
+      .withTags(["wcag2a", "wcag2aa"])
+      .analyze();
+
+    const violations = results.violations
+      .map((violation) => {
+        if (violation.id !== "color-contrast") return violation;
+        // Matched on the node's full `html` (its actual class attribute), not `target` — axe
+        // minimizes `target` to whatever CSS selector is shortest-and-unique *on that page*,
+        // which is sometimes just `.Button-module__XXXXXX__lg` with no "solid" in it at all.
+        const nodes = violation.nodes.filter((node) => !node.html.includes(SOLID_BUTTON_CLASS));
+        return { ...violation, nodes };
+      })
+      .filter((violation) => violation.nodes.length > 0);
+
+    expect(violations, JSON.stringify(violations, null, 2)).toEqual([]);
   });
 }

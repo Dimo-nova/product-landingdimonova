@@ -100,9 +100,13 @@ test.describe("mobile header", () => {
   test("hamburger opens a panel with accordions", async ({ page }) => {
     await page.goto("/");
     await expect(page.getByRole("navigation", { name: "Main" })).toBeHidden();
-    await page.getByRole("button", { name: "Open menu" }).click();
     const panel = page.getByRole("dialog", { name: "Menu" });
-    await expect(panel).toBeVisible();
+    // The toggle is in the server HTML before React attaches its handler, so under parallel
+    // load a click can land before hydration and be swallowed. Retry until the panel opens.
+    await expect(async () => {
+      await page.getByRole("button", { name: "Open menu" }).click();
+      await expect(panel).toBeVisible({ timeout: 2000 });
+    }).toPass({ timeout: 15000 });
     await panel.getByRole("button", { name: "Features" }).click();
     await expect(panel.getByRole("link", { name: /Digital menu/ })).toBeVisible();
     await panel.getByRole("link", { name: "Pricing" }).click();
@@ -112,8 +116,12 @@ test.describe("mobile header", () => {
   test("mobile panel traps focus and restores it on Escape", async ({ page }) => {
     await page.goto("/");
     const toggle = page.getByRole("button", { name: "Open menu" });
-    await toggle.click();
     const panel = page.getByRole("dialog", { name: "Menu" });
+    // Same hydration race as above: retry the click until the panel is actually open.
+    await expect(async () => {
+      await toggle.click();
+      await expect(panel).toBeVisible({ timeout: 2000 });
+    }).toPass({ timeout: 15000 });
     await expect(panel.getByRole("button", { name: "Close menu" })).toBeFocused();
     await page.keyboard.press("Shift+Tab");
     const inside = await page.evaluate(() => !!document.activeElement?.closest('[role=dialog][aria-label="Menu"]'));
