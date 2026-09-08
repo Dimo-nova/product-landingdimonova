@@ -7,6 +7,7 @@ import PageHero from "@/components/page/PageHero";
 import FeatureBlock from "@/components/page/FeatureBlock";
 import CardGrid from "@/components/page/CardGrid";
 import Card from "@/components/page/Card";
+import Eyebrow from "@/components/page/Eyebrow";
 import PageCta from "@/components/page/PageCta";
 import styles from "./page.module.css";
 
@@ -87,14 +88,19 @@ export default async function FeaturesPage({ params }: { params: Promise<{ local
         frame="none"
       />
 
-      {/* Block D — done-for-you onboarding. Best-fit anchor: training (exact match: c4 is team training). */}
+      {/* Block D — done-for-you onboarding. Best-fit anchor: training (exact match: c4 is team training).
+          The anchor is a zero-height `.anchor` span immediately before the section, same mechanism as
+          the other seven anchors above — not an id on the heading itself, which has no
+          scroll-margin-top and would land under the sticky header. */}
+      <span id="training" className={styles.anchor} />
       <section className={styles.onboarding}>
         <Container>
           <div className={styles.onboardingHead}>
-            <p className={styles.eyebrow}>{t("features.f4.eyebrow")}</p>
-            <h2 id="training" className={styles.onboardingTitle}>
-              {t("features.f4.title")}
-            </h2>
+            {/* tone="dark": this block sits inside .onboarding's dark --ink band, not the page's
+                light ground — see Eyebrow's doc comment for why --brand (not --brand-deep) is
+                correct here. */}
+            <Eyebrow tone="dark">{t("features.f4.eyebrow")}</Eyebrow>
+            <h2 className={styles.onboardingTitle}>{t("features.f4.title")}</h2>
           </div>
           <CardGrid columns={4}>
             <Card

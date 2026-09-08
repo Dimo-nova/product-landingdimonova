@@ -14,7 +14,9 @@ for (const p of pages) {
 
 // Features page: the home page's eight service cards and the header's Resources menu link to
 // /features#menu, #ai, #ordering, #training, #multi, #reviews, #daily, #translate. Every one of
-// those anchors must resolve to a real element on this page, or the link scrolls nowhere.
+// those anchors must resolve to a real element on this page, or the link scrolls nowhere — and
+// that element's scroll-margin-top must clear the sticky header, or the target lands hidden
+// behind it (see app/[locale]/features/page.module.css .anchor).
 const FEATURES_ANCHORS = ["menu", "ai", "ordering", "training", "multi", "reviews", "daily", "translate"];
 
 test("features page has exactly one h1", async ({ page }) => {
@@ -22,10 +24,15 @@ test("features page has exactly one h1", async ({ page }) => {
   await expect(page.locator("h1")).toHaveCount(1);
 });
 
-test("all eight /features anchors resolve to an element", async ({ page }) => {
-  await page.goto("/features");
-  for (const id of FEATURES_ANCHORS) {
-    await expect(page.locator(`#${id}`), `#${id} should exist on /features`).toHaveCount(1);
+test("all eight /features anchors resolve to an element clear of the sticky header", async ({ page }) => {
+  for (const anchor of FEATURES_ANCHORS) {
+    await page.goto(`/features#${anchor}`);
+    const headerBox = await page.getByRole("banner").boundingBox();
+    const target = page.locator(`#${anchor}`);
+    await expect(target).toHaveCount(1);
+    const box = await target.boundingBox();
+    expect(box, `#${anchor} has no box`).not.toBeNull();
+    expect(box!.y, `#${anchor} lands under the sticky header`).toBeGreaterThanOrEqual(headerBox!.height - 2);
   }
 });
 

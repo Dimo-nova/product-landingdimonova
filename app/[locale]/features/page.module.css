@@ -42,15 +42,6 @@
   margin-bottom: clamp(40px, 5vw, 56px);
 }
 
-.eyebrow {
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--brand);
-  margin: 0 0 16px;
-}
-
 .onboardingTitle {
   /* Inherits --on-dark-text from .onboarding. */
   margin: 0;
