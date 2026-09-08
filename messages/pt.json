@@ -246,7 +246,7 @@
         ],
         "proposed": "Proposed changes",
         "apply": "Apply selected",
-        "toast": "{count} dishes updated"
+        "toast": "{count, plural, one {# dish updated} other {# dishes updated}}"
       }
     },
     "balamo": {

@@ -265,7 +265,15 @@ export default function AiDemo() {
           </div>
         </div>
 
-        <div className={[styles.toast, phase === "applied" && styles.toastShow].filter(Boolean).join(" ")} role="status" aria-live="polite">
+        {/*
+          No role="status"/aria-live here: the demo autoplays and cycles forever, and an
+          unsolicited live region announcing "N dishes updated" every few seconds for the
+          whole session — no matter where the visitor is on the page — is worse than no
+          announcement at all. The toast is purely decorative for screen-reader users; the
+          tab's selected state and panel content (both already exposed via the tablist below)
+          remain reachable on demand.
+        */}
+        <div className={[styles.toast, phase === "applied" && styles.toastShow].filter(Boolean).join(" ")}>
           {phase === "applied" ? t("toast", { count: rows.length }) : ""}
         </div>
       </div>

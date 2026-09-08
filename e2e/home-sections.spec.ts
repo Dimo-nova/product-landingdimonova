@@ -37,6 +37,18 @@ test("the AI section cycles its tabs and applies a change", async ({ page }) => 
   await expect(demo).toContainText("Translate the menu into German");
 });
 
+test("the AI demo pluralizes the toast for the single-row descriptions tab", async ({ page }) => {
+  // The third tab ("Descriptions") has exactly one row, so home.ai.demo.toast must be an
+  // ICU plural — the naive "{count} dishes updated" string would render on screen every
+  // cycle for this tab.
+  await page.goto("/#ai");
+  const demo = page.locator("[data-ai-demo]");
+  const tabs = demo.getByRole("tab");
+  await tabs.nth(2).click();
+  await expect(demo).toContainText(/1 dish updated/, { timeout: 10000 });
+  await expect(demo).not.toContainText(/1 dishes updated/);
+});
+
 test("the AI tabs are fully operable with the keyboard", async ({ page }) => {
   await page.goto("/");
   const tabs = page.locator("[data-ai-demo]").getByRole("tab");

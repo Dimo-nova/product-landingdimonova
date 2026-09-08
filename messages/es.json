@@ -246,7 +246,7 @@
         ],
         "proposed": "Cambios propuestos",
         "apply": "Aplicar seleccionados",
-        "toast": "{count} platos actualizados"
+        "toast": "{count, plural, one {# plato actualizado} other {# platos actualizados}}"
       }
     },
     "balamo": {
