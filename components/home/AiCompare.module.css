@@ -1,0 +1,113 @@
+.section {
+  background: var(--brand);
+  color: #fff;
+  text-align: center;
+  padding: clamp(72px, 10vw, 128px) 0;
+}
+
+.head {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.title {
+  color: #fff;
+  margin: 0;
+}
+
+/* White text on coral is a weak combination for small copy, so the lead line is pinned at
+   18px semibold and nothing smaller is ever placed directly on this background. */
+.lead {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.5;
+  color: #fff;
+  margin: 16px 0 0;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  margin-top: clamp(40px, 6vw, 64px);
+}
+
+.providers {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.provider {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+  transition: transform 0.2s var(--ease-out), background 0.2s;
+}
+
+.provider:hover,
+.provider:focus-visible {
+  background: rgba(255, 255, 255, 0.22);
+  transform: translateY(-4px);
+}
+
+/* The shared Button component's largest size ("lg") is still only 16px — fine on the paper
+   and ink surfaces it was designed for, but under the 18px floor this section requires for
+   any text sitting directly on the coral. `!important` overrides Button's own `.lg` rule
+   deliberately: this is a one-off exception for this background, not a component change. */
+.copyBtn {
+  font-size: 18px !important;
+}
+
+.mark {
+  display: block;
+  width: 24px;
+  height: 24px;
+  background-color: currentColor;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
+/* A self-contained white card, not the bare coral: everything inside it (including the
+   13px label) sits on white, so the 18px-on-coral rule above never applies to it. */
+.fallback {
+  width: 100%;
+  max-width: 560px;
+  text-align: left;
+  background: #fff;
+  border-radius: var(--radius-card);
+  padding: 20px;
+}
+
+.fallbackLabel {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+
+.fallbackArea {
+  width: 100%;
+  min-height: 120px;
+  border-radius: 12px;
+  border: 1px solid var(--mist);
+  background: var(--cream);
+  color: var(--ink);
+  padding: 14px 16px;
+  font-size: 14px;
+  line-height: 1.5;
+  resize: vertical;
+}

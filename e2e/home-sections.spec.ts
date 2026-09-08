@@ -141,3 +141,43 @@ test("populated reviews render as cards", async ({ page }) => {
   await page.goto("/#reviews");
   await expect(page.locator("[data-review-card]").first()).toBeVisible();
 });
+
+test("focusing a claim reveals its explanation", async ({ page }) => {
+  // Mirrors "hovering a claim reveals its explanation" above: the pills live inside a
+  // continuously-scrolling Marquee track, so reduced motion freezes it, keeping the
+  // focused item's box stable for the assertion.
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.goto("/");
+  const item = page.locator("[data-diff-item]").first();
+  await item.focus();
+  await expect(item.locator("[data-diff-body]")).toBeVisible();
+});
+
+test("each AI provider link carries the full prompt", async ({ page }) => {
+  await page.goto("/#ai-compare");
+  const links = page.locator("#ai-compare a[target='_blank']");
+  await expect(links).toHaveCount(4);
+  const hrefs = await links.evaluateAll((els) => els.map((e) => (e as HTMLAnchorElement).href));
+  for (const host of ["chat.openai.com", "claude.ai", "perplexity.ai", "google.com"]) {
+    expect(hrefs.some((h) => new URL(h).host.includes(host))).toBe(true);
+  }
+  for (const h of hrefs) {
+    const q = new URL(h).searchParams.get("q");
+    expect(q).toContain("Dimonova");
+    expect(q).not.toContain("Bad ones come to you first");
+  }
+});
+
+test("the prompt describes the review flow accurately", async ({ page }) => {
+  await page.goto("/#ai-compare");
+  const href = await page.locator("#ai-compare a[target='_blank']").first().getAttribute("href");
+  const q = new URL(href!).searchParams.get("q")!;
+  expect(q).toContain("before sending everyone on to Google");
+});
+
+test("copy button reports success", async ({ page, context }) => {
+  await context.grantPermissions(["clipboard-read", "clipboard-write"]);
+  await page.goto("/#ai-compare");
+  await page.getByRole("button", { name: "Copy the question" }).click();
+  await expect(page.getByRole("button", { name: "Copied" })).toBeVisible();
+});

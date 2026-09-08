@@ -7,6 +7,7 @@ import AiPanel from "@/components/home/AiPanel";
 import BalamoShowcase from "@/components/home/BalamoShowcase";
 import DifferentiatorBand from "@/components/home/DifferentiatorBand";
 import Reviews from "@/components/home/Reviews";
+import AiCompare from "@/components/home/AiCompare";
 import PricingTeaser from "@/components/sections/PricingTeaser";
 import HomeCta from "@/components/sections/HomeCta";
 
@@ -28,6 +29,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       <DifferentiatorBand />
       <Reviews />
       <PricingTeaser />
+      <AiCompare />
       <HomeCta />
     </main>
   );
