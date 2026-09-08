@@ -34,13 +34,15 @@ Status legend: `[ ]` not started · `[~]` in progress · `[x]` done
       a player/poster/play button for it — a broken or dead-end control would repeat the
       defect the home page had to remove this phase. Once the video lands, wire it into
       `PageHero`'s `children` slot there.
-- [ ] **About page team roles.** `about.team.role1`/`role2` (all five locales) read like they
-      were meant as Pablo's and Sergio's captions ("Founder & build lead" / "Design & styling",
-      matching the "why" copy's designer/developer framing) instead of the hardcoded
-      "Co-owner" both cards currently show. Phase 4 Task 5 left the two real cards' copy
-      untouched — restyling, not rewriting, per the phase's scope rule — and used
-      `role3`/`role4` for the two new placeholder cards instead. Worth a copy decision: either
-      wire `role1`/`role2` into Pablo/Sergio's cards, or drop them if they're stale.
+- [ ] **About page team roles.** The team section deliberately shows just the two real
+      founders, Pablo and Sergio, mirroring the legacy page — it should not have grown two
+      placeholder cards during the Phase 4 restyle. `about.team.role1`/`role2` (all five
+      locales) read like they were meant as Pablo's and Sergio's captions ("Founder & build
+      lead" / "Design & styling", matching the "why" copy's designer/developer framing)
+      instead of the hardcoded "Co-owner" both cards currently show. `about.team.name`,
+      `role3` and `role4` are leftover copy from an earlier four-person design that no longer
+      has cards to render it. Worth a copy decision: either wire `role1`/`role2` into
+      Pablo/Sergio's cards, or prune all five of these unused keys if they're stale.
 - [ ] **Bálamo's real numbers.** Replace the three `"—"` placeholders in
       `home.balamo.stats` (`messages/en.json` and `messages/es.json`, then
       `npm run sync:messages`) with the real dishes-managed / languages / average
@@ -84,7 +86,6 @@ Status legend: `[ ]` not started · `[~]` in progress · `[x]` done
 - [ ] The header's **Clients menu**, the **footer** and the home page's **Bálamo showcase** all link to `/cases`, which currently redirects home, so those links lead nowhere useful today.
 - [ ] The Bálamo showcase's **"see the case"** button will need an actual Bálamo case study before it means anything.
 - [ ] Replace the home-page **testimonial** ("Placeholder testimonial…") and client name/role.
-- [ ] Replace the About page **team** section's 2 remaining "Name placeholder" cards with real names, roles and portraits (Pablo and Sergio already have real photos and names).
 - [ ] Replace the 6 **"venue logo"** placeholders in the home logo strip.
 - [ ] Swap all striped **placeholder image blocks** (`repeating-linear-gradient`) for real photos/screenshots: hero phone/dashboard, product shot, analytics, case-study photos, team portraits.
 - [ ] Confirm / update **pricing** numbers — currently "From €600" one-time and "From €45/mo".

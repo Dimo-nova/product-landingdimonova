@@ -97,9 +97,11 @@ test("the two real headshots on the about page keep descriptive alt text (name p
   }
 });
 
-test("the about page team section keeps two placeholder cards alongside the two real headshots", async ({ page }) => {
+test("the about page shows the two real founders and no placeholder people", async ({ page }) => {
   await page.goto("/about");
-  await expect(page.getByText("Name placeholder", { exact: true })).toHaveCount(2);
+  await expect(page.getByAltText(/Pablo, co-owner/)).toBeVisible();
+  await expect(page.getByAltText(/Sergio, co-owner/)).toBeVisible();
+  await expect(page.getByText("Name placeholder")).toHaveCount(0);
 });
 
 test("the about page hero has no dead-end video control", async ({ page }) => {

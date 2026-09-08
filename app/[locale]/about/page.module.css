@@ -106,7 +106,7 @@
   color: var(--brand);
 }
 
-/* ---- Team: two real headshots plus two placeholder cards ---- */
+/* ---- Team: the two real headshots, mirroring the legacy two-card layout ---- */
 
 .teamSection {
   padding-block: clamp(40px, 6vw, 72px);
@@ -114,6 +114,11 @@
 
 .teamTitle {
   margin: 0 0 32px;
+}
+
+/* Legacy constrained the two-card row to ~560px so the cards don't stretch full-width. */
+.teamGridWrap {
+  max-width: 560px;
 }
 
 .teamCard {
@@ -131,25 +136,6 @@
 
 .photoImage {
   object-fit: cover;
-}
-
-/* Same diagonal-stripe placeholder treatment as the cases page's venue photos. */
-.photoPlaceholder {
-  position: relative;
-  aspect-ratio: 1;
-  border-radius: var(--radius-card);
-  background: repeating-linear-gradient(45deg, var(--cream), var(--cream) 8px, var(--mist) 8px, var(--mist) 16px);
-}
-
-.photoBadge {
-  position: absolute;
-  top: 14px;
-  left: 14px;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--ink-2);
 }
 
 .teamName {
