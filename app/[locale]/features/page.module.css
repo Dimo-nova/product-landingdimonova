@@ -1,0 +1,66 @@
+/*
+ * Zero-height scroll targets for the eight /features#... anchors the home page's service
+ * cards and the header's Resources menu depend on. Several anchors land on the same content
+ * block (see the page's report for the mapping) — each still needs its own id, so they sit as
+ * adjacent markers immediately before the block they point at rather than on a single heading.
+ */
+.anchor {
+  display: block;
+  height: 0;
+  scroll-margin-top: var(--header-h);
+}
+
+/* t.rich mapping for the <strong>/<span> tags embedded in the f1-f3 bullet copy. */
+.strong {
+  font-weight: 600;
+}
+
+.venueUrl {
+  font-family: var(--font-instrument-serif), serif;
+  font-style: italic;
+}
+
+/*
+ * Onboarding (f4) section: full-bleed dark band, matching the legacy layout's shape. Card and
+ * CardGrid are reused as-is — overriding the custom properties they read (--paper, --mist,
+ * --ink-2) locally is enough to repaint them for a dark ground without touching their code.
+ * Text colour deliberately uses --on-dark-text/--paper-on-dark, not --paper: this scope
+ * redefines --paper itself (for Card's background), so a `color: var(--paper)` here would
+ * resolve to the *new* local value (--ink-raised) instead of the original white.
+ */
+.onboarding {
+  background: var(--ink);
+  color: var(--on-dark-text);
+  --paper: var(--ink-raised);
+  --mist: var(--on-dark-border);
+  --ink-2: var(--on-dark-muted);
+  padding-block: clamp(56px, 8vw, 104px);
+}
+
+.onboardingHead {
+  max-width: 720px;
+  margin-bottom: clamp(40px, 5vw, 56px);
+}
+
+.eyebrow {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--brand);
+  margin: 0 0 16px;
+}
+
+.onboardingTitle {
+  /* Inherits --on-dark-text from .onboarding. */
+  margin: 0;
+}
+
+.numeral {
+  display: block;
+  font-family: var(--font-instrument-serif), serif;
+  font-style: italic;
+  font-size: 28px;
+  line-height: 1;
+  color: var(--brand);
+}

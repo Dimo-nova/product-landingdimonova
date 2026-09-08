@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Container from "@/components/ui/Container";
 import DeviceFrame from "@/components/ui/DeviceFrame";
 import styles from "./FeatureBlock.module.css";
@@ -12,10 +13,17 @@ type Props = {
   imageAlt: string;
   /** Which side the screenshot sits on at desktop width. Reading order in the DOM is always content-then-image. */
   side?: "left" | "right";
+  /**
+   * "phone" (default, matches the original contract) wraps the screenshot in DeviceFrame's
+   * bezel — right for a portrait phone capture. "none" renders a plain `next/image` with the
+   * card radius and a soft shadow instead: a landscape desktop screenshot squeezed into a
+   * phone bezel looks broken.
+   */
+  frame?: "phone" | "none";
 };
 
 /** Two-column prose-and-screenshot block (the features page's repeating shape). Stacks below 900px. */
-export default function FeatureBlock({ eyebrow, title, body, bullets, image, imageAlt, side = "left" }: Props) {
+export default function FeatureBlock({ eyebrow, title, body, bullets, image, imageAlt, side = "left", frame = "phone" }: Props) {
   return (
     <Container>
       <div className={[styles.grid, side === "right" && styles.imageRight].filter(Boolean).join(" ")}>
@@ -35,7 +43,13 @@ export default function FeatureBlock({ eyebrow, title, body, bullets, image, ima
           )}
         </div>
         <div className={styles.media}>
-          <DeviceFrame src={image} alt={imageAlt} />
+          {frame === "none" ? (
+            <div className={styles.plainMedia}>
+              <Image src={image} alt={imageAlt} fill sizes="(max-width: 900px) 90vw, 560px" className={styles.plainImage} />
+            </div>
+          ) : (
+            <DeviceFrame src={image} alt={imageAlt} />
+          )}
         </div>
       </div>
     </Container>

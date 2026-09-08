@@ -18,6 +18,21 @@
   min-width: 0;
 }
 
+/* frame="none": a landscape desktop screenshot, not a phone capture — plain image, card
+   radius and a soft shadow instead of DeviceFrame's phone bezel. */
+.plainMedia {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1318 / 907;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+}
+
+.plainImage {
+  object-fit: cover;
+}
+
 .imageRight .content {
   order: 1;
 }
