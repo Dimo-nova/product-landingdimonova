@@ -208,13 +208,7 @@
       "title": "Lo dicen ellos.",
       "badge": "{rating}/5 en Google",
       "pending": "Reseñas muy pronto.",
-      "more": "Leer más",
-      "less": "Ver menos",
-      "viewOnGoogle": "Verla en Google",
       "playVideo": "Reproducir la reseña de {name}",
-      "prev": "Reseña anterior",
-      "next": "Reseña siguiente",
-      "position": "Reseña {current} de {total}",
       "stars": "{rating} de 5"
     },
     "aiCompare": {

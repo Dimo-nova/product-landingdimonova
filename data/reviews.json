@@ -7,7 +7,8 @@
       "name": "Restaurante Calsot",
       "venue": "Cocina catalana, Madrid",
       "poster": "/assets/reviews/calsot-poster.jpg",
-      "src": "https://dfulbdzlkaubgdksalnp.supabase.co/storage/v1/object/public/web-media/reviews/calsot-producto.mp4"
+      "src": "https://dfulbdzlkaubgdksalnp.supabase.co/storage/v1/object/public/web-media/reviews/calsot-producto.mp4",
+      "reviewId": "calsot-google"
     },
     {
       "id": "pulperia",

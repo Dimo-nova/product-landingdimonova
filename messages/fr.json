@@ -208,13 +208,7 @@
       "title": "Their words, not ours.",
       "badge": "{rating}/5 sur Google",
       "pending": "Reviews coming soon.",
-      "more": "Read more",
-      "less": "Show less",
-      "viewOnGoogle": "See it on Google",
       "playVideo": "Play the review from {name}",
-      "prev": "Previous review",
-      "next": "Next review",
-      "position": "Review {current} of {total}",
       "stars": "{rating} out of 5"
     },
     "aiCompare": {

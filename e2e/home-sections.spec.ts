@@ -193,8 +193,6 @@ test("the reviews section shows the Google rating badge, not the empty state", a
   const s = page.locator("#reviews");
   await expect(s).toBeVisible();
   await expect(s).not.toContainText("Reviews coming soon.");
-  // The rating badge specifically, not the per-card "See it on Google" links, which also end
-  // in those two words.
   await expect(s.getByText(/^\d(?:[.,]\d)?\/5 on Google$/)).toHaveCount(1);
 });
 
@@ -203,6 +201,44 @@ test("populated reviews render as cards", async ({ page }) => {
   test.skip(data.google.length === 0 && data.videos.length === 0, "no review content yet");
   await page.goto("/#reviews");
   await expect(page.locator("[data-review-card]").first()).toBeVisible();
+});
+
+test("the review rows alternate: the first leads with its video, the second with its words", async ({ page }) => {
+  // The owner asked for a zig-zag: video left / words right, then words left / video right.
+  // DOM order follows the visual order, so reading the cards top to bottom is the assertion.
+  const { default: data } = await import("../data/reviews.json", { with: { type: "json" } });
+  test.skip(data.videos.length < 2, "needs two client videos to alternate");
+  await page.goto("/#reviews");
+
+  const cards = page.locator("#reviews [data-review-card]");
+  const kinds = await cards.evaluateAll((els) => els.map((el) => el.getAttribute("data-review-card")));
+  const ids = await cards.evaluateAll((els) => els.map((el) => el.getAttribute("data-review-id")));
+
+  // Row 1: the video first, then that client's words.
+  expect(kinds[0]).toBe("video");
+  expect(ids[0]).toBe(data.videos[0].id);
+  expect(kinds[1]).not.toBe("video");
+  // Row 2: the words half first (a written review once there is one, the venue card until
+  // then), and the video after it.
+  expect(kinds[2]).not.toBe("video");
+  expect(kinds[3]).toBe("video");
+  expect(ids[3]).toBe(data.videos[1].id);
+
+  // And the words beside the first video really are the review that video declares, not a
+  // positional guess at one.
+  const declared = (data.videos[0] as { reviewId?: string }).reviewId;
+  const paired = data.google.find((review) => review.id === declared);
+  test.skip(!paired, "the first video declares no written review yet");
+  await expect(cards.nth(1)).toContainText(paired!.text.slice(0, 40));
+});
+
+test("no review card links out to Google — only the rating badge does", async ({ page }) => {
+  await page.goto("/#reviews");
+  // The per-card "See it on Google" link is gone for good; a card holds no links at all.
+  await expect(page.locator("#reviews [data-review-card] a")).toHaveCount(0);
+  const links = page.locator("#reviews a");
+  await expect(links).toHaveCount(1);
+  await expect(links.first()).toHaveText(/\/5 on Google$/);
 });
 
 test("the claim marquee keeps running under the pointer", async ({ page }) => {
