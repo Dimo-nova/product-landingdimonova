@@ -126,3 +126,18 @@ test("hovering a claim reveals its explanation", async ({ page }) => {
   await item.hover();
   await expect(item.locator("[data-diff-body]")).toBeVisible();
 });
+
+test("the reviews section states that content is pending while the data file is empty", async ({ page }) => {
+  await page.goto("/#reviews");
+  const s = page.locator("#reviews");
+  await expect(s).toBeVisible();
+  await expect(s).toContainText("Reviews coming soon.");
+  await expect(s.getByText(/on Google$/)).toHaveCount(0);
+});
+
+test("populated reviews render as cards", async ({ page }) => {
+  const { default: data } = await import("../data/reviews.json", { with: { type: "json" } });
+  test.skip(data.google.length === 0 && data.videos.length === 0, "no review content yet");
+  await page.goto("/#reviews");
+  await expect(page.locator("[data-review-card]").first()).toBeVisible();
+});

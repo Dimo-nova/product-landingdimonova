@@ -1,0 +1,283 @@
+.section {
+  background: var(--paper);
+  padding-block: clamp(56px, 8vw, 104px);
+}
+
+.head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: clamp(32px, 5vw, 56px);
+}
+
+.title {
+  margin: 0;
+}
+
+.pending {
+  text-align: center;
+  color: var(--ink-2);
+  font-size: var(--text-lead);
+  padding-block: clamp(40px, 8vw, 88px);
+}
+
+/* ==== Carousel shell ==== */
+
+.carousel {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.viewport {
+  overflow: hidden;
+}
+
+.track {
+  display: flex;
+  gap: 20px;
+  touch-action: pan-y;
+  cursor: grab;
+}
+
+.track:active {
+  cursor: grabbing;
+}
+
+.slide {
+  flex: 0 0 auto;
+  width: min(300px, 78vw);
+  /* Flex items default to `min-width: auto` (their content's min-content size), which can
+     override an explicit `width` for non-shrinking items with long unbreakable content.
+     Pinning it to 0 keeps every slide at the width above regardless of card content. (The
+     actual horizontal-overflow bug this section briefly had came from a different cause --
+     see the comment on `.googleCard` below.) */
+  min-width: 0;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--mist);
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 20px;
+  cursor: pointer;
+  transition: border-color 0.2s var(--ease-out), opacity 0.2s var(--ease-out);
+}
+
+.arrow:hover:not(:disabled) {
+  border-color: var(--brand);
+  color: var(--brand);
+}
+
+.arrow:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.dots {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--mist);
+  transition: background 0.2s var(--ease-out), transform 0.2s var(--ease-out);
+}
+
+.dotActive {
+  background: var(--brand);
+  transform: scale(1.3);
+}
+
+/* ==== Video card ==== */
+
+.videoCard {
+  position: relative;
+  aspect-ratio: 9 / 16;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  background: var(--ink);
+  box-shadow: var(--shadow-soft);
+  user-select: none;
+}
+
+.poster {
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.videoGradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(15, 14, 13, 0.85) 0%, transparent 45%);
+}
+
+.playBtn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: none;
+  background: var(--brand);
+  color: var(--paper);
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: var(--shadow-deep);
+  transition: transform 0.2s var(--ease-out);
+}
+
+.playBtn:hover {
+  transform: translate(-50%, -50%) scale(1.06);
+}
+
+.videoCaption {
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  bottom: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  pointer-events: none;
+}
+
+.videoName {
+  color: var(--paper);
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.videoVenue {
+  color: var(--on-dark-muted);
+  font-size: 13px;
+}
+
+/* ==== Google card ==== */
+
+.googleCard {
+  /* `position: relative` makes this card the containing block for the visually-hidden "5 out
+     of 5" span below (`position: absolute`). Without it, that span's containing block would
+     resolve past `.viewport`'s `overflow: hidden` (which isn't itself positioned, so it never
+     becomes a containing block) all the way up to the document root -- and since the flex
+     track it lives in is laid out at its full unclamped width, each card's copy of that span
+     would carry a real, large static-position offset that leaks into
+     `document.documentElement.scrollWidth`, making the whole page horizontally scrollable with
+     no visible cause. */
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: var(--cream);
+  border-radius: var(--radius-card);
+  padding: 28px 24px;
+}
+
+.googleHead {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.avatar {
+  flex: 0 0 auto;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--brand);
+  color: var(--paper);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.googleName {
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.googleVenue {
+  font-size: 13px;
+  color: var(--ink-2);
+}
+
+.stars {
+  color: var(--brand);
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+
+.text {
+  margin: 0 0 8px;
+  color: var(--ink-2);
+  font-size: 15px;
+  line-height: 1.55;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.textExpanded {
+  -webkit-line-clamp: unset;
+  overflow: visible;
+}
+
+.toggle {
+  align-self: flex-start;
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--brand-deep);
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  margin-bottom: 12px;
+}
+
+.toggle:hover {
+  text-decoration: underline;
+}
+
+.link {
+  margin-top: auto;
+  align-self: flex-start;
+  color: var(--ink);
+  font-weight: 600;
+  font-size: 14px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+@media (max-width: 640px) {
+  .head {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
