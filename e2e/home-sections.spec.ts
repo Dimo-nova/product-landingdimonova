@@ -83,6 +83,34 @@ test("the differentiator band lists all ten claims", async ({ page }) => {
   expect(new Set(titles).size).toBe(10);
 });
 
+test("keyboard focus pauses the AI demo instead of advancing under the reader", async ({ page }) => {
+  test.setTimeout(30000);
+  await page.goto("/");
+  const demo = page.locator("[data-ai-demo]");
+  const tabs = demo.getByRole("tab");
+  await tabs.nth(1).focus();
+  await expect(tabs.nth(1)).toHaveAttribute("aria-selected", "true");
+  // Well past the auto-advance hold, the focused tab must still be the selected one.
+  await page.waitForTimeout(12000);
+  await expect(tabs.nth(1)).toHaveAttribute("aria-selected", "true");
+  await expect(tabs.nth(1)).toBeFocused();
+});
+
+test("the Bálamo pills stay inside the viewport at two-column widths", async ({ page }) => {
+  for (const width of [1000, 1280]) {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto("/");
+    const pills = page.locator("[data-balamo-pill]");
+    await expect(pills).toHaveCount(5);
+    for (let i = 0; i < 5; i++) {
+      const box = await pills.nth(i).boundingBox();
+      expect(box, `pill ${i} at ${width}px has no box`).not.toBeNull();
+      expect(box!.x, `pill ${i} at ${width}px starts off-screen`).toBeGreaterThanOrEqual(0);
+      expect(box!.x + box!.width, `pill ${i} at ${width}px overflows`).toBeLessThanOrEqual(width);
+    }
+  }
+});
+
 test("hovering a claim reveals its explanation", async ({ page }) => {
   // The claim pills live inside a continuously-scrolling Marquee track. Playwright's hover()
   // first waits for the target to be "stable" (an identical bounding box across two

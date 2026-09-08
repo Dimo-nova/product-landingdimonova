@@ -15,8 +15,8 @@ type Stat = { value: string; label: string };
  *
  * The rings and the pills' bob loop are purely decorative motion — the rings are `aria-hidden`,
  * and the bob animation is driven through `motion`'s `animate` prop, which the app-wide
- * `MotionConfig reducedMotion="user"` (see components/Providers.tsx) automatically turns off
- * under `prefers-reduced-motion`, so the pills sit still rather than bob.
+ * `MotionConfig reducedMotion="user"` (see components/layout/Providers.tsx) automatically turns
+ * off under `prefers-reduced-motion`, so the pills sit still rather than bob.
  *
  * The three stat values are the literal placeholder "—": the real figures haven't been supplied
  * yet, so they're rendered as-is rather than invented (see CLAUDE.md).

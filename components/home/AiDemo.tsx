@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef, useState, type KeyboardEvent } from "react";
+import { useEffect, useRef, useState, type FocusEvent, type KeyboardEvent } from "react";
 import { useTranslations } from "next-intl";
 import styles from "./AiDemo.module.css";
 
@@ -17,9 +17,12 @@ const PAUSE_RETRY_MS = 100;
 /**
  * Animated mock of the dashboard assistant: types a prompt, proposes row-by-row changes,
  * "applies" them and toasts a confirmation, then cycles to the next tab. Entirely local —
- * no network calls. The hand-off to the next tab holds while the pointer is over the demo
- * or the tab is hidden, so a change already on screen is never swapped out mid-read; the
- * in-progress typing/reveal for the *current* tab always runs to completion.
+ * no network calls. The hand-off to the next tab holds while the pointer is over the demo,
+ * the demo has DOM focus (so a keyboard user reading a tab doesn't have it swapped out from
+ * under them), or the tab is hidden, so a change already on screen is never swapped out
+ * mid-read; the in-progress typing/reveal for the *current* tab always runs to completion.
+ * When the cycle does advance on its own while a tab button holds focus, focus moves to the
+ * newly-selected tab so it never falls outside the roving-tabindex sequence.
  */
 export default function AiDemo() {
   const t = useTranslations("home.ai.demo");
@@ -42,7 +45,8 @@ export default function AiDemo() {
   const [phase, setPhase] = useState<Phase>("applied");
   const [checked, setChecked] = useState<boolean[]>(() => new Array((allRows[0] ?? []).length).fill(true));
 
-  const pausedRef = useRef(false);
+  const hoveredRef = useRef(false);
+  const focusedRef = useRef(false);
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
 
   useEffect(() => {
@@ -69,7 +73,7 @@ export default function AiDemo() {
     const waitGated = (delay: number, action: () => void) => {
       const attempt = () => {
         if (cancelled) return;
-        if (pausedRef.current || document.visibilityState !== "visible") {
+        if (hoveredRef.current || focusedRef.current || document.visibilityState !== "visible") {
           timers.push(setTimeout(attempt, PAUSE_RETRY_MS));
           return;
         }
@@ -80,7 +84,14 @@ export default function AiDemo() {
 
     const advanceTab = () => {
       if (cancelled) return;
-      setTab((prev) => (prev + 1) % 3);
+      const next = (tab + 1) % 3;
+      // Only steal focus back if it was already on one of the tabs — an automatic advance
+      // must never yank focus away from something else on the page.
+      const focusWasOnTab = tabRefs.current.some((el) => el !== null && el === document.activeElement);
+      setTab(next);
+      if (focusWasOnTab) {
+        tabRefs.current[next]?.focus();
+      }
     };
 
     const applyPhase = () => {
@@ -153,6 +164,14 @@ export default function AiDemo() {
     tabRefs.current[i]?.focus();
   };
 
+  // Automatic-activation roving tabindex: moving DOM focus onto a tab (arrow keys, a click,
+  // or focus arriving some other way) selects it too, so a tab can never hold focus while a
+  // *different* tab's panel is showing — which is what the read-then-hold pause below relies
+  // on to know which panel someone is actually reading.
+  const handleTabFocus = (i: number) => {
+    if (i !== tab) setTab(i);
+  };
+
   const handleTabKeyDown = (e: KeyboardEvent<HTMLButtonElement>) => {
     const count = tabs.length;
     let target: number | null = null;
@@ -176,12 +195,22 @@ export default function AiDemo() {
     focusTab(target);
   };
 
+  const handleBlurCapture = (e: FocusEvent<HTMLDivElement>) => {
+    // A blur that merely moves focus between the tabs (or into the panel) is not focus
+    // leaving the component — only clear the flag once it has genuinely gone elsewhere.
+    if (!e.currentTarget.contains(e.relatedTarget as Node | null)) {
+      focusedRef.current = false;
+    }
+  };
+
   return (
     <div
       className={styles.demo}
       data-ai-demo
-      onMouseEnter={() => { pausedRef.current = true; }}
-      onMouseLeave={() => { pausedRef.current = false; }}
+      onMouseEnter={() => { hoveredRef.current = true; }}
+      onMouseLeave={() => { hoveredRef.current = false; }}
+      onFocusCapture={() => { focusedRef.current = true; }}
+      onBlurCapture={handleBlurCapture}
     >
       <div className={styles.tablist} role="tablist" aria-label={tabs.join(", ")}>
         {tabs.map((label, i) => (
@@ -197,6 +226,7 @@ export default function AiDemo() {
             className={[styles.tab, i === tab && styles.tabActive].filter(Boolean).join(" ")}
             onClick={() => setTab(i)}
             onKeyDown={handleTabKeyDown}
+            onFocus={() => handleTabFocus(i)}
           >
             {label}
           </button>
