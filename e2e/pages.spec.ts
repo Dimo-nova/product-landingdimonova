@@ -79,29 +79,22 @@ test("the cases page is not published yet and redirects home", async ({ page }) 
   await expect(page).toHaveURL("/es");
 });
 
-// About page: the team section keeps its two real headshots (with descriptive alt text) plus
-// two placeholder cards (see TODO.md), and the hero must not grow a dead-end video control —
-// the spec calls for the first client's video here, but that clip doesn't exist yet.
+// About page: the team section (two real headshots, Pablo and Sergio) is rebuilt on the current
+// design system but stays hidden behind TEAM_PUBLISHED in app/[locale]/about/page.tsx — the
+// owner turned it off in commit 249fec2 and this phase must not silently turn it back on. The
+// hero also must not grow a dead-end video control — the spec calls for the first client's video
+// here, but that clip doesn't exist yet.
 
 test("about page has exactly one h1", async ({ page }) => {
   await page.goto("/about");
   await expect(page.locator("h1")).toHaveCount(1);
 });
 
-test("the two real headshots on the about page keep descriptive alt text (name plus role)", async ({ page }) => {
+test("the about page team section stays hidden behind TEAM_PUBLISHED", async ({ page }) => {
   await page.goto("/about");
-  const alts = await page.locator("main img").evaluateAll((els) => els.map((el) => el.getAttribute("alt") ?? ""));
-  expect(alts.length).toBeGreaterThanOrEqual(2);
-  for (const alt of alts) {
-    expect(alt.trim().length, `alt text too short: "${alt}"`).toBeGreaterThan(10);
-  }
-});
-
-test("the about page shows the two real founders and no placeholder people", async ({ page }) => {
-  await page.goto("/about");
-  await expect(page.getByAltText(/Pablo, co-owner/)).toBeVisible();
-  await expect(page.getByAltText(/Sergio, co-owner/)).toBeVisible();
-  await expect(page.getByText("Name placeholder")).toHaveCount(0);
+  await expect(page.getByRole("heading", { name: "The people you'll actually talk to." })).toHaveCount(0);
+  await expect(page.getByAltText(/Pablo, co-owner/)).toHaveCount(0);
+  await expect(page.getByAltText(/Sergio, co-owner/)).toHaveCount(0);
 });
 
 test("the about page hero has no dead-end video control", async ({ page }) => {

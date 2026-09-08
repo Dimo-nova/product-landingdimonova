@@ -1,13 +1,3 @@
-/* Shared eyebrow used above every section heading on this page (mirrors features/cases). */
-.eyebrow {
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--brand);
-  margin: 0 0 16px;
-}
-
 /* ---- Why we exist: prose beside a quote panel ---- */
 
 .whySection {

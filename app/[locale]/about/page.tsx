@@ -5,6 +5,7 @@ import Container from "@/components/ui/Container";
 import PageHero from "@/components/page/PageHero";
 import CardGrid from "@/components/page/CardGrid";
 import Card from "@/components/page/Card";
+import Eyebrow from "@/components/page/Eyebrow";
 import PageCta from "@/components/page/PageCta";
 import styles from "./page.module.css";
 
@@ -15,6 +16,13 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 
 const PRINCIPLE_NUMERALS = { "1": "i.", "2": "ii.", "3": "iii." } as const;
 const PRINCIPLE_NUMS = Object.keys(PRINCIPLE_NUMERALS) as (keyof typeof PRINCIPLE_NUMERALS)[];
+
+/**
+ * The team section was hidden by the owner in commit 249fec2 ("comment out AboutTeam section").
+ * The markup below is rebuilt on the current design system and ready; flip this to true to
+ * publish it. See TODO.md.
+ */
+const TEAM_PUBLISHED: boolean = false;
 
 export default async function AboutPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -39,7 +47,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
         <Container>
           <div className={styles.whyGrid}>
             <div className={styles.whyContent}>
-              <p className={styles.eyebrow}>{t("about.why.eyebrow")}</p>
+              <Eyebrow>{t("about.why.eyebrow")}</Eyebrow>
               <h2 className={styles.whyTitle}>{t("about.why.title")}</h2>
               <p className={styles.whyBody}>{t("about.why.p1")}</p>
               <p className={styles.whyBody}>{t("about.why.p2")}</p>
@@ -57,7 +65,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
       {/* Principles — three Cards, same title/body + roman-numeral-icon shape as features.f4. */}
       <section className={styles.principlesSection}>
         <Container>
-          <p className={styles.eyebrow}>{t("about.principles.eyebrow")}</p>
+          <Eyebrow>{t("about.principles.eyebrow")}</Eyebrow>
           <h2 className={styles.principlesTitle}>{t("about.principles.title")}</h2>
           <CardGrid columns={3}>
             {PRINCIPLE_NUMS.map((n) => (
@@ -82,47 +90,51 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
           for its responsive layout (same call as the cases venue grid) with custom item markup.
 
           Pablo and Sergio's names, "Co-owner" captions and alt text ("Pablo, co-owner" /
-          "Sergio, co-owner") are unchanged from the current page — restyled, not rewritten.
+          "Sergio, co-owner") match the legacy section's copy — restyled, not rewritten. But the
+          owner hid this section on the current page (commit 249fec2); it is NOT what visitors
+          see today. Gated behind TEAM_PUBLISHED above until the owner decides to turn it back on.
 
           about.team.name/role1/role2/role3/role4/portrait are unused copy left over from an
           earlier four-person design; left as-is until the owner decides who else appears here
           (tracked in TODO.md). */}
-      <section className={styles.teamSection}>
-        <Container>
-          <p className={styles.eyebrow}>{t("about.team.eyebrow")}</p>
-          <h2 className={styles.teamTitle}>{t("about.team.title")}</h2>
-          <div className={styles.teamGridWrap}>
-            <CardGrid columns={2}>
-              <div className={styles.teamCard}>
-                <div className={styles.photo}>
-                  <Image
-                    src="/assets/pablo_headshot.jpeg"
-                    alt="Pablo, co-owner"
-                    fill
-                    sizes="(max-width: 640px) 50vw, 260px"
-                    className={styles.photoImage}
-                  />
+      {TEAM_PUBLISHED && (
+        <section className={styles.teamSection}>
+          <Container>
+            <Eyebrow>{t("about.team.eyebrow")}</Eyebrow>
+            <h2 className={styles.teamTitle}>{t("about.team.title")}</h2>
+            <div className={styles.teamGridWrap}>
+              <CardGrid columns={2}>
+                <div className={styles.teamCard}>
+                  <div className={styles.photo}>
+                    <Image
+                      src="/assets/pablo_headshot.jpeg"
+                      alt="Pablo, co-owner"
+                      fill
+                      sizes="(max-width: 640px) 50vw, 260px"
+                      className={styles.photoImage}
+                    />
+                  </div>
+                  <p className={styles.teamName}>Pablo</p>
+                  <p className={styles.teamRole}>Co-owner</p>
                 </div>
-                <p className={styles.teamName}>Pablo</p>
-                <p className={styles.teamRole}>Co-owner</p>
-              </div>
-              <div className={styles.teamCard}>
-                <div className={styles.photo}>
-                  <Image
-                    src="/assets/sergio_headshot.jpg"
-                    alt="Sergio, co-owner"
-                    fill
-                    sizes="(max-width: 640px) 50vw, 260px"
-                    className={styles.photoImage}
-                  />
+                <div className={styles.teamCard}>
+                  <div className={styles.photo}>
+                    <Image
+                      src="/assets/sergio_headshot.jpg"
+                      alt="Sergio, co-owner"
+                      fill
+                      sizes="(max-width: 640px) 50vw, 260px"
+                      className={styles.photoImage}
+                    />
+                  </div>
+                  <p className={styles.teamName}>Sergio</p>
+                  <p className={styles.teamRole}>Co-owner</p>
                 </div>
-                <p className={styles.teamName}>Sergio</p>
-                <p className={styles.teamRole}>Co-owner</p>
-              </div>
-            </CardGrid>
-          </div>
-        </Container>
-      </section>
+              </CardGrid>
+            </div>
+          </Container>
+        </section>
+      )}
 
       <PageCta title={t("about.cta.title")} cta={t("common.demo_arrow")} source="about-cta" />
     </main>

@@ -19,9 +19,12 @@ Status legend: `[ ]` not started · `[~]` in progress · `[x]` done
       (`lib/config.ts` `MAX_UPLOAD_BYTES`, `app/api/contact/route.ts`,
       `components/contact/ContactForm.tsx`). Content gaps this phase surfaced, each tracked
       in detail below: the cases page is rebuilt but stays behind `CASES_PUBLISHED`, waiting
-      on real case studies with written client permission; the About hero still has no
-      founder video; the prices are unconfirmed; `about.team.{name,role1,role2,role3,role4,portrait}`
-      are unused copy left over from an earlier four-person team design; and the dead message
+      on real case studies with written client permission; the About team section is likewise
+      rebuilt but stays behind `TEAM_PUBLISHED` in `app/[locale]/about/page.tsx` — the owner
+      hid it in commit 249fec2 and this phase's rebuild must not turn it back on until the
+      owner decides who appears there, and whether the leftover
+      `about.team.{name,role1,role2,role3,role4,portrait}` message keys are used or pruned; the
+      About hero still has no founder video; the prices are unconfirmed; and the dead message
       keys the eight deleted home sections left behind (next bullet) still need pruning from
       all five locale files.
 - [ ] Phase 4 — the eight home sections deleted when phase 2 replaced them left dead message
@@ -100,6 +103,7 @@ Status legend: `[ ]` not started · `[~]` in progress · `[x]` done
 
 - [ ] Replace placeholder **case studies** (featured + 6 grid cards) with real venues, quotes, photos and results.
 - [ ] The **cases page** is rebuilt but hidden behind `CASES_PUBLISHED` in `app/[locale]/cases/page.tsx`, waiting on real case studies with written client permission.
+- [ ] The **About team section** is likewise rebuilt but hidden behind `TEAM_PUBLISHED` in `app/[locale]/about/page.tsx` (the owner hid it in commit 249fec2), pending the owner's decision on who appears there and whether the leftover `about.team.{name,role1,role2,role3,role4,portrait}` message keys are used or should be pruned.
 - [ ] The header's **Clients menu**, the **footer** and the home page's **Bálamo showcase** all link to `/cases`, which currently redirects home, so those links lead nowhere useful today.
 - [ ] The Bálamo showcase's **"see the case"** button will need an actual Bálamo case study before it means anything.
 - [ ] Replace the home-page **testimonial** ("Placeholder testimonial…") and client name/role.
