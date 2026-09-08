@@ -44,3 +44,9 @@ test("the client-dashboard link points at the panel", async ({ page }) => {
   await page.goto("/");
   await expect(page.getByRole("link", { name: /Already a client/ })).toHaveAttribute("href", "https://menuadmin.dimonova.com");
 });
+
+test("the hero photograph is present in the prerendered HTML", async ({ request }) => {
+  const html = await (await request.get("/")).text();
+  expect(html).toContain('data-hero-bg="photo"');
+  expect(html).toMatch(/hero-stock/);
+});

@@ -1,4 +1,3 @@
-import { Suspense } from "react";
 import { getTranslations } from "next-intl/server";
 import Container from "@/components/ui/Container";
 import Annotated from "@/components/ui/Annotated";
@@ -16,9 +15,7 @@ export default async function Hero() {
   return (
     <Container>
       <section className={styles.section}>
-        <Suspense fallback={null}>
-          <HeroBackground photoAlt={t("alt.heroPhoto")} mockAlt={t("alt.heroMock")} />
-        </Suspense>
+        <HeroBackground photoAlt={t("alt.heroPhoto")} mockAlt={t("alt.heroMock")} />
 
         <div className={styles.content}>
           <div className={styles.pillRow}>
