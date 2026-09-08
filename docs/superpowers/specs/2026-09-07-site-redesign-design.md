@@ -129,6 +129,33 @@ Fuente única de datos: `lib/services.ts` exporta `SERVICES: { slug, icon, title
 
 ## 5. Home
 
+**Estado: implementado** (fase 2 del redisño, rama `redesign/phase-2`; ver
+`docs/superpowers/plans/2026-09-07-redesign-phase-2-home.md` y
+`.superpowers/sdd/progress.md`). Los nueve componentes de `components/home/` cubren esta
+sección tal y como está descrita abajo, con tres desviaciones deliberadas respecto al texto
+original de la spec:
+
+- **§5.8 AiCompare — sin logos.** Los cuatro proveedores de IA se identifican por texto
+  (`AI_PROVIDER_LABELS`: "ChatGPT", "Claude", "Perplexity", "Google AI Mode") en vez de con
+  sus logotipos, porque el sitio no tiene licencia de marca para reproducirlos. El único
+  glifo compartido es un icono genérico de "abre en otra pestaña", no una marca de ningún
+  proveedor.
+- **§5.6 DifferentiatorBand — panel absoluto en vez de píldora expandible.** El hover/focus
+  no expande la caja de la píldora: se midió en Playwright que hacerlo desplazaba a sus
+  vecinas del marquee (que no cambian de tamaño) unos 30px, muy por encima de lo aceptable.
+  En su lugar, el cuerpo de cada claim se renderiza siempre como un panel `position:
+  absolute` debajo de la píldora (oculto con `opacity`/`visibility`, no con `display`), de
+  forma que la caja de la píldora — y por tanto la fila entera — nunca cambia de tamaño.
+- **§5.7 Reviews — estado vacío en vez de tarjetas placeholder.** `data/reviews.json` se
+  publica vacío a propósito (`rating: null`, `videos: []`, `google: []`); mientras no haya
+  contenido real, la sección renderiza el texto honesto `home.reviews.pending` ("Reviews
+  coming soon.") en vez de tarjetas de vídeo/Google inventadas.
+
+Contenido aún pendiente (no bloquea el desarrollo, ver `TODO.md` fase 3): las dos reseñas en
+vídeo y las reseñas de Google reales, el vídeo de "cómo empezó Dimonova" del hero, las tres
+cifras de Bálamo, las capturas de las ocho `ServiceCards`, y la elección entre la variante B
+(foto) y C (mock) del hero — hoy conviven detrás de `?hero=c`.
+
 Orden de secciones y anclas:
 
 1. `Hero`

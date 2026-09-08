@@ -5,10 +5,43 @@ Status legend: `[ ]` not started · `[~]` in progress · `[x]` done
 ## 🎨 Redesign (spec: docs/superpowers/specs/2026-09-07-site-redesign-design.md)
 
 - [x] Phase 1 — base: tokens, fonts, UI kit, header + mega-menu, footer + wordmark, demo/video modals, locale banner, 404, legal placeholders
-- [ ] Phase 2 — home (hero B + C variants, 8 service cards, AI panel, Bálamo showcase, differentiator band, reviews, AI compare, final CTA)
-- [ ] Phase 3 — content: stock hero photo, service screenshots, Bálamo phone capture, reviews JSON, videos to Supabase bucket, real numbers, OG image; pick hero B or C
+- [x] Phase 2 — home (hero B + C variants, 8 service cards, AI panel, Bálamo showcase, differentiator band, reviews, AI compare, final CTA)
+- [ ] Phase 3 — content still missing (see below); pick hero B or C
 - [ ] Phase 4 — inner pages on the new system; delete `lib/style.ts`, `components/Hover.tsx`, `components/sections/*`, legacy `.dim-*` CSS; remove the legacy Instrument Serif `@import` and `.dim-legacy`
 - [ ] Phase 5 — `/admin` proxy to menuadmin (basePath + webhook-preserving rewrite)
+
+### Phase 3 — content still missing
+
+- [ ] **Reviews — videos.** Upload the two review videos to the Supabase `tutorials`-style
+      public storage bucket, then add their public URLs (plus poster images) as entries in
+      `data/reviews.json`'s `videos` array (`{ id, name, venue, src, poster }`).
+- [ ] **Reviews — Google.** Get 4–6 real Google reviews and the current profile rating from
+      the owner, and add them to `data/reviews.json` (`rating`, `profileUrl`, and the
+      `google` array of `{ name, text, url, date }`). Until this and the item above land,
+      `components/home/Reviews.tsx` correctly renders the "coming soon" empty state — don't
+      fill this file with placeholder/fake content to make the section look finished.
+- [ ] **Hero "how it started" video.** `components/home/HeroPlayPill.tsx` opens
+      `/assets/videos/how-it-started.mp4`, which does not exist yet. Get the video from the
+      owner (same one destined for the About page) and add it at that path, or update the
+      path if it lands somewhere else.
+- [ ] **Bálamo's real numbers.** Replace the three `"—"` placeholders in
+      `home.balamo.stats` (`messages/en.json` and `messages/es.json`, then
+      `npm run sync:messages`) with the real dishes-managed / languages / average
+      change-time figures for the Bálamo case.
+- [ ] **Service card screenshots.** `components/home/ServiceCards.tsx` currently renders the
+      striped `repeating-linear-gradient` placeholder for all eight cards. Replace it with
+      real screenshots/illustrations per service (the eight slugs in `lib/services.ts`:
+      `menu, ai, ordering, training, multi, reviews, daily, translate`), sized for the
+      `DeviceFrame`/card media area.
+- [ ] **Pick hero B or C.** Compare `/?hero=` (photo, default) and `/?hero=c` (mock) with the
+      owner, then delete the losing variant and the temporary switch — see the "Home hero —
+      two background variants" section in `CLAUDE.md` for exactly which files that means
+      (`HeroBgPhoto`/`HeroBgMock` + `.module.css`, `HeroBackground.tsx`, and possibly
+      `public/assets/hero/`).
+- [ ] **Hero photograph.** The current variant-B background is a real but generic CC0 pub
+      interior (`public/assets/hero/hero-stock.jpg`, sourced in
+      `public/assets/hero/SOURCES.md`) — not a Dimonova venue. Get a better photograph (ideally
+      a real client's dining room/kitchen pass) if this one isn't right for launch.
 
 ## ✅ Completed — Next.js port
 

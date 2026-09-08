@@ -40,6 +40,10 @@
      This token keeps the same family at a strength that stays legible specifically on --brand. */
   --on-brand-surface: rgba(255, 255, 255, .14);
   --ink-raised: #201D1A;
+  /* Near-opaque wash for a gradient overlay on media (photo/video), so light captions stay
+     legible over a busy background — stronger than the --shadow-* set below, which are drop
+     shadows, not surface washes. */
+  --scrim-strong: rgba(15, 14, 13, .85);
   --shadow-cta: 0 20px 40px -24px rgba(15, 14, 13, .5);
   --shadow-soft: 0 6px 20px -12px rgba(15, 14, 13, .4);
   --shadow-deep: 0 40px 80px -40px rgba(15, 14, 13, .6);

@@ -128,7 +128,7 @@
 .videoGradient {
   position: absolute;
   inset: 0;
-  background: linear-gradient(0deg, rgba(15, 14, 13, 0.85) 0%, transparent 45%);
+  background: linear-gradient(0deg, var(--scrim-strong) 0%, transparent 45%);
 }
 
 .playBtn {

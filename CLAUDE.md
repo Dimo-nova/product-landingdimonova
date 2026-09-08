@@ -25,6 +25,7 @@ keep it updated. Human-facing overview is in [`README.md`](./README.md).
 | Routing helpers | `lib/routing.ts` — calls `createNavigation(routing)` and re-exports `Link`, `useRouter`, `usePathname`, `getPathname` from `next-intl/navigation`. Always import these wrappers, not the `next/navigation` originals. |
 | SEO helpers | `lib/meta.ts` — `pageMetadata(locale, path, titleKey, descKey)` returns a `Metadata` object with canonical URL, `alternates.languages` (hreflang), and OpenGraph fields. |
 | Image helper | `lib/imgSrc.ts` — `imgSrc(base, locale)` returns a locale-specific screenshot path (falls back to the `en` asset). |
+| Home page | `components/home/` holds all nine redesigned home sections, composed by `app/[locale]/page.tsx` in this order: `Hero` (+ `HeroBackground`, `HeroBgPhoto`, `HeroBgMock`, `HeroPlayPill`, `EmailCta`), `LogoStrip`, `ServiceCards`, `AiPanel` (+ `AiDemo`), `BalamoShowcase` (+ `BalamoPills`), `DifferentiatorBand`, `Reviews` (+ `ReviewsCarousel`), `AiCompare`, `FinalCta`. `components/sections/` now holds **only** the not-yet-redesigned inner pages (about, cases, contact, features, pricing) — that's phase 4. |
 
 ### Route map
 
@@ -34,7 +35,7 @@ app/
   globals.css             # keyframes, media queries, .dim-* classes
   [locale]/
     layout.tsx            # sets <html lang>, wraps NextIntlClientProvider
-    page.tsx              # home
+    page.tsx              # home — composes components/home/*
     features/page.tsx
     pricing/page.tsx
     cases/page.tsx
@@ -57,7 +58,12 @@ For HTML content (e.g. a paragraph with a `<br>`) use `t.raw(key)` and
 
 ### Styling rule
 
-New components: `Name.tsx` + `Name.module.css`, tokens from `:root` (`--brand`, `--ink`, `--cream`, …), fonts via `lib/fonts.ts` (`--font-display` Bricolage Grotesque, `--font-body` Instrument Sans). Never add inline styles to new code except for genuinely dynamic values (e.g. `Modal` `maxWidth`) or one-off layout on placeholder pages, nor `dangerouslySetInnerHTML`; rich strings use `t.rich`.
+New components: `Name.tsx` + `Name.module.css`, tokens from `:root` (`--brand`, `--ink`, `--cream`, …), fonts via `lib/fonts.ts` (`--font-display` Bricolage Grotesque, `--font-body` Instrument Sans). Never add inline styles to new code except for genuinely dynamic values (e.g. `Modal` `maxWidth`) or one-off layout on placeholder pages, nor `dangerouslySetInnerHTML`; rich strings use `t.rich`. No hard-coded hex/`rgba()` colours in `.module.css` — use a token, and add one to `app/globals.css` beside its neighbours if none fits yet.
+
+`--on-dark-surface`/`-border`/`-text`/`-muted` are tuned for **near-black grounds** (`--ink`,
+`--ink-raised`). `--on-brand-surface` exists separately because that same 10% white wash
+barely registers on the already-saturated `--brand` coral — use `--on-brand-surface` for any
+surface sitting directly on `--brand`, and the `--on-dark-*` set everywhere else.
 
 Legacy: `archive/` and `s()` are only for the not-yet-redesigned inner pages. Do not port new markup from the archive.
 
@@ -68,6 +74,58 @@ Legacy: `archive/` and `s()` are only for the not-yet-redesigned inner pages. Do
 ### Services registry
 
 `lib/services.ts` is the single list of the 8 services (slugs `menu, ai, ordering, training, multi, reviews, daily, translate`). Copy lives in `messages/*.json` under `services.<slug>.{title,line}`. Mega-menu, footer and (phase 2) home cards read from it.
+
+### Home hero — two background variants (temporary)
+
+The hero ships **two** background treatments so the owner can compare them on the same
+build, plus a temporary switch:
+
+- **Variant B — photo:** `components/home/HeroBgPhoto.tsx` + `.module.css`. Real CC0 photo
+  at `public/assets/hero/hero-stock.jpg` (source recorded in `public/assets/hero/SOURCES.md`),
+  Ken Burns zoom, `--ink` gradient overlay. **This is the current default.**
+- **Variant C — mock:** `components/home/HeroBgMock.tsx` + `.module.css`. No photo — a
+  `DeviceFrame` phone mock with pointer-driven 3D tilt plus a floating "applying a change"
+  card.
+- **Switch:** `components/home/HeroBackground.tsx` (`'use client'`, reads `?hero=c` via
+  `useSearchParams`) renders whichever variant is asked for; `Hero.tsx` wraps it in
+  `<Suspense>`. Default (no query param, or anything other than `c`) renders the photo.
+
+This switch is **not** meant to ship long-term. Once the owner picks a variant:
+
+- Photo (B) wins → delete `components/home/HeroBgMock.tsx` + `.module.css`.
+- Mock (C) wins → delete `components/home/HeroBgPhoto.tsx` + `.module.css` and
+  `public/assets/hero/hero-stock.jpg` + `SOURCES.md`.
+- Either way: delete `components/home/HeroBackground.tsx` and the `?hero=c` switch, and
+  have `Hero.tsx` render the winning background component directly. Tracked in `TODO.md`
+  phase 3.
+
+### Reviews data
+
+`data/reviews.json` drives `components/home/Reviews.tsx` and ships **empty on purpose**:
+
+```json
+{ "rating": null, "profileUrl": "", "videos": [], "google": [] }
+```
+
+With `videos` and `google` both empty, the section renders the honest
+`home.reviews.pending` copy ("Reviews coming soon.") instead of fabricated placeholder
+cards. Do not add fake reviews to make the section "look done" — fill this file with real
+content (see `TODO.md` phase 3) and the carousel renders itself.
+
+### OG image
+
+`public/og.png` (1200×630, social-share preview) is **generated, not hand-made**, by
+`scripts/generate-og-image.mjs`. It reads the hero headline straight from
+`messages/en.json`, renders it with Playwright's Chromium (no dev server needed) using the
+same coral annotation as `components/ui/Annotated.tsx`, and writes the PNG. It has no npm
+script wired up — run it directly:
+
+```bash
+node scripts/generate-og-image.mjs
+```
+
+**Re-run this any time `home.hero.title` in `messages/en.json` changes**, or `og.png` will
+show stale copy.
 
 ### Messages workflow
 
