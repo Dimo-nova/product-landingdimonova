@@ -1,4 +1,3 @@
-"use client";
 import styles from "./Marquee.module.css";
 
 type Props = {

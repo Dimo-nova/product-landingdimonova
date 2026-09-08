@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useRef, useState, type FocusEvent, type KeyboardEvent } from "react";
 import { useTranslations } from "next-intl";
+import { useInView } from "motion/react";
 import styles from "./AiDemo.module.css";
 
 type Row = [string, string, string];
@@ -21,12 +22,19 @@ const PAUSE_RETRY_MS = 100;
  * the demo has DOM focus (so a keyboard user reading a tab doesn't have it swapped out from
  * under them), or the tab is hidden, so a change already on screen is never swapped out
  * mid-read; the in-progress typing/reveal for the *current* tab always runs to completion.
+ * The whole cycle — including the in-progress typing/reveal, not just the hand-off — is also
+ * gated on the demo actually being on screen (`useInView`), so it doesn't keep re-rendering
+ * every animation frame while scrolled out of view; it restarts the current tab from scratch
+ * when scrolled back into view.
  */
 export default function AiDemo() {
   const t = useTranslations("home.ai.demo");
   const tabs = t.raw("tabs") as string[];
   const prompts = t.raw("prompts") as string[];
   const allRows = t.raw("rows") as Row[][];
+
+  const rootRef = useRef<HTMLDivElement>(null);
+  const inView = useInView(rootRef, { margin: "-100px" });
 
   // Snapshot the translated data in a ref so the cycle effect below can depend on `tab`
   // alone — `prompts`/`allRows` are fresh array references every render (t.raw() doesn't
@@ -48,6 +56,11 @@ export default function AiDemo() {
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
 
   useEffect(() => {
+    // Off-screen, suspend the whole cycle rather than let it keep typing/ticking/re-rendering
+    // unseen: bail before scheduling anything. Coming back into view re-runs this effect (via
+    // the `inView` dependency below) and restarts the current tab from scratch.
+    if (!inView) return;
+
     let cancelled = false;
     const timers: ReturnType<typeof setTimeout>[] = [];
     const { prompts: currentPrompts, allRows: currentAllRows } = dataRef.current;
@@ -147,7 +160,7 @@ export default function AiDemo() {
       cancelled = true;
       timers.forEach(clearTimeout);
     };
-  }, [tab]);
+  }, [tab, inView]);
 
   const rows = allRows[tab] ?? [];
 
@@ -197,6 +210,7 @@ export default function AiDemo() {
 
   return (
     <div
+      ref={rootRef}
       className={styles.demo}
       data-ai-demo
       onMouseEnter={() => { hoveredRef.current = true; }}
