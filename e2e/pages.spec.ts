@@ -78,3 +78,38 @@ test("the cases page is not published yet and redirects home", async ({ page }) 
   await page.goto("/es/cases");
   await expect(page).toHaveURL("/es");
 });
+
+// About page: the team section keeps its two real headshots (with descriptive alt text) plus
+// two placeholder cards (see TODO.md), and the hero must not grow a dead-end video control —
+// the spec calls for the first client's video here, but that clip doesn't exist yet.
+
+test("about page has exactly one h1", async ({ page }) => {
+  await page.goto("/about");
+  await expect(page.locator("h1")).toHaveCount(1);
+});
+
+test("the two real headshots on the about page keep descriptive alt text (name plus role)", async ({ page }) => {
+  await page.goto("/about");
+  const alts = await page.locator("main img").evaluateAll((els) => els.map((el) => el.getAttribute("alt") ?? ""));
+  expect(alts.length).toBeGreaterThanOrEqual(2);
+  for (const alt of alts) {
+    expect(alt.trim().length, `alt text too short: "${alt}"`).toBeGreaterThan(10);
+  }
+});
+
+test("the about page team section keeps two placeholder cards alongside the two real headshots", async ({ page }) => {
+  await page.goto("/about");
+  await expect(page.getByText("Name placeholder", { exact: true })).toHaveCount(2);
+});
+
+test("the about page hero has no dead-end video control", async ({ page }) => {
+  await page.goto("/about");
+  await expect(page.locator("main video")).toHaveCount(0);
+  await expect(page.getByRole("button", { name: /play/i })).toHaveCount(0);
+});
+
+test("the about page closing CTA opens the demo modal", async ({ page }) => {
+  await page.goto("/about");
+  await page.locator("main").getByRole("button", { name: "Request a demo →" }).click();
+  await expect(page.getByRole("dialog")).toBeVisible();
+});

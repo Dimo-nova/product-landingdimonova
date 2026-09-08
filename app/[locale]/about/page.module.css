@@ -1,0 +1,166 @@
+/* Shared eyebrow used above every section heading on this page (mirrors features/cases). */
+.eyebrow {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--brand);
+  margin: 0 0 16px;
+}
+
+/* ---- Why we exist: prose beside a quote panel ---- */
+
+.whySection {
+  padding-block: clamp(24px, 4vw, 40px);
+}
+
+.whyGrid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: clamp(32px, 6vw, 64px);
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .whyGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.whyContent {
+  min-width: 0;
+}
+
+.whyTitle {
+  max-width: 640px;
+  margin: 0 0 20px;
+}
+
+.whyBody {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--ink-2);
+  margin: 0 0 16px;
+}
+
+.whyBody:last-child {
+  margin-bottom: 0;
+}
+
+.asidePanel {
+  min-width: 0;
+  align-self: stretch;
+  background: var(--cream);
+  border-radius: var(--radius-panel);
+  padding: clamp(24px, 4vw, 32px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 340px;
+}
+
+.asideLabel {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin: 0 0 18px;
+}
+
+.asideQuote {
+  font-family: var(--font-instrument-serif), serif;
+  font-style: italic;
+  font-size: clamp(22px, 2.4vw, 30px);
+  line-height: 1.25;
+  color: var(--ink);
+  margin: 0;
+}
+
+.asideSign {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  margin: 32px 0 0;
+}
+
+/* ---- Principles: three Cards, same roman-numeral-icon shape as features.f4 ---- */
+
+.principlesSection {
+  padding-block: clamp(40px, 6vw, 72px);
+}
+
+.principlesTitle {
+  max-width: 680px;
+  margin: 0 0 40px;
+}
+
+.numeral {
+  display: block;
+  font-family: var(--font-instrument-serif), serif;
+  font-style: italic;
+  font-size: 28px;
+  line-height: 1;
+  color: var(--brand);
+}
+
+/* ---- Team: two real headshots plus two placeholder cards ---- */
+
+.teamSection {
+  padding-block: clamp(40px, 6vw, 72px);
+}
+
+.teamTitle {
+  margin: 0 0 32px;
+}
+
+.teamCard {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.photo {
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+}
+
+.photoImage {
+  object-fit: cover;
+}
+
+/* Same diagonal-stripe placeholder treatment as the cases page's venue photos. */
+.photoPlaceholder {
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: var(--radius-card);
+  background: repeating-linear-gradient(45deg, var(--cream), var(--cream) 8px, var(--mist) 8px, var(--mist) 16px);
+}
+
+.photoBadge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+
+.teamName {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--ink);
+  margin: 14px 0 0;
+}
+
+.teamRole {
+  font-size: 13px;
+  color: var(--ink-2);
+  margin: 4px 0 0;
+}

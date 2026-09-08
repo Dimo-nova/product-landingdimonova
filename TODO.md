@@ -29,6 +29,18 @@ Status legend: `[ ]` not started · `[~]` in progress · `[x]` done
       `/assets/videos/how-it-started.mp4`, which does not exist yet. Get the video from the
       owner (same one destined for the About page) and add it at that path, or update the
       path if it lands somewhere else.
+- [ ] **About page hero video.** The design spec puts the same "how it started" client video
+      (above) in `app/[locale]/about/page.tsx`'s hero. Phase 4 Task 5 rebuilt the page without
+      a player/poster/play button for it — a broken or dead-end control would repeat the
+      defect the home page had to remove this phase. Once the video lands, wire it into
+      `PageHero`'s `children` slot there.
+- [ ] **About page team roles.** `about.team.role1`/`role2` (all five locales) read like they
+      were meant as Pablo's and Sergio's captions ("Founder & build lead" / "Design & styling",
+      matching the "why" copy's designer/developer framing) instead of the hardcoded
+      "Co-owner" both cards currently show. Phase 4 Task 5 left the two real cards' copy
+      untouched — restyling, not rewriting, per the phase's scope rule — and used
+      `role3`/`role4` for the two new placeholder cards instead. Worth a copy decision: either
+      wire `role1`/`role2` into Pablo/Sergio's cards, or drop them if they're stale.
 - [ ] **Bálamo's real numbers.** Replace the three `"—"` placeholders in
       `home.balamo.stats` (`messages/en.json` and `messages/es.json`, then
       `npm run sync:messages`) with the real dishes-managed / languages / average
@@ -72,7 +84,7 @@ Status legend: `[ ]` not started · `[~]` in progress · `[x]` done
 - [ ] The header's **Clients menu**, the **footer** and the home page's **Bálamo showcase** all link to `/cases`, which currently redirects home, so those links lead nowhere useful today.
 - [ ] The Bálamo showcase's **"see the case"** button will need an actual Bálamo case study before it means anything.
 - [ ] Replace the home-page **testimonial** ("Placeholder testimonial…") and client name/role.
-- [ ] Replace the **team** section (4 "Name placeholder" cards) with real names, roles and portraits — About page.
+- [ ] Replace the About page **team** section's 2 remaining "Name placeholder" cards with real names, roles and portraits (Pablo and Sergio already have real photos and names).
 - [ ] Replace the 6 **"venue logo"** placeholders in the home logo strip.
 - [ ] Swap all striped **placeholder image blocks** (`repeating-linear-gradient`) for real photos/screenshots: hero phone/dashboard, product shot, analytics, case-study photos, team portraits.
 - [ ] Confirm / update **pricing** numbers — currently "From €600" one-time and "From €45/mo".
