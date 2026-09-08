@@ -1,0 +1,42 @@
+.section {
+  background: var(--cream);
+  padding-block: clamp(64px, 10vw, 128px);
+}
+
+.inner {
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.title {
+  margin: 0;
+}
+
+.lead {
+  font-size: var(--text-lead);
+  color: var(--ink-2);
+  margin: 16px 0 40px;
+}
+
+.cta {
+  display: flex;
+  justify-content: center;
+}
+
+.whatsapp {
+  margin: 20px 0 0;
+  font-size: 14px;
+  color: var(--ink-2);
+}
+
+.waLink {
+  color: var(--ink);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.waLink:hover {
+  color: var(--brand);
+}

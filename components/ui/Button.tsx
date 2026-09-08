@@ -3,7 +3,7 @@ import styles from "./Button.module.css";
 
 type Common = {
   variant?: "solid" | "outline" | "ghost";
-  size?: "md" | "lg";
+  size?: "md" | "lg" | "xl";
   onDark?: boolean;
   className?: string;
   children: React.ReactNode;

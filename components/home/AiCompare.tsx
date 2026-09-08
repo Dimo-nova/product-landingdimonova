@@ -118,7 +118,7 @@ export default function AiCompare() {
             ))}
           </div>
 
-          <Button variant="outline" onDark size="lg" className={styles.copyBtn} type="button" onClick={handleCopy}>
+          <Button variant="outline" onDark size="xl" type="button" onClick={handleCopy}>
             {copied ? t("copied") : t("copy")}
           </Button>
 

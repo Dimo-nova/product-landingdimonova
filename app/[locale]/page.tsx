@@ -8,8 +8,7 @@ import BalamoShowcase from "@/components/home/BalamoShowcase";
 import DifferentiatorBand from "@/components/home/DifferentiatorBand";
 import Reviews from "@/components/home/Reviews";
 import AiCompare from "@/components/home/AiCompare";
-import PricingTeaser from "@/components/sections/PricingTeaser";
-import HomeCta from "@/components/sections/HomeCta";
+import FinalCta from "@/components/home/FinalCta";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -20,7 +19,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
   const { locale } = await params;
   setRequestLocale(locale);
   return (
-    <main id="main" tabIndex={-1} className="dim-legacy">
+    <main id="main" tabIndex={-1}>
       <Hero />
       <LogoStrip />
       <ServiceCards />
@@ -28,9 +27,8 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       <BalamoShowcase />
       <DifferentiatorBand />
       <Reviews />
-      <PricingTeaser />
       <AiCompare />
-      <HomeCta />
+      <FinalCta />
     </main>
   );
 }

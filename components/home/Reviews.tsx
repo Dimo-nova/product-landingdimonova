@@ -9,9 +9,10 @@ import styles from "./Reviews.module.css";
 
 // `data/reviews.json` ships as `{ rating: null, profileUrl: "", videos: [], google: [] }` until
 // the owner supplies real reviews and uploads the two video files. Imported at build time (not
-// fetched) so the section stays static; asserted to the hand-written `ReviewsData` shape because
-// TypeScript would otherwise infer `never[]` for the two empty arrays.
-const reviews = rawReviews as ReviewsData;
+// fetched) so the section stays static; checked against the hand-written `ReviewsData` shape
+// with `satisfies` rather than `as` so a typo in the data file becomes a type error instead of
+// being silently coerced away.
+const reviews = rawReviews satisfies ReviewsData;
 
 /**
  * Reviews section: an honest empty state today (a single centred line, no fake cards or

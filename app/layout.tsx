@@ -12,6 +12,16 @@ export const metadata: Metadata = {
     ],
     apple: "/apple-touch-icon.png",
   },
+  // Fallback social-share card for routes that don't build their own metadata (e.g. not-found,
+  // the catch-all). Pages that call `pageMetadata` (via `lib/meta.ts`'s `buildMetadata`) set
+  // their own complete `openGraph`/`twitter` objects, which replace this default outright.
+  openGraph: {
+    images: [{ url: "/og.png", width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: ["/og.png"],
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
