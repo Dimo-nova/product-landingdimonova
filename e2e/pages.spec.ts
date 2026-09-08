@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 
-const pages = ["features", "pricing", "cases", "about"];
+const pages = ["features", "pricing", "about"];
 for (const p of pages) {
   test(`${p} page renders a heading`, async ({ page }) => {
     await page.goto(`/${p}`);
@@ -67,16 +67,14 @@ test("the pricing FAQ reveals a question's answer on click, with no JavaScript r
   await expect(answer).toBeVisible();
 });
 
-// Cases page: this page's content is almost entirely invented placeholder (venue names, quotes,
-// metrics). cases.note is the visible disclaimer that says so — it must never be quietly dropped
-// in a later refactor, since without it the placeholders would read as real case studies.
+// Cases page: hidden on purpose (see app/[locale]/cases/page.tsx, CASES_PUBLISHED) until real
+// case studies exist, per commit 514d840. The page underneath is rebuilt on the new design
+// system but every venue in it is an invented placeholder, so this route must keep redirecting
+// home rather than rendering its content.
 
-test("cases page has exactly one h1", async ({ page }) => {
+test("the cases page is not published yet and redirects home", async ({ page }) => {
   await page.goto("/cases");
-  await expect(page.locator("h1")).toHaveCount(1);
-});
-
-test("the cases page's placeholder disclaimer note is visible", async ({ page }) => {
-  await page.goto("/cases");
-  await expect(page.getByText("Placeholder note:")).toBeVisible();
+  await expect(page).toHaveURL("/");
+  await page.goto("/es/cases");
+  await expect(page).toHaveURL("/es");
 });

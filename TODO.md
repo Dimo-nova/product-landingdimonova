@@ -68,6 +68,9 @@ Status legend: `[ ]` not started · `[~]` in progress · `[x]` done
 ## 📝 Before launch — content (replace placeholders)
 
 - [ ] Replace placeholder **case studies** (featured + 6 grid cards) with real venues, quotes, photos and results.
+- [ ] The **cases page** is rebuilt but hidden behind `CASES_PUBLISHED` in `app/[locale]/cases/page.tsx`, waiting on real case studies with written client permission.
+- [ ] The header's **Clients menu**, the **footer** and the home page's **Bálamo showcase** all link to `/cases`, which currently redirects home, so those links lead nowhere useful today.
+- [ ] The Bálamo showcase's **"see the case"** button will need an actual Bálamo case study before it means anything.
 - [ ] Replace the home-page **testimonial** ("Placeholder testimonial…") and client name/role.
 - [ ] Replace the **team** section (4 "Name placeholder" cards) with real names, roles and portraits — About page.
 - [ ] Replace the 6 **"venue logo"** placeholders in the home logo strip.

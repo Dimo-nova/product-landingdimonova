@@ -1,11 +1,20 @@
 import type { ReactNode } from "react";
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import { redirect } from "@/lib/routing";
 import { pageMetadata } from "@/lib/meta";
 import Container from "@/components/ui/Container";
 import PageHero from "@/components/page/PageHero";
 import CardGrid from "@/components/page/CardGrid";
 import PageCta from "@/components/page/PageCta";
 import styles from "./page.module.css";
+
+/**
+ * The case studies are hidden until real ones exist. The page below is fully built on the
+ * current design system; every venue in it is an invented placeholder, which is why commit
+ * 514d840 ("hide testimonial and cases until reviews ready") made this route redirect home.
+ * To publish it, delete the redirect in the component body and this comment. See TODO.md.
+ */
+const CASES_PUBLISHED: boolean = false;
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -32,6 +41,7 @@ const GRID_TYPES = ["type_restaurant", "type_pub", "type_cafe", "type_restaurant
 export default async function CasesPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   setRequestLocale(locale);
+  if (!CASES_PUBLISHED) redirect({ href: "/", locale });
   const t = await getTranslations();
 
   return (
