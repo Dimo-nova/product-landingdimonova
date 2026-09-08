@@ -1,4 +1,5 @@
 import Container from "@/components/ui/Container";
+import Eyebrow from "./Eyebrow";
 import styles from "./PageHero.module.css";
 
 type Props = {
@@ -15,7 +16,7 @@ export default function PageHero({ eyebrow, title, intro, children }: Props) {
   return (
     <Container>
       <section className={styles.section}>
-        <p className={styles.eyebrow}>{eyebrow}</p>
+        <Eyebrow>{eyebrow}</Eyebrow>
         <h1 className={styles.title}>{title}</h1>
         <p className={styles.intro}>{intro}</p>
         {children && <div className={styles.extra}>{children}</div>}

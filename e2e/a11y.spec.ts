@@ -83,3 +83,53 @@ for (const path of PAGES) {
     expect(overflow, `document.documentElement.scrollWidth exceeds window.innerWidth by ${overflow}px on ${path}`).toBeLessThanOrEqual(1);
   });
 }
+
+// Eyebrow labels (the small bold uppercase text above section headings — features/pricing/about's
+// PageHero and FeatureBlock, plus the home page's AiPanel/BalamoShowcase) used --brand (~3.2:1 on
+// white/cream), below the 4.5:1 text under 18px needs. components/page/Eyebrow.tsx centralizes
+// the fix (--brand-deep, ~5:1, on a light ground). CSS module class names are build hashes
+// ("PageHero-module__aBcDe__eyebrow"), so this matches on the local name after the last "__"
+// rather than the exact hash, and stays correct across rebuilds. The contrast formula mirrors
+// the `contrast()` helper in e2e/footer.spec.ts.
+const EYEBROW_PAGES = ["/features", "/pricing", "/about", "/"];
+
+for (const path of EYEBROW_PAGES) {
+  test(`every eyebrow label on ${path} meets 4.5:1 contrast`, async ({ page }) => {
+    await page.goto(path);
+    const results = await page.evaluate(() => {
+      // el.classList (not el.className.split) so this also works for SVG elements, whose
+      // className is an SVGAnimatedString rather than a plain string.
+      const isEyebrowClass = (el: Element) =>
+        Array.from(el.classList).some((c) => c.split("__").pop() === "eyebrow");
+      const lum = (color: string) => {
+        const [r, g, b] = (color.match(/[\d.]+/g) ?? []).slice(0, 3).map(Number);
+        const ch = (v: number) => { const s = v / 255; return s <= 0.03928 ? s / 12.92 : Math.pow((s + 0.055) / 1.055, 2.4); };
+        return 0.2126 * ch(r) + 0.7152 * ch(g) + 0.0722 * ch(b);
+      };
+      // Walks up from the element to find the first ancestor with a non-transparent
+      // background — an eyebrow's immediate parent is usually background:transparent.
+      const effectiveBackground = (el: Element) => {
+        let node: Element | null = el;
+        while (node) {
+          const bg = getComputedStyle(node).backgroundColor;
+          const alpha = (bg.match(/[\d.]+/g) ?? [])[3];
+          if (bg && (alpha === undefined || parseFloat(alpha) > 0)) return bg;
+          node = node.parentElement;
+        }
+        return "rgb(255, 255, 255)";
+      };
+      return Array.from(document.querySelectorAll<HTMLElement>("[class]"))
+        .filter(isEyebrowClass)
+        .map((el) => {
+          const fg = lum(getComputedStyle(el).color);
+          const bg = lum(effectiveBackground(el));
+          const [hi, lo] = fg > bg ? [fg, bg] : [bg, fg];
+          return { text: (el.textContent ?? "").trim().slice(0, 40), ratio: (hi + 0.05) / (lo + 0.05) };
+        });
+    });
+    expect(results.length, `no eyebrow-class elements found on ${path}`).toBeGreaterThan(0);
+    for (const { text, ratio } of results) {
+      expect(ratio, `eyebrow "${text}" on ${path} has contrast ${ratio.toFixed(2)}, needs >= 4.5`).toBeGreaterThanOrEqual(4.5);
+    }
+  });
+}

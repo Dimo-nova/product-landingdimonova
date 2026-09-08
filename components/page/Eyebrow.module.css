@@ -1,0 +1,23 @@
+.eyebrow {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* :where() keeps this at zero specificity so a caller's own module class (e.g. BalamoShowcase's
+   inline usage next to a logo, which needs margin: 0) reliably overrides it regardless of CSS
+   chunk order, instead of depending on which module happens to load last. */
+:where(.eyebrow) {
+  margin: 0 0 16px;
+}
+
+/* White/cream ground: --brand-deep clears 4.5:1 there (--brand itself is ~3.2:1). */
+.light {
+  color: var(--brand-deep);
+}
+
+/* Dark/--ink ground: --brand already clears ~5.9:1 there; --brand-deep would drop to ~3.8:1. */
+.dark {
+  color: var(--brand);
+}

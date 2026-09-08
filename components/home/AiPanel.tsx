@@ -2,6 +2,7 @@ import { getTranslations } from "next-intl/server";
 import Container from "@/components/ui/Container";
 import Reveal from "@/components/ui/Reveal";
 import Button from "@/components/ui/Button";
+import Eyebrow from "@/components/page/Eyebrow";
 import AiDemo from "./AiDemo";
 import styles from "./AiPanel.module.css";
 
@@ -15,7 +16,9 @@ export default async function AiPanel() {
       <section id="ai" className={styles.section}>
         <div className={styles.grid}>
           <Reveal className={styles.copy}>
-            <p className={styles.eyebrow}>{t("home.ai.eyebrow")}</p>
+            {/* tone="dark": .section here is a dark --ink band, not a light page ground — see
+                Eyebrow's doc comment for why --brand (not --brand-deep) is correct here. */}
+            <Eyebrow tone="dark">{t("home.ai.eyebrow")}</Eyebrow>
             <h2 className={styles.title}>{t("home.ai.title")}</h2>
             <p className={styles.body}>{t("home.ai.body")}</p>
 

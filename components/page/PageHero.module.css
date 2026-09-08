@@ -4,15 +4,6 @@
   padding-block-end: clamp(40px, 6vw, 72px);
 }
 
-.eyebrow {
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--brand);
-  margin: 0 0 16px;
-}
-
 .title {
   /* Denser than the home hero: capped well under --text-h1's own ceiling. */
   font-size: min(var(--text-h1), 56px);

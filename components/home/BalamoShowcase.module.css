@@ -137,12 +137,10 @@
   display: block;
 }
 
-.eyebrow {
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--brand);
+/* This eyebrow sits inline next to the Bálamo logo (see .brandRow above), which already
+   supplies the 16px gap the shared Eyebrow component's own margin is meant for. */
+.eyebrowInline {
+  margin: 0;
 }
 
 .title {

@@ -5,6 +5,7 @@ import { pageMetadata } from "@/lib/meta";
 import Container from "@/components/ui/Container";
 import PageHero from "@/components/page/PageHero";
 import CardGrid from "@/components/page/CardGrid";
+import Eyebrow from "@/components/page/Eyebrow";
 import PageCta from "@/components/page/PageCta";
 import styles from "./page.module.css";
 
@@ -57,7 +58,7 @@ export default async function CasesPage({ params }: { params: Promise<{ locale: 
           <div className={styles.featuredPanel}>
             <div className={styles.featuredContent}>
               <div>
-                <p className={styles.eyebrow}>{t("cases.featured.eyebrow")}</p>
+                <Eyebrow>{t("cases.featured.eyebrow")}</Eyebrow>
                 <p className={styles.quote}>{t("cases.featured.quote")}</p>
                 <p className={styles.body}>{t("cases.featured.body")}</p>
               </div>

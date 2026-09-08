@@ -3,6 +3,7 @@ import Container from "@/components/ui/Container";
 import Reveal from "@/components/ui/Reveal";
 import Button from "@/components/ui/Button";
 import DeviceFrame from "@/components/ui/DeviceFrame";
+import Eyebrow from "@/components/page/Eyebrow";
 import BalamoPills from "./BalamoPills";
 import styles from "./BalamoShowcase.module.css";
 
@@ -46,7 +47,9 @@ export default async function BalamoShowcase() {
               {/* alt="": the visible "Case: Bálamo Restaurante" eyebrow right after it already
                   carries the meaning — an alt text here would announce the name twice. */}
               <img src="/assets/Logos/balamo.svg" alt="" className={styles.logo} />
-              <span className={styles.eyebrow}>{t("home.balamo.eyebrow")}</span>
+              <Eyebrow as="span" className={styles.eyebrowInline}>
+                {t("home.balamo.eyebrow")}
+              </Eyebrow>
             </div>
             <h2 className={styles.title}>{t("home.balamo.title")}</h2>
             <p className={styles.body}>{t("home.balamo.body")}</p>

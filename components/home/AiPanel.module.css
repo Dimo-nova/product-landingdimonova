@@ -27,15 +27,6 @@
   max-width: 520px;
 }
 
-.eyebrow {
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--brand);
-  margin: 0 0 16px;
-}
-
 .title {
   color: var(--paper);
   margin: 0 0 20px;

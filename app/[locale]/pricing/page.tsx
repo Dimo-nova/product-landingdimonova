@@ -5,6 +5,7 @@ import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
 import PageHero from "@/components/page/PageHero";
 import CardGrid from "@/components/page/CardGrid";
+import Eyebrow from "@/components/page/Eyebrow";
 import Faq from "@/components/page/Faq";
 import styles from "./page.module.css";
 
@@ -41,7 +42,7 @@ export default async function PricingPage({ params }: { params: Promise<{ locale
       <section className={styles.includedSection}>
         <Container>
           <div className={styles.panel}>
-            <p className={styles.eyebrow}>{t("pricing.included.eyebrow")}</p>
+            <Eyebrow>{t("pricing.included.eyebrow")}</Eyebrow>
             <h2 className={styles.panelTitle}>{t("pricing.included.title")}</h2>
             <CardGrid columns={2}>
               {INCLUDED_KEYS.map((k) => (

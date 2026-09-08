@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Container from "@/components/ui/Container";
 import DeviceFrame from "@/components/ui/DeviceFrame";
+import Eyebrow from "./Eyebrow";
 import styles from "./FeatureBlock.module.css";
 
 type Props = {
@@ -28,7 +29,7 @@ export default function FeatureBlock({ eyebrow, title, body, bullets, image, ima
     <Container>
       <div className={[styles.grid, side === "right" && styles.imageRight].filter(Boolean).join(" ")}>
         <div className={styles.content}>
-          <p className={styles.eyebrow}>{eyebrow}</p>
+          <Eyebrow>{eyebrow}</Eyebrow>
           <h2 className={styles.title}>{title}</h2>
           <p className={styles.body}>{body}</p>
           {bullets.length > 0 && (
