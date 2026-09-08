@@ -20,19 +20,19 @@ keep it updated. Human-facing overview is in [`README.md`](./README.md).
 | Framework | Next.js 16 — App Router, `generateStaticParams`, `generateMetadata` |
 | Language | TypeScript (strict) |
 | i18n | `next-intl` · 5 locales: `en`, `es`, `de`, `fr`, `pt` · `localePrefix: "as-needed"` (English at `/`, others at `/es/`, `/de/`, etc.) |
-| Styling | **New shell + home (2026-09 redesign):** CSS Modules next to each component, design tokens as CSS custom properties in `app/globals.css`, `motion` (`motion/react`) inside `'use client'` islands only, `<MotionConfig reducedMotion="user">` in `components/layout/Providers.tsx`. **Legacy inner pages** (`components/sections/*`) still use inline styles via `lib/style.ts` `s()` + `components/Hover.tsx` until they are redesigned; the `.dim-*` rules at the bottom of `globals.css` exist only for them. |
-| Hover/focus | `components/Hover.tsx` — a client component that applies extra inline styles on `mouseenter`/`focus` and restores them on leave/blur (mirrors the `data-hover`/`data-focus` pattern from the old `app.js`). |
+| Styling | The whole site runs on **CSS Modules** next to each component, with design tokens as CSS custom properties in `app/globals.css`, `motion` (`motion/react`) inside `'use client'` islands only, and `<MotionConfig reducedMotion="user">` in `components/layout/Providers.tsx`. No inline-style layer remains. |
 | Routing helpers | `lib/routing.ts` — calls `createNavigation(routing)` and re-exports `Link`, `useRouter`, `usePathname`, `getPathname` from `next-intl/navigation`. Always import these wrappers, not the `next/navigation` originals. |
 | SEO helpers | `lib/meta.ts` — `pageMetadata(locale, path, titleKey, descKey)` returns a `Metadata` object with canonical URL, `alternates.languages` (hreflang), and OpenGraph fields. |
 | Image helper | `lib/imgSrc.ts` — `imgSrc(base, locale)` returns a locale-specific screenshot path (falls back to the `en` asset). |
-| Home page | `components/home/` holds all nine redesigned home sections, composed by `app/[locale]/page.tsx` in this order: `Hero` (+ `HeroBackground`, `HeroBgPhoto`, `HeroBgMock`, `HeroPlayPill`, `EmailCta`), `LogoStrip`, `ServiceCards`, `AiPanel` (+ `AiDemo`), `BalamoShowcase` (+ `BalamoPills`), `DifferentiatorBand`, `Reviews` (+ `ReviewsCarousel`), `AiCompare`, `FinalCta`. `components/sections/` now holds **only** the not-yet-redesigned inner pages (about, cases, contact, features, pricing) — that's phase 4. |
+| Home page | `components/home/` holds all nine redesigned home sections, composed by `app/[locale]/page.tsx` in this order: `Hero` (+ `HeroBackground`, `HeroBgPhoto`, `HeroBgMock`, `HeroPlayPill`, `EmailCta`), `LogoStrip`, `ServiceCards`, `AiPanel` (+ `AiDemo`), `BalamoShowcase` (+ `BalamoPills`), `DifferentiatorBand`, `Reviews` (+ `ReviewsCarousel`), `AiCompare`, `FinalCta`. |
+| Inner pages | `components/page/` holds the shared kit (`PageHero`, `FeatureBlock`, `Card`/`CardGrid`, `Faq`, `Prose`, `PageCta`) that `features`, `pricing`, `cases`, `about` and `contact` build on, each with its own `page.module.css`. |
 
 ### Route map
 
 ```
 app/
   layout.tsx              # root layout (Viewport + global Metadata, no <html>)
-  globals.css             # keyframes, media queries, .dim-* classes
+  globals.css             # design tokens, reset, keyframes, media queries
   [locale]/
     layout.tsx            # sets <html lang>, wraps NextIntlClientProvider
     page.tsx              # home — composes components/home/*
@@ -58,14 +58,12 @@ For HTML content (e.g. a paragraph with a `<br>`) use `t.raw(key)` and
 
 ### Styling rule
 
-New components: `Name.tsx` + `Name.module.css`, tokens from `:root` (`--brand`, `--ink`, `--cream`, …), fonts via `lib/fonts.ts` (`--font-display` Bricolage Grotesque, `--font-body` Instrument Sans). Never add inline styles to new code except for genuinely dynamic values (e.g. `Modal` `maxWidth`) or one-off layout on placeholder pages, nor `dangerouslySetInnerHTML`; rich strings use `t.rich`. No hard-coded hex/`rgba()` colours in `.module.css` — use a token, and add one to `app/globals.css` beside its neighbours if none fits yet.
+The entire site is **CSS Modules plus design tokens** — there is no other styling layer. Components: `Name.tsx` + `Name.module.css`, tokens from `:root` (`--brand`, `--ink`, `--cream`, …), fonts via `lib/fonts.ts` (`--font-display` Bricolage Grotesque, `--font-body` Instrument Sans, `--font-instrument-serif` for display accents on the inner pages). Never add inline styles except for genuinely dynamic values (e.g. `Modal` `maxWidth`), nor `dangerouslySetInnerHTML`; rich strings use `t.rich`. No hard-coded hex/`rgba()` colours in `.module.css` — use a token, and add one to `app/globals.css` beside its neighbours if none fits yet.
 
 `--on-dark-surface`/`-border`/`-text`/`-muted` are tuned for **near-black grounds** (`--ink`,
 `--ink-raised`). `--on-brand-surface` exists separately because that same 10% white wash
 barely registers on the already-saturated `--brand` coral — use `--on-brand-surface` for any
 surface sitting directly on `--brand`, and the `--on-dark-*` set everywhere else.
-
-Legacy: `archive/` and `s()` are only for the not-yet-redesigned inner pages. Do not port new markup from the archive.
 
 ### Site-wide overlays
 
@@ -142,10 +140,11 @@ The WA panel state is managed by `components/WhatsAppWidget.tsx`, mounted once i
 
 ## Archive
 
-`archive/` holds the original static HTML/CSS/JS site. It is the **source of
-truth** for markup, inline styles, exact copy, animation values, and
-scroll-header colours. When you need to verify a pixel-level detail, read the
-archive:
+`archive/` holds the original static HTML/CSS/JS site. It is a **historical
+record only** — the site's original design, copy and behaviour, kept for
+reference. It is not a styling source any more: every page has been rebuilt
+on CSS Modules and design tokens, so nothing should be ported from the
+archive's markup or inline styles.
 
 - `archive/_design_source.html` — original Claude Design export
 - `archive/app.js` — original state machine (scroll colours, pill styles, email regex, etc.)
