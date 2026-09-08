@@ -367,7 +367,7 @@
   },
   "pricing": {
     "eyebrow": "Pricing",
-    "title": "Priced around <em style=\"font-family:var(--font-instrument-serif),serif;font-style:italic;color:#B8523A\">your</em> venue.",
+    "title": "Priced around <em>your</em> venue.",
     "intro": "Tell us about your venue and we'll build a number around it. Here's what that always covers.",
     "included": {
       "eyebrow": "What's always included",

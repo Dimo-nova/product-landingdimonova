@@ -3,7 +3,8 @@ import styles from "./PageHero.module.css";
 
 type Props = {
   eyebrow: string;
-  title: string;
+  /** Plain text for most pages; `React.ReactNode` (e.g. a `t.rich` result) when the title has an inline accent. */
+  title: React.ReactNode;
   intro: string;
   /** Sits under the intro paragraph — extra hero content (e.g. a shape, a note) without owning its own <h1>. */
   children?: React.ReactNode;

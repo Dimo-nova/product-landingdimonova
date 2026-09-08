@@ -44,3 +44,25 @@ test("the features page closing CTA opens the demo modal", async ({ page }) => {
   await page.locator("main").getByRole("button", { name: "Request a demo →" }).click();
   await expect(page.getByRole("dialog")).toBeVisible();
 });
+
+// Pricing page: the footer, the mega menu and the mobile nav's Resources section all link to
+// /pricing#faq. That anchor must resolve, or the link scrolls nowhere.
+
+test("pricing page has exactly one h1", async ({ page }) => {
+  await page.goto("/pricing");
+  await expect(page.locator("h1")).toHaveCount(1);
+});
+
+test("the /pricing#faq anchor resolves to an element", async ({ page }) => {
+  await page.goto("/pricing");
+  await expect(page.locator("#faq")).toHaveCount(1);
+});
+
+test("the pricing FAQ reveals a question's answer on click, with no JavaScript required", async ({ page }) => {
+  await page.goto("/pricing");
+  const first = page.locator("main details").first();
+  const answer = first.locator("p");
+  await expect(answer).toBeHidden();
+  await first.locator("summary").click();
+  await expect(answer).toBeVisible();
+});

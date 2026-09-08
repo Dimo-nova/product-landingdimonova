@@ -367,7 +367,7 @@
   },
   "pricing": {
     "eyebrow": "Preise",
-    "title": "Preise passend für <em style=\"font-family:var(--font-instrument-serif),serif;font-style:italic;color:#B8523A\">dein</em> Lokal.",
+    "title": "Preise passend für <em>dein</em> Lokal.",
     "intro": "Erzähl uns von deinem Lokal und wir erstellen ein passendes Angebot. Das ist immer enthalten.",
     "included": {
       "eyebrow": "Was immer enthalten ist",

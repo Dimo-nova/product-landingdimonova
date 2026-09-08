@@ -46,12 +46,27 @@ test("the AI section cycles its tabs and applies a change", async ({ page }) => 
   await page.goto("/#ai");
   const demo = page.locator("[data-ai-demo]");
   await expect(demo).toBeVisible();
+  // Anchor navigation can land the demo right at the viewport edge, which is close enough to
+  // AiDemo's `useInView(..., { margin: "-100px" })` threshold that the animation effect can
+  // read it as out of view and never start typing. Center it before hovering so the rest of
+  // this test isn't racing that boundary.
+  await demo.scrollIntoViewIfNeeded();
+  // The demo advances its own tabs on a timer, so a click or assertion can land right as the
+  // auto-advance flips the selected tab out from under it (the cause of this test's previous
+  // flakiness). Hovering pauses that hand-off — see AiDemo's `hoveredRef` gate — so the rest of
+  // this test runs deterministically.
+  await demo.hover();
   const tabs = demo.getByRole("tab");
   await expect(tabs).toHaveCount(3);
-  await expect(tabs.first()).toHaveAttribute("aria-selected", "true");
+  // Exactly one tab selected at any time is the property that actually matters: asserting
+  // "the first tab is selected" cannot be relied on once the cycle has started, since it may
+  // already have moved on by the time this line runs.
+  await expect(demo.locator('[role="tab"][aria-selected="true"]')).toHaveCount(1);
   await tabs.nth(1).click();
   await expect(tabs.nth(1)).toHaveAttribute("aria-selected", "true");
-  await expect(demo).toContainText("Translate the menu into German");
+  // Types in one character at a time (TYPE_MS per char in AiDemo) — generous timeout so this
+  // doesn't race the typing animation for the full prompt.
+  await expect(demo).toContainText("Translate the menu into German", { timeout: 20000 });
 });
 
 test("the AI demo pluralizes the toast for the single-row descriptions tab", async ({ page }) => {

@@ -367,7 +367,7 @@
   },
   "pricing": {
     "eyebrow": "Preços",
-    "title": "Preços à medida para <em style=\"font-family:var(--font-instrument-serif),serif;font-style:italic;color:#B8523A\">o teu</em> espaço.",
+    "title": "Preços à medida para <em>o teu</em> espaço.",
     "intro": "Fala-nos do teu espaço e construímos um valor à tua medida. Isto é o que está sempre incluído.",
     "included": {
       "eyebrow": "O que está sempre incluído",

@@ -367,7 +367,7 @@
   },
   "pricing": {
     "eyebrow": "Tarifs",
-    "title": "Des prix personnalisés pour <em style=\"font-family:var(--font-instrument-serif),serif;font-style:italic;color:#B8523A\">ton</em> établissement.",
+    "title": "Des prix personnalisés pour <em>ton</em> établissement.",
     "intro": "Parle-nous de ton établissement et nous construisons un chiffre autour de tes besoins. Voici ce qui est toujours inclus.",
     "included": {
       "eyebrow": "Ce qui est toujours inclus",
