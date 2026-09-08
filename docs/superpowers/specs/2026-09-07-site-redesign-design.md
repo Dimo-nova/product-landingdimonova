@@ -1,10 +1,10 @@
 # Rediseño web Dimonova — spec de diseño
 
 Fecha: 2026-09-07
-Estado: fase 1 implementada y fusionada a `main`. Fase 2 en curso.
+Estado: fase 1 implementada y fusionada a `main`. Fase 2 implementada. Fase 3 (contenido) parcialmente pendiente — ver `TODO.md`. **Fase 4 (páginas interiores) implementada**: features, pricing, cases, about y contact quedaron sobre el mismo sistema visual descrito en este spec (§3), con `lib/style.ts`, `Hover.tsx`, `components/sections/*` y el `.dim-*` legacy borrados. Importante: fase 4 fue un **restilado**, no un rediseño — aplicó los tokens, componentes y patrones de este spec a la estructura, jerarquía y copy que esas páginas ya tenían; no se revisó su arquitectura de información (qué dice cada página, en qué orden, qué falta). Ese trabajo de IA para las interiores sigue abierto y necesita spec propio. Fase 5 (`/admin`) sin empezar.
 Corrección 2026-09-07: la descripción del sistema de reseñas era incorrecta. Verificado en `reviews-app/app/r/[token]/review-flow.tsx`: las reseñas negativas también se redirigen a Google tras pedir el motivo. No hay filtrado. Copy corregido en §5.3, §5.5 y §5.8.
 Alcance de este spec: sistema visual, header, footer, home, modales, banner de idioma, 404.
-Fuera de alcance (specs posteriores): páginas interiores (features, pricing, cases, about, contact), proxy `/admin`.
+Fuera de alcance (specs posteriores): páginas interiores (features, pricing, cases, about, contact) — cubiertas más tarde por la fase 4 de implementación como restilado, sin spec de diseño propio (ver nota de Estado arriba) —, proxy `/admin`.
 
 Inspiración: [pos.toasttab.com](https://pos.toasttab.com/) (estructura, tono, hero, tarjetas, mega-menú, sección IA, comparativa con IA) y [last.app](https://www.last.app/) (showcase de cliente con móvil y píldoras flotantes, animaciones de scroll). Footer: [wealthsimple.com](https://www.wealthsimple.com/en-ca) (wordmark gigante al final).
 
@@ -512,7 +512,7 @@ La suite existente de interiores se mantiene. Los tests de header/footer/WA anti
 1. **Base**: `motion`, tokens, fuentes, `components/ui/*`, `lib/motion.ts`, `lib/events.ts`, `lib/services.ts`. Header + MegaMenu + MobileNav + Footer nuevos, `LocaleBanner`, `DemoModal`, `VideoModal`, API ampliada, 404. Interiores viejas heredan header/footer nuevos.
 2. **Home**: las 9 secciones, ambas variantes de hero, `AiDemo`, `data/reviews.json` vacío con placeholders, `og.png`.
 3. **Contenido**: foto stock, capturas de servicios y Bálamo, wordmark SVG, iconos IA, reseñas al JSON, vídeos al bucket, cifras. Elegir hero B o C y borrar la otra.
-4. **Interiores** (spec aparte): features, pricing, cases, about (con vídeo del primer cliente en su hero), contact, legales. Borrar `style.ts`, `Hover.tsx`, `components/sections/*`.
+4. **Interiores** (spec aparte) — **hecho**: features, pricing, cases, about, contact, legales, sobre `components/page/*` y CSS Modules. `style.ts`, `Hover.tsx` y `components/sections/*` borrados. El vídeo del primer cliente en el hero de about sigue sin llegar (`TODO.md`) — fue un restilado, no un rediseño; ver la nota de Estado al principio del documento.
 5. **`/admin` proxy** (tarea aparte, ver conversación: `basePath` en panel-admin + rewrite con `basePath: false` para webhooks + rewrite en esta web).
 
 Cada fase = un plan de implementación propio.

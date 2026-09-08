@@ -7,7 +7,23 @@ Status legend: `[ ]` not started · `[~]` in progress · `[x]` done
 - [x] Phase 1 — base: tokens, fonts, UI kit, header + mega-menu, footer + wordmark, demo/video modals, locale banner, 404, legal placeholders
 - [x] Phase 2 — home (hero B + C variants, 8 service cards, AI panel, Bálamo showcase, differentiator band, reviews, AI compare, final CTA)
 - [ ] Phase 3 — content still missing (see below); pick hero B or C
-- [ ] Phase 4 — inner pages on the new system; delete `lib/style.ts`, `components/Hover.tsx`, `components/sections/*`, legacy `.dim-*` CSS; remove the legacy Instrument Serif `@import` and `.dim-legacy`
+- [x] Phase 4 — inner pages (features, pricing, cases, about, contact) restyled onto the new
+      design system; `lib/style.ts`, `components/Hover.tsx`, `components/sections/*`, the
+      legacy `.dim-*` CSS, and the legacy Instrument Serif `@import`/`.dim-legacy` are all
+      deleted. Task 8 closed the phase with an accessibility sweep across all six pages —
+      `/`, `/features`, `/pricing`, `/about`, `/contact`, `/legal/privacy` — checking one
+      `<h1>`, `alt` on every `<img>`, an accessible name on every `<button>`/`<a>`, and no
+      horizontal overflow at a 390px viewport (`e2e/a11y.spec.ts`); all six passed, no fixes
+      needed. It also fixed a flaky AI-demo toast assertion (`e2e/home-sections.spec.ts`) and
+      added a 4 MB guard on the contact form's menu-file upload, client and server
+      (`lib/config.ts` `MAX_UPLOAD_BYTES`, `app/api/contact/route.ts`,
+      `components/contact/ContactForm.tsx`). Content gaps this phase surfaced, each tracked
+      in detail below: the cases page is rebuilt but stays behind `CASES_PUBLISHED`, waiting
+      on real case studies with written client permission; the About hero still has no
+      founder video; the prices are unconfirmed; `about.team.{name,role1,role2,role3,role4,portrait}`
+      are unused copy left over from an earlier four-person team design; and the dead message
+      keys the eight deleted home sections left behind (next bullet) still need pruning from
+      all five locale files.
 - [ ] Phase 4 — the eight home sections deleted when phase 2 replaced them left dead message
       keys behind in all five `messages/*.json` files: `home.hero.{eyebrow,title1,title2,body,avatars}`,
       `home.viz.*`, `home.feat.*`, `home.how.*`, `home.price.*`, `home.cta.*`, `home.proof.*`,
@@ -40,9 +56,10 @@ Status legend: `[ ]` not started · `[~]` in progress · `[x]` done
       locales) read like they were meant as Pablo's and Sergio's captions ("Founder & build
       lead" / "Design & styling", matching the "why" copy's designer/developer framing)
       instead of the hardcoded "Co-owner" both cards currently show. `about.team.name`,
-      `role3` and `role4` are leftover copy from an earlier four-person design that no longer
-      has cards to render it. Worth a copy decision: either wire `role1`/`role2` into
-      Pablo/Sergio's cards, or prune all five of these unused keys if they're stale.
+      `role3`, `role4` and `portrait` are leftover copy from an earlier four-person design
+      that no longer has cards to render them. Worth a copy decision: either wire
+      `role1`/`role2` into Pablo/Sergio's cards, or prune all six of these unused keys if
+      they're stale.
 - [ ] **Bálamo's real numbers.** Replace the three `"—"` placeholders in
       `home.balamo.stats` (`messages/en.json` and `messages/es.json`, then
       `npm run sync:messages`) with the real dishes-managed / languages / average

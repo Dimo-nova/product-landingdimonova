@@ -43,7 +43,7 @@ app/
     contact/page.tsx
     not-found.tsx         # localized 404
     [...rest]/page.tsx    # catch-all that renders the localized 404 for unknown routes
-    legal/[slug]/page.tsx # placeholder terms/privacy/cookies pages
+    legal/[slug]/page.tsx # terms/privacy/cookies, full text in content/legal/
 ```
 
 ### Messages / translations
@@ -182,6 +182,13 @@ Playwright e2e lives in `e2e/`. Run with `npm run test:e2e`. The suite covers:
   `populated reviews render as cards`, is `test.skip`'d while `data/reviews.json` ships empty
   and enables itself automatically once real review content is added (see "Reviews data"
   above)
+- An accessibility sweep (`e2e/a11y.spec.ts`) across all six real pages — `/`, `/features`,
+  `/pricing`, `/about`, `/contact`, and `/legal/privacy` as the representative legal page —
+  each checked for exactly one `<h1>`, an `alt` attribute on every `<img>`, an accessible name
+  on every `<button>`/`<a>`, and no horizontal overflow (`scrollWidth` vs `innerWidth`, ±1px)
+  at a 390px viewport. `/cases` is deliberately excluded: it redirects home while
+  `CASES_PUBLISHED` is false, so there's nothing of its own to check — see the comment in the
+  spec before adding it back.
 
 Unit tests (Playwright `expect`, no browser) live next to the modules they cover — except
 when the covered module can't live under `lib/` itself, in which case the spec still sits in
