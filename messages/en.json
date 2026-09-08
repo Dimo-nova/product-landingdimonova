@@ -100,6 +100,8 @@
       "card_title": "Setup, sorted",
       "card_body": "From signed contract to live menu in days, not weeks.",
       "lead": "The parts a template cannot give you, and a support queue will not do for you.",
+      "pause": "Pause the moving list",
+      "resume": "Resume the moving list",
       "items": [
         {
           "title": "Pixel-perfect styling",

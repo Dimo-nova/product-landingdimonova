@@ -153,6 +153,21 @@ test("focusing a claim reveals its explanation", async ({ page }) => {
   await expect(item.locator("[data-diff-body]")).toBeVisible();
 });
 
+test("focusing a claim pill pauses its marquee track without a pointer", async ({ page }) => {
+  // Unlike the two tests above, this one deliberately does NOT emulate reduced motion: it
+  // proves the track itself pauses via CSS (`:focus-within`), not merely that reduced-motion
+  // styles would have frozen it anyway.
+  await page.goto("/");
+  const item = page.locator("[data-diff-item]").first();
+  await item.focus();
+  const playState = await item.evaluate((el) => {
+    const wrap = el.closest('[data-pause="true"]');
+    const track = wrap?.firstElementChild as HTMLElement | null;
+    return track ? getComputedStyle(track).animationPlayState : null;
+  });
+  expect(playState).toBe("paused");
+});
+
 test("each AI provider link carries the full prompt", async ({ page }) => {
   await page.goto("/#ai-compare");
   const links = page.locator("#ai-compare a[target='_blank']");

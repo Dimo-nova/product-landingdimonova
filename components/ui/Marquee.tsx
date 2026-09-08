@@ -7,6 +7,8 @@ type Props = {
   speed?: number;
   direction?: "left" | "right";
   pauseOnHover?: boolean;
+  /** Externally-controlled pause (e.g. a visible pause button), independent of hover/focus. */
+  paused?: boolean;
   className?: string;
 };
 
@@ -18,11 +20,12 @@ type Props = {
  * (e.g. DifferentiatorBand's claim pills). `inert` additionally makes the whole duplicate
  * unfocusable and unclickable, so Tab only ever visits the real, announced copy.
  */
-export default function Marquee({ children, speed = 40, direction = "left", pauseOnHover = true, className }: Props) {
+export default function Marquee({ children, speed = 40, direction = "left", pauseOnHover = true, paused = false, className }: Props) {
   return (
     <div
       className={[styles.wrap, styles[direction], className].filter(Boolean).join(" ")}
       data-pause={pauseOnHover}
+      data-force-pause={paused}
       style={{ ["--marquee-duration" as string]: `${speed}s` }}
     >
       <div className={styles.track}>

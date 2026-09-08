@@ -4,6 +4,8 @@
 .left .track { animation: marquee-left var(--marquee-duration, 40s) linear infinite; }
 .right .track { animation: marquee-right var(--marquee-duration, 40s) linear infinite; }
 .wrap[data-pause="true"]:hover .track { animation-play-state: paused; }
+.wrap[data-pause="true"]:focus-within .track { animation-play-state: paused; }
+.wrap[data-force-pause="true"] .track { animation-play-state: paused; }
 
 @keyframes marquee-left { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 @keyframes marquee-right { from { transform: translateX(-50%); } to { transform: translateX(0); } }

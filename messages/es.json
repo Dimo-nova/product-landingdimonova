@@ -100,6 +100,8 @@
       "card_title": "Puesta en marcha rápida",
       "card_body": "Del contrato firmado a la carta en línea en días, no semanas.",
       "lead": "Lo que una plantilla no te puede dar y una cola de soporte no te va a hacer.",
+      "pause": "Pausar la lista en movimiento",
+      "resume": "Reanudar la lista en movimiento",
       "items": [
         {
           "title": "Personalización al píxel",

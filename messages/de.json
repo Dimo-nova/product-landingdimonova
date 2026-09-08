@@ -141,7 +141,9 @@
           "title": "Someone on the other end",
           "body": "A person who knows your venue, not a chatbot."
         }
-      ]
+      ],
+      "pause": "Pause the moving list",
+      "resume": "Resume the moving list"
     },
     "proof": {
       "quote": "Beispiel-Testimonial — die Art Zitat, das sagt „wir müssen nicht mehr über die Karte nachdenken“. Hier kommt ein echtes Kundenzitat hin.",

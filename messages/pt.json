@@ -141,7 +141,9 @@
           "title": "Someone on the other end",
           "body": "A person who knows your venue, not a chatbot."
         }
-      ]
+      ],
+      "pause": "Pause the moving list",
+      "resume": "Resume the moving list"
     },
     "proof": {
       "quote": "Testemunho de exemplo — o tipo de citação que diz «já não temos de pensar na ementa». Aqui ficará uma citação real de um cliente.",

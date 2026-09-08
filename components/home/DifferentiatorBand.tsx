@@ -1,31 +1,10 @@
 import { getTranslations } from "next-intl/server";
 import Container from "@/components/ui/Container";
 import Reveal from "@/components/ui/Reveal";
-import Marquee from "@/components/ui/Marquee";
+import DiffMarquees from "./DiffMarquees";
 import styles from "./DifferentiatorBand.module.css";
 
 type DiffItem = { title: string; body: string };
-
-/**
- * One claim pill. Non-interactive (it does nothing on activation) but focusable, so it carries
- * `role="group"` rather than `button`/`link`. The accessible name is the title + body joined
- * into one string via `aria-label`: that keeps the explanation reachable to assistive tech at
- * all times, independent of the CSS hover/focus-visible state that shows it to sighted users
- * (a screen reader has no "hover"). The visible `data-diff-body` span is then redundant for
- * AT and marked `aria-hidden` to avoid it being read out a second time.
- */
-function ClaimPill({ item }: { item: DiffItem }) {
-  return (
-    <div className={styles.pill} data-diff-item tabIndex={0} role="group" aria-label={`${item.title}. ${item.body}`}>
-      <span className={styles.claimTitle} data-diff-title>
-        {item.title}
-      </span>
-      <span className={styles.claimBody} data-diff-body aria-hidden="true">
-        {item.body}
-      </span>
-    </div>
-  );
-}
 
 /**
  * "What nobody else does" band: two opposing marquees of claim pills. The first five items
@@ -33,6 +12,9 @@ function ClaimPill({ item }: { item: DiffItem }) {
  * as an absolutely positioned panel below it, so the pill's own box (and therefore the row)
  * never changes size — see DifferentiatorBand.module.css for why the simpler
  * `visibility: hidden; height: 0` -> `auto` approach was measured and rejected.
+ *
+ * The marquees and their play/pause state live in `DiffMarquees` (a client component) since
+ * the pause button needs interactivity this server component can't provide.
  */
 export default async function DifferentiatorBand() {
   const t = await getTranslations();
@@ -49,18 +31,12 @@ export default async function DifferentiatorBand() {
         </Reveal>
       </Container>
 
-      <div className={styles.rows}>
-        <Marquee speed={45} direction="left" className={styles.marquee}>
-          {left.map((item) => (
-            <ClaimPill key={item.title} item={item} />
-          ))}
-        </Marquee>
-        <Marquee speed={50} direction="right" className={styles.marquee}>
-          {right.map((item) => (
-            <ClaimPill key={item.title} item={item} />
-          ))}
-        </Marquee>
-      </div>
+      <DiffMarquees
+        left={left}
+        right={right}
+        pauseLabel={t("home.diff.pause")}
+        resumeLabel={t("home.diff.resume")}
+      />
     </section>
   );
 }

@@ -20,6 +20,29 @@
   margin: 12px 0 0;
 }
 
+.pauseRow {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.pauseBtn {
+  font: 600 13px/1 var(--font-body);
+  color: var(--ink-2);
+  background: var(--paper);
+  border: 1px solid var(--mist);
+  border-radius: var(--radius-pill);
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: box-shadow 0.2s var(--ease-out), border-color 0.2s var(--ease-out);
+}
+
+.pauseBtn:hover,
+.pauseBtn:focus-visible {
+  box-shadow: var(--shadow-soft);
+  border-color: var(--brand);
+}
+
 .rows {
   display: flex;
   flex-direction: column;
