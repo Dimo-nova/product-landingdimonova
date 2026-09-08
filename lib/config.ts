@@ -10,6 +10,13 @@ export const CONTACT = {
 export const ADMIN_URL = "https://menuadmin.dimonova.com";
 
 /**
+ * The hero's "how it started" story video. `null` until the founder's video is uploaded and
+ * its path set here — `HeroPlayPill` only renders when this is non-null, since a prominent
+ * play pill that opens a 404 fallback is worse than no pill at all.
+ */
+export const HERO_VIDEO_SRC: string | null = null;
+
+/**
  * Legal identity of the operator, published as required by art. 10 LSSI-CE and GDPR art. 13.
  * Sole trader: there are no company-registry details, so `registry` is intentionally empty
  * and the legal documents omit that sentence when it is.

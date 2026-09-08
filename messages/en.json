@@ -181,6 +181,7 @@
       ],
       "cta": "See how it works",
       "demo": {
+        "tablist": "Assistant examples",
         "tabs": [
           "Bulk changes",
           "Translations",
@@ -285,7 +286,9 @@
       "viewOnGoogle": "See it on Google",
       "playVideo": "Play the review from {name}",
       "prev": "Previous review",
-      "next": "Next review"
+      "next": "Next review",
+      "position": "Review {current} of {total}",
+      "stars": "{rating} out of 5"
     },
     "aiCompare": {
       "title": "Ask someone who doesn't work here.",

@@ -27,10 +27,14 @@ test("a valid email opens the demo modal already filled in", async ({ page }) =>
   await expect(dialog.getByLabel("Email")).toHaveValue("ana@bar.es");
 });
 
-test("the play pill opens the video modal", async ({ page }) => {
+test("the play pill is absent while the story video is unset", async ({ page }) => {
+  // HeroPlayPill would open a video modal at HERO_VIDEO_SRC (lib/config.ts), which is
+  // intentionally `null` until the founder's video is uploaded — a prominent call-to-action
+  // that opens a video modal's 404 fallback is worse than no pill at all, so Hero.tsx renders
+  // none while it's unset. Flip this back to a click-opens-the-modal assertion once
+  // HERO_VIDEO_SRC is set.
   await page.goto("/");
-  await page.getByRole("button", { name: /How Dimonova started/ }).click();
-  await expect(page.getByRole("dialog")).toBeVisible();
+  await expect(page.getByRole("button", { name: /How Dimonova started/ })).toHaveCount(0);
 });
 
 test("photo is the default background and ?hero=c switches to the mock", async ({ page }) => {

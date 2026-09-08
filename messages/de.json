@@ -246,7 +246,8 @@
         ],
         "proposed": "Proposed changes",
         "apply": "Apply selected",
-        "toast": "{count, plural, one {# dish updated} other {# dishes updated}}"
+        "toast": "{count, plural, one {# dish updated} other {# dishes updated}}",
+        "tablist": "Assistant examples"
       }
     },
     "balamo": {
@@ -285,7 +286,9 @@
       "viewOnGoogle": "See it on Google",
       "playVideo": "Play the review from {name}",
       "prev": "Previous review",
-      "next": "Next review"
+      "next": "Next review",
+      "position": "Review {current} of {total}",
+      "stars": "{rating} out of 5"
     },
     "aiCompare": {
       "title": "Ask someone who doesn't work here.",

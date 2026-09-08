@@ -24,7 +24,10 @@ export default async function ServiceCards() {
             return (
               <Reveal key={service.slug} delay={i * 0.06} className={styles.cardWrap}>
                 <Link href={service.href} className={styles.card}>
-                  <div className={styles.media} role="img" aria-label={t("alt.serviceCard", { title })}>
+                  {/* Striped placeholder for the not-yet-shot service screenshot: aria-hidden so
+                      assistive tech doesn't announce an "image" that isn't there and prefix the
+                      link's accessible name with it. Swap in a real <img alt={t("alt.serviceCard", { title })}> once real screenshots land. */}
+                  <div className={styles.media} aria-hidden="true">
                     <ServiceIcon slug={service.slug} size={40} />
                   </div>
                   <div className={styles.body}>

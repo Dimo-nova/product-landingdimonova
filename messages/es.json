@@ -181,6 +181,7 @@
       ],
       "cta": "Ver cómo funciona",
       "demo": {
+        "tablist": "Ejemplos del asistente",
         "tabs": [
           "Cambios en bloque",
           "Traducciones",
@@ -285,7 +286,9 @@
       "viewOnGoogle": "Verla en Google",
       "playVideo": "Reproducir la reseña de {name}",
       "prev": "Reseña anterior",
-      "next": "Reseña siguiente"
+      "next": "Reseña siguiente",
+      "position": "Reseña {current} de {total}",
+      "stars": "{rating} de 5"
     },
     "aiCompare": {
       "title": "Pregúntale a quien no trabaja aquí.",

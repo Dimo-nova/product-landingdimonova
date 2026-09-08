@@ -88,7 +88,9 @@ export default function HeroBgMock({ alt }: { alt: string }) {
           transition={{ duration: 120, ease: "linear", repeat: Infinity }}
         />
 
-        <div className={styles.card}>
+        {/* Decorative duplicate of the AI demo's copy — hidden from assistive tech so it isn't
+            read aloud a second time on this hero variant. */}
+        <div className={styles.card} aria-hidden="true">
           <p className={styles.cardTitle}>{line}</p>
           {rows.map((row, i) => (
             <div key={row[0]} className={styles.cardRow}>

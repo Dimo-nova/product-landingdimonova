@@ -2,7 +2,7 @@ import { getTranslations } from "next-intl/server";
 import Container from "@/components/ui/Container";
 import Annotated from "@/components/ui/Annotated";
 import { Link } from "@/lib/routing";
-import { ADMIN_URL } from "@/lib/config";
+import { ADMIN_URL, HERO_VIDEO_SRC } from "@/lib/config";
 import EmailCta from "./EmailCta";
 import HeroPlayPill from "./HeroPlayPill";
 import HeroBackground from "./HeroBackground";
@@ -18,9 +18,11 @@ export default async function Hero() {
         <HeroBackground photoAlt={t("alt.heroPhoto")} mockAlt={t("alt.heroMock")} />
 
         <div className={styles.content}>
-          <div className={styles.pillRow}>
-            <HeroPlayPill label={t("home.hero.playPill")} />
-          </div>
+          {HERO_VIDEO_SRC && (
+            <div className={styles.pillRow}>
+              <HeroPlayPill label={t("home.hero.playPill")} src={HERO_VIDEO_SRC} />
+            </div>
+          )}
 
           <h1 className={styles.title}>
             {t.rich("home.hero.title", { mark: (chunks) => <Annotated>{chunks}</Annotated> })}

@@ -79,6 +79,7 @@ export default function ReviewsCarousel({ cards }: { cards: ReviewCard[] }) {
                   moreLabel={t("more")}
                   lessLabel={t("less")}
                   viewLabel={t("viewOnGoogle")}
+                  starsLabel={t("stars", { rating: card.item.rating ?? 5 })}
                 />
               )}
             </div>
@@ -105,6 +106,11 @@ export default function ReviewsCarousel({ cards }: { cards: ReviewCard[] }) {
             />
           ))}
         </div>
+        {/* The dots above are aria-hidden (they're purely decorative for sighted users); this
+            gives assistive tech the equivalent position. No aria-live: the carousel only moves
+            on deliberate prev/next/drag input, so there's no risk of an unsolicited
+            announcement the way the AI demo's autoplaying toast would have. */}
+        <span className="u-visually-hidden">{t("position", { current: index + 1, total: cards.length })}</span>
 
         <button
           type="button"
@@ -156,21 +162,24 @@ function VideoCard({ item, playLabel }: { item: VideoReview; playLabel: string }
 }
 
 /**
- * Google review card: initial-letter avatar, five decorative (`aria-hidden`) stars with a
- * visually-hidden "5 out of 5" equivalent for assistive tech, text clamped to four lines with a
- * more/less toggle that only appears once the text actually overflows, and an outbound link to
- * the review on Google.
+ * Google review card: initial-letter avatar, decorative (`aria-hidden`) filled/empty stars with
+ * a visually-hidden "{rating} out of 5" equivalent for assistive tech, text clamped to four
+ * lines with a more/less toggle that only appears once the text actually overflows, and an
+ * outbound link to the review on Google. `item.rating` defaults to 5 (all reviews collected so
+ * far have been 5-star) once real data supplies fewer.
  */
 function GoogleCard({
   item,
   moreLabel,
   lessLabel,
   viewLabel,
+  starsLabel,
 }: {
   item: GoogleReview;
   moreLabel: string;
   lessLabel: string;
   viewLabel: string;
+  starsLabel: string;
 }) {
   const textRef = useRef<HTMLParagraphElement>(null);
   const [expanded, setExpanded] = useState(false);
@@ -183,6 +192,7 @@ function GoogleCard({
   }, [item.text]);
 
   const initial = item.name.trim().charAt(0).toUpperCase() || "?";
+  const rating = Math.max(0, Math.min(5, item.rating ?? 5));
 
   return (
     <div className={styles.googleCard} data-review-card>
@@ -197,9 +207,10 @@ function GoogleCard({
       </div>
 
       <div className={styles.stars} aria-hidden="true">
-        ★★★★★
+        {"★".repeat(rating)}
+        {"☆".repeat(5 - rating)}
       </div>
-      <span className="u-visually-hidden">5 out of 5</span>
+      <span className="u-visually-hidden">{starsLabel}</span>
 
       <p
         ref={textRef}

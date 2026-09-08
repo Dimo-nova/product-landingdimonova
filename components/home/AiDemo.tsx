@@ -21,8 +21,6 @@ const PAUSE_RETRY_MS = 100;
  * the demo has DOM focus (so a keyboard user reading a tab doesn't have it swapped out from
  * under them), or the tab is hidden, so a change already on screen is never swapped out
  * mid-read; the in-progress typing/reveal for the *current* tab always runs to completion.
- * When the cycle does advance on its own while a tab button holds focus, focus moves to the
- * newly-selected tab so it never falls outside the roving-tabindex sequence.
  */
 export default function AiDemo() {
   const t = useTranslations("home.ai.demo");
@@ -85,13 +83,7 @@ export default function AiDemo() {
     const advanceTab = () => {
       if (cancelled) return;
       const next = (tab + 1) % 3;
-      // Only steal focus back if it was already on one of the tabs — an automatic advance
-      // must never yank focus away from something else on the page.
-      const focusWasOnTab = tabRefs.current.some((el) => el !== null && el === document.activeElement);
       setTab(next);
-      if (focusWasOnTab) {
-        tabRefs.current[next]?.focus();
-      }
     };
 
     const applyPhase = () => {
@@ -212,7 +204,7 @@ export default function AiDemo() {
       onFocusCapture={() => { focusedRef.current = true; }}
       onBlurCapture={handleBlurCapture}
     >
-      <div className={styles.tablist} role="tablist" aria-label={tabs.join(", ")}>
+      <div className={styles.tablist} role="tablist" aria-label={t("tablist")}>
         {tabs.map((label, i) => (
           <button
             key={label}

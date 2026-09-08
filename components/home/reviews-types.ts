@@ -17,6 +17,8 @@ export type GoogleReview = {
   venue: string;
   text: string;
   url: string;
+  /** Star rating out of 5. Defaults to 5 when omitted (all reviews so far have been 5-star). */
+  rating?: number;
 };
 
 export type ReviewsData = {
