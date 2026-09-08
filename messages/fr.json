@@ -480,7 +480,7 @@
   },
   "contact": {
     "eyebrow": "Contact",
-    "title": "Parle-nous de ton établissement. <em style=\"font-family:var(--font-instrument-serif),serif;font-style:italic;color:#B8523A\">On s'occupe du reste.</em>",
+    "title": "Parle-nous de ton établissement. <em>On s'occupe du reste.</em>",
     "intro": "Une démo dure en général 20 minutes — on te montre le tableau de bord, on parcourt de vraies installations et on te fait un devis lors de l'appel.",
     "success": {
       "title": "Bien reçu. On te recontacte.",

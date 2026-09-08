@@ -480,7 +480,7 @@
   },
   "contact": {
     "eyebrow": "Kontakt",
-    "title": "Erzähl uns von deinem Lokal. <em style=\"font-family:var(--font-instrument-serif),serif;font-style:italic;color:#B8523A\">Den Rest machen wir.</em>",
+    "title": "Erzähl uns von deinem Lokal. <em>Den Rest machen wir.</em>",
     "intro": "Eine Demo dauert meist 20 Minuten — wir zeigen dir das Dashboard, gehen echte Einrichtungen durch und machen dir im Gespräch ein Angebot.",
     "success": {
       "title": "Erhalten. Wir melden uns.",

@@ -480,7 +480,7 @@
   },
   "contact": {
     "eyebrow": "Contact",
-    "title": "Tell us about your venue. <em style=\"font-family:var(--font-instrument-serif),serif;font-style:italic;color:#B8523A\">We'll do the rest.</em>",
+    "title": "Tell us about your venue. <em>We'll do the rest.</em>",
     "intro": "A demo is usually 20 minutes — we'll show you the dashboard, walk through real venue setups, and quote you on the call.",
     "success": {
       "title": "Got it. We'll be in touch.",

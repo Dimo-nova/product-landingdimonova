@@ -8,6 +8,7 @@ import { Link } from "@/lib/routing";
 import { DEMO_OPEN, useWindowEvent, type DemoOpenPayload } from "@/lib/events";
 import { CONTACT } from "@/lib/config";
 import styles from "./DemoModal.module.css";
+import fieldStyles from "@/components/ui/Field.module.css";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 type Status = "idle" | "sending" | "success" | "error";
@@ -93,7 +94,7 @@ export default function DemoModal() {
     }
   }
 
-  const err = (k: keyof Errors) => (errors[k] ? <span id={`demo-${k}-err`} className={styles.err}>{errors[k]}</span> : null);
+  const err = (k: keyof Errors) => (errors[k] ? <span id={`demo-${k}-err`} className={fieldStyles.err}>{errors[k]}</span> : null);
 
   return (
     <Modal open={open} onClose={close} labelledBy="demo-title" closeLabel={t("close")}>
@@ -107,17 +108,17 @@ export default function DemoModal() {
         */}
         <h2 id="demo-title" className="u-visually-hidden">{t("title")}</h2>
         {status === "success" ? (
-          <div ref={stateRef} tabIndex={-1} className={styles.state} role="status">
-            <motion.div className={styles.tick} initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ type: "spring", stiffness: 300, damping: 18 }}>✓</motion.div>
+          <div ref={stateRef} tabIndex={-1} className={fieldStyles.state} role="status">
+            <motion.div className={fieldStyles.tick} initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ type: "spring", stiffness: 300, damping: 18 }}>✓</motion.div>
             <p className={styles.title}>{t("successTitle")}</p>
             <p className={styles.lead}>{t("successBody")}</p>
-            <div className={styles.stateActions}><Button onClick={close}>{t("close")}</Button></div>
+            <div className={fieldStyles.stateActions}><Button onClick={close}>{t("close")}</Button></div>
           </div>
         ) : status === "error" ? (
-          <div ref={stateRef} tabIndex={-1} className={styles.state} role="alert">
+          <div ref={stateRef} tabIndex={-1} className={fieldStyles.state} role="alert">
             <p className={styles.title}>{t("errorTitle")}</p>
             <p className={styles.lead}>{t("errorBody")}</p>
-            <div className={styles.stateActions}>
+            <div className={fieldStyles.stateActions}>
               <Button onClick={() => setStatus("idle")}>{t("retry")}</Button>
               <Button variant="outline" href={waUrl} external>{t("whatsapp")}</Button>
             </div>
@@ -137,11 +138,11 @@ export default function DemoModal() {
               <Field id="venue" label={t("venue")} defaultValue={savedValues.venue} error={err("venue")} invalid={!!errors.venue} sending={status === "sending"} />
               <Field id="phone" type="tel" label={t("phone")} defaultValue={savedValues.phone} sending={status === "sending"} />
 
-              <fieldset className={styles.field} style={{ border: 0, padding: 0, margin: 0 }}>
-                <legend className={styles.label}>{t("locations")}</legend>
-                <div className={styles.pills}>
+              <fieldset className={fieldStyles.field} style={{ border: 0, padding: 0, margin: 0 }}>
+                <legend className={fieldStyles.label}>{t("locations")}</legend>
+                <div className={fieldStyles.pills}>
                   {[["1", t("locations1")], ["2-5", t("locations2")], ["6+", t("locations6")]].map(([v, l], i) => (
-                    <label key={v} className={styles.pill}>
+                    <label key={v} className={fieldStyles.pill}>
                       <input type="radio" name="locations" value={v} defaultChecked={i === 0} />
                       <span>{l}</span>
                     </label>
@@ -149,11 +150,11 @@ export default function DemoModal() {
                 </div>
               </fieldset>
 
-              <fieldset className={styles.field} style={{ border: 0, padding: 0, margin: 0 }}>
-                <legend className={styles.label}>{t("menuToday")}</legend>
-                <div className={styles.pills}>
+              <fieldset className={fieldStyles.field} style={{ border: 0, padding: 0, margin: 0 }}>
+                <legend className={fieldStyles.label}>{t("menuToday")}</legend>
+                <div className={fieldStyles.pills}>
                   {[["pdf", t("menuPdf")], ["web", t("menuWeb")], ["other-system", t("menuOther")]].map(([v, l]) => (
-                    <label key={v} className={styles.pill}>
+                    <label key={v} className={fieldStyles.pill}>
                       <input type="radio" name="menuToday" value={v} />
                       <span>{l}</span>
                     </label>
@@ -161,8 +162,8 @@ export default function DemoModal() {
                 </div>
               </fieldset>
 
-              <div className={styles.field}>
-                <label htmlFor="demo-consent" className={styles.consent}>
+              <div className={fieldStyles.field}>
+                <label htmlFor="demo-consent" className={fieldStyles.consent}>
                   <input
                     type="checkbox"
                     id="demo-consent"
@@ -176,7 +177,7 @@ export default function DemoModal() {
                 {err("consent")}
               </div>
 
-              <div className={styles.actions}>
+              <div className={fieldStyles.actions}>
                 <Button type="submit" size="lg" disabled={status === "sending"}>
                   {status === "sending" ? t("sending") : t("submit")}
                 </Button>
@@ -194,13 +195,13 @@ function Field({ id, label, type = "text", defaultValue, error, invalid, sending
   error?: React.ReactNode; invalid?: boolean; sending?: boolean;
 }) {
   return (
-    <div className={styles.field}>
-      <label htmlFor={`demo-${id}`} className={styles.label}>{label}</label>
+    <div className={fieldStyles.field}>
+      <label htmlFor={`demo-${id}`} className={fieldStyles.label}>{label}</label>
       <input
         id={`demo-${id}`}
         name={id}
         type={type}
-        className={styles.input}
+        className={fieldStyles.input}
         defaultValue={defaultValue}
         readOnly={sending}
         aria-invalid={invalid || undefined}
