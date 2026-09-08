@@ -1,0 +1,32 @@
+.section {
+  /* Generous clearance under the sticky header, capped so it doesn't grow forever on tall viewports. */
+  padding-block-start: clamp(calc(var(--header-h) + 24px), 16vw, calc(var(--header-h) + 72px));
+  padding-block-end: clamp(40px, 6vw, 72px);
+}
+
+.eyebrow {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--brand);
+  margin: 0 0 16px;
+}
+
+.title {
+  /* Denser than the home hero: capped well under --text-h1's own ceiling. */
+  font-size: min(var(--text-h1), 56px);
+  max-width: 880px;
+  margin: 0 0 20px;
+}
+
+.intro {
+  font-size: var(--text-lead);
+  color: var(--ink-2);
+  max-width: 65ch;
+  margin: 0;
+}
+
+.extra {
+  margin-top: 32px;
+}

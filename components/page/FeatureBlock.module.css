@@ -1,0 +1,92 @@
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(32px, 6vw, 64px);
+  align-items: center;
+  padding-block: clamp(40px, 6vw, 80px);
+}
+
+.content {
+  order: 2;
+  min-width: 0;
+}
+
+.media {
+  order: 1;
+  display: flex;
+  justify-content: center;
+  min-width: 0;
+}
+
+.imageRight .content {
+  order: 1;
+}
+
+.imageRight .media {
+  order: 2;
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Content always reads before the image on narrow screens, regardless of `side`. */
+  .content,
+  .imageRight .content {
+    order: 1;
+  }
+
+  .media,
+  .imageRight .media {
+    order: 2;
+  }
+}
+
+.eyebrow {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--brand);
+  margin: 0 0 16px;
+}
+
+.title {
+  margin: 0 0 18px;
+}
+
+.body {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--ink-2);
+  margin: 0 0 24px;
+}
+
+.bullets {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.bullet {
+  position: relative;
+  padding-left: 20px;
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--ink);
+}
+
+.bullet::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--brand);
+}
