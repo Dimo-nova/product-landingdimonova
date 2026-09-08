@@ -21,11 +21,11 @@ keep it updated. Human-facing overview is in [`README.md`](./README.md).
 | Language | TypeScript (strict) |
 | i18n | `next-intl` · 5 locales: `en`, `es`, `de`, `fr`, `pt` · `localePrefix: "as-needed"` (English at `/`, others at `/es/`, `/de/`, etc.) |
 | Styling | The whole site runs on **CSS Modules** next to each component, with design tokens as CSS custom properties in `app/globals.css`, `motion` (`motion/react`) inside `'use client'` islands only, and `<MotionConfig reducedMotion="user">` in `components/layout/Providers.tsx`. No inline-style layer remains. |
-| Routing helpers | `lib/routing.ts` — calls `createNavigation(routing)` and re-exports `Link`, `useRouter`, `usePathname`, `getPathname` from `next-intl/navigation`. Always import these wrappers, not the `next/navigation` originals. |
+| Routing helpers | `lib/routing.ts` — calls `createNavigation(routing)` and re-exports `Link`, `redirect`, `useRouter`, `usePathname`, `getPathname` from `next-intl/navigation`. Always import these wrappers, not the `next/navigation` originals — `redirect` is what `app/[locale]/cases/page.tsx` uses to send `/cases` home while `CASES_PUBLISHED` is false. |
 | SEO helpers | `lib/meta.ts` — `pageMetadata(locale, path, titleKey, descKey)` returns a `Metadata` object with canonical URL, `alternates.languages` (hreflang), and OpenGraph fields. |
 | Image helper | `lib/imgSrc.ts` — `imgSrc(base, locale)` returns a locale-specific screenshot path (falls back to the `en` asset). |
 | Home page | `components/home/` holds all nine redesigned home sections, composed by `app/[locale]/page.tsx` in this order: `Hero` (+ `HeroBackground`, `HeroBgPhoto`, `HeroBgMock`, `HeroPlayPill`, `EmailCta`), `LogoStrip`, `ServiceCards`, `AiPanel` (+ `AiDemo`), `BalamoShowcase` (+ `BalamoPills`), `DifferentiatorBand`, `Reviews` (+ `ReviewsCarousel`), `AiCompare`, `FinalCta`. |
-| Inner pages | `components/page/` holds the shared kit (`PageHero`, `FeatureBlock`, `Card`/`CardGrid`, `Faq`, `Prose`, `PageCta`) that `features`, `pricing`, `cases`, `about` and `contact` build on, each with its own `page.module.css`. |
+| Inner pages | `components/page/` holds the shared kit (`PageHero`, `FeatureBlock`, `Card`/`CardGrid`, `Faq`, `PageCta`) that `features`, `pricing`, `cases`, `about` and `contact` build on, each with its own `page.module.css`. |
 
 ### Route map
 
@@ -52,9 +52,9 @@ app/
 top level; page-specific keys are nested under the page name. Use
 `getTranslations({ locale })` (server) or `useTranslations()` (client).
 
-For HTML content (e.g. a paragraph with a `<br>`) use `t.raw(key)` and
-`dangerouslySetInnerHTML`. For arrays (feature lists, FAQ items) use
-`t.raw(key)` and cast to `string[]`.
+For arrays (feature lists, FAQ items) use `t.raw(key)` and cast to `string[]`.
+For inline HTML tags (`<em>`, `<strong>`, a `<Link>`) use `t.rich(key, { tag: (chunks) => <Tag>{chunks}</Tag> })`
+instead — see the styling rule below for why `dangerouslySetInnerHTML` is off the table.
 
 ### Styling rule
 
@@ -210,19 +210,12 @@ The message-sync script has its own Node test runner spec:
 
 ## Conventions / gotchas
 
-- **Do not** hand-edit files under `archive/` — they are the historical source of truth only.
+- **Do not** hand-edit files under `archive/` — they are a historical record only (see "Archive" above).
 - **Do not** use `next/navigation` directly — use the wrappers in `lib/routing.ts`.
 - Content marked "placeholder" is intentional. Don't invent real names, quotes,
   metrics, or photos — leave placeholders until real content is supplied (tracked in `TODO.md`).
 - Translated SEO copy (`meta.title.*`, `meta.description.*`) in `messages/` is
   currently in English for all locales — proper translations are a follow-up task.
-
-### `t.raw()` and `dangerouslySetInnerHTML`
-
-Several components render translation keys with embedded HTML via
-`dangerouslySetInnerHTML={{ __html: t.raw("key") }}`. These keys contain
-trusted markup (`<strong>`, `<em>`, `<span>`) copied from the original design.
-Never put user-supplied data into a `t.raw()` key.
 
 ### Contact details
 

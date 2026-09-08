@@ -25,8 +25,7 @@ const WA_ICON = (
 
 /**
  * The rebuilt contact form. Behaviour inventoried from the pre-rebuild `components/ContactForm.tsx`
- * (see `.superpowers/sdd/p4-task-6-report.md`) survives; two things were fixed rather than
- * reproduced:
+ * survives; two things were fixed rather than reproduced:
  *  - the venue-type pills are now a real `<fieldset>`/radio group (native arrow-key navigation,
  *    `aria-checked` exposed for free) instead of buttons whose only selected indicator was a
  *    background colour;
@@ -212,11 +211,7 @@ export default function ContactForm() {
                 gives arrow-key navigation between options and the checked state to assistive
                 tech for free — the legacy version used <button aria-pressed> pills whose only
                 selected indicator was a background colour. */}
-            <fieldset
-              role="radiogroup"
-              className={fieldStyles.field}
-              style={{ border: 0, padding: 0, margin: 0 }}
-            >
+            <fieldset role="radiogroup" className={`${fieldStyles.field} ${fieldStyles.fieldset}`}>
               <legend className={fieldStyles.label}>{t("contact.form.vtype_label")}</legend>
               <div className={fieldStyles.pills}>
                 {VTYPES.map((v) => (

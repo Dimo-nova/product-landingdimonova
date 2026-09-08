@@ -2,6 +2,10 @@ export const CONTACT = {
   email: "pablo@dimonova.com",
   phoneIE: "+353 085 268 0856",
   phoneES: "+34 622 040 285",
+  /** `tel:` href form of `phoneES` — kept alongside it so components never hand-format a `tel:` link. */
+  telES: "tel:+34622040285",
+  /** `tel:` href form of `phoneIE` — kept alongside it so components never hand-format a `tel:` link. */
+  telIE: "tel:+353852680856",
   whatsappES: "https://wa.me/34622040285", // Pablo
   whatsappIE: "https://wa.me/353852680856", // Sergio
 } as const;
@@ -44,3 +48,12 @@ export const LEGAL_UPDATED = "2026-09-07";
  * the request body around 4.5 MB, and Resend caps a single attachment's size too.
  */
 export const MAX_UPLOAD_BYTES = 4 * 1024 * 1024;
+
+/**
+ * The case studies are hidden until real ones exist — every venue on that page is an invented
+ * placeholder, which is why commit 514d840 ("hide testimonial and cases until reviews ready")
+ * made `/cases` redirect home (see `app/[locale]/cases/page.tsx`). Exported from here, rather
+ * than declared locally on the page, so `app/sitemap.ts` can gate the `/cases` entry on the
+ * same flag instead of duplicating it. Flip to `true` once real cases are ready to publish.
+ */
+export const CASES_PUBLISHED: boolean = false;

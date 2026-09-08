@@ -138,7 +138,7 @@ export default function DemoModal() {
               <Field id="venue" label={t("venue")} defaultValue={savedValues.venue} error={err("venue")} invalid={!!errors.venue} sending={status === "sending"} />
               <Field id="phone" type="tel" label={t("phone")} defaultValue={savedValues.phone} sending={status === "sending"} />
 
-              <fieldset className={fieldStyles.field} style={{ border: 0, padding: 0, margin: 0 }}>
+              <fieldset className={`${fieldStyles.field} ${fieldStyles.fieldset}`}>
                 <legend className={fieldStyles.label}>{t("locations")}</legend>
                 <div className={fieldStyles.pills}>
                   {[["1", t("locations1")], ["2-5", t("locations2")], ["6+", t("locations6")]].map(([v, l], i) => (
@@ -150,7 +150,7 @@ export default function DemoModal() {
                 </div>
               </fieldset>
 
-              <fieldset className={fieldStyles.field} style={{ border: 0, padding: 0, margin: 0 }}>
+              <fieldset className={`${fieldStyles.field} ${fieldStyles.fieldset}`}>
                 <legend className={fieldStyles.label}>{t("menuToday")}</legend>
                 <div className={fieldStyles.pills}>
                   {[["pdf", t("menuPdf")], ["web", t("menuWeb")], ["other-system", t("menuOther")]].map(([v, l]) => (

@@ -12,6 +12,15 @@
   gap: 6px;
 }
 
+/* Resets a native <fieldset>'s default border/padding/margin so it lays out like the plain
+   .field div above (radio-pill groups in ContactForm/DemoModal use a real <fieldset> for the
+   native grouping semantics, not for its default chrome). */
+.fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+
 .label {
   font-size: 13px;
   font-weight: 600;
@@ -40,6 +49,14 @@
   outline: none;
   border-color: var(--ink);
   background: var(--paper);
+}
+
+/* :focus-visible (not :focus) so keyboard/AT users still get a visible ring on top of the
+   border-colour change above, matching the global ring in app/globals.css (`--brand`, 3px,
+   3px offset) rather than leaving only a subtle border colour as the sole focus indicator. */
+.input:focus-visible {
+  outline: 3px solid var(--brand);
+  outline-offset: 3px;
 }
 
 .input[aria-invalid="true"] {

@@ -11,8 +11,8 @@ const WA_ICON = (
 /**
  * The "Prefer to chat?" side-panel button on the contact page. Dispatches the same
  * `dimonova:open-wa` event as the header/footer WhatsApp entry points (see
- * components/WhatsAppWidget.tsx and components/OpenWAButton.tsx) so it opens the shared,
- * locale-aware WhatsApp panel rather than jumping straight to one number.
+ * components/WhatsAppWidget.tsx) so it opens the shared, locale-aware WhatsApp panel rather
+ * than jumping straight to one number.
  */
 export default function ChatWaButton({ children }: { children: React.ReactNode }) {
   return (

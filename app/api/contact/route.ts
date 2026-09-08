@@ -15,7 +15,22 @@ const vtypeMap: Record<string, string> = {
   other: "Otro",
 };
 
+// Generous headroom for the rest of the multipart form (the text fields, plus per-part
+// boundaries/headers) on top of the file itself, so a normal submission with the max-size file
+// attached never trips this check.
+const FORM_OVERHEAD_ALLOWANCE_BYTES = 16 * 1024;
+
 export async function POST(req: NextRequest) {
+  // Checked against the `Content-Length` header *before* parsing the body at all: `await
+  // req.formData()` below reads the entire multipart request into memory regardless of what
+  // any later check rejects, so that's the real cost an oversized upload imposes — a request
+  // built by hand can set this header honestly (browsers do) or omit/lie about it, which the
+  // `menuFile.size` check further down still catches once the body has actually been parsed.
+  const contentLength = Number(req.headers.get("content-length"));
+  if (Number.isFinite(contentLength) && contentLength > MAX_UPLOAD_BYTES + FORM_OVERHEAD_ALLOWANCE_BYTES) {
+    return NextResponse.json({ error: "file_too_large" }, { status: 400 });
+  }
+
   const fd = await req.formData();
 
   const name = (fd.get("name") as string)?.trim();
@@ -26,12 +41,16 @@ export async function POST(req: NextRequest) {
   const message = (fd.get("message") as string)?.trim() ?? "";
   const menuUrl = (fd.get("menuUrl") as string)?.trim() ?? "";
   const locale = (fd.get("locale") as string) ?? "es";
-  const menuFile = fd.get("menuFile") as File | null;
+  // `fd.get("menuFile")` is a `FormDataEntryValue` (`File | string | null`) — only actually a
+  // `File` when a file was picked, so this narrows with `instanceof` rather than casting and
+  // trusting `.size` to be `undefined` on a string.
+  const menuFileEntry = fd.get("menuFile");
+  const menuFile = menuFileEntry instanceof File ? menuFileEntry : null;
   const consent = (fd.get("consent") as string) ?? "";
 
-  // Checked before any other work — including the required-field check below — so an
-  // oversized file is rejected without ever calling `.arrayBuffer()` on it (the client already
-  // blocks this, but the server can't rely on that: a request built by hand skips it).
+  // Defense in depth for the case the Content-Length check above couldn't catch (header
+  // missing or understated): rejected here too, still before the required-field check, so an
+  // oversized file never reaches `.arrayBuffer()` below.
   if (menuFile && menuFile.size > MAX_UPLOAD_BYTES) {
     return NextResponse.json({ error: "file_too_large" }, { status: 400 });
   }

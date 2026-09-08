@@ -52,10 +52,10 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
                   <div>
                     <p className={styles.infoGroupLabel}>{t("contact.side.phone_calls_label")}</p>
                     <div className={styles.infoLinks}>
-                      <a href="tel:+34622040285" className={styles.infoLink}>
+                      <a href={CONTACT.telES} className={styles.infoLink}>
                         {CONTACT.phoneES} <span className={styles.infoLinkMeta}>{t("contact.side.phone_lang_es")}</span>
                       </a>
-                      <a href="tel:+353852680856" className={styles.infoLink}>
+                      <a href={CONTACT.telIE} className={styles.infoLink}>
                         {CONTACT.phoneIE} <span className={styles.infoLinkMeta}>{t("contact.side.phone_lang_en")}</span>
                       </a>
                     </div>

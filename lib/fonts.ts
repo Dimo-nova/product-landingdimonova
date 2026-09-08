@@ -14,7 +14,7 @@ export const instrument = Instrument_Sans({
   variable: "--font-instrument",
 });
 
-/** Legacy inner pages only (they ask for the family by name). Remove with them in phase 4. */
+/** Display accents on the rebuilt inner pages (features, pricing, about) — they ask for the family by name. */
 export const instrumentSerif = Instrument_Serif({
   subsets: ["latin"],
   weight: ["400"],
