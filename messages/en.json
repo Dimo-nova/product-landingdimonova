@@ -511,6 +511,7 @@
       "menufile_label": "Dish list",
       "menufile_ph": "Upload PDF or Excel",
       "menufile_hint": "PDF, .xls or .xlsx",
+      "fileTooLarge": "That file is too large. The limit is 4 MB.",
       "disclaimer": "We only want to know more about your business. No marketing list.",
       "submit": "Request a demo →"
     },

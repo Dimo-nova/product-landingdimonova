@@ -512,7 +512,8 @@
       "menufile_ph": "PDF oder Excel hochladen",
       "menufile_hint": "PDF, .xls oder .xlsx",
       "disclaimer": "Wir möchten nur mehr über dein Business erfahren. Keine Marketingliste.",
-      "submit": "Demo anfragen →"
+      "submit": "Demo anfragen →",
+      "fileTooLarge": "That file is too large. The limit is 4 MB."
     },
     "side": {
       "chat_label": "Lieber chatten?",

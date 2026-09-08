@@ -512,7 +512,8 @@
       "menufile_ph": "Importer un PDF ou Excel",
       "menufile_hint": "PDF, .xls ou .xlsx",
       "disclaimer": "On veut juste en savoir plus sur ton établissement. Pas de liste marketing.",
-      "submit": "Demander une démo →"
+      "submit": "Demander une démo →",
+      "fileTooLarge": "That file is too large. The limit is 4 MB."
     },
     "side": {
       "chat_label": "Tu préfères discuter ?",

@@ -511,6 +511,7 @@
       "menufile_label": "Lista de platos",
       "menufile_ph": "Subir PDF o Excel",
       "menufile_hint": "PDF, .xls o .xlsx",
+      "fileTooLarge": "Ese archivo es demasiado grande. El límite son 4 MB.",
       "disclaimer": "Solo queremos saber más sobre tu negocio. Sin listas de marketing.",
       "submit": "Solicitar una demo →"
     },

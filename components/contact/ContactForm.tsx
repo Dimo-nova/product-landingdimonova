@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import Button from "@/components/ui/Button";
 import { Link } from "@/lib/routing";
-import { CONTACT } from "@/lib/config";
+import { CONTACT, MAX_UPLOAD_BYTES } from "@/lib/config";
 import fieldStyles from "@/components/ui/Field.module.css";
 import styles from "./ContactForm.module.css";
 
@@ -11,7 +11,7 @@ const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
 type Vtype = "restaurant" | "pub" | "cafe" | "other";
 type Status = "idle" | "sending" | "success" | "error";
-type Errors = Partial<Record<"name" | "email" | "venue" | "consent", string>>;
+type Errors = Partial<Record<"name" | "email" | "venue" | "consent" | "menuFile", string>>;
 
 const VTYPES: Vtype[] = ["restaurant", "pub", "cafe", "other"];
 
@@ -58,6 +58,10 @@ export default function ContactForm() {
     setErrors((prev) => (prev[key] ? { ...prev, [key]: undefined } : prev));
   }
 
+  function fileError(file: File | null): string | undefined {
+    return file && file.size > MAX_UPLOAD_BYTES ? t("contact.form.fileTooLarge") : undefined;
+  }
+
   function validate(): Errors {
     const e: Errors = {};
     if (!fields.name.trim()) e.name = t("errors.name");
@@ -65,6 +69,8 @@ export default function ContactForm() {
     else if (!EMAIL_RE.test(fields.email)) e.email = t("errors.email_invalid");
     if (!fields.venue.trim()) e.venue = t("errors.venue");
     if (!consent) e.consent = t("modal.demo.consentRequired");
+    const menuFileErr = fileError(menuFile);
+    if (menuFileErr) e.menuFile = menuFileErr;
     return e;
   }
 
@@ -275,10 +281,17 @@ export default function ContactForm() {
                   type="file"
                   accept=".pdf,.xls,.xlsx"
                   className={styles.hiddenFileInput}
-                  onChange={(e) => setMenuFile(e.target.files?.[0] ?? null)}
+                  aria-invalid={!!errors.menuFile || undefined}
+                  aria-describedby={errors.menuFile ? "cf-menuFile-err" : undefined}
+                  onChange={(e) => {
+                    const file = e.target.files?.[0] ?? null;
+                    setMenuFile(file);
+                    setErrors((prev) => ({ ...prev, menuFile: fileError(file) }));
+                  }}
                 />
               </label>
               <div className={styles.hint}>{t("contact.form.menufile_hint")}</div>
+              {err("menuFile")}
             </div>
 
             <div className={fieldStyles.field}>

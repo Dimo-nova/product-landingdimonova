@@ -111,6 +111,29 @@ test("the API rejects a request with no consent field", async ({ request }) => {
   await expect(res.json()).resolves.toEqual({ error: "consent_required" });
 });
 
+// Same reasoning as the consent guard above: the client blocks an oversized file before it
+// ever reaches fetch, but a request built by hand skips that. Post straight to the API with a
+// file just over MAX_UPLOAD_BYTES to prove the size guard is enforced server-side too, and that
+// it fires before the (also missing here) required fields would otherwise be reported.
+test("the API rejects a request with an oversized menu file", async ({ request }) => {
+  const res = await request.post("/api/contact", {
+    multipart: {
+      name: "Ana",
+      email: "ana@bar.es",
+      venue: "Bar Ana",
+      vtype: "restaurant",
+      consent: "yes",
+      menuFile: {
+        name: "menu.pdf",
+        mimeType: "application/pdf",
+        buffer: Buffer.alloc(4 * 1024 * 1024 + 1),
+      },
+    },
+  });
+  expect(res.status()).toBe(400);
+  await expect(res.json()).resolves.toEqual({ error: "file_too_large" });
+});
+
 test("success state has send another button that resets form", async ({ page }) => {
   await page.route("**/api/contact", (route) => route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ ok: true }) }));
   await page.goto("/contact");
@@ -158,4 +181,31 @@ test("dish list file upload accepts a file and shows its name", async ({ page })
   const fileInput = page.locator('input[type="file"]');
   await fileInput.setInputFiles({ name: "menu.pdf", mimeType: "application/pdf", buffer: Buffer.from("%PDF-1.4") });
   await expect(page.getByText("menu.pdf")).toBeVisible();
+});
+
+// Mirrors lib/config.ts MAX_UPLOAD_BYTES (4 MB) — no fixture file is committed, a plain
+// zero-filled Buffer one byte over the limit is enough to trip the client-side check.
+test("a file over the 4 MB limit is rejected client-side without a request being made", async ({ page }) => {
+  let calls = 0;
+  await page.route("**/api/contact", async (route) => {
+    calls++;
+    await route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ ok: true }) });
+  });
+  await page.goto("/contact");
+  const fileInput = page.locator('input[type="file"]');
+  await fileInput.setInputFiles({
+    name: "menu.pdf",
+    mimeType: "application/pdf",
+    buffer: Buffer.alloc(4 * 1024 * 1024 + 1),
+  });
+  await expect(page.getByText("That file is too large. The limit is 4 MB.")).toBeVisible();
+
+  await page.getByLabel(/your name/i).fill("Test User");
+  await page.getByLabel(/venue name/i).fill("The Test Pub");
+  await page.getByLabel(/email/i).fill("test@example.com");
+  await page.locator("#contact-consent").check();
+  await page.getByRole("main").getByRole("button", { name: /request a demo/i }).click();
+
+  await expect(page.getByText("That file is too large. The limit is 4 MB.")).toBeVisible();
+  expect(calls).toBe(0);
 });

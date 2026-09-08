@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { Client } from "@notionhq/client";
 import { Resend } from "resend";
 import { esc, safeUrl } from "@/lib/html";
+import { MAX_UPLOAD_BYTES } from "@/lib/config";
 
 const notion = new Client({ auth: process.env.NOTION_TOKEN });
 const resend = new Resend(process.env.RESEND_API_KEY);
@@ -27,6 +28,13 @@ export async function POST(req: NextRequest) {
   const locale = (fd.get("locale") as string) ?? "es";
   const menuFile = fd.get("menuFile") as File | null;
   const consent = (fd.get("consent") as string) ?? "";
+
+  // Checked before any other work — including the required-field check below — so an
+  // oversized file is rejected without ever calling `.arrayBuffer()` on it (the client already
+  // blocks this, but the server can't rely on that: a request built by hand skips it).
+  if (menuFile && menuFile.size > MAX_UPLOAD_BYTES) {
+    return NextResponse.json({ error: "file_too_large" }, { status: 400 });
+  }
 
   if (!name || !email || !venue) {
     return NextResponse.json({ error: "Missing required fields" }, { status: 400 });

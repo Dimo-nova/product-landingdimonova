@@ -512,7 +512,8 @@
       "menufile_ph": "Carregar PDF ou Excel",
       "menufile_hint": "PDF, .xls ou .xlsx",
       "disclaimer": "Só queremos saber mais sobre o teu negócio. Sem listas de marketing.",
-      "submit": "Pedir uma demo →"
+      "submit": "Pedir uma demo →",
+      "fileTooLarge": "That file is too large. The limit is 4 MB."
     },
     "side": {
       "chat_label": "Preferes conversar?",

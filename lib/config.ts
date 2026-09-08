@@ -34,3 +34,13 @@ export const COMPANY = {
 
 /** Last review date of the legal documents (ISO). Bump when you change their content. */
 export const LEGAL_UPDATED = "2026-09-07";
+
+/**
+ * Max size for the "current menu" file the contact form attaches to the lead notification
+ * email (`app/api/contact/route.ts`). Checked on both the client (`ContactForm.tsx`, so the
+ * error shows instantly and nothing uploads) and the server (defense in depth — a request
+ * built by hand skips the client check). Kept well under two other ceilings that would
+ * otherwise produce an unbranded failure instead of this one: Vercel serverless functions cap
+ * the request body around 4.5 MB, and Resend caps a single attachment's size too.
+ */
+export const MAX_UPLOAD_BYTES = 4 * 1024 * 1024;
