@@ -8,6 +8,11 @@ Status legend: `[ ]` not started · `[~]` in progress · `[x]` done
 - [x] Phase 2 — home (hero B + C variants, 8 service cards, AI panel, Bálamo showcase, differentiator band, reviews, AI compare, final CTA)
 - [ ] Phase 3 — content still missing (see below); pick hero B or C
 - [ ] Phase 4 — inner pages on the new system; delete `lib/style.ts`, `components/Hover.tsx`, `components/sections/*`, legacy `.dim-*` CSS; remove the legacy Instrument Serif `@import` and `.dim-legacy`
+- [ ] Phase 4 — the eight home sections deleted when phase 2 replaced them left dead message
+      keys behind in all five `messages/*.json` files: `home.hero.{eyebrow,title1,title2,body,avatars}`,
+      `home.viz.*`, `home.feat.*`, `home.how.*`, `home.price.*`, `home.cta.*`, `home.proof.*`,
+      `home.logos.{label,placeholder}`, `alt.hero`, `alt.servicio`. Prune them once the inner
+      pages are restyled and nothing else references them.
 - [ ] Phase 5 — `/admin` proxy to menuadmin (basePath + webhook-preserving rewrite)
 
 ### Phase 3 — content still missing

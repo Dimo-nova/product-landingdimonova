@@ -86,9 +86,12 @@ build, plus a temporary switch:
 - **Variant C — mock:** `components/home/HeroBgMock.tsx` + `.module.css`. No photo — a
   `DeviceFrame` phone mock with pointer-driven 3D tilt plus a floating "applying a change"
   card.
-- **Switch:** `components/home/HeroBackground.tsx` (`'use client'`, reads `?hero=c` via
-  `useSearchParams`) renders whichever variant is asked for; `Hero.tsx` wraps it in
-  `<Suspense>`. Default (no query param, or anything other than `c`) renders the photo.
+- **Switch:** `components/home/HeroBackground.tsx` (`'use client'`) renders the photo
+  unconditionally on the server and on first client render, then reads `?hero=c` from
+  `window.location.search` in an effect after mount and swaps in the mock if it matches — so
+  the default photo still ships in the static HTML with its `priority` preload intact, rather
+  than sitting behind a `useSearchParams` + `<Suspense>` boundary. Default (no query param, or
+  anything other than `c`) renders the photo.
 
 This switch is **not** meant to ship long-term. Once the owner picks a variant:
 
@@ -110,7 +113,9 @@ This switch is **not** meant to ship long-term. Once the owner picks a variant:
 With `videos` and `google` both empty, the section renders the honest
 `home.reviews.pending` copy ("Reviews coming soon.") instead of fabricated placeholder
 cards. Do not add fake reviews to make the section "look done" — fill this file with real
-content (see `TODO.md` phase 3) and the carousel renders itself.
+content (see `TODO.md` phase 3) and the carousel renders itself. `e2e/home-sections.spec.ts`'s
+`populated reviews render as cards` test is `test.skip`'d for exactly this reason — see
+Testing below.
 
 ### OG image
 
@@ -152,7 +157,7 @@ archive:
 
 ```bash
 npm run dev            # dev server on http://localhost:3000
-npm run build          # production build (static export)
+npm run build          # production build (SSG — next.config.ts sets no `output: "export"`)
 npm run test:e2e       # Playwright e2e on port 3100 (starts the server automatically)
 npm run sync:messages  # copy missing keys from en.json to the other locales
 ```
@@ -170,9 +175,20 @@ Playwright e2e lives in `e2e/`. Run with `npm run test:e2e`. The suite covers:
 - Venue pill selection (contact page)
 - Full contact-form validation flow
 - Demo modal and video modal (open/close, focus trap, error fallback)
+- The home hero (`e2e/hero.spec.ts`), including the `?hero=c` query param that switches the
+  hero background from the photo (default) to the phone-mock variant — see "Home hero — two
+  background variants" above
+- The rest of the home page's sections (`e2e/home-sections.spec.ts`) — service cards, logo
+  strip, AI demo, Bálamo showcase, differentiator band, reviews, AI-compare. One test there,
+  `populated reviews render as cards`, is `test.skip`'d while `data/reviews.json` ships empty
+  and enables itself automatically once real review content is added (see "Reviews data"
+  above)
 
-Unit tests (Playwright `expect`, no browser) live next to the modules they
-cover and run separately: `npx playwright test -c playwright.unit.config.ts`.
+Unit tests (Playwright `expect`, no browser) live next to the modules they cover — except
+when the covered module can't live under `lib/` itself, in which case the spec still sits in
+`lib/` and imports it by relative path (e.g. `lib/reviewCards.test.ts` covers
+`components/home/reviews-types.ts`) — and run separately:
+`npx playwright test -c playwright.unit.config.ts`.
 
 The message-sync script has its own Node test runner spec:
 `node --test scripts/sync-messages.test.mjs`.
