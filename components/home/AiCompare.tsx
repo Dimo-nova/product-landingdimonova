@@ -5,15 +5,29 @@ import { useTranslations } from "next-intl";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
 import Reveal from "@/components/ui/Reveal";
-import { AI_PROVIDER_IDS, AI_PROVIDER_LABELS, buildProviderUrl, type AiProviderId } from "@/lib/aiPrompt";
+import { AI_PROVIDER_IDS, AI_PROVIDER_LABELS, buildProviderUrl } from "@/lib/aiPrompt";
 import styles from "./AiCompare.module.css";
 
-const ICON_SRC: Record<AiProviderId, string> = {
-  chatgpt: "/assets/ai/chatgpt.svg",
-  claude: "/assets/ai/claude.svg",
-  perplexity: "/assets/ai/perplexity.svg",
-  google: "/assets/ai/google.svg",
-};
+/**
+ * Generic "opens elsewhere" glyph — an arrow leaving a box. Plain UI iconography (the
+ * same shape used across the web for external links), not a brand mark, so it's safe to
+ * share across all four provider pills.
+ */
+function ExternalIcon() {
+  return (
+    <svg className={styles.icon} viewBox="0 0 16 16" fill="none" aria-hidden="true">
+      <path
+        d="M6.5 3H3.5C2.94772 3 2.5 3.44772 2.5 4V12.5C2.5 13.0523 2.94772 13.5 3.5 13.5H12C12.5523 13.5 13 13.0523 13 12.5V9.5"
+        stroke="currentColor"
+        strokeWidth="1.4"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path d="M9 2.5H13.5V7" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M13 3L7 9" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
 
 /**
  * Copies `text` to the clipboard, trying three tiers so a visitor is never left with a
@@ -52,9 +66,9 @@ async function copyText(text: string): Promise<boolean> {
 /**
  * "Ask someone who doesn't work here": hands the visitor the full, honest pitch as a
  * prompt they can open in whichever assistant they already trust, so the comparison
- * comes from a third party rather than from us. The four marks are original glyphs we
- * drew for this section (see public/assets/ai/*.svg) — not the providers' logos, which
- * are trademarks this site has no licence to reproduce.
+ * comes from a third party rather than from us. Each provider is named as visible text
+ * rather than drawn as a logo — ordinary nominative reference, with no trademark
+ * question, since this site has no licence to reproduce anyone's mark.
  */
 export default function AiCompare() {
   const t = useTranslations("home.aiCompare");
@@ -108,12 +122,8 @@ export default function AiCompare() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <span
-                  className={styles.mark}
-                  style={{ WebkitMaskImage: `url(${ICON_SRC[id]})`, maskImage: `url(${ICON_SRC[id]})` }}
-                  aria-hidden="true"
-                />
-                <span className="u-visually-hidden">{AI_PROVIDER_LABELS[id]}</span>
+                {AI_PROVIDER_LABELS[id]}
+                <ExternalIcon />
               </a>
             ))}
           </div>

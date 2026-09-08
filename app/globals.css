@@ -34,6 +34,11 @@
   --on-dark-text: rgba(255, 255, 255, .82);
   --on-dark-muted: rgba(255, 255, 255, .60);
   --on-dark-danger: #FFB3AA;
+  /* --on-dark-surface (.10) is tuned for near-black grounds (--ink, --ink-raised). On the
+     lighter, already-saturated --brand coral its red channel is near-maxed, so a 10% white
+     wash barely lifts it and a filled pill would read as flat coral with no visible surface.
+     This token keeps the same family at a strength that stays legible specifically on --brand. */
+  --on-brand-surface: rgba(255, 255, 255, .14);
   --ink-raised: #201D1A;
   --shadow-cta: 0 20px 40px -24px rgba(15, 14, 13, .5);
   --shadow-soft: 0 6px 20px -12px rgba(15, 14, 13, .4);

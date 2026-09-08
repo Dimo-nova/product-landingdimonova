@@ -1,6 +1,6 @@
 .section {
   background: var(--brand);
-  color: #fff;
+  color: var(--paper);
   text-align: center;
   padding: clamp(72px, 10vw, 128px) 0;
 }
@@ -11,7 +11,7 @@
 }
 
 .title {
-  color: #fff;
+  color: var(--paper);
   margin: 0;
 }
 
@@ -21,7 +21,7 @@
   font-size: 18px;
   font-weight: 600;
   line-height: 1.5;
-  color: #fff;
+  color: var(--paper);
   margin: 16px 0 0;
 }
 
@@ -38,38 +38,38 @@
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 12px;
+  max-width: 100%;
 }
 
+/* Wide pill with the provider's name as visible text — see --on-brand-surface in
+   app/globals.css for why the fill isn't the shared --on-dark-surface token. */
 .provider {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  width: 64px;
-  height: 64px;
-  border-radius: 20px;
-  background: rgba(255, 255, 255, 0.14);
-  color: #fff;
+  gap: 8px;
+  padding: 14px 22px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--on-dark-border);
+  background: var(--on-brand-surface);
+  color: var(--paper);
+  font-size: 18px;
+  font-weight: 600;
+  white-space: nowrap;
   transition: transform 0.2s var(--ease-out), background 0.2s;
 }
 
 .provider:hover,
 .provider:focus-visible {
-  background: rgba(255, 255, 255, 0.22);
+  background: var(--on-dark-border);
   transform: translateY(-4px);
 }
 
-.mark {
+.icon {
   display: block;
-  width: 24px;
-  height: 24px;
-  background-color: currentColor;
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  -webkit-mask-position: center;
-  mask-position: center;
-  -webkit-mask-size: contain;
-  mask-size: contain;
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
 }
 
 /* A self-contained white card, not the bare coral: everything inside it (including the
@@ -78,7 +78,7 @@
   width: 100%;
   max-width: 560px;
   text-align: left;
-  background: #fff;
+  background: var(--paper);
   border-radius: var(--radius-card);
   padding: 20px;
 }

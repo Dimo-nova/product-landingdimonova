@@ -181,3 +181,14 @@ test("copy button reports success", async ({ page, context }) => {
   await page.getByRole("button", { name: "Copy the question" }).click();
   await expect(page.getByRole("button", { name: "Copied" })).toBeVisible();
 });
+
+test("the AI provider links show their names and fit a phone screen", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/");
+  const section = page.locator("#ai-compare");
+  for (const name of ["ChatGPT", "Claude", "Perplexity", "Google AI Mode"]) {
+    await expect(section.getByRole("link", { name })).toBeVisible();
+  }
+  const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+  expect(overflow).toBeLessThanOrEqual(1);
+});
