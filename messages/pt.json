@@ -22,7 +22,6 @@
       "clientsFeaturedCta": "See the case",
       "clientsAll": "All case studies",
       "clientsVideos": "Video reviews",
-      "tutorials": "Tutorials",
       "faq": "FAQ",
       "aiCompare": "Compare with AI",
       "contact": "Contact"
@@ -36,11 +35,6 @@
   },
   "home": {
     "hero": {
-      "eyebrow": "Para restaurantes, pubs e cafés",
-      "title1": "Uma ementa digital,",
-      "title2": "criada e configurada para ti.",
-      "body": "Criamos a tua ementa digital, adaptamo-la à tua marca, integramo-la no teu site atual e formamos a tua equipa. Mudas um prato com dois toques.",
-      "avatars": "A escolha de espaços independentes<br>de todo o país",
       "playPill": "How Dimonova started",
       "title": "We take care of it. You <mark>grow</mark>.",
       "lead": "Digital menu, ordering and reviews made to measure, built and looked after 24/7 by a team of geeks you can trust. No templates. Ready to scale.",
@@ -50,55 +44,11 @@
       "clientLink": "Already a client? Go to the dashboard",
       "emailInvalid": "Enter a valid email"
     },
-    "viz": {
-      "dash_label": "Painel · em direto",
-      "dash_title": "Favoritos da semana",
-      "days": "Seg — Dom",
-      "menu_views": "Visualizações da ementa",
-      "updates": "Alterações esta semana"
-    },
     "logos": {
-      "label": "A confiança de espaços independentes",
-      "placeholder": "logótipo do espaço",
       "title": "Trusted by"
     },
-    "feat": {
-      "eyebrow": "O que recebes",
-      "title": "Feita a partir da tua ementa e da tua marca, não de um modelo igual para todos.",
-      "see_all": "Ver todas as funcionalidades →",
-      "c1_title": "Uma ementa digital, bem desenhada",
-      "c1_body": "Fotos, descrições, alergénios e preços — dispostos para que os clientes os leiam mesmo.",
-      "c2_title": "Um painel que geres a partir do balcão",
-      "c2_body": "Edita um prato, troca uma foto, marca algo como esgotado — de qualquer telemóvel ou portátil, em segundos.",
-      "c3_title": "Vê o que os teus clientes querem mesmo",
-      "c3_body": "Popularidade dos pratos, visualizações e tendências — para que a tua próxima ementa se baseie em dados, não em suposições."
-    },
-    "how": {
-      "eyebrow": "Como funciona",
-      "title": "Nós configuramos. Tu geres.",
-      "s1_title": "Envia-nos a tua ementa",
-      "s1_body": "Um PDF, uma foto do quadro, um documento Word — o que tiveres. Nós tratamos do resto.",
-      "s2_title": "Criamo-la e desenhamo-la",
-      "s2_body": "Ajustada à tua marca, ao teu tom, ao teu espaço. Pedidos à mesa, códigos de desconto, secções personalizadas — o que o teu restaurante precisar, nós construímos.",
-      "s3_title": "Integração e formação",
-      "s3_body": "Integrada no teu site atual. Uma formação de 30 minutos com a tua equipa. É essa a entrega.",
-      "s4_title": "Tu geres tudo",
-      "s4_body": "Edita um prato em 10 segundos. Vê o que se vende. Continuamos cá quando precisares de nós.",
-      "quote": "«A maioria fica online em 5 a 7 dias depois de nos enviar a ementa. A formação é a reunião mais longa que te pedimos.»",
-      "more": "Mais sobre a configuração →"
-    },
     "diff": {
-      "eyebrow": "A diferença",
       "title": "What nobody else does.",
-      "body": "A maioria dos produtos de ementa digital dá-te um editor, um centro de ajuda e um período de teste gratuito. Nós não — criamo-la, integramo-la no teu site e sentamo-nos com a tua equipa para lhe explicar tudo.",
-      "p1": "Criamos a tua ementa a partir do que tiveres — PDF, foto, documento.",
-      "p2": "Desenhamo-la a condizer com a tua marca e o teu espaço.",
-      "p3": "Integramo-la nós próprios no teu site atual.",
-      "p4": "Formamos a tua equipa numa única sessão de 30 minutos.",
-      "card_badge": "imagem do produto",
-      "card_pill": "Sessão de integração — visual",
-      "card_title": "Configuração, resolvida",
-      "card_body": "Do contrato assinado à ementa online em dias, não semanas.",
       "lead": "The parts a template cannot give you, and a support queue will not do for you.",
       "items": [
         {
@@ -141,30 +91,7 @@
           "title": "Someone on the other end",
           "body": "A person who knows your venue, not a chatbot."
         }
-      ],
-      "pause": "Pause the moving list",
-      "resume": "Resume the moving list"
-    },
-    "proof": {
-      "quote": "Testemunho de exemplo — o tipo de citação que diz «já não temos de pensar na ementa». Aqui ficará uma citação real de um cliente.",
-      "client": "Nome do cliente",
-      "role": "Cargo · Nome do espaço",
-      "stat1_label": "Entrada online média",
-      "stat1_unit": "dias",
-      "stat2_label": "Taxa de satisfação",
-      "stat2_unit": ""
-    },
-    "price": {
-      "eyebrow": "Preços",
-      "title": "Um pagamento único de configuração e depois uma mensalidade fixa.",
-      "body": "Alojamento, apoio e atualizações incluídos. Sem custos por cliente, sem custos por prato, sem faturas surpresa.",
-      "see_full": "Ver todos os preços →",
-      "quote_cta": "Pedir um orçamento à medida"
-    },
-    "cta": {
-      "eyebrow": "Quando quiseres",
-      "title": "Vamos pôr a tua ementa online.",
-      "body": "Uma demo de 20 minutos. Mostramos-te o painel, percorremos configurações reais e respondemos às tuas perguntas. Sem compromisso."
+      ]
     },
     "services": {
       "title": "Everything your restaurant needs. And someone to run it.",
@@ -279,7 +206,7 @@
     },
     "reviews": {
       "title": "Their words, not ours.",
-      "badge": "{rating} on Google",
+      "badge": "{rating}/5 no Google",
       "pending": "Reviews coming soon.",
       "more": "Read more",
       "less": "Show less",
@@ -310,19 +237,19 @@
     "f1": {
       "eyebrow": "01 · A ementa digital",
       "title": "Uma ementa com a cara do teu espaço, não de uma app de entregas.",
-      "body": "Fotos, descrições, alergénios, preços, secções, sugestões do dia — bem compostos. Carrega depressa no telemóvel. Vive dentro do teu site atual, para que os clientes nunca sintam que foram encaminhados para uma ferramenta externa.",
+      "body": "Fotos, descrições, alergénios, preços, secções, sugestões do dia, bem compostos. Carrega depressa no telemóvel. Vive dentro do teu site atual, para que os clientes nunca sintam que foram encaminhados para uma ferramenta externa.",
       "p1": "<strong>Integrada, não redirecionada.</strong> Vive em <span>oteuespaco.pt/ementa</span>, não num URL genérico.",
       "p2": "<strong>Alergénios e etiquetas alimentares</strong> em cada prato, filtráveis para os clientes.",
-      "p3": "<strong>Códigos QR opcionais</strong> — cartões de mesa, cartazes, cartões de visita — levam diretamente até ela.",
+      "p3": "<strong>Códigos QR opcionais</strong> (cartões de mesa, cartazes, cartões de visita) levam diretamente até ela.",
       "p4": "<strong>Os estados de esgotado</strong> retiram um prato instantaneamente durante o serviço."
     },
     "f2": {
       "eyebrow": "02 · O painel",
       "title": "Se sabes usar o Instagram, sabes usar isto.",
       "body": "Sem formação para te tornares perito em ementas, sem tickets para a agência, sem «abre um pedido de apoio para mudar um preço». Quem gere a sala pode retirar um prato, subir um preço ou trocar uma foto a partir do telemóvel em menos de um minuto.",
-      "p1": "<strong>As alterações ficam online de imediato</strong> — sem filas de publicação, sem esperar por um programador.",
-      "p2": "<strong>Ementa em vários idiomas</strong> — os clientes veem-na automaticamente no seu idioma.",
-      "p3": "<strong>Totalmente personalizada à tua marca</strong> — cores, tipos de letra e estilo feitos para o teu espaço.",
+      "p1": "<strong>As alterações ficam online de imediato</strong>: sem filas de publicação, sem esperar por um programador.",
+      "p2": "<strong>Ementa em vários idiomas</strong>: os clientes veem-na automaticamente no seu idioma.",
+      "p3": "<strong>Totalmente personalizada à tua marca</strong>: cores, tipos de letra e estilo feitos para o teu espaço.",
       "p4": "<strong>Funciona em qualquer dispositivo.</strong> O telemóvel do empregado de bar, o iPad do responsável, o portátil do dono.",
       "viz_menu": "Ementa",
       "viz_all": "Todos os pratos",
@@ -339,10 +266,10 @@
       "eyebrow": "03 · Análises",
       "title": "A ementa dá-te finalmente dados, não suposições.",
       "body": "Cada visualização de um prato fica registada. Vês o que os clientes olham, o que ignoram e o que os perde logo na descrição. Lança uma sugestão de brunch; vê se alguém a leu. A tua próxima ementa serão decisões, não opiniões.",
-      "p1": "<strong>Popularidade dos pratos</strong> por semana e mês — vê o que vende e quando.",
-      "p2": "<strong>Vista de pratos ativos</strong> — todos os teus itens em linha num relance.",
-      "p3": "<strong>Categorias personalizadas</strong> — organiza as secções da tua ementa à tua maneira.",
-      "viz_title": "Visualizações — últimas 12 semanas",
+      "p1": "<strong>Popularidade dos pratos</strong> por semana e mês: vê o que vende e quando.",
+      "p2": "<strong>Vista de pratos ativos</strong>: todos os teus itens em linha num relance.",
+      "p3": "<strong>Categorias personalizadas</strong>: organiza as secções da tua ementa à tua maneira.",
+      "viz_title": "Visualizações: últimas 12 semanas",
       "viz_total": "Visualizações totais",
       "viz_top": "Secção em destaque",
       "viz_trend": "Tendência",
@@ -354,15 +281,15 @@
       "c1_title": "Montagem da ementa",
       "c1_body": "Envia-nos a tua ementa no formato que tiveres. Transcrevemo-la, estruturamo-la, organizamo-la por secções, acrescentamos os alergénios e verificamos cada prato contigo antes de ficar online.",
       "c2_title": "Design de marca",
-      "c2_body": "Cores, tipos de letra, estilo de fotografia — a condizer com o teu espaço. A ementa deve sentir-se como sendo da tua marca, não da nossa. Inspiramo-nos no teu site e na tua sinalética atuais.",
+      "c2_body": "Cores, tipos de letra, estilo de fotografia, a condizer com o teu espaço. A ementa deve sentir-se como sendo da tua marca, não da nossa. Inspiramo-nos no teu site e na tua sinalética atuais.",
       "c3_title": "Integração no site",
-      "c3_body": "Integrada diretamente no teu site atual por nós. Squarespace, Wix, WordPress, desenvolvimento à medida — tratamos disso. A tua ementa vive em oteuespaco.pt/ementa, não no domínio de outra pessoa.",
+      "c3_body": "Integrada diretamente no teu site atual por nós. Squarespace, Wix, WordPress, desenvolvimento à medida, tratamos disso. A tua ementa vive em oteuespaco.pt/ementa, não no domínio de outra pessoa.",
       "c4_title": "Formação da equipa",
-      "c4_body": "Uma única sessão de 30 minutos com quem vai gerir o painel — normalmente o dono e o responsável de sala. Partilhamos o ecrã, tu tomas notas. Depois disso, ficas autónomo."
+      "c4_body": "Uma única sessão de 30 minutos com quem vai gerir o painel, normalmente o dono e o responsável de sala. Partilhamos o ecrã, tu tomas notas. Depois disso, ficas autónomo."
     },
     "cta": {
       "title": "Vê-o na tua ementa, não na nossa.",
-      "body": "Marca uma demo e montamos uma secção da tua ementa real — sem compromisso, sem slides."
+      "body": "Marca uma demo e montamos uma secção da tua ementa real, sem compromisso, sem slides."
     }
   },
   "pricing": {
@@ -374,21 +301,21 @@
       "title": "Tudo o que cada cliente recebe, independentemente do tamanho do espaço.",
       "i1": "Ementa estruturada e construída por nós, com o que tiveres",
       "i2": "Desenhada a condizer com a tua marca atual",
-      "i3": "Integrada no teu site atual — sem precisar de um site novo",
-      "i4": "Alterações de pratos, preços e secções ilimitadas — feitas por ti, instantaneamente",
+      "i3": "Integrada no teu site atual: sem precisar de um site novo",
+      "i4": "Alterações de pratos, preços e secções ilimitadas, feitas por ti, instantaneamente",
       "i5": "Análises de popularidade e resumo semanal",
-      "i6": "Alojamento, segurança e atualizações de software — sempre ativo",
-      "i7": "Apoio humano de verdade — e-mail e WhatsApp",
+      "i6": "Alojamento, segurança e atualizações de software, sempre ativo",
+      "i7": "Apoio humano de verdade: e-mail e WhatsApp",
       "i8": "Códigos QR para mesas e impressão (extra opcional)",
       "i9": "Sessão de integração de 30 minutos por videochamada"
     },
     "shape": {
       "eyebrow": "O que define o teu orçamento",
-      "intro": "Há alguns fatores que influenciam o valor — falamos de todos eles na chamada.",
+      "intro": "Há alguns fatores que influenciam o valor, falamos de todos eles na chamada.",
       "i1": "Número de pratos e secções",
-      "i2": "Fotografia — a tua, do teu site, ou organizamos nós",
+      "i2": "Fotografia: a tua, do teu site, ou organizamos nós",
       "i3": "Uma ementa ou várias (bebidas, época, eventos)",
-      "i4": "Idiomas — um ou vários",
+      "i4": "Idiomas: um ou vários",
       "i5": "Como o teu site atual está construído"
     },
     "strip": {
@@ -403,7 +330,7 @@
       "q2": "E se a minha ementa mudar muito?",
       "a2": "Edita-a tu mesmo, tantas vezes quantas quiseres. A tua mensalidade não muda consoante a frequência das alterações.",
       "q3": "Preciso de um site novo?",
-      "a3": "Não. O teu atual fica. Integramos a ementa nele. Squarespace, Wix, WordPress ou um desenvolvimento à medida — tudo serve.",
+      "a3": "Não. O teu atual fica. Integramos a ementa nele. Squarespace, Wix, WordPress ou um desenvolvimento à medida, tudo serve.",
       "q4": "E as fotos dos pratos?",
       "a4": "Podes fornecer as tuas, usar as do teu site atual ou dispensar as fotos. Extra opcional: tratamos de um fotógrafo.",
       "q5": "Quanto tempo até estarmos online?",
@@ -464,12 +391,12 @@
   "about": {
     "eyebrow": "Sobre nós",
     "title": "Uma equipa pequena. Uma tarefa específica.",
-    "intro": "A Dimonova existe porque a ementa — a página mais lida do site de qualquer restaurante — era tratada como algo secundário. Nós criamo-la, gerimo-la e cuidamos dela por ti.",
+    "intro": "A Dimonova existe porque a ementa, a página mais lida do site de qualquer restaurante, era tratada como algo secundário. Nós criamo-la, gerimo-la e cuidamos dela por ti.",
     "why": {
       "eyebrow": "Porque existimos",
       "title": "A maioria das ementas digitais é má. As boas dão demasiado trabalho.",
-      "p1": "Todos os restaurantes têm o mesmo problema: a ementa muda constantemente, mas o site nunca o reflete. Os PDF estão desatualizados. A agência web tem uma fila de pedidos de duas semanas. O produto de QR é um pesadelo para editar. A certa altura, a ementa — aquilo que os clientes querem mesmo ver — tornou-se a parte pior mantida da presença online do espaço.",
-      "p2": "Criámos a Dimonova porque esse problema não é, na verdade, um problema de software. É um problema de serviço. O software não torna a tua ementa profissional — isso fá-lo um designer. O software não a liga ao teu site — isso fá-lo um programador. O software não forma a tua equipa — isso fá-lo uma pessoa. Por isso fazemos tudo isso, e o software é o que torna tudo barato o suficiente para fazer sentido.",
+      "p1": "Todos os restaurantes têm o mesmo problema: a ementa muda constantemente, mas o site nunca o reflete. Os PDF estão desatualizados. A agência web tem uma fila de pedidos de duas semanas. O produto de QR é um pesadelo para editar. A certa altura, a ementa, aquilo que os clientes querem mesmo ver, tornou-se a parte pior mantida da presença online do espaço.",
+      "p2": "Criámos a Dimonova porque esse problema não é, na verdade, um problema de software. É um problema de serviço. O software não torna a tua ementa profissional. Isso fá-lo um designer. O software não a liga ao teu site. Isso fá-lo um programador. O software não forma a tua equipa. Isso fá-lo uma pessoa. Por isso fazemos tudo isso, e o software é o que torna tudo barato o suficiente para fazer sentido.",
       "p3": "Trabalhamos com restaurantes, pubs e cafés.",
       "aside_label": "Em resumo",
       "aside_quote": "«Fazemos ementas digitais para sítios que levam a sua comida a sério e não querem pensar em software.»",
@@ -488,12 +415,8 @@
     "team": {
       "eyebrow": "A equipa",
       "title": "As pessoas com quem vais mesmo falar.",
-      "portrait": "retrato",
-      "name": "Nome (exemplo)",
       "role1": "Fundador e responsável de montagem",
-      "role2": "Design e estilo",
-      "role3": "Apoio ao cliente",
-      "role4": "Engenharia"
+      "role2": "Design e estilo"
     },
     "cta": {
       "title": "Queres ver como funcionaria para o teu espaço?"
@@ -502,7 +425,7 @@
   "contact": {
     "eyebrow": "Contacto",
     "title": "Fala-nos do teu espaço. <em>Nós fazemos o resto.</em>",
-    "intro": "Uma demo dura normalmente 20 minutos — mostramos-te o painel, percorremos configurações reais e damos-te um orçamento na chamada.",
+    "intro": "Uma demo dura normalmente 20 minutos, mostramos-te o painel, percorremos configurações reais e damos-te um orçamento na chamada.",
     "success": {
       "title": "Recebido. Entramos em contacto.",
       "body": "Espera um e-mail da nossa equipa dentro de um dia útil para marcar a demo. Se for urgente, escreve-nos no WhatsApp.",
@@ -550,15 +473,15 @@
   },
   "seo": {
     "home": {
-      "title": "Dimonova — Menus digitais para restaurantes, pubs & cafés",
+      "title": "Dimonova · Menus digitais para restaurantes, pubs & cafés",
       "desc": "Construímos, estilizamos e configuramos o teu menu digital. Alteras um prato em dois toques. Um serviço completo para estabelecimentos independentes."
     },
     "features": {
-      "title": "Funcionalidades — Dimonova",
+      "title": "Funcionalidades · Dimonova",
       "desc": "Um menu digital com a tua marca, um painel fácil de usar, analíticas reais e onboarding completo. Tudo o que o teu espaço precisa."
     },
     "pricing": {
-      "title": "Preços — Dimonova",
+      "title": "Preços · Dimonova",
       "desc": "Uma taxa de configuração única e depois uma subscrição mensal fixa. Alojamento, suporte e atualizações incluídos."
     },
     "cases": {
@@ -566,11 +489,11 @@
       "desc": "What we built for Calsot, La Pulpería and Bálamo: what each venue had before, what we did, and what they have now."
     },
     "about": {
-      "title": "Sobre nós — Dimonova",
+      "title": "Sobre nós · Dimonova",
       "desc": "Uma equipa pequena com uma missão específica: criar e gerir menus digitais para espaços que levam a sua cozinha a sério."
     },
     "contact": {
-      "title": "Contacto & demo — Dimonova",
+      "title": "Contacto & demo · Dimonova",
       "desc": "Reserva uma demo de 20 minutos. Mostramos-te o painel, percorremos configurações reais e respondemos às tuas perguntas. Sem compromisso."
     }
   },
@@ -581,13 +504,6 @@
     "venue": "O nome do espaço é obrigatório."
   },
   "footer": {
-    "tagline": "Ementas digitais e painéis para restaurantes, pubs e cafés que levam a sua comida a sério.",
-    "col_product": "Produto",
-    "col_company": "Empresa",
-    "col_contact": "Contacto",
-    "label_ie": "(Irlanda)",
-    "label_es": "(Espanha)",
-    "rights": "© 2026 Dimonova. Todos os direitos reservados.",
     "colProduct": "Features",
     "colCompany": "Company",
     "colResources": "Resources",
@@ -604,12 +520,11 @@
   "wa": {
     "name": "Equipa Dimonova",
     "status": "Resposta normalmente numa hora",
-    "greeting": "Olá 👋 — que tipo de espaço geres? Com todo o gosto mostramos-te uma visita de 30 segundos ao painel.",
+    "greeting": "Olá 👋 que tipo de espaço geres? Com todo o gosto mostramos-te uma visita de 30 segundos ao painel.",
     "chip_restaurant": "Tenho um restaurante",
     "chip_pub": "Tenho um pub",
     "chip_cafe": "Tenho um café",
-    "continue": "Continuar para o WhatsApp",
-    "disclaimer": "+353 (0)1 555 0199 · protótipo, não abre mesmo"
+    "continue": "Continuar para o WhatsApp"
   },
   "services": {
     "menu": {
@@ -681,10 +596,7 @@
       "openDirect": "Open the video"
     }
   },
-  "banner": {
-    "change": "Switch",
-    "close": "Dismiss"
-  },
+  "banner": {},
   "notFound": {
     "title": "This dish isn't on the menu.",
     "body": "We may have moved it, or it never existed. Try one of these.",
@@ -693,24 +605,10 @@
     "demo": "Book a demo",
     "menuHint": "Looking for a restaurant's menu? Menus live on each restaurant's own domain, not here."
   },
-  "legal": {
-    "privacy": {
-      "title": "Privacy policy"
-    },
-    "cookies": {
-      "title": "Cookie policy"
-    },
-    "terms": {
-      "title": "Terms of service"
-    },
-    "placeholder": "This page is being written. Contact us at {email} if you need it now."
-  },
   "alt": {
-    "hero": "A restaurant's digital menu open on a phone, showing dishes with photos, prices and allergen tags.",
     "features": "A dish detail screen on the digital menu, showing a photo, price, allergen list and suggested pairings.",
     "dishes": "The restaurant's dish-management screen, listing menu items with availability toggles, categories and prices.",
     "managerData": "The manager dashboard showing active dish counts, categories and a most-viewed-dishes ranking.",
-    "servicio": "A restaurant staff member checking the digital menu dashboard on a tablet at the venue.",
     "heroMock": "The Bálamo digital menu open on a phone, showing dish photographs and the restaurant's own branding.",
     "heroPhoto": "A dining room during service, seen from behind the pass.",
     "balamoPhone": "Bálamo's digital menu on a phone: their logo, welcome section and dish photography.",

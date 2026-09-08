@@ -6,7 +6,7 @@ Status legend: `[ ]` not started · `[~]` in progress · `[x]` done
 
 - [x] Phase 1 — base: tokens, fonts, UI kit, header + mega-menu, footer + wordmark, demo/video modals, locale banner, 404, legal placeholders
 - [x] Phase 2 — home (hero B + C variants, 8 service cards, AI panel, Bálamo showcase, differentiator band, reviews, AI compare, final CTA)
-- [ ] Phase 3 — content still missing (see below); pick hero B or C
+- [~] Phase 3 — reviews (videos + Google) and the founder story video are in; still missing: Bálamo's numbers, the service-card screenshots, and the choice between hero B and C
 - [x] Phase 4 — inner pages (features, pricing, cases, about, contact) restyled onto the new
       design system; `lib/style.ts`, `components/Hover.tsx`, `components/sections/*`, the
       legacy `.dim-*` CSS, and the legacy Instrument Serif `@import`/`.dim-legacy` are all
@@ -27,32 +27,29 @@ Status legend: `[ ]` not started · `[~]` in progress · `[x]` done
       About hero still has no founder video; the prices are unconfirmed; and the dead message
       keys the eight deleted home sections left behind (next bullet) still need pruning from
       all five locale files.
-- [ ] Phase 4 — the eight home sections deleted when phase 2 replaced them left dead message
-      keys behind in all five `messages/*.json` files: `home.hero.{eyebrow,title1,title2,body,avatars}`,
-      `home.viz.*`, `home.feat.*`, `home.how.*`, `home.price.*`, `home.cta.*`, `home.proof.*`,
-      `home.logos.{label,placeholder}`, `alt.hero`, `alt.servicio`. Prune them once the inner
-      pages are restyled and nothing else references them.
+- [x] Phase 4 — dead message keys pruned from all five `messages/*.json`: the eight replaced
+      home sections' keys (`home.hero.{eyebrow,title1,title2,body,avatars}`, `home.viz.*`,
+      `home.feat.*`, `home.how.*`, `home.price.*`, `home.cta.*`, `home.proof.*`,
+      `home.logos.{label,placeholder}`, `alt.hero`, `alt.servicio`), the differentiator band's
+      unused copy (`home.diff.{eyebrow,body,p1-p4,card_*,pause,resume}`), `nav.mega.tutorials`,
+      and the older stale set (`footer.{tagline,col_*,label_*,rights}`, `wa.disclaimer`,
+      `banner.{change,close}`, `legal.*`, `about.team.{name,role3,role4,portrait}`).
 - [ ] Phase 5 — `/admin` proxy to menuadmin (basePath + webhook-preserving rewrite)
 
 ### Phase 3 — content still missing
 
-- [ ] **Reviews — videos.** Upload the two review videos to the Supabase `tutorials`-style
-      public storage bucket, then add their public URLs (plus poster images) as entries in
-      `data/reviews.json`'s `videos` array (`{ id, name, venue, src, poster }`).
-- [ ] **Reviews — Google.** Get 4–6 real Google reviews and the current profile rating from
-      the owner, and add them to `data/reviews.json` (`rating`, `profileUrl`, and the
-      `google` array of `{ name, text, url, date }`). Until this and the item above land,
-      `components/home/Reviews.tsx` correctly renders the "coming soon" empty state — don't
-      fill this file with placeholder/fake content to make the section look finished.
-- [ ] **Hero "how it started" video.** `components/home/HeroPlayPill.tsx` opens
-      `/assets/videos/how-it-started.mp4`, which does not exist yet. Get the video from the
-      owner (same one destined for the About page) and add it at that path, or update the
-      path if it lands somewhere else.
-- [ ] **About page hero video.** The design spec puts the same "how it started" client video
-      (above) in `app/[locale]/about/page.tsx`'s hero. Phase 4 Task 5 rebuilt the page without
-      a player/poster/play button for it — a broken or dead-end control would repeat the
-      defect the home page had to remove this phase. Once the video lands, wire it into
-      `PageHero`'s `children` slot there.
+- [x] **Reviews — videos.** Calsot's and La Pulpería's clips were transcoded to 1080p H.264
+      and uploaded to the `web-media` public bucket on the project's Supabase instance;
+      `data/reviews.json` points at the public URLs and at local poster frames in
+      `public/assets/reviews/`. The 200-350 MB source `.mov` files were moved out of the repo
+      to `../_media-originals/REVIEWS CLIENTES/` — they are the only copies, so keep them.
+- [x] **Reviews — Google.** Both reviews on Dimonova's Google Business profile (Restaurante
+      Calsot and Antonio Hernández, 5.0 overall) are in `data/reviews.json`. There are only
+      two today; the carousel grows on its own as more are added.
+- [x] **Hero "how it started" video.** Calsot's owner telling the story, at
+      `HERO_VIDEO_SRC`/`HERO_VIDEO_POSTER` in `lib/config.ts`. The pill renders again.
+- [x] **About page hero video.** Wired into `PageHero`'s `children` slot on
+      `app/[locale]/about/page.tsx`, behind the same `HERO_VIDEO_SRC` guard.
 - [ ] **About page team roles.** The team section deliberately shows just the two real
       founders, Pablo and Sergio, mirroring the legacy page — it should not have grown two
       placeholder cards during the Phase 4 restyle. `about.team.role1`/`role2` (all five
@@ -101,13 +98,11 @@ Status legend: `[ ]` not started · `[~]` in progress · `[x]` done
 
 ## 📝 Before launch — content (replace placeholders)
 
-- [ ] Replace placeholder **case studies** (featured + 6 grid cards) with real venues, quotes, photos and results.
-- [ ] The **cases page** is rebuilt but hidden behind `CASES_PUBLISHED` in `app/[locale]/cases/page.tsx`, waiting on real case studies with written client permission.
+- [x] The **cases page** now carries the three real client case studies (Calsot, La Pulpería, Bálamo), written from the owner's own account of each project, and `CASES_PUBLISHED` is `true`. No photography of the venues exists yet; each case is presented on its logo instead.
 - [ ] The **About team section** is likewise rebuilt but hidden behind `TEAM_PUBLISHED` in `app/[locale]/about/page.tsx` (the owner hid it in commit 249fec2), pending the owner's decision on who appears there and whether the leftover `about.team.{name,role1,role2,role3,role4,portrait}` message keys are used or should be pruned.
-- [ ] The header's **Clients menu**, the **footer** and the home page's **Bálamo showcase** all link to `/cases`, which currently redirects home, so those links lead nowhere useful today.
-- [ ] The Bálamo showcase's **"see the case"** button will need an actual Bálamo case study before it means anything.
-- [ ] Replace the home-page **testimonial** ("Placeholder testimonial…") and client name/role.
-- [ ] Replace the 6 **"venue logo"** placeholders in the home logo strip.
+- [ ] **Written client permission.** The cases page and the logo strip name and show three real clients. Confirm each one has agreed in writing to being named and to their logo being used.
+- [x] The home page's reviews section carries real content (see Phase 3 above); the old placeholder testimonial section no longer exists.
+- [x] The home logo strip shows the three real client logos (Bálamo, La Pulpería, Calsot).
 - [ ] Swap all striped **placeholder image blocks** (`repeating-linear-gradient`) for real photos/screenshots: hero phone/dashboard, product shot, analytics, case-study photos, team portraits.
 - [ ] Confirm / update **pricing** numbers — currently "From €600" one-time and "From €45/mo".
 - [ ] Confirm **contact details**: `hello@dimonova.com`, `+353 (0)1 555 0199`, opening hours. Update everywhere (header, footer, contact page).
@@ -123,6 +118,11 @@ Status legend: `[ ]` not started · `[~]` in progress · `[x]` done
 
 ## 🔎 Before launch — quality
 
+- [ ] **Moving strips have no pause control.** At the owner's explicit request the marquees no
+      longer stop on hover, on focus, or via a button, which is a departure from WCAG 2.2.2
+      (Level A) for content that moves for more than five seconds. The `prefers-reduced-motion`
+      branch in `components/ui/Marquee.module.css` is the only remaining escape hatch. Revisit
+      if accessibility conformance is ever claimed formally.
 - [ ] **Accessibility pass:** verify keyboard/screen-reader behaviour, `aria-current` on active nav link, `aria-label` on icon-only buttons (WhatsApp FAB, mobile menu), `alt` text on images once added.
 - [ ] Cross-browser / device QA (iOS Safari, Android Chrome).
 
@@ -132,7 +132,7 @@ Status legend: `[ ]` not started · `[~]` in progress · `[x]` done
 - [ ] Connect a **custom domain** in Vercel.
 - [ ] Cookie-consent banner if analytics/marketing cookies are added.
 - [x] Escape user-supplied strings in the HTML email built in `app/api/contact/route.ts`.
-- [ ] Prune unused message keys (`footer.tagline`, `footer.col_*`, `footer.label_*`, `footer.rights`, `wa.disclaimer`, `banner.change`, `banner.close`) when the inner pages are redesigned. Also unused since the legal page switched to `content/legal/`: `legal.privacy.title`, `legal.cookies.title`, `legal.terms.title`, `legal.placeholder`.
+- [x] Unused message keys pruned across all five locales (see the Phase 4 entry above).
 
 ---
 See `CLAUDE.md` for architecture/dev notes and `README.md` for the human overview.

@@ -49,7 +49,7 @@ export const cookies: LegalDoc = {
       blocks: [
         {
           kind: "p",
-          text: "No usamos cookies de analítica, publicidad ni perfilado, ni cookies de redes sociales, ni píxeles o balizas de seguimiento. Tampoco cargamos fuentes, imágenes ni scripts desde dominios de terceros.",
+          text: "No usamos cookies de analítica, publicidad ni perfilado, ni cookies de redes sociales, ni píxeles o balizas de seguimiento. Al abrir cualquier página no se carga nada desde dominios de terceros: las fuentes, las imágenes y los scripts se sirven desde dimonova.com. La única excepción se produce si pulsas el play de un vídeo de reseña de un cliente: en ese momento el vídeo se descarga desde nuestro proveedor de almacenamiento (Supabase, en la Unión Europea), que recibe tu dirección IP para poder enviártelo. Ese proveedor no instala cookies en tu navegador.",
         },
       ],
     },

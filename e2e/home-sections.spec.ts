@@ -130,20 +130,22 @@ test("the home page does not overflow horizontally at a 390px viewport", async (
   expect(overflow).toBe(true);
 });
 
-test("the differentiator band lists all ten claims, with the duplicate marquee copy hidden", async ({ page }) => {
-  // `aria-hidden` sits on Marquee's duplicated *group* wrapper, not on the individual
-  // `[data-diff-item]` pills inside it — a `:not([aria-hidden='true'])` filter on the items
-  // themselves excludes nothing, so this has to query through the accessibility tree instead.
-  // `getByRole` does exactly that: it prunes anything under an aria-hidden/inert ancestor
-  // (Marquee marks its duplicate `inert` too), so a count of 10 here genuinely proves the
-  // duplicate copy is invisible to assistive tech, not just an artifact of a Set collapsing
-  // twenty duplicated titles down to ten.
+test("the differentiator band lists all ten claims, with the duplicate marquee copies hidden", async ({ page }) => {
+  // Marquee renders `repeat` copies of the children per half and two halves, so the band holds
+  // 10 claims x 3 repeats x 2 halves = 60 pills in the DOM. Exactly one copy of each claim is
+  // exposed: `aria-hidden` (plus `inert`) sits on Marquee's duplicated *group* wrappers, not on
+  // the individual `[data-diff-item]` pills, so this counts the pills that sit under a hidden
+  // group and asserts the remainder is the ten real ones.
   await page.goto("/");
   const band = page.locator("[data-diff]");
-  const items = band.getByRole("group");
-  await expect(items).toHaveCount(10);
-  const titles = await items.locator("[data-diff-title]").allInnerTexts();
-  expect(new Set(titles).size).toBe(10);
+  const all = band.locator("[data-diff-item]");
+  const hidden = band.locator("[aria-hidden='true'] [data-diff-item]");
+  await expect(all).toHaveCount(60);
+  await expect(hidden).toHaveCount(50);
+  const titles = await band.locator("[aria-hidden='true'] [data-diff-title]").allInnerTexts();
+  expect(titles.length).toBe(50);
+  const exposed = await all.locator("[data-diff-title]").allInnerTexts();
+  expect(new Set(exposed).size).toBe(10);
 });
 
 test("keyboard focus pauses the AI demo instead of advancing under the reader", async ({ page }) => {
@@ -174,28 +176,26 @@ test("the Bálamo pills stay inside the viewport at two-column widths", async ({
   }
 });
 
-test("hovering a claim reveals its explanation", async ({ page }) => {
-  // The claim pills live inside a continuously-scrolling Marquee track. Playwright's hover()
-  // first waits for the target to be "stable" (an identical bounding box across two
-  // animation frames) before it will move the mouse — a perpetually-translating ancestor
-  // never satisfies that, so the real pointer event is never dispatched and pauseOnHover
-  // (itself only reachable via that same pointer event) never gets a chance to run. This is
-  // exactly the situation Marquee's own reduced-motion styles are built for: freeze the
-  // track so the target is stationary, same as it would already be for a real user with the
-  // OS-level "reduce motion" preference on.
-  await page.emulateMedia({ reducedMotion: "reduce" });
+test("a claim's explanation is visible without hovering it", async ({ page }) => {
+  // The owner asked for a strip that never stops, not even on hover, so the explanation can no
+  // longer be something you have to catch a moving pill to read: it is always on screen.
   await page.goto("/");
   const item = page.locator("[data-diff-item]").first();
-  await item.hover();
   await expect(item.locator("[data-diff-body]")).toBeVisible();
+  await expect(item.locator("[data-diff-body]")).not.toBeEmpty();
 });
 
-test("the reviews section states that content is pending while the data file is empty", async ({ page }) => {
+test("the reviews section shows the Google rating badge, not the empty state", async ({ page }) => {
+  // data/reviews.json now carries real content, so the honest "coming soon" state must be
+  // gone. If a future change empties that file again, this fails loudly rather than the
+  // section quietly reverting.
   await page.goto("/#reviews");
   const s = page.locator("#reviews");
   await expect(s).toBeVisible();
-  await expect(s).toContainText("Reviews coming soon.");
-  await expect(s.getByText(/on Google$/)).toHaveCount(0);
+  await expect(s).not.toContainText("Reviews coming soon.");
+  // The rating badge specifically, not the per-card "See it on Google" links, which also end
+  // in those two words.
+  await expect(s.getByText(/^\d(?:[.,]\d)?\/5 on Google$/)).toHaveCount(1);
 });
 
 test("populated reviews render as cards", async ({ page }) => {
@@ -205,30 +205,19 @@ test("populated reviews render as cards", async ({ page }) => {
   await expect(page.locator("[data-review-card]").first()).toBeVisible();
 });
 
-test("focusing a claim reveals its explanation", async ({ page }) => {
-  // Mirrors "hovering a claim reveals its explanation" above: the pills live inside a
-  // continuously-scrolling Marquee track, so reduced motion freezes it, keeping the
-  // focused item's box stable for the assertion.
-  await page.emulateMedia({ reducedMotion: "reduce" });
+test("the claim marquee keeps running under the pointer", async ({ page }) => {
+  // Regression guard for the owner's explicit instruction: no pause button, and no pause on
+  // hover or focus either. Only the OS-level reduced-motion preference stops the strip, which
+  // this test deliberately does not emulate.
   await page.goto("/");
-  const item = page.locator("[data-diff-item]").first();
-  await item.focus();
-  await expect(item.locator("[data-diff-body]")).toBeVisible();
-});
-
-test("focusing a claim pill pauses its marquee track without a pointer", async ({ page }) => {
-  // Unlike the two tests above, this one deliberately does NOT emulate reduced motion: it
-  // proves the track itself pauses via CSS (`:focus-within`), not merely that reduced-motion
-  // styles would have frozen it anyway.
-  await page.goto("/");
-  const item = page.locator("[data-diff-item]").first();
-  await item.focus();
-  const playState = await item.evaluate((el) => {
-    const wrap = el.closest('[data-pause="true"]');
-    const track = wrap?.firstElementChild as HTMLElement | null;
-    return track ? getComputedStyle(track).animationPlayState : null;
+  const track = page.locator("[data-diff] [data-diff-item]").first();
+  await track.hover({ force: true, trial: false }).catch(() => {});
+  const playState = await track.evaluate((el) => {
+    const group = el.parentElement;
+    const trackEl = group?.parentElement as HTMLElement | null;
+    return trackEl ? getComputedStyle(trackEl).animationPlayState : null;
   });
-  expect(playState).toBe("paused");
+  expect(playState).toBe("running");
 });
 
 test("each AI provider link carries the full prompt", async ({ page }) => {

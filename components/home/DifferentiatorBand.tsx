@@ -8,13 +8,8 @@ type DiffItem = { title: string; body: string };
 
 /**
  * "What nobody else does" band: two opposing marquees of claim pills. The first five items
- * scroll left, the last five scroll right. Each pill expands on hover/focus to show its body
- * as an absolutely positioned panel below it, so the pill's own box (and therefore the row)
- * never changes size — see DifferentiatorBand.module.css for why the simpler
- * `visibility: hidden; height: 0` -> `auto` approach was measured and rejected.
- *
- * The marquees and their play/pause state live in `DiffMarquees` (a client component) since
- * the pause button needs interactivity this server component can't provide.
+ * scroll left, the last five scroll right. Each pill shows its title and its one-line body at
+ * all times; nothing is revealed on hover, because the strip never stops moving.
  */
 export default async function DifferentiatorBand() {
   const t = await getTranslations();
@@ -31,12 +26,7 @@ export default async function DifferentiatorBand() {
         </Reveal>
       </Container>
 
-      <DiffMarquees
-        left={left}
-        right={right}
-        pauseLabel={t("home.diff.pause")}
-        resumeLabel={t("home.diff.resume")}
-      />
+      <DiffMarquees left={left} right={right} />
     </section>
   );
 }

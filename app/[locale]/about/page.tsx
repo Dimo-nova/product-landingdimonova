@@ -1,6 +1,8 @@
 import Image from "next/image";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { pageMetadata } from "@/lib/meta";
+import { HERO_VIDEO_POSTER, HERO_VIDEO_SRC } from "@/lib/config";
+import HeroPlayPill from "@/components/home/HeroPlayPill";
 import Container from "@/components/ui/Container";
 import PageHero from "@/components/page/PageHero";
 import CardGrid from "@/components/page/CardGrid";
@@ -31,14 +33,15 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
 
   return (
     <main id="main" tabIndex={-1}>
-      {/*
-       * The design spec puts the first client's video in this hero — the same clip
-       * components/home/HeroPlayPill.tsx wants at /assets/videos/how-it-started.mp4, which
-       * doesn't exist yet (tracked in TODO.md). Shipping a player/poster/play button pointing
-       * at a file that isn't there is the exact dead end the home page had to remove this
-       * phase, so the hero renders without one until the video is supplied.
-       */}
-      <PageHero eyebrow={t("about.eyebrow")} title={t("about.title")} intro={t("about.intro")} />
+      {/* The design spec puts the first client's story video in this hero: the same clip the
+          home page's play pill opens, hosted on the project's own Supabase media bucket (see
+          HERO_VIDEO_SRC in lib/config.ts). The pill only renders while that constant is set, so
+          this can never become a play button pointing at a file that isn't there. */}
+      <PageHero eyebrow={t("about.eyebrow")} title={t("about.title")} intro={t("about.intro")}>
+        {HERO_VIDEO_SRC && (
+          <HeroPlayPill label={t("home.hero.playPill")} src={HERO_VIDEO_SRC} poster={HERO_VIDEO_POSTER} />
+        )}
+      </PageHero>
 
       {/* "Why we exist" — prose beside a pull-quote panel. A one-off shape: FeatureBlock's
           image prop expects a screenshot path, not a quote, so this is built inline the same

@@ -36,7 +36,6 @@ export default async function Footer() {
             <div className={styles.col}>
               <h2>{t("footer.colResources")}</h2>
               <ul>
-                <li><Link href="/features#training">{t("nav.mega.tutorials")}</Link></li>
                 <li><Link href="/pricing#faq">{t("nav.mega.faq")}</Link></li>
                 <li><Link href="/#ai-compare">{t("nav.mega.aiCompare")}</Link></li>
                 <li><a href={ADMIN_URL} target="_blank" rel="noopener noreferrer">{t("nav.clientAccess")}</a></li>
@@ -69,9 +68,16 @@ export default async function Footer() {
             {COMPANY.legalName} · {COMPANY.taxId} · {COMPANY.address}
           </div>
         </div>
-        <Reveal>
-          <img className={styles.wordmark} data-wordmark src="/assets/logo_horizontal.svg" alt="" aria-hidden="true" />
-        </Reveal>
+        {/* The wordmark's reveal starts 24px lower than its resting position (see lib/motion.ts).
+            A transform does not shrink back into the layout, so before the animation runs that
+            offset pushed the image past the footer's own box and left a strip of the white page
+            background showing under the near-black footer. Clipping it here rather than on
+            `.footer` itself keeps the footer's language dropdown free to overflow. */}
+        <div className={styles.markClip}>
+          <Reveal>
+            <img className={styles.wordmark} data-wordmark src="/assets/logo_horizontal.svg" alt="" aria-hidden="true" />
+          </Reveal>
+        </div>
       </Container>
     </footer>
   );

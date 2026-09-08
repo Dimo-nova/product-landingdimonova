@@ -132,6 +132,12 @@ export const privacy: LegalDoc = {
               "United States",
               "Data processing agreement and EU standard contractual clauses",
             ],
+            [
+              "Supabase Inc.",
+              "Hosts the client review videos. It only receives your IP address if you press play on one of them; nothing of theirs is loaded when the page opens",
+              "European Union (Ireland)",
+              "Data processing agreement",
+            ],
           ],
         },
         {

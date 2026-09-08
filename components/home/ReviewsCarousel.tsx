@@ -139,7 +139,7 @@ function VideoCard({ item, playLabel }: { item: VideoReview; playLabel: string }
         src={item.poster}
         alt={item.name}
         fill
-        sizes="(max-width: 640px) 72vw, 300px"
+        sizes="(max-width: 640px) 82vw, 420px"
         className={styles.poster}
       />
       <div className={styles.videoGradient} aria-hidden="true" />
@@ -148,7 +148,7 @@ function VideoCard({ item, playLabel }: { item: VideoReview; playLabel: string }
         className={styles.playBtn}
         aria-label={playLabel}
         onClick={() =>
-          openVideo({ src: item.src, poster: item.poster, title: item.name, orientation: "portrait" })
+          openVideo({ src: item.src, poster: item.poster, title: item.name, orientation: "landscape" })
         }
       >
         <span aria-hidden="true">▶</span>
@@ -202,7 +202,7 @@ function GoogleCard({
         </span>
         <div>
           <div className={styles.googleName}>{item.name}</div>
-          <div className={styles.googleVenue}>{item.venue}</div>
+          {item.venue && <div className={styles.googleVenue}>{item.venue}</div>}
         </div>
       </div>
 

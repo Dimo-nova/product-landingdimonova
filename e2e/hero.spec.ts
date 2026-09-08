@@ -27,14 +27,16 @@ test("a valid email opens the demo modal already filled in", async ({ page }) =>
   await expect(dialog.getByLabel("Email")).toHaveValue("ana@bar.es");
 });
 
-test("the play pill is absent while the story video is unset", async ({ page }) => {
-  // HeroPlayPill would open a video modal at HERO_VIDEO_SRC (lib/config.ts), which is
-  // intentionally `null` until the founder's video is uploaded — a prominent call-to-action
-  // that opens a video modal's 404 fallback is worse than no pill at all, so Hero.tsx renders
-  // none while it's unset. Flip this back to a click-opens-the-modal assertion once
-  // HERO_VIDEO_SRC is set.
+test("the play pill opens the story video", async ({ page }) => {
+  // HERO_VIDEO_SRC (lib/config.ts) now points at the first client's story video on the
+  // project's Supabase media bucket, so Hero.tsx renders the pill again. The video itself is
+  // never requested until this button is pressed, which is what keeps the page free of
+  // third-party requests on load (see e2e/tokens.spec.ts).
   await page.goto("/");
-  await expect(page.getByRole("button", { name: /How Dimonova started/ })).toHaveCount(0);
+  const pill = page.getByRole("button", { name: /How Dimonova started/ });
+  await expect(pill).toBeVisible();
+  await pill.click();
+  await expect(page.getByRole("dialog")).toBeVisible();
 });
 
 test("photo is the default background and ?hero=c switches to the mock", async ({ page }) => {

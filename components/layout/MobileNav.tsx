@@ -80,7 +80,6 @@ export default function MobileNav() {
               ))}
               {acc("resources", t("nav.resources"), (
                 <>
-                  <Link href="/features#training">{t("nav.mega.tutorials")}</Link>
                   <Link href="/pricing#faq">{t("nav.mega.faq")}</Link>
                   <Link href="/#ai-compare">{t("nav.mega.aiCompare")}</Link>
                   <Link href="/contact">{t("nav.mega.contact")}</Link>

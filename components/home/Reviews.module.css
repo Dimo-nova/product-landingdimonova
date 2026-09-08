@@ -48,7 +48,7 @@
 
 .slide {
   flex: 0 0 auto;
-  width: min(300px, 78vw);
+  width: min(420px, 82vw);
   /* Flex items default to `min-width: auto` (their content's min-content size), which can
      override an explicit `width` for non-shrinking items with long unbreakable content.
      Pinning it to 0 keeps every slide at the width above regardless of card content. (The
@@ -112,7 +112,10 @@
 
 .videoCard {
   position: relative;
-  aspect-ratio: 9 / 16;
+  /* The client review videos were filmed landscape on a phone at 4K 16:9. A portrait card would
+     centre-crop them to a head-and-shoulders sliver and throw away the venue behind the
+     speaker, which is half of what the clip shows. */
+  aspect-ratio: 16 / 9;
   border-radius: var(--radius-card);
   overflow: hidden;
   background: var(--ink);

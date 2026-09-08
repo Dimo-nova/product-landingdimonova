@@ -22,7 +22,6 @@
       "clientsFeaturedCta": "See the case",
       "clientsAll": "All case studies",
       "clientsVideos": "Video reviews",
-      "tutorials": "Tutorials",
       "faq": "FAQ",
       "aiCompare": "Compare with AI",
       "contact": "Contact"
@@ -36,11 +35,6 @@
   },
   "home": {
     "hero": {
-      "eyebrow": "For restaurants, pubs & cafés",
-      "title1": "A digital menu,",
-      "title2": "built and set up for you.",
-      "body": "We build your digital menu, style it to your brand, link it into your existing website, and train your team. You change a dish in two taps.",
-      "avatars": "Loved by independent venues<br>across the country",
       "playPill": "How Dimonova started",
       "title": "We take care of it. You <mark>grow</mark>.",
       "lead": "Digital menu, ordering and reviews made to measure, built and looked after 24/7 by a team of geeks you can trust. No templates. Ready to scale.",
@@ -50,58 +44,12 @@
       "clientLink": "Already a client? Go to the dashboard",
       "emailInvalid": "Enter a valid email"
     },
-    "viz": {
-      "dash_label": "Dashboard · live",
-      "dash_title": "This week's favourites",
-      "days": "Mon — Sun",
-      "menu_views": "Menu views",
-      "updates": "Updates this week"
-    },
     "logos": {
-      "label": "Trusted by independent venues",
-      "placeholder": "venue logo",
       "title": "Trusted by"
     },
-    "feat": {
-      "eyebrow": "What you get",
-      "title": "Built around your menu and your brand, not a one-size-fits-all template.",
-      "see_all": "See all features →",
-      "c1_title": "A digital menu, properly designed",
-      "c1_body": "Photos, descriptions, allergens, prices — all laid out so diners actually read them.",
-      "c2_title": "A dashboard you can run from the bar",
-      "c2_body": "Edit a dish, swap a photo, mark something sold out — from any phone or laptop, in seconds.",
-      "c3_title": "See what diners actually want",
-      "c3_body": "Dish popularity, views, and trends — so your next menu is based on data, not guesswork."
-    },
-    "how": {
-      "eyebrow": "How it works",
-      "title": "We set it up. You run it.",
-      "s1_title": "Send your menu",
-      "s1_body": "PDF, a phone photo of the chalkboard, a Word doc — whatever you've got. We take it from there.",
-      "s2_title": "We build & style it",
-      "s2_body": "Matched to your brand, your tone, your venue. Table ordering, coupon codes, custom sections — whatever your restaurant needs, we build it in.",
-      "s3_title": "Link & train",
-      "s3_body": "Plugged into your existing website. A 30-minute training call with your team. That's the handover.",
-      "s4_title": "You run it",
-      "s4_body": "Edit a dish in 10 seconds. See what's selling. We're still there when you need us.",
-      "quote": "\"Most people go live in 5–7 days from sending us their menu. The training call is the longest meeting we ask of you.\"",
-      "more": "More on the setup →"
-    },
     "diff": {
-      "eyebrow": "The difference",
       "title": "What nobody else does.",
-      "body": "Most digital menu products give you a builder, a help centre, and a free trial. We don't — we build it, set it up, and walk your team through it.",
-      "p1": "We build your menu from whatever you have — PDF, photo, doc.",
-      "p2": "We style it to match your brand and venue.",
-      "p3": "We link it into your existing website ourselves.",
-      "p4": "We train your team in a single 30-minute session.",
-      "card_badge": "product shot",
-      "card_pill": "Onboarding session — visual",
-      "card_title": "Setup, sorted",
-      "card_body": "From signed contract to live menu in days, not weeks.",
       "lead": "The parts a template cannot give you, and a support queue will not do for you.",
-      "pause": "Pause the moving list",
-      "resume": "Resume the moving list",
       "items": [
         {
           "title": "Pixel-perfect styling",
@@ -144,27 +92,6 @@
           "body": "A person who knows your venue, not a chatbot."
         }
       ]
-    },
-    "proof": {
-      "quote": "Placeholder testimonial — the kind of quote that says \"we don't have to think about the menu anymore.\" Real client quote goes here.",
-      "client": "Client name",
-      "role": "Role · Venue name",
-      "stat1_label": "Average go-live",
-      "stat1_unit": "days",
-      "stat2_label": "Satisfaction rate",
-      "stat2_unit": ""
-    },
-    "price": {
-      "eyebrow": "Pricing",
-      "title": "A one-time setup fee, then a flat monthly subscription.",
-      "body": "Hosting, support, and updates included. No per-cover charges, no per-dish charges, no surprise invoices.",
-      "see_full": "See full pricing →",
-      "quote_cta": "Get a tailored quote"
-    },
-    "cta": {
-      "eyebrow": "Ready when you are",
-      "title": "Let's get your menu live.",
-      "body": "A 20-minute demo. We'll show you the dashboard, walk through real venue setups, and answer your questions. No commitment."
     },
     "services": {
       "title": "Everything your restaurant needs. And someone to run it.",
@@ -279,7 +206,7 @@
     },
     "reviews": {
       "title": "Their words, not ours.",
-      "badge": "{rating} on Google",
+      "badge": "{rating}/5 on Google",
       "pending": "Reviews coming soon.",
       "more": "Read more",
       "less": "Show less",
@@ -310,19 +237,19 @@
     "f1": {
       "eyebrow": "01 · The digital menu",
       "title": "A menu that looks like your venue, not a takeaway app.",
-      "body": "Photos, descriptions, allergens, prices, sections, daily specials — properly typeset. Loads fast on a phone. Lives inside your existing website, so diners never feel handed off to a third-party tool.",
+      "body": "Photos, descriptions, allergens, prices, sections and daily specials, properly typeset. Loads fast on a phone. Lives inside your existing website, so diners never feel handed off to a third-party tool.",
       "p1": "<strong>Embedded, not redirected.</strong> Lives at <span>yourvenue.com/menu</span>, not a generic URL.",
       "p2": "<strong>Allergens & dietary tags</strong> on every dish, filterable for diners.",
-      "p3": "<strong>Optional QR codes</strong> — table cards, posters, business cards — point straight to it.",
+      "p3": "<strong>Optional QR codes</strong> on table cards, posters and business cards point straight to it.",
       "p4": "<strong>Sold-out states</strong> flip a dish off instantly during service."
     },
     "f2": {
       "eyebrow": "02 · The dashboard",
       "title": "If you can use Instagram, you can use this.",
       "body": "No menu engineer training, no agency tickets, no \"raise a support request to change a price.\" Whoever's running the floor can flip a dish off, raise a price, or swap a photo from their phone in under a minute.",
-      "p1": "<strong>Changes go live instantly</strong> — no publishing queue, no waiting on a developer.",
-      "p2": "<strong>Menu in multiple languages</strong> — guests see it in their language automatically.",
-      "p3": "<strong>Fully personalised to your brand</strong> — colours, fonts, and feel built for your restaurant.",
+      "p1": "<strong>Changes go live instantly</strong>. No publishing queue, no waiting on a developer.",
+      "p2": "<strong>Menu in multiple languages</strong>. Guests see it in their own language automatically.",
+      "p3": "<strong>Fully personalised to your brand</strong>: colours, fonts and feel built for your restaurant.",
       "p4": "<strong>Works on any device.</strong> Bartender's phone, manager's iPad, owner's laptop.",
       "viz_menu": "Menu",
       "viz_all": "All dishes",
@@ -339,10 +266,10 @@
       "eyebrow": "03 · Analytics",
       "title": "The menu is finally giving you data, not guesses.",
       "body": "Every dish view is logged. You see what diners look at, what they skip, and what's losing them at the description. Run a brunch special; see if anyone read it. Your next menu refresh is decisions, not opinions.",
-      "p1": "<strong>Dish popularity</strong> by week and month — see what's selling and when.",
-      "p2": "<strong>Active dish overview</strong> — all your live items at a glance.",
-      "p3": "<strong>Custom categories</strong> — organise your menu sections your way.",
-      "viz_title": "Views — last 12 weeks",
+      "p1": "<strong>Dish popularity</strong> by week and month, so you see what's selling and when.",
+      "p2": "<strong>Active dish overview</strong>: all your live items at a glance.",
+      "p3": "<strong>Custom categories</strong>: organise your menu sections your way.",
+      "viz_title": "Views over the last 12 weeks",
       "viz_total": "Total views",
       "viz_top": "Top section",
       "viz_trend": "Trend",
@@ -354,15 +281,15 @@
       "c1_title": "Menu build",
       "c1_body": "Send us your menu in whatever format you have. We type it up, structure it, organise it into sections, add allergens, and check every dish with you before going live.",
       "c2_title": "Brand styling",
-      "c2_body": "Colours, fonts, photography style — matched to your venue. The menu should feel like it belongs to your brand, not ours. We'll take cues from your existing site and signage.",
+      "c2_body": "Colours, fonts and photography style, matched to your venue. The menu should feel like it belongs to your brand, not ours. We'll take cues from your existing site and signage.",
       "c3_title": "Website linking",
-      "c3_body": "Embedded directly into your existing website by us. Squarespace, Wix, WordPress, custom build — we handle it. Your menu lives at yourvenue.com/menu, not on someone else's domain.",
+      "c3_body": "Embedded directly into your existing website by us. Squarespace, Wix, WordPress, custom build: we handle it. Your menu lives at yourvenue.com/menu, not on someone else's domain.",
       "c4_title": "Team training",
-      "c4_body": "A single 30-minute session with whoever will run the dashboard — usually the owner and the floor manager. We screen-share, you take notes. After that, you're independent."
+      "c4_body": "A single 30-minute session with whoever will run the dashboard, usually the owner and the floor manager. We screen-share, you take notes. After that, you're independent."
     },
     "cta": {
       "title": "See it on your menu, not ours.",
-      "body": "Book a demo and we'll mock up a section of your real menu — no commitment, no slides."
+      "body": "Book a demo and we'll mock up a section of your real menu. No commitment, no slides."
     }
   },
   "pricing": {
@@ -374,21 +301,21 @@
       "title": "Everything every client gets, regardless of venue size.",
       "i1": "Menu structured and built by us, from whatever you have",
       "i2": "Styled to match your existing brand",
-      "i3": "Embedded into your existing website — no new site needed",
-      "i4": "Unlimited dish, price, and section updates — done by you, instantly",
+      "i3": "Embedded into your existing website, no new site needed",
+      "i4": "Unlimited dish, price and section updates, done by you, instantly",
       "i5": "Dish popularity analytics and weekly digest",
-      "i6": "Hosting, security, and software updates — always on",
-      "i7": "Real human support — email and WhatsApp",
+      "i6": "Hosting, security and software updates, always on",
+      "i7": "Real human support on email and WhatsApp",
       "i8": "QR codes for tables and print (optional add-on)",
       "i9": "30-minute onboarding session, video call"
     },
     "shape": {
       "eyebrow": "What shapes your quote",
-      "intro": "A few things inform the number — and we talk through all of them on the call.",
+      "intro": "A few things inform the number, and we talk through all of them on the call.",
       "i1": "Number of dishes and sections",
-      "i2": "Photography — your own, sourced, or arranged",
+      "i2": "Photography: your own, sourced, or arranged",
       "i3": "One menu or several (drinks, seasonal, events)",
-      "i4": "Languages — one or more",
+      "i4": "Languages: one or more",
       "i5": "How your current website is built"
     },
     "strip": {
@@ -403,7 +330,7 @@
       "q2": "What if my menu changes a lot?",
       "a2": "Edit it yourself, as often as you like. Your monthly rate doesn't change based on how often you update things.",
       "q3": "Do I need a new website?",
-      "a3": "No. Your existing one stays. We embed the menu into it. Squarespace, Wix, WordPress, or a custom build — all fine.",
+      "a3": "No. Your existing one stays. We embed the menu into it. Squarespace, Wix, WordPress, or a custom build: all fine.",
       "q4": "What about photos of the dishes?",
       "a4": "You can supply your own, use ours from your existing site, or skip photos entirely. Optional add-on: we arrange a photographer.",
       "q5": "How long until we're live?",
@@ -464,12 +391,12 @@
   "about": {
     "eyebrow": "About",
     "title": "A small team. A specific job.",
-    "intro": "Dimonova exists because the menu — the most-read page of any restaurant's website — was being treated as an afterthought. We build it, run it, and look after it for you.",
+    "intro": "Dimonova exists because the menu, the most-read page of any restaurant's website, was being treated as an afterthought. We build it, run it, and look after it for you.",
     "why": {
       "eyebrow": "Why we exist",
       "title": "Most digital menus are bad. The good ones are too much work.",
-      "p1": "Every restaurant has the same problem: the menu changes constantly, but the website never reflects it. PDFs are out of date. The website agency is on a two-week ticket queue. The QR code product is a nightmare to edit. Somewhere along the way, the menu — the thing diners actually want to look at — became the worst-maintained part of the venue's online presence.",
-      "p2": "We built Dimonova because that problem isn't really a software problem. It's a service problem. Software doesn't make your menu professional — a designer does. Software doesn't link it to your website — a developer does. Software doesn't train your team — a person does. So we do all of that, and the software is what makes it cheap enough to make sense.",
+      "p1": "Every restaurant has the same problem: the menu changes constantly, but the website never reflects it. PDFs are out of date. The website agency is on a two-week ticket queue. The QR code product is a nightmare to edit. Somewhere along the way, the menu, the thing diners actually want to look at, became the worst-maintained part of the venue's online presence.",
+      "p2": "We built Dimonova because that problem isn't really a software problem. It's a service problem. Software doesn't make your menu professional. A designer does. Software doesn't link it to your website. A developer does. Software doesn't train your team. A person does. So we do all of that, and the software is what makes it cheap enough to make sense.",
       "p3": "We work with restaurants, pubs, and cafés.",
       "aside_label": "In short",
       "aside_quote": "\"We make digital menus for places that take their food seriously and don't want to think about software.\"",
@@ -488,12 +415,8 @@
     "team": {
       "eyebrow": "The team",
       "title": "The people you'll actually talk to.",
-      "portrait": "portrait",
-      "name": "Name placeholder",
       "role1": "Founder & build lead",
-      "role2": "Design & styling",
-      "role3": "Customer success",
-      "role4": "Engineering"
+      "role2": "Design & styling"
     },
     "cta": {
       "title": "Want to see how it'd work for your venue?"
@@ -502,7 +425,7 @@
   "contact": {
     "eyebrow": "Contact",
     "title": "Tell us about your venue. <em>We'll do the rest.</em>",
-    "intro": "A demo is usually 20 minutes — we'll show you the dashboard, walk through real venue setups, and quote you on the call.",
+    "intro": "A demo is usually 20 minutes. We'll show you the dashboard, walk through real venue setups, and quote you on the call.",
     "success": {
       "title": "Got it. We'll be in touch.",
       "body": "Expect an email from our team within one working day to book the demo. If it's urgent, message us on WhatsApp.",
@@ -550,15 +473,15 @@
   },
   "seo": {
     "home": {
-      "title": "Dimonova — Digital menus for restaurants, pubs & cafés",
+      "title": "Dimonova · Digital menus for restaurants, pubs & cafés",
       "desc": "We build, style, and set up your digital menu. You change a dish in two taps. A done-for-you service for independent venues."
     },
     "features": {
-      "title": "Features — Dimonova",
+      "title": "Features · Dimonova",
       "desc": "A branded digital menu, an easy dashboard, real analytics, and done-for-you onboarding. Everything your venue needs, nothing you don't."
     },
     "pricing": {
-      "title": "Pricing — Dimonova",
+      "title": "Pricing · Dimonova",
       "desc": "A one-time setup fee, then a flat monthly subscription. Hosting, support, and updates included. Get a tailored quote for your venue."
     },
     "cases": {
@@ -566,11 +489,11 @@
       "desc": "What we built for Calsot, La Pulpería and Bálamo: what each venue had before, what we did, and what they have now."
     },
     "about": {
-      "title": "About — Dimonova",
+      "title": "About · Dimonova",
       "desc": "A small team with a specific job: building and running digital menus for venues that take their food seriously."
     },
     "contact": {
-      "title": "Contact & demo — Dimonova",
+      "title": "Contact & demo · Dimonova",
       "desc": "Book a 20-minute demo. We'll show you the dashboard, walk through real venue setups, and answer your questions. No commitment."
     }
   },
@@ -581,13 +504,6 @@
     "venue": "Venue name is required."
   },
   "footer": {
-    "tagline": "Digital menus and dashboards for restaurants, pubs, and cafés that take their food seriously.",
-    "col_product": "Product",
-    "col_company": "Company",
-    "col_contact": "Contact",
-    "label_ie": "(Ireland)",
-    "label_es": "(Spain)",
-    "rights": "© 2026 Dimonova. All rights reserved.",
     "colProduct": "Features",
     "colCompany": "Company",
     "colResources": "Resources",
@@ -604,12 +520,11 @@
   "wa": {
     "name": "Dimonova team",
     "status": "Usually back within an hour",
-    "greeting": "Hi 👋 — what kind of venue are you running? Happy to share a 30-second walkthrough of the dashboard.",
+    "greeting": "Hi 👋 what kind of venue are you running? Happy to share a 30-second walkthrough of the dashboard.",
     "chip_restaurant": "I run a restaurant",
     "chip_pub": "I run a pub",
     "chip_cafe": "I run a café",
-    "continue": "Continue to WhatsApp",
-    "disclaimer": "+353 (0)1 555 0199 · prototype, won't actually open"
+    "continue": "Continue to WhatsApp"
   },
   "services": {
     "menu": {
@@ -681,10 +596,7 @@
       "openDirect": "Open the video"
     }
   },
-  "banner": {
-    "change": "Switch",
-    "close": "Dismiss"
-  },
+  "banner": {},
   "notFound": {
     "title": "This dish isn't on the menu.",
     "body": "We may have moved it, or it never existed. Try one of these.",
@@ -693,24 +605,10 @@
     "demo": "Book a demo",
     "menuHint": "Looking for a restaurant's menu? Menus live on each restaurant's own domain, not here."
   },
-  "legal": {
-    "privacy": {
-      "title": "Privacy policy"
-    },
-    "cookies": {
-      "title": "Cookie policy"
-    },
-    "terms": {
-      "title": "Terms of service"
-    },
-    "placeholder": "This page is being written. Contact us at {email} if you need it now."
-  },
   "alt": {
-    "hero": "A restaurant's digital menu open on a phone, showing dishes with photos, prices and allergen tags.",
     "features": "A dish detail screen on the digital menu, showing a photo, price, allergen list and suggested pairings.",
     "dishes": "The restaurant's dish-management screen, listing menu items with availability toggles, categories and prices.",
     "managerData": "The manager dashboard showing active dish counts, categories and a most-viewed-dishes ranking.",
-    "servicio": "A restaurant staff member checking the digital menu dashboard on a tablet at the venue.",
     "heroMock": "The Bálamo digital menu open on a phone, showing dish photographs and the restaurant's own branding.",
     "heroPhoto": "A dining room during service, seen from behind the pass.",
     "balamoPhone": "Bálamo's digital menu on a phone: their logo, welcome section and dish photography.",

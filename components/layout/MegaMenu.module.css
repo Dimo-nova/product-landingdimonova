@@ -18,16 +18,13 @@
 .title { font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-2); margin: 0 0 18px; }
 
 .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+/* No icon: the owner asked for a plain text list where the hover wash is the only affordance. */
 .card {
-  display: flex; gap: 14px; align-items: flex-start;
+  display: block;
   padding: 14px; border-radius: 16px; color: var(--ink);
   transition: background .2s;
 }
 .card:hover { background: var(--cream); }
-.icon {
-  flex: none; width: 40px; height: 40px; border-radius: 12px;
-  display: grid; place-items: center; background: var(--brand-soft); color: var(--brand-deep);
-}
 .cardTitle { display: block; font-weight: 600; font-size: 15px; margin: 0 0 2px; }
 .cardLine { display: block; font-size: 13px; color: var(--ink-2); margin: 0; line-height: 1.4; }
 

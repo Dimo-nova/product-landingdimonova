@@ -132,6 +132,12 @@ export const privacy: LegalDoc = {
               "Estados Unidos",
               "Contrato de encargo de tratamiento y cláusulas contractuales tipo de la UE",
             ],
+            [
+              "Supabase Inc.",
+              "Aloja los vídeos de reseñas de clientes. Solo recibe tu dirección IP si pulsas el play de uno de esos vídeos; no se carga nada suyo al abrir la página",
+              "Unión Europea (Irlanda)",
+              "Contrato de encargo de tratamiento",
+            ],
           ],
         },
         {

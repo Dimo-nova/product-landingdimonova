@@ -5,9 +5,12 @@ import styles from "./Annotated.module.css";
 
 type Props = { children: React.ReactNode; kind?: "ellipse" | "strike"; delay?: number };
 
-// Hand-drawn feel: slightly open ellipse, or a wobbly strike-through. viewBox is 200x60, preserveAspectRatio none stretches it to the word.
+// Hand-drawn feel: a loop closed with a slight overshoot past its own start (the way a pen
+// does), or a wobbly strike-through. viewBox is 200x60, preserveAspectRatio none stretches it
+// to the word. The loop must end past `M` rather than short of it: an endpoint that stops
+// before the start reads as an unfinished circle, not as a hand-drawn one.
 const PATHS = {
-  ellipse: "M 30 8 C 90 -4, 190 2, 194 26 C 198 50, 120 62, 60 56 C 12 52, -2 30, 24 14",
+  ellipse: "M 26 12 C 62 -2, 150 -3, 186 13 C 203 21, 197 45, 158 53 C 118 62, 48 60, 15 45 C -4 36, 1 17, 34 7",
   strike: "M 4 34 C 60 26, 120 30, 196 24",
 };
 

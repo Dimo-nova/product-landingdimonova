@@ -5,31 +5,51 @@ type Props = {
   /** Seconds for one full loop. */
   speed?: number;
   direction?: "left" | "right";
-  pauseOnHover?: boolean;
-  /** Externally-controlled pause (e.g. a visible pause button), independent of hover/focus. */
-  paused?: boolean;
+  /**
+   * How many times the children are repeated inside each half of the track. With only a
+   * handful of items the loop's seam arrives every few seconds and the strip reads as a short
+   * list restarting rather than an endless one; repeating the children widens each half so the
+   * seam is pushed far off screen.
+   */
+  repeat?: number;
   className?: string;
 };
 
 /**
- * Duplicates its children once and translates the track by -50%, so the loop is seamless.
- * The duplicate is aria-hidden: assistive tech reads the content once. It is also `inert`:
- * aria-hidden alone only removes a subtree from the accessibility tree, it does not stop a
- * sighted keyboard user from tabbing into it — which matters once children can be focusable
- * (e.g. DifferentiatorBand's claim pills). `inert` additionally makes the whole duplicate
- * unfocusable and unclickable, so Tab only ever visits the real, announced copy.
+ * Duplicates its children (`repeat` copies per half, two halves) and translates the track by
+ * -50%, so the loop is seamless. Only the very first copy is exposed to assistive tech: every
+ * other copy is aria-hidden *and* `inert`, because aria-hidden alone only removes a subtree
+ * from the accessibility tree, it does not stop a sighted keyboard user from tabbing into it,
+ * which matters once children can be focusable (e.g. DifferentiatorBand's claim pills).
+ *
+ * The strip does not pause on hover, on focus, or via a button: the owner asked for a strip
+ * that never stops. The `prefers-reduced-motion` branch in the stylesheet still replaces the
+ * animation with a plain horizontally-scrollable row, which is what makes this safe for
+ * visitors who cannot tolerate movement.
  */
-export default function Marquee({ children, speed = 40, direction = "left", pauseOnHover = true, paused = false, className }: Props) {
+export default function Marquee({ children, speed = 40, direction = "left", repeat = 1, className }: Props) {
+  const copies = Array.from({ length: Math.max(1, repeat) }, (_, i) => i);
+
   return (
     <div
       className={[styles.wrap, styles[direction], className].filter(Boolean).join(" ")}
-      data-pause={pauseOnHover}
-      data-force-pause={paused}
       style={{ ["--marquee-duration" as string]: `${speed}s` }}
     >
       <div className={styles.track}>
-        <div className={styles.group}>{children}</div>
-        <div className={styles.group} aria-hidden="true" inert>{children}</div>
+        {[0, 1].map((half) =>
+          copies.map((copy) => {
+            const first = half === 0 && copy === 0;
+            return (
+              <div
+                key={`${half}-${copy}`}
+                className={styles.group}
+                {...(first ? {} : { "aria-hidden": "true" as const, inert: true })}
+              >
+                {children}
+              </div>
+            );
+          }),
+        )}
       </div>
     </div>
   );

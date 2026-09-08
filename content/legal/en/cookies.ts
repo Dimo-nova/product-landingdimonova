@@ -49,7 +49,7 @@ export const cookies: LegalDoc = {
       blocks: [
         {
           kind: "p",
-          text: "We use no analytics, advertising or profiling cookies, no social-media cookies, and no tracking pixels or beacons. We also load no fonts, images or scripts from third-party domains.",
+          text: "We use no analytics, advertising or profiling cookies, no social-media cookies, and no tracking pixels or beacons. Opening any page loads nothing from a third-party domain: fonts, images and scripts are all served from dimonova.com. The one exception happens if you press play on a client review video: the video is then downloaded from our storage provider (Supabase, in the European Union), which receives your IP address in order to send it to you. That provider sets no cookies in your browser.",
         },
       ],
     },

@@ -3,13 +3,14 @@
 .group { display: flex; align-items: center; gap: var(--marquee-gap, 32px); padding-right: var(--marquee-gap, 32px); }
 .left .track { animation: marquee-left var(--marquee-duration, 40s) linear infinite; }
 .right .track { animation: marquee-right var(--marquee-duration, 40s) linear infinite; }
-.wrap[data-pause="true"]:hover .track { animation-play-state: paused; }
-.wrap[data-pause="true"]:focus-within .track { animation-play-state: paused; }
-.wrap[data-force-pause="true"] .track { animation-play-state: paused; }
 
 @keyframes marquee-left { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 @keyframes marquee-right { from { transform: translateX(-50%); } to { transform: translateX(0); } }
 
+/* The strip never pauses on hover, focus or a button (see Marquee.tsx). This is the one
+   escape hatch that remains: for a visitor who has asked their OS for reduced motion the
+   animation is dropped entirely and the row becomes an ordinary horizontal scroller, with the
+   duplicated copies hidden so nothing is announced or read twice. */
 @media (prefers-reduced-motion: reduce) {
   .track { animation: none !important; }
   .wrap { overflow-x: auto; }

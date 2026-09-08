@@ -14,7 +14,9 @@ export type VideoReview = {
 export type GoogleReview = {
   id: string;
   name: string;
-  venue: string;
+  /** The reviewer's venue, when it is known. Google does not expose one for every reviewer, and
+   * inventing one would put words in a real person's mouth, so the card simply omits the line. */
+  venue?: string;
   text: string;
   url: string;
   /** Star rating out of 5. Defaults to 5 when omitted (all reviews so far have been 5-star). */

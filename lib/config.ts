@@ -13,12 +13,21 @@ export const CONTACT = {
 /** Client dashboard (panel-admin). Linked from the header, mobile nav and footer. */
 export const ADMIN_URL = "https://menuadmin.dimonova.com";
 
+/** Public read-only media bucket on the project's own Supabase instance. Videos are served from
+ * here rather than from `public/` so a 15-30 MB file never enters the git history or the Vercel
+ * bundle. Nothing is fetched from it on page load: the posters are local assets and the video
+ * itself is only requested once a visitor presses play. */
+const MEDIA_BASE = "https://dfulbdzlkaubgdksalnp.supabase.co/storage/v1/object/public/web-media/reviews";
+
 /**
- * The hero's "how it started" story video. `null` until the founder's video is uploaded and
- * its path set here — `HeroPlayPill` only renders when this is non-null, since a prominent
- * play pill that opens a 404 fallback is worse than no pill at all.
+ * The hero's "how it started" story video: the first client, Calsot, telling how it began.
+ * `HeroPlayPill` only renders when this is non-null, since a prominent play pill that opens a
+ * 404 fallback is worse than no pill at all.
  */
-export const HERO_VIDEO_SRC: string | null = null;
+export const HERO_VIDEO_SRC: string | null = `${MEDIA_BASE}/calsot-historia.mp4`;
+
+/** Poster frame for HERO_VIDEO_SRC. Local, so it costs no third-party request on page load. */
+export const HERO_VIDEO_POSTER = "/assets/reviews/calsot-historia-poster.jpg";
 
 /**
  * Legal identity of the operator, published as required by art. 10 LSSI-CE and GDPR art. 13.
@@ -50,10 +59,9 @@ export const LEGAL_UPDATED = "2026-09-07";
 export const MAX_UPLOAD_BYTES = 4 * 1024 * 1024;
 
 /**
- * The case studies are hidden until real ones exist — every venue on that page is an invented
- * placeholder, which is why commit 514d840 ("hide testimonial and cases until reviews ready")
- * made `/cases` redirect home (see `app/[locale]/cases/page.tsx`). Exported from here, rather
- * than declared locally on the page, so `app/sitemap.ts` can gate the `/cases` entry on the
- * same flag instead of duplicating it. Flip to `true` once real cases are ready to publish.
+ * Whether `/cases` is published. Kept here rather than declared locally on the page so
+ * `app/sitemap.ts` can gate its `/cases` entry on the same flag instead of duplicating it.
+ * The page now carries the three real client case studies (Calsot, La Pulpería, Bálamo),
+ * written from the owner's own account of each project.
  */
-export const CASES_PUBLISHED: boolean = false;
+export const CASES_PUBLISHED: boolean = true;

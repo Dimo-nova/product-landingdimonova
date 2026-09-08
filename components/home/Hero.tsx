@@ -2,7 +2,7 @@ import { getTranslations } from "next-intl/server";
 import Container from "@/components/ui/Container";
 import Annotated from "@/components/ui/Annotated";
 import { Link } from "@/lib/routing";
-import { ADMIN_URL, HERO_VIDEO_SRC } from "@/lib/config";
+import { ADMIN_URL, HERO_VIDEO_POSTER, HERO_VIDEO_SRC } from "@/lib/config";
 import EmailCta from "./EmailCta";
 import HeroPlayPill from "./HeroPlayPill";
 import HeroBackground from "./HeroBackground";
@@ -20,7 +20,7 @@ export default async function Hero() {
         <div className={styles.content}>
           {HERO_VIDEO_SRC && (
             <div className={styles.pillRow}>
-              <HeroPlayPill label={t("home.hero.playPill")} src={HERO_VIDEO_SRC} />
+              <HeroPlayPill label={t("home.hero.playPill")} src={HERO_VIDEO_SRC} poster={HERO_VIDEO_POSTER} />
             </div>
           )}
 

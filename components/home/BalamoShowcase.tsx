@@ -25,7 +25,10 @@ type Stat = { value: string; label: string };
 export default async function BalamoShowcase() {
   const t = await getTranslations();
   const pills = t.raw("home.balamo.pills") as string[];
-  const stats = t.raw("home.balamo.stats") as Stat[];
+  // A stat whose value is still the "—" placeholder is dropped rather than rendered: three
+  // giant dashes under the copy read as a broken component, not as "figures pending". The
+  // block reappears on its own once real numbers land in home.balamo.stats (see TODO.md).
+  const stats = (t.raw("home.balamo.stats") as Stat[]).filter((stat) => stat.value !== "—");
 
   return (
     <section id="balamo" className={styles.section}>
@@ -57,6 +60,7 @@ export default async function BalamoShowcase() {
               {t("home.balamo.cta")}
             </Button>
             <hr className={styles.hr} aria-hidden="true" />
+            {stats.length > 0 && (
             <div className={styles.stats}>
               {stats.map((stat) => (
                 <div key={stat.label} className={styles.stat}>
@@ -65,6 +69,7 @@ export default async function BalamoShowcase() {
                 </div>
               ))}
             </div>
+            )}
           </Reveal>
         </div>
       </Container>

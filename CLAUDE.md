@@ -56,6 +56,14 @@ For arrays (feature lists, FAQ items) use `t.raw(key)` and cast to `string[]`.
 For inline HTML tags (`<em>`, `<strong>`, a `<Link>`) use `t.rich(key, { tag: (chunks) => <Tag>{chunks}</Tag> })`
 instead — see the styling rule below for why `dangerouslySetInnerHTML` is off the table.
 
+### Page frame
+
+`--container` (1512px) and `--gutter` (`clamp(16px, 2.2vw, 40px)`) in `app/globals.css` set the
+page frame, and `components/ui/Container.tsx` is the only thing that should apply them. Those
+numbers were measured off pos.toasttab.com, which the owner picked as the reference: a wide
+container with small side padding, not a narrow column floating in whitespace. Don't narrow
+them back without asking.
+
 ### Styling rule
 
 The entire site is **CSS Modules plus design tokens** — there is no other styling layer. Components: `Name.tsx` + `Name.module.css`, tokens from `:root` (`--brand`, `--ink`, `--cream`, …), fonts via `lib/fonts.ts` (`--font-display` Bricolage Grotesque, `--font-body` Instrument Sans, `--font-instrument-serif` for display accents on the inner pages). Never add inline styles except for genuinely dynamic values (e.g. `Modal` `maxWidth`), nor `dangerouslySetInnerHTML`; rich strings use `t.rich`. No hard-coded hex/`rgba()` colours in `.module.css` — use a token, and add one to `app/globals.css` beside its neighbours if none fits yet.
@@ -102,18 +110,37 @@ This switch is **not** meant to ship long-term. Once the owner picks a variant:
 
 ### Reviews data
 
-`data/reviews.json` drives `components/home/Reviews.tsx` and ships **empty on purpose**:
+`data/reviews.json` drives `components/home/Reviews.tsx`. It now holds real content: the two
+client video reviews (Calsot and La Pulpería) and the two Google reviews on Dimonova's own
+Google Business profile, with `rating: 5`.
 
-```json
-{ "rating": null, "profileUrl": "", "videos": [], "google": [] }
-```
+The **videos are not in this repo**. The source `.mov` files were 200-350 MB each; they were
+transcoded to 1080p H.264 and uploaded to the `web-media` public bucket on the project's own
+Supabase instance (`reviews/*.mp4`), and `data/reviews.json` points at the public URLs. The
+**posters are local** (`public/assets/reviews/*.jpg`), on purpose: nothing is fetched from
+Supabase when a page loads, only when a visitor presses play. Keep it that way, or
+`e2e/tokens.spec.ts`'s "no third-party font requests" test (which fails on *any* non-localhost
+request during load) will start failing, and the cookie policy's third-party statement will
+stop being true.
 
-With `videos` and `google` both empty, the section renders the honest
-`home.reviews.pending` copy ("Reviews coming soon.") instead of fabricated placeholder
-cards. Do not add fake reviews to make the section "look done" — fill this file with real
-content (see `TODO.md` phase 3) and the carousel renders itself. `e2e/home-sections.spec.ts`'s
-`populated reviews render as cards` test is `test.skip`'d for exactly this reason — see
-Testing below.
+Add a new video by transcoding it, uploading it to that bucket, saving a local poster frame,
+and adding an entry to the `videos` array. Do not add reviews that were not actually written or
+recorded by a client. `e2e/home-sections.spec.ts`'s `populated reviews render as cards` test
+enables itself automatically as soon as the file is non-empty, which it now is.
+
+### Moving strips (Marquee)
+
+`components/ui/Marquee.tsx` **never pauses** — not on hover, not on focus, and there is no
+pause button. The owner asked for that explicitly. The only stop is
+`prefers-reduced-motion: reduce`, which drops the animation and turns the strip into an
+ordinary horizontal scroller; that branch is what keeps this acceptable, so do not remove it.
+Because of it the pills in `DifferentiatorBand` show their explanation at all times rather
+than on hover: a hover panel on a strip that never stops is unreadable in practice.
+
+Pass `repeat` when a strip has only a handful of children (`LogoStrip` uses 6, the
+differentiator rows use 3) so the loop's seam is pushed off screen and the list reads as
+endless. Only the first copy is exposed to assistive tech; every other copy is `aria-hidden`
+and `inert`.
 
 ### OG image
 

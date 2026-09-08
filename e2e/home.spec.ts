@@ -14,9 +14,12 @@ test("home hero heading renders the current headline", async ({ page }) => {
 
 test("home shows venue logo strip with La Pulpería", async ({ page }) => {
   await page.goto("/");
-  // getByRole consults the accessibility tree, where Marquee's aria-hidden duplicate
-  // group is pruned, so this resolves to a single (visible) match.
-  await expect(page.getByRole("img", { name: "La Pulpería" })).toBeVisible();
+  // Scoped to the strip: the venue's name is also the accessible name of its review card's
+  // poster further down the page, so an unscoped role query matches more than one image.
+  // Within the strip, getByRole still resolves to exactly one match, because it consults the
+  // accessibility tree and Marquee's repeated copies are all aria-hidden and inert.
+  const strip = page.locator("[data-logo-strip]");
+  await expect(strip.getByRole("img", { name: "La Pulpería" })).toBeVisible();
 });
 
 test("/es renders the hero in Spanish", async ({ page }) => {

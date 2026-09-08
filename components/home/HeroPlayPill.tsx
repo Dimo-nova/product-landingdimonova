@@ -8,12 +8,12 @@ import { openVideo } from "@/lib/events";
  * opens the story video. The caller only renders this component once it has a real `src` — see
  * `HERO_VIDEO_SRC` in `lib/config.ts`.
  */
-export default function HeroPlayPill({ label, src }: { label: string; src: string }) {
+export default function HeroPlayPill({ label, src, poster }: { label: string; src: string; poster?: string }) {
   return (
     <button
       type="button"
       className={[pillStyles.pill, pillStyles.dark, pillStyles.md].join(" ")}
-      onClick={() => openVideo({ src, title: label, orientation: "landscape" })}
+      onClick={() => openVideo({ src, poster, title: label, orientation: "landscape" })}
     >
       <span className={styles.icon} aria-hidden="true">▶</span>
       {label}

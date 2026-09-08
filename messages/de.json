@@ -22,7 +22,6 @@
       "clientsFeaturedCta": "See the case",
       "clientsAll": "All case studies",
       "clientsVideos": "Video reviews",
-      "tutorials": "Tutorials",
       "faq": "FAQ",
       "aiCompare": "Compare with AI",
       "contact": "Contact"
@@ -36,11 +35,6 @@
   },
   "home": {
     "hero": {
-      "eyebrow": "Für Restaurants, Pubs & Cafés",
-      "title1": "Eine digitale Speisekarte,",
-      "title2": "von uns erstellt und eingerichtet.",
-      "body": "Wir erstellen deine digitale Speisekarte, passen sie an deine Marke an, binden sie in deine bestehende Website ein und schulen dein Team. Ein Gericht änderst du mit zwei Fingertipps.",
-      "avatars": "Beliebt bei unabhängigen Lokalen<br>im ganzen Land",
       "playPill": "How Dimonova started",
       "title": "We take care of it. You <mark>grow</mark>.",
       "lead": "Digital menu, ordering and reviews made to measure, built and looked after 24/7 by a team of geeks you can trust. No templates. Ready to scale.",
@@ -50,55 +44,11 @@
       "clientLink": "Already a client? Go to the dashboard",
       "emailInvalid": "Enter a valid email"
     },
-    "viz": {
-      "dash_label": "Dashboard · live",
-      "dash_title": "Favoriten dieser Woche",
-      "days": "Mo — So",
-      "menu_views": "Aufrufe der Karte",
-      "updates": "Änderungen diese Woche"
-    },
     "logos": {
-      "label": "Vertraut von unabhängigen Lokalen",
-      "placeholder": "Logo des Lokals",
       "title": "Trusted by"
     },
-    "feat": {
-      "eyebrow": "Das bekommst du",
-      "title": "Aufgebaut rund um deine Karte und deine Marke, nicht um eine Standardvorlage.",
-      "see_all": "Alle Funktionen ansehen →",
-      "c1_title": "Eine digitale Speisekarte, richtig gestaltet",
-      "c1_body": "Fotos, Beschreibungen, Allergene, Preise — so angeordnet, dass die Gäste sie wirklich lesen.",
-      "c2_title": "Ein Dashboard, das du von der Theke aus bedienst",
-      "c2_body": "Ein Gericht bearbeiten, ein Foto austauschen, etwas als ausverkauft markieren — von jedem Handy oder Laptop, in Sekunden.",
-      "c3_title": "Sieh, was deine Gäste wirklich wollen",
-      "c3_body": "Beliebtheit der Gerichte, Aufrufe und Trends — damit deine nächste Karte auf Daten basiert, nicht auf Vermutungen."
-    },
-    "how": {
-      "eyebrow": "So funktioniert's",
-      "title": "Wir richten es ein. Du betreibst es.",
-      "s1_title": "Schick uns deine Karte",
-      "s1_body": "Ein PDF, ein Handyfoto der Tafel, ein Word-Dokument — was immer du hast. Den Rest übernehmen wir.",
-      "s2_title": "Wir bauen & gestalten sie",
-      "s2_body": "Abgestimmt auf deine Marke, deinen Ton, dein Lokal. Tischbestellungen, Rabattcodes, eigene Bereiche — was dein Restaurant braucht, setzen wir um.",
-      "s3_title": "Einbinden & schulen",
-      "s3_body": "Eingebunden in deine bestehende Website. Eine 30-minütige Schulung mit deinem Team. Das ist die Übergabe.",
-      "s4_title": "Du betreibst sie",
-      "s4_body": "Ein Gericht in 10 Sekunden ändern. Sehen, was sich verkauft. Wir sind weiterhin da, wenn du uns brauchst.",
-      "quote": "„Die meisten sind 5–7 Tage nach dem Einsenden ihrer Karte online. Die Schulung ist der längste Termin, um den wir dich bitten.“",
-      "more": "Mehr zur Einrichtung →"
-    },
     "diff": {
-      "eyebrow": "Der Unterschied",
       "title": "What nobody else does.",
-      "body": "Die meisten Anbieter digitaler Speisekarten geben dir einen Editor, ein Hilfecenter und eine kostenlose Testphase. Wir nicht — wir bauen sie, richten sie ein und zeigen deinem Team, wie es geht.",
-      "p1": "Wir erstellen deine Karte aus dem, was du hast — PDF, Foto, Dokument.",
-      "p2": "Wir gestalten sie passend zu deiner Marke und deinem Lokal.",
-      "p3": "Wir binden sie selbst in deine bestehende Website ein.",
-      "p4": "Wir schulen dein Team in einer einzigen 30-minütigen Sitzung.",
-      "card_badge": "Produktaufnahme",
-      "card_pill": "Onboarding-Sitzung — visuell",
-      "card_title": "Einrichtung, erledigt",
-      "card_body": "Vom unterschriebenen Vertrag zur Live-Karte in Tagen, nicht Wochen.",
       "lead": "The parts a template cannot give you, and a support queue will not do for you.",
       "items": [
         {
@@ -141,30 +91,7 @@
           "title": "Someone on the other end",
           "body": "A person who knows your venue, not a chatbot."
         }
-      ],
-      "pause": "Pause the moving list",
-      "resume": "Resume the moving list"
-    },
-    "proof": {
-      "quote": "Beispiel-Testimonial — die Art Zitat, das sagt „wir müssen nicht mehr über die Karte nachdenken“. Hier kommt ein echtes Kundenzitat hin.",
-      "client": "Name des Kunden",
-      "role": "Rolle · Name des Lokals",
-      "stat1_label": "Durchschnittlicher Go-live",
-      "stat1_unit": "Tage",
-      "stat2_label": "Zufriedenheitsrate",
-      "stat2_unit": ""
-    },
-    "price": {
-      "eyebrow": "Preise",
-      "title": "Eine einmalige Einrichtungsgebühr, dann ein fester Monatsbeitrag.",
-      "body": "Hosting, Support und Updates inklusive. Keine Gebühren pro Gast, keine Gebühren pro Gericht, keine Überraschungsrechnungen.",
-      "see_full": "Vollständige Preise ansehen →",
-      "quote_cta": "Individuelles Angebot anfragen"
-    },
-    "cta": {
-      "eyebrow": "Bereit, wenn du es bist",
-      "title": "Bringen wir deine Karte online.",
-      "body": "Eine 20-minütige Demo. Wir zeigen dir das Dashboard, gehen echte Einrichtungen durch und beantworten deine Fragen. Ohne Verpflichtung."
+      ]
     },
     "services": {
       "title": "Everything your restaurant needs. And someone to run it.",
@@ -279,7 +206,7 @@
     },
     "reviews": {
       "title": "Their words, not ours.",
-      "badge": "{rating} on Google",
+      "badge": "{rating}/5 bei Google",
       "pending": "Reviews coming soon.",
       "more": "Read more",
       "less": "Show less",
@@ -310,19 +237,19 @@
     "f1": {
       "eyebrow": "01 · Die digitale Karte",
       "title": "Eine Karte, die aussieht wie dein Lokal, nicht wie eine Lieferdienst-App.",
-      "body": "Fotos, Beschreibungen, Allergene, Preise, Bereiche, Tagesempfehlungen — sauber gesetzt. Lädt schnell auf dem Handy. Lebt in deiner bestehenden Website, sodass Gäste nie das Gefühl haben, an ein Fremdtool weitergereicht zu werden.",
+      "body": "Fotos, Beschreibungen, Allergene, Preise, Bereiche, Tagesempfehlungen, sauber gesetzt. Lädt schnell auf dem Handy. Lebt in deiner bestehenden Website, sodass Gäste nie das Gefühl haben, an ein Fremdtool weitergereicht zu werden.",
       "p1": "<strong>Eingebunden, nicht weitergeleitet.</strong> Lebt unter <span>deinlokal.de/karte</span>, nicht unter einer generischen URL.",
       "p2": "<strong>Allergene & Ernährungshinweise</strong> bei jedem Gericht, für Gäste filterbar.",
-      "p3": "<strong>Optionale QR-Codes</strong> — Tischkarten, Plakate, Visitenkarten — führen direkt dorthin.",
+      "p3": "<strong>Optionale QR-Codes</strong> (Tischkarten, Plakate, Visitenkarten) führen direkt dorthin.",
       "p4": "<strong>Ausverkauft-Status</strong> blendet ein Gericht während des Service sofort aus."
     },
     "f2": {
       "eyebrow": "02 · Das Dashboard",
       "title": "Wenn du Instagram bedienen kannst, kannst du das hier bedienen.",
       "body": "Keine Schulung zum Karten-Profi, keine Agentur-Tickets, kein „stell eine Support-Anfrage, um einen Preis zu ändern“. Wer den Service leitet, kann ein Gericht ausblenden, einen Preis erhöhen oder ein Foto vom Handy aus in unter einer Minute austauschen.",
-      "p1": "<strong>Änderungen gehen sofort live</strong> — keine Warteschlange, kein Warten auf einen Entwickler.",
-      "p2": "<strong>Karte in mehreren Sprachen</strong> — Gäste sehen sie automatisch in ihrer Sprache.",
-      "p3": "<strong>Vollständig an deine Marke angepasst</strong> — Farben, Schriften und Stil, maßgeschneidert für dein Restaurant.",
+      "p1": "<strong>Änderungen gehen sofort live</strong>: keine Warteschlange, kein Warten auf einen Entwickler.",
+      "p2": "<strong>Karte in mehreren Sprachen</strong>: Gäste sehen sie automatisch in ihrer Sprache.",
+      "p3": "<strong>Vollständig an deine Marke angepasst</strong>: Farben, Schriften und Stil, maßgeschneidert für dein Restaurant.",
       "p4": "<strong>Funktioniert auf jedem Gerät.</strong> Das Handy des Barkeepers, das iPad der Leitung, der Laptop des Inhabers.",
       "viz_menu": "Karte",
       "viz_all": "Alle Gerichte",
@@ -339,10 +266,10 @@
       "eyebrow": "03 · Analyse",
       "title": "Endlich liefert dir die Karte Daten statt Vermutungen.",
       "body": "Jeder Aufruf eines Gerichts wird erfasst. Du siehst, was Gäste ansehen, was sie überspringen und was sie bei der Beschreibung verlieren. Starte eine Brunch-Aktion; sieh, ob sie jemand gelesen hat. Deine nächste Überarbeitung sind Entscheidungen, keine Meinungen.",
-      "p1": "<strong>Beliebtheit der Gerichte</strong> nach Woche und Monat — sieh, was wann läuft.",
-      "p2": "<strong>Aktive Gerichtsübersicht</strong> — alle aktiven Einträge auf einen Blick.",
-      "p3": "<strong>Eigene Kategorien</strong> — organisiere deine Menübereiche nach deinen Vorstellungen.",
-      "viz_title": "Aufrufe — letzte 12 Wochen",
+      "p1": "<strong>Beliebtheit der Gerichte</strong> nach Woche und Monat: sieh, was wann läuft.",
+      "p2": "<strong>Aktive Gerichtsübersicht</strong>: alle aktiven Einträge auf einen Blick.",
+      "p3": "<strong>Eigene Kategorien</strong>: organisiere deine Menübereiche nach deinen Vorstellungen.",
+      "viz_title": "Aufrufe: letzte 12 Wochen",
       "viz_total": "Aufrufe gesamt",
       "viz_top": "Top-Bereich",
       "viz_trend": "Trend",
@@ -354,15 +281,15 @@
       "c1_title": "Kartenaufbau",
       "c1_body": "Schick uns deine Karte in dem Format, das du hast. Wir tippen sie ab, strukturieren sie, ordnen sie in Bereiche, ergänzen Allergene und prüfen jedes Gericht mit dir, bevor es live geht.",
       "c2_title": "Markengestaltung",
-      "c2_body": "Farben, Schriften, Fotostil — abgestimmt auf dein Lokal. Die Karte soll sich nach deiner Marke anfühlen, nicht nach unserer. Wir orientieren uns an deiner bestehenden Website und Beschilderung.",
+      "c2_body": "Farben, Schriften, Fotostil: abgestimmt auf dein Lokal. Die Karte soll sich nach deiner Marke anfühlen, nicht nach unserer. Wir orientieren uns an deiner bestehenden Website und Beschilderung.",
       "c3_title": "Website-Einbindung",
-      "c3_body": "Von uns direkt in deine bestehende Website eingebunden. Squarespace, Wix, WordPress, Eigenentwicklung — wir kümmern uns. Deine Karte lebt unter deinlokal.de/karte, nicht auf der Domain eines anderen.",
+      "c3_body": "Von uns direkt in deine bestehende Website eingebunden. Squarespace, Wix, WordPress, Eigenentwicklung, wir kümmern uns. Deine Karte lebt unter deinlokal.de/karte, nicht auf der Domain eines anderen.",
       "c4_title": "Team-Schulung",
-      "c4_body": "Eine einzige 30-minütige Sitzung mit allen, die das Dashboard führen — meist Inhaber und Serviceleitung. Wir teilen den Bildschirm, du machst dir Notizen. Danach bist du eigenständig."
+      "c4_body": "Eine einzige 30-minütige Sitzung mit allen, die das Dashboard führen, meist Inhaber und Serviceleitung. Wir teilen den Bildschirm, du machst dir Notizen. Danach bist du eigenständig."
     },
     "cta": {
       "title": "Sieh es auf deiner Karte, nicht auf unserer.",
-      "body": "Buche eine Demo und wir gestalten einen Bereich deiner echten Karte — ohne Verpflichtung, ohne Folien."
+      "body": "Buche eine Demo und wir gestalten einen Bereich deiner echten Karte, ohne Verpflichtung, ohne Folien."
     }
   },
   "pricing": {
@@ -371,24 +298,24 @@
     "intro": "Erzähl uns von deinem Lokal und wir erstellen ein passendes Angebot. Das ist immer enthalten.",
     "included": {
       "eyebrow": "Was immer enthalten ist",
-      "title": "Alles, was jeder Kunde erhält — unabhängig von der Lokalgröße.",
+      "title": "Alles, was jeder Kunde erhält, unabhängig von der Lokalgröße.",
       "i1": "Karte von uns aufgebaut, mit dem, was du hast",
       "i2": "Gestaltet passend zu deiner bestehenden Marke",
-      "i3": "In deine bestehende Website eingebunden — keine neue Website nötig",
-      "i4": "Unbegrenzte Änderungen an Gerichten, Preisen und Bereichen — von dir, sofort",
+      "i3": "In deine bestehende Website eingebunden, keine neue Website nötig",
+      "i4": "Unbegrenzte Änderungen an Gerichten, Preisen und Bereichen, von dir, sofort",
       "i5": "Beliebtheitsanalysen und wöchentliche Zusammenfassung",
-      "i6": "Hosting, Sicherheit und Software-Updates — immer aktiv",
-      "i7": "Echter menschlicher Support — E-Mail und WhatsApp",
+      "i6": "Hosting, Sicherheit und Software-Updates, immer aktiv",
+      "i7": "Echter menschlicher Support: E-Mail und WhatsApp",
       "i8": "QR-Codes für Tische und Druck (optionale Ergänzung)",
       "i9": "30-minütige Einführungssitzung per Videoanruf"
     },
     "shape": {
       "eyebrow": "Was dein Angebot bestimmt",
-      "intro": "Einige Faktoren beeinflussen den Preis — wir besprechen sie alle im Gespräch.",
+      "intro": "Einige Faktoren beeinflussen den Preis, wir besprechen sie alle im Gespräch.",
       "i1": "Anzahl der Gerichte und Bereiche",
-      "i2": "Fotos — deine eigenen, von deiner Website oder von uns organisiert",
+      "i2": "Fotos: deine eigenen, von deiner Website oder von uns organisiert",
       "i3": "Eine Karte oder mehrere (Getränke, Saison, Events)",
-      "i4": "Sprachen — eine oder mehrere",
+      "i4": "Sprachen: eine oder mehrere",
       "i5": "Wie deine aktuelle Website aufgebaut ist"
     },
     "strip": {
@@ -403,7 +330,7 @@
       "q2": "Was, wenn sich meine Karte oft ändert?",
       "a2": "Ändere sie selbst, so oft du willst. Deine Monatsrate ändert sich nicht je nach Häufigkeit der Änderungen.",
       "q3": "Brauche ich eine neue Website?",
-      "a3": "Nein. Deine bestehende bleibt. Wir binden die Karte darin ein. Squarespace, Wix, WordPress oder eine Eigenentwicklung — alles in Ordnung.",
+      "a3": "Nein. Deine bestehende bleibt. Wir binden die Karte darin ein. Squarespace, Wix, WordPress oder eine Eigenentwicklung, alles in Ordnung.",
       "q4": "Was ist mit Fotos der Gerichte?",
       "a4": "Du kannst eigene liefern, unsere von deiner bestehenden Website nutzen oder ganz auf Fotos verzichten. Optionale Ergänzung: Wir organisieren einen Fotografen.",
       "q5": "Wie lange, bis wir live sind?",
@@ -464,12 +391,12 @@
   "about": {
     "eyebrow": "Über uns",
     "title": "Ein kleines Team. Eine konkrete Aufgabe.",
-    "intro": "Dimonova gibt es, weil die Karte — die meistgelesene Seite jeder Restaurant-Website — als Nebensache behandelt wurde. Wir erstellen sie, betreiben sie und kümmern uns für dich darum.",
+    "intro": "Dimonova gibt es, weil die Karte, die meistgelesene Seite jeder Restaurant-Website, als Nebensache behandelt wurde. Wir erstellen sie, betreiben sie und kümmern uns für dich darum.",
     "why": {
       "eyebrow": "Warum es uns gibt",
       "title": "Die meisten digitalen Karten sind schlecht. Die guten machen zu viel Arbeit.",
-      "p1": "Jedes Restaurant hat dasselbe Problem: Die Karte ändert sich ständig, aber die Website spiegelt das nie wider. PDFs sind veraltet. Die Webagentur hat eine zweiwöchige Ticket-Warteschlange. Das QR-Code-Produkt ist ein Albtraum zu bearbeiten. Irgendwann wurde die Karte — das, was Gäste eigentlich ansehen wollen — zum am schlechtesten gepflegten Teil des Online-Auftritts des Lokals.",
-      "p2": "Wir haben Dimonova gebaut, weil dieses Problem eigentlich kein Software-Problem ist. Es ist ein Service-Problem. Software macht deine Karte nicht professionell — das macht ein Designer. Software bindet sie nicht in deine Website ein — das macht ein Entwickler. Software schult dein Team nicht — das macht ein Mensch. Also machen wir all das, und die Software ist das, was es günstig genug macht, damit es Sinn ergibt.",
+      "p1": "Jedes Restaurant hat dasselbe Problem: Die Karte ändert sich ständig, aber die Website spiegelt das nie wider. PDFs sind veraltet. Die Webagentur hat eine zweiwöchige Ticket-Warteschlange. Das QR-Code-Produkt ist ein Albtraum zu bearbeiten. Irgendwann wurde die Karte, das, was Gäste eigentlich ansehen wollen, zum am schlechtesten gepflegten Teil des Online-Auftritts des Lokals.",
+      "p2": "Wir haben Dimonova gebaut, weil dieses Problem eigentlich kein Software-Problem ist. Es ist ein Service-Problem. Software macht deine Karte nicht professionell. Das macht ein Designer. Software bindet sie nicht in deine Website ein. Das macht ein Entwickler. Software schult dein Team nicht. Das macht ein Mensch. Also machen wir all das, und die Software ist das, was es günstig genug macht, damit es Sinn ergibt.",
       "p3": "Wir arbeiten mit Restaurants, Pubs und Cafés.",
       "aside_label": "Kurz gesagt",
       "aside_quote": "„Wir machen digitale Karten für Orte, die ihr Essen ernst nehmen und nicht über Software nachdenken wollen.“",
@@ -488,12 +415,8 @@
     "team": {
       "eyebrow": "Das Team",
       "title": "Die Menschen, mit denen du tatsächlich sprichst.",
-      "portrait": "Porträt",
-      "name": "Name (Platzhalter)",
       "role1": "Gründer & Aufbauleitung",
-      "role2": "Design & Gestaltung",
-      "role3": "Kundenbetreuung",
-      "role4": "Entwicklung"
+      "role2": "Design & Gestaltung"
     },
     "cta": {
       "title": "Willst du sehen, wie es für dein Lokal funktionieren würde?"
@@ -502,7 +425,7 @@
   "contact": {
     "eyebrow": "Kontakt",
     "title": "Erzähl uns von deinem Lokal. <em>Den Rest machen wir.</em>",
-    "intro": "Eine Demo dauert meist 20 Minuten — wir zeigen dir das Dashboard, gehen echte Einrichtungen durch und machen dir im Gespräch ein Angebot.",
+    "intro": "Eine Demo dauert meist 20 Minuten, wir zeigen dir das Dashboard, gehen echte Einrichtungen durch und machen dir im Gespräch ein Angebot.",
     "success": {
       "title": "Erhalten. Wir melden uns.",
       "body": "Erwarte innerhalb eines Werktags eine E-Mail von unserem Team, um die Demo zu vereinbaren. Wenn es dringend ist, schreib uns auf WhatsApp.",
@@ -550,15 +473,15 @@
   },
   "seo": {
     "home": {
-      "title": "Dimonova — Digitale Speisekarten für Restaurants, Pubs & Cafés",
+      "title": "Dimonova · Digitale Speisekarten für Restaurants, Pubs & Cafés",
       "desc": "Wir bauen, gestalten und richten deine digitale Speisekarte ein. Du änderst ein Gericht in zwei Taps. Ein rundum-sorglos-Service für unabhängige Lokale."
     },
     "features": {
-      "title": "Funktionen — Dimonova",
+      "title": "Funktionen · Dimonova",
       "desc": "Eine gebrandete digitale Speisekarte, ein einfaches Dashboard, echte Analysen und vollständiges Onboarding. Alles was dein Lokal braucht."
     },
     "pricing": {
-      "title": "Preise — Dimonova",
+      "title": "Preise · Dimonova",
       "desc": "Eine einmalige Einrichtungsgebühr, dann ein festes Monatsabo. Hosting, Support und Updates inklusive."
     },
     "cases": {
@@ -566,11 +489,11 @@
       "desc": "What we built for Calsot, La Pulpería and Bálamo: what each venue had before, what we did, and what they have now."
     },
     "about": {
-      "title": "Über uns — Dimonova",
+      "title": "Über uns · Dimonova",
       "desc": "Ein kleines Team mit einem klaren Auftrag: digitale Speisekarten für Lokale bauen und betreiben, die ihr Essen ernst nehmen."
     },
     "contact": {
-      "title": "Kontakt & Demo — Dimonova",
+      "title": "Kontakt & Demo · Dimonova",
       "desc": "Buche eine 20-minütige Demo. Wir zeigen dir das Dashboard, gehen echte Setups durch und beantworten deine Fragen. Keine Verpflichtung."
     }
   },
@@ -581,13 +504,6 @@
     "venue": "Name des Lokals ist erforderlich."
   },
   "footer": {
-    "tagline": "Digitale Karten und Dashboards für Restaurants, Pubs und Cafés, die ihr Essen ernst nehmen.",
-    "col_product": "Produkt",
-    "col_company": "Unternehmen",
-    "col_contact": "Kontakt",
-    "label_ie": "(Irland)",
-    "label_es": "(Spanien)",
-    "rights": "© 2026 Dimonova. Alle Rechte vorbehalten.",
     "colProduct": "Features",
     "colCompany": "Company",
     "colResources": "Resources",
@@ -604,12 +520,11 @@
   "wa": {
     "name": "Dimonova-Team",
     "status": "Meist innerhalb einer Stunde zurück",
-    "greeting": "Hi 👋 — was für ein Lokal führst du? Wir zeigen dir gern einen 30-Sekunden-Rundgang durchs Dashboard.",
+    "greeting": "Hi 👋 was für ein Lokal führst du? Wir zeigen dir gern einen 30-Sekunden-Rundgang durchs Dashboard.",
     "chip_restaurant": "Ich führe ein Restaurant",
     "chip_pub": "Ich führe einen Pub",
     "chip_cafe": "Ich führe ein Café",
-    "continue": "Weiter zu WhatsApp",
-    "disclaimer": "+353 (0)1 555 0199 · Prototyp, öffnet nicht wirklich"
+    "continue": "Weiter zu WhatsApp"
   },
   "services": {
     "menu": {
@@ -681,10 +596,7 @@
       "openDirect": "Open the video"
     }
   },
-  "banner": {
-    "change": "Switch",
-    "close": "Dismiss"
-  },
+  "banner": {},
   "notFound": {
     "title": "This dish isn't on the menu.",
     "body": "We may have moved it, or it never existed. Try one of these.",
@@ -693,24 +605,10 @@
     "demo": "Book a demo",
     "menuHint": "Looking for a restaurant's menu? Menus live on each restaurant's own domain, not here."
   },
-  "legal": {
-    "privacy": {
-      "title": "Privacy policy"
-    },
-    "cookies": {
-      "title": "Cookie policy"
-    },
-    "terms": {
-      "title": "Terms of service"
-    },
-    "placeholder": "This page is being written. Contact us at {email} if you need it now."
-  },
   "alt": {
-    "hero": "A restaurant's digital menu open on a phone, showing dishes with photos, prices and allergen tags.",
     "features": "A dish detail screen on the digital menu, showing a photo, price, allergen list and suggested pairings.",
     "dishes": "The restaurant's dish-management screen, listing menu items with availability toggles, categories and prices.",
     "managerData": "The manager dashboard showing active dish counts, categories and a most-viewed-dishes ranking.",
-    "servicio": "A restaurant staff member checking the digital menu dashboard on a tablet at the venue.",
     "heroMock": "The Bálamo digital menu open on a phone, showing dish photographs and the restaurant's own branding.",
     "heroPhoto": "A dining room during service, seen from behind the pass.",
     "balamoPhone": "Bálamo's digital menu on a phone: their logo, welcome section and dish photography.",

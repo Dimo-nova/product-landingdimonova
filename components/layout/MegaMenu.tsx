@@ -4,7 +4,6 @@ import { useTranslations } from "next-intl";
 import { AnimatePresence, motion } from "motion/react";
 import { Link, usePathname } from "@/lib/routing";
 import { SERVICES } from "@/lib/services";
-import { ServiceIcon } from "@/components/icons/ServiceIcons";
 import styles from "./MegaMenu.module.css";
 
 type Key = "products" | "clients" | "resources";
@@ -108,11 +107,8 @@ export default function MegaMenu() {
                   <div className={styles.grid}>
                     {SERVICES.map((s) => (
                       <Link key={s.slug} href={s.href} className={styles.card} onClick={() => close()}>
-                        <span className={styles.icon}><ServiceIcon slug={s.slug} size={22} /></span>
-                        <span>
-                          <span className={styles.cardTitle}>{t(`services.${s.slug}.title`)}</span>
-                          <span className={styles.cardLine}>{t(`services.${s.slug}.line`)}</span>
-                        </span>
+                        <span className={styles.cardTitle}>{t(`services.${s.slug}.title`)}</span>
+                        <span className={styles.cardLine}>{t(`services.${s.slug}.line`)}</span>
                       </Link>
                     ))}
                   </div>
@@ -133,7 +129,6 @@ export default function MegaMenu() {
               )}
               {open === "resources" && (
                 <div className={styles.list} style={{ maxWidth: 360 }}>
-                  <Link href="/features#training" onClick={() => close()}>{t("nav.mega.tutorials")}</Link>
                   <Link href="/pricing#faq" onClick={() => close()}>{t("nav.mega.faq")}</Link>
                   <Link href="/#ai-compare" onClick={() => close()}>{t("nav.mega.aiCompare")}</Link>
                   <Link href="/contact" onClick={() => close()}>{t("nav.mega.contact")}</Link>

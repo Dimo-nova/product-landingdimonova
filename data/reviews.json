@@ -1,6 +1,36 @@
 {
-  "rating": null,
-  "profileUrl": "",
-  "videos": [],
-  "google": []
+  "rating": 5,
+  "profileUrl": "https://www.google.com/maps/place/Dimonova/@41.47935,-6.8143,4z/data=!4m8!3m7!1s0x66072543598ef7b3:0x7869878d511c24c1!8m2!3d41.47935!4d-6.8143!9m1!1b1!16s%2Fg%2F11zgdh2xc7",
+  "videos": [
+    {
+      "id": "calsot",
+      "name": "Restaurante Calsot",
+      "venue": "Cocina catalana, Madrid",
+      "poster": "/assets/reviews/calsot-poster.jpg",
+      "src": "https://dfulbdzlkaubgdksalnp.supabase.co/storage/v1/object/public/web-media/reviews/calsot-producto.mp4"
+    },
+    {
+      "id": "pulperia",
+      "name": "La Pulpería",
+      "venue": "Majadahonda, Madrid",
+      "poster": "/assets/reviews/pulperia-poster.jpg",
+      "src": "https://dfulbdzlkaubgdksalnp.supabase.co/storage/v1/object/public/web-media/reviews/pulperia.mp4"
+    }
+  ],
+  "google": [
+    {
+      "id": "calsot-google",
+      "name": "Restaurante Calsot",
+      "text": "La experiencia de la carta digital que nos ha desarrollado Pablo es la mejor que hemos tenido hasta el momento. Muy intuitiva para el cliente, en 3 idiomas, con vídeos, gráfica e información que enriquece. Además, el proceso de trabajo con Pablo y su equipo ha sido siempre sencillo. Cuando voy a otros restaurantes no dejo de \"comparar\" lo que tenemos en Calsot y estamos en muy buen nivel. Lo más importante, cumplen plazos. Súper recomendable.",
+      "url": "https://www.google.com/maps/place/Dimonova/@41.47935,-6.8143,4z/data=!4m8!3m7!1s0x66072543598ef7b3:0x7869878d511c24c1!8m2!3d41.47935!4d-6.8143!9m1!1b1!16s%2Fg%2F11zgdh2xc7",
+      "rating": 5
+    },
+    {
+      "id": "antonio-hernandez",
+      "name": "Antonio Hernández",
+      "text": "La experiencia ha sido muy positiva, no solamente en el servicio, sino también en la formación del personal del restaurante, repetiré en otros establecimientos.",
+      "url": "https://www.google.com/maps/place/Dimonova/@41.47935,-6.8143,4z/data=!4m8!3m7!1s0x66072543598ef7b3:0x7869878d511c24c1!8m2!3d41.47935!4d-6.8143!9m1!1b1!16s%2Fg%2F11zgdh2xc7",
+      "rating": 5
+    }
+  ]
 }
