@@ -412,9 +412,9 @@
   },
   "cases": {
     "eyebrow": "Études de cas",
-    "title": "De vrais établissements. <em style=\"font-family:var(--font-instrument-serif),serif;font-style:italic;color:#B8523A\">De vraies cartes.</em> De vrais résultats.",
+    "title": "De vrais établissements. <em>De vraies cartes.</em> De vrais résultats.",
     "intro": "Les études de cas et témoignages sont en cours de collecte auprès de clients actuels. De vraies histoires remplaceront chacun des exemples ci-dessous au fur et à mesure de leur validation.",
-    "note": "<strong style=\"font-weight:600;color:#1F1814\">Note sur les exemples :</strong> tous les noms de clients, citations et chiffres de cette page sont des exemples. Le contenu réel viendra ici une fois fourni.",
+    "note": "<strong>Note sur les exemples :</strong> tous les noms de clients, citations et chiffres de cette page sont des exemples. Le contenu réel viendra ici une fois fourni.",
     "featured": {
       "eyebrow": "À la une · Pub",
       "quote": "« Citation exemple sur la façon dont l'équipe peut enfin mettre à jour la carte sans attendre l'agence web. »",

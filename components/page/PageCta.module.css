@@ -15,6 +15,12 @@
   margin: 0 0 16px;
 }
 
+/* When there's no body copy to follow (e.g. cases.cta, about.cta have only a title), give the
+   title the same bottom margin the body paragraph would otherwise provide before the actions. */
+.titleOnly {
+  margin-bottom: 32px;
+}
+
 .body {
   font-size: var(--text-lead);
   color: var(--ink-2);

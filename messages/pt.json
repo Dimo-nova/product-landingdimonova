@@ -412,9 +412,9 @@
   },
   "cases": {
     "eyebrow": "Casos de sucesso",
-    "title": "Espaços reais. <em style=\"font-family:var(--font-instrument-serif),serif;font-style:italic;color:#B8523A\">Ementas reais.</em> Resultados reais.",
+    "title": "Espaços reais. <em>Ementas reais.</em> Resultados reais.",
     "intro": "Os casos e testemunhos estão a ser recolhidos junto de clientes atuais. Histórias reais vão substituir cada um dos exemplos abaixo à medida que forem aprovadas.",
-    "note": "<strong style=\"font-weight:600;color:#1F1814\">Nota de exemplo:</strong> todos os nomes de clientes, citações e métricas nesta página são exemplos. O conteúdo real entra aqui quando estiver disponível.",
+    "note": "<strong>Nota de exemplo:</strong> todos os nomes de clientes, citações e métricas nesta página são exemplos. O conteúdo real entra aqui quando estiver disponível.",
     "featured": {
       "eyebrow": "Em destaque · Pub",
       "quote": "«Citação de exemplo sobre como a equipa consegue finalmente atualizar a ementa sem esperar pela agência web.»",

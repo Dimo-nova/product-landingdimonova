@@ -1,0 +1,246 @@
+/* t.rich mapping for the <em> tag embedded in cases.title. */
+.accent {
+  font-family: var(--font-instrument-serif), serif;
+  font-style: italic;
+  color: var(--brand);
+}
+
+/* ---- Disclaimer note (PageHero's `children` slot) ---- */
+
+/* t.rich mapping for the <strong> tag embedded in cases.note. */
+.noteStrong {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.note {
+  padding: 14px 18px;
+  background: var(--cream);
+  border-left: 3px solid var(--brand);
+  border-radius: 0 12px 12px 0;
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--ink-2);
+  max-width: 65ch;
+  margin: 0;
+}
+
+/* ---- Featured case (one-off, not reused elsewhere) ---- */
+
+.featuredSection {
+  padding-block-end: clamp(16px, 3vw, 24px);
+}
+
+.featuredPanel {
+  background: var(--paper);
+  border: 1px solid var(--mist);
+  border-radius: var(--radius-panel);
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+@media (max-width: 800px) {
+  .featuredPanel {
+    grid-template-columns: 1fr;
+  }
+}
+
+.featuredContent {
+  /* min-width: 0 overrides the grid item's default min-width: auto, which otherwise refuses to
+     shrink a 1fr track below its content's intrinsic width at narrow viewports. */
+  min-width: 0;
+  padding: clamp(28px, 4vw, 48px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--brand);
+  margin: 0 0 14px;
+}
+
+.quote {
+  font-size: clamp(22px, 2.6vw, 32px);
+  line-height: 1.2;
+  font-weight: 500;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+  margin: 0 0 14px;
+}
+
+.body {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--ink-2);
+  margin: 0;
+}
+
+.person {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.avatar {
+  flex: none;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--brand-soft);
+  border: 2px solid var(--paper);
+}
+
+.personName {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--ink);
+  margin: 0;
+}
+
+.personRole {
+  font-size: 13px;
+  color: var(--ink-2);
+  margin: 3px 0 0;
+}
+
+.featuredPhoto {
+  min-width: 0;
+  position: relative;
+  min-height: 320px;
+  background: repeating-linear-gradient(45deg, var(--cream), var(--cream) 10px, var(--mist) 10px, var(--mist) 20px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.photoBadge {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+
+.photoPill {
+  background: var(--ink);
+  color: var(--on-dark-text);
+  padding: 12px 20px;
+  border-radius: var(--radius-pill);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* ---- Venue grid ---- */
+
+.gridSection {
+  padding-block: clamp(24px, 4vw, 40px) clamp(64px, 9vw, 120px);
+}
+
+.venueCard {
+  background: var(--paper);
+  border: 1px solid var(--mist);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s var(--ease-out), box-shadow 0.25s var(--ease-out);
+}
+
+.venueCard:hover,
+.venueCard:focus-within {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-soft);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .venueCard {
+    transition: none;
+  }
+}
+
+.venuePhoto {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  background: repeating-linear-gradient(45deg, var(--cream), var(--cream) 8px, var(--mist) 8px, var(--mist) 16px);
+}
+
+.venuePhoto .photoBadge {
+  top: 14px;
+  left: 14px;
+}
+
+.venueBody {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.venueType {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--brand);
+  margin: 0;
+}
+
+.venueName {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+.venueSummary {
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--ink-2);
+  margin: 0;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 10px;
+  padding-top: 18px;
+  border-top: 1px solid var(--mist);
+}
+
+.statLabel {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  margin: 0;
+}
+
+.statValue {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink);
+  margin: 4px 0 0;
+}
+
+.statResult {
+  font-family: var(--font-instrument-serif), serif;
+  font-style: italic;
+  font-size: 14px;
+  color: var(--ok);
+  margin: 4px 0 0;
+}

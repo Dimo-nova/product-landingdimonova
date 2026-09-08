@@ -412,9 +412,9 @@
   },
   "cases": {
     "eyebrow": "Case studies",
-    "title": "Real venues. <em style=\"font-family:var(--font-instrument-serif),serif;font-style:italic;color:#B8523A\">Real menus.</em> Real results.",
+    "title": "Real venues. <em>Real menus.</em> Real results.",
     "intro": "Case studies and testimonials are being collected from current clients. Real stories will replace each of the placeholders below as they're approved.",
-    "note": "<strong style=\"font-weight:600;color:#1F1814\">Placeholder note:</strong> all client names, quotes, and metrics on this page are placeholders. Real content drops in here when supplied.",
+    "note": "<strong>Placeholder note:</strong> all client names, quotes, and metrics on this page are placeholders. Real content drops in here when supplied.",
     "featured": {
       "eyebrow": "Featured · Pub",
       "quote": "\"Placeholder pull-quote about how the team can finally update the menu without waiting on the website agency.\"",

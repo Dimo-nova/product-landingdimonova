@@ -412,9 +412,9 @@
   },
   "cases": {
     "eyebrow": "Casos de éxito",
-    "title": "Locales reales. <em style=\"font-family:var(--font-instrument-serif),serif;font-style:italic;color:#B8523A\">Cartas reales.</em> Resultados reales.",
+    "title": "Locales reales. <em>Cartas reales.</em> Resultados reales.",
     "intro": "Estamos recopilando casos y testimonios de clientes actuales. Las historias reales irán sustituyendo cada uno de los ejemplos de abajo a medida que se aprueben.",
-    "note": "<strong style=\"font-weight:600;color:#1F1814\">Nota de ejemplo:</strong> todos los nombres, citas y métricas de esta página son de ejemplo. El contenido real se incorporará aquí cuando esté disponible.",
+    "note": "<strong>Nota de ejemplo:</strong> todos los nombres, citas y métricas de esta página son de ejemplo. El contenido real se incorporará aquí cuando esté disponible.",
     "featured": {
       "eyebrow": "Destacado · Pub",
       "quote": "«Cita de ejemplo sobre cómo el equipo por fin puede actualizar la carta sin esperar a la agencia web.»",

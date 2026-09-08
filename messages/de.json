@@ -412,9 +412,9 @@
   },
   "cases": {
     "eyebrow": "Referenzen",
-    "title": "Echte Lokale. <em style=\"font-family:var(--font-instrument-serif),serif;font-style:italic;color:#B8523A\">Echte Karten.</em> Echte Ergebnisse.",
+    "title": "Echte Lokale. <em>Echte Karten.</em> Echte Ergebnisse.",
     "intro": "Fallstudien und Testimonials werden derzeit von aktuellen Kunden gesammelt. Echte Geschichten ersetzen nach Freigabe nach und nach jeden der Platzhalter unten.",
-    "note": "<strong style=\"font-weight:600;color:#1F1814\">Hinweis zu Platzhaltern:</strong> alle Kundennamen, Zitate und Kennzahlen auf dieser Seite sind Platzhalter. Echte Inhalte kommen hier hinein, sobald sie vorliegen.",
+    "note": "<strong>Hinweis zu Platzhaltern:</strong> alle Kundennamen, Zitate und Kennzahlen auf dieser Seite sind Platzhalter. Echte Inhalte kommen hier hinein, sobald sie vorliegen.",
     "featured": {
       "eyebrow": "Im Fokus · Pub",
       "quote": "„Platzhalter-Zitat darüber, wie das Team die Karte endlich aktualisieren kann, ohne auf die Webagentur zu warten.“",

@@ -66,3 +66,17 @@ test("the pricing FAQ reveals a question's answer on click, with no JavaScript r
   await first.locator("summary").click();
   await expect(answer).toBeVisible();
 });
+
+// Cases page: this page's content is almost entirely invented placeholder (venue names, quotes,
+// metrics). cases.note is the visible disclaimer that says so — it must never be quietly dropped
+// in a later refactor, since without it the placeholders would read as real case studies.
+
+test("cases page has exactly one h1", async ({ page }) => {
+  await page.goto("/cases");
+  await expect(page.locator("h1")).toHaveCount(1);
+});
+
+test("the cases page's placeholder disclaimer note is visible", async ({ page }) => {
+  await page.goto("/cases");
+  await expect(page.getByText("Placeholder note:")).toBeVisible();
+});

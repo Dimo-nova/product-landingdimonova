@@ -4,7 +4,11 @@ import { CONTACT } from "@/lib/config";
 import PageCtaButton from "./PageCtaButton";
 import styles from "./PageCta.module.css";
 
-type Props = { title: string; body: string; cta: string; source: string };
+/**
+ * `body` is optional: `cases.cta` (and `about.cta`) carry only a title in the current copy —
+ * no body sentence exists to read, and per CLAUDE.md's content rule this task doesn't invent one.
+ */
+type Props = { title: string; body?: string; cta: string; source: string };
 
 /**
  * Shared closing call-to-action band (features/about/cases): a server shell holding a rounded
@@ -20,8 +24,8 @@ export default async function PageCta({ title, body, cta, source }: Props) {
     <Container>
       <section className={styles.section}>
         <div className={styles.panel}>
-          <h2 className={styles.title}>{title}</h2>
-          <p className={styles.body}>{body}</p>
+          <h2 className={[styles.title, !body && styles.titleOnly].filter(Boolean).join(" ")}>{title}</h2>
+          {body && <p className={styles.body}>{body}</p>}
           <div className={styles.actions}>
             <PageCtaButton source={source}>{cta}</PageCtaButton>
             <a className={styles.wa} href={waUrl} target="_blank" rel="noopener noreferrer">
