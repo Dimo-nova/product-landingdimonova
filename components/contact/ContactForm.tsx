@@ -266,7 +266,7 @@ export default function ContactForm() {
             </div>
 
             <div className={fieldStyles.field}>
-              <span className={fieldStyles.label}>
+              <span id="cf-menuFile-label" className={fieldStyles.label}>
                 <span>{t("contact.form.menufile_label")}</span>{" "}
                 <span className={fieldStyles.optional}>{t("contact.form.optional")}</span>
               </span>
@@ -282,7 +282,8 @@ export default function ContactForm() {
                   accept=".pdf,.xls,.xlsx"
                   className={styles.hiddenFileInput}
                   aria-invalid={!!errors.menuFile || undefined}
-                  aria-describedby={errors.menuFile ? "cf-menuFile-err" : undefined}
+                  aria-labelledby="cf-menuFile-label"
+                  aria-describedby={errors.menuFile ? "cf-menuFile-hint cf-menuFile-err" : "cf-menuFile-hint"}
                   onChange={(e) => {
                     const file = e.target.files?.[0] ?? null;
                     setMenuFile(file);
@@ -290,7 +291,7 @@ export default function ContactForm() {
                   }}
                 />
               </label>
-              <div className={styles.hint}>{t("contact.form.menufile_hint")}</div>
+              <div id="cf-menuFile-hint" className={styles.hint}>{t("contact.form.menufile_hint")}</div>
               {err("menuFile")}
             </div>
 

@@ -183,6 +183,19 @@ test("dish list file upload accepts a file and shows its name", async ({ page })
   await expect(page.getByText("menu.pdf")).toBeVisible();
 });
 
+// The dropzone label's visible text swaps to the chosen file's name ("menu.pdf") once a file is
+// selected, which would otherwise become the file input's accessible name too (via the wrapping
+// <label>) — a screen-reader user tabbing back to it would hear the filename instead of "Dish
+// list", with no indication of what the control is for. aria-labelledby on the input keeps the
+// field label as its accessible name regardless of what's showing in the dropzone.
+test("the dish list file input keeps its field label as its accessible name after a file is selected", async ({ page }) => {
+  await page.goto("/contact");
+  const fileInput = page.locator('input[type="file"]');
+  await fileInput.setInputFiles({ name: "menu.pdf", mimeType: "application/pdf", buffer: Buffer.from("%PDF-1.4") });
+  await expect(page.getByText("menu.pdf")).toBeVisible();
+  await expect(fileInput).toHaveAccessibleName(/Dish list/);
+});
+
 // Mirrors lib/config.ts MAX_UPLOAD_BYTES (4 MB) — no fixture file is committed, a plain
 // zero-filled Buffer one byte over the limit is enough to trip the client-side check.
 test("a file over the 4 MB limit is rejected client-side without a request being made", async ({ page }) => {
