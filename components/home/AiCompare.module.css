@@ -44,13 +44,13 @@
   max-width: 100%;
 }
 
-/* Wide pill with the provider's name as visible text — see --on-brand-surface in
+/* Wide pill with the provider's mark and name — see --on-brand-surface in
    app/globals.css for why the fill isn't the shared --on-dark-surface token. */
 .provider {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 14px 22px;
+  gap: 10px;
+  padding: 10px 22px 10px 12px;
   border-radius: var(--radius-pill);
   border: 1px solid var(--on-dark-border);
   background: var(--on-brand-surface);
@@ -72,6 +72,27 @@
   width: 16px;
   height: 16px;
   flex-shrink: 0;
+}
+
+/* The four marks are each brand's own artwork, so they come in their own colours and two of
+   them carry their own dark tile. A white disc behind every one of them gives them all the
+   same neutral ground on the coral section, keeps each mark unaltered, and preserves the
+   clear space their guidelines ask for. */
+.plate {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--paper);
+  flex-shrink: 0;
+}
+
+.logo {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
 }
 
 /* A self-contained white card, not the bare coral: everything inside it (including the

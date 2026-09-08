@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
 import Reveal from "@/components/ui/Reveal";
-import { AI_PROVIDER_IDS, AI_PROVIDER_LABELS, buildProviderUrl } from "@/lib/aiPrompt";
+import { AI_PROVIDER_IDS, AI_PROVIDER_LABELS, AI_PROVIDER_LOGOS, buildProviderUrl } from "@/lib/aiPrompt";
 import styles from "./AiCompare.module.css";
 
 /**
@@ -66,9 +66,10 @@ async function copyText(text: string): Promise<boolean> {
 /**
  * "Ask someone who doesn't work here": hands the visitor the full, honest pitch as a
  * prompt they can open in whichever assistant they already trust, so the comparison
- * comes from a third party rather than from us. Each provider is named as visible text
- * rather than drawn as a logo — ordinary nominative reference, with no trademark
- * question, since this site has no licence to reproduce anyone's mark.
+ * comes from a third party rather than from us. Each provider is shown with its own
+ * official mark and its name, which is ordinary nominative reference: it says where the
+ * link goes, not that anyone endorses us. See `public/assets/ai/SOURCES.md` for where each
+ * file came from and the permission question that remains open.
  */
 export default function AiCompare() {
   const t = useTranslations("home.aiCompare");
@@ -122,6 +123,11 @@ export default function AiCompare() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
+                {/* alt="": the provider's name is the next thing in the link's own text, so
+                    alt text on the mark would make a screen reader say it twice. */}
+                <span className={styles.plate}>
+                  <img src={AI_PROVIDER_LOGOS[id]} alt="" className={styles.logo} />
+                </span>
                 {AI_PROVIDER_LABELS[id]}
                 <ExternalIcon />
               </a>

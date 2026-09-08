@@ -24,7 +24,7 @@ keep it updated. Human-facing overview is in [`README.md`](./README.md).
 | Routing helpers | `lib/routing.ts` — calls `createNavigation(routing)` and re-exports `Link`, `redirect`, `useRouter`, `usePathname`, `getPathname` from `next-intl/navigation`. Always import these wrappers, not the `next/navigation` originals — `redirect` is what `app/[locale]/cases/page.tsx` uses to send `/cases` home while `CASES_PUBLISHED` is false. |
 | SEO helpers | `lib/meta.ts` — `pageMetadata(locale, path, titleKey, descKey)` returns a `Metadata` object with canonical URL, `alternates.languages` (hreflang), and OpenGraph fields. |
 | Image helper | `lib/imgSrc.ts` — `imgSrc(base, locale)` returns a locale-specific screenshot path (falls back to the `en` asset). |
-| Home page | `components/home/` holds all nine redesigned home sections, composed by `app/[locale]/page.tsx` in this order: `Hero` (+ `HeroBackground`, `HeroBgPhoto`, `HeroBgMock`, `HeroPlayPill`, `EmailCta`), `LogoStrip`, `ServiceCards`, `AiPanel` (+ `AiDemo`), `BalamoShowcase` (+ `BalamoPills`), `DifferentiatorBand`, `Reviews` (+ `ReviewsCarousel`), `AiCompare`, `FinalCta`. |
+| Home page | `components/home/` holds all nine redesigned home sections, composed by `app/[locale]/page.tsx` in this order: `Hero` (+ `HeroBgPhoto`, `HeroPlayPill`, `EmailCta`), `LogoStrip`, `ServiceCards`, `AiPanel` (+ `AiDemo`), `BalamoShowcase` (+ `BalamoPills`), `DifferentiatorBand`, `Reviews` (+ `ReviewsVideo`), `AiCompare`, `FinalCta`. |
 | Inner pages | `components/page/` holds the shared kit (`PageHero`, `FeatureBlock`, `Card`/`CardGrid`, `Faq`, `PageCta`) that `features`, `pricing`, `cases`, `about` and `contact` build on, each with its own `page.module.css`. |
 
 ### Route map
@@ -81,66 +81,85 @@ surface sitting directly on `--brand`, and the `--on-dark-*` set everywhere else
 
 `lib/services.ts` is the single list of the 8 services (slugs `menu, ai, ordering, training, multi, reviews, daily, translate`). Copy lives in `messages/*.json` under `services.<slug>.{title,line}`. Mega-menu, footer and (phase 2) home cards read from it.
 
-### Home hero — two background variants (temporary)
+### Home hero background
 
-The hero ships **two** background treatments so the owner can compare them on the same
-build, plus a temporary switch:
+The hero's background is `components/home/HeroBgPhoto.tsx` + `.module.css`: a real CC0
+photograph at `public/assets/hero/hero-stock.jpg` (source recorded in
+`public/assets/hero/SOURCES.md`), a Ken Burns zoom, and an `--ink` gradient overlay.
 
-- **Variant B — photo:** `components/home/HeroBgPhoto.tsx` + `.module.css`. Real CC0 photo
-  at `public/assets/hero/hero-stock.jpg` (source recorded in `public/assets/hero/SOURCES.md`),
-  Ken Burns zoom, `--ink` gradient overlay. **This is the current default.**
-- **Variant C — mock:** `components/home/HeroBgMock.tsx` + `.module.css`. No photo — a
-  `DeviceFrame` phone mock with pointer-driven 3D tilt plus a floating "applying a change"
-  card.
-- **Switch:** `components/home/HeroBackground.tsx` (`'use client'`) renders the photo
-  unconditionally on the server and on first client render, then reads `?hero=c` from
-  `window.location.search` in an effect after mount and swaps in the mock if it matches — so
-  the default photo still ships in the static HTML with its `priority` preload intact, rather
-  than sitting behind a `useSearchParams` + `<Suspense>` boundary. Default (no query param, or
-  anything other than `c`) renders the photo.
+The phone-mock alternative (`HeroBgMock`) and the `?hero=c` switch (`HeroBackground`) that
+existed so the two could be compared are **deleted**: the owner picked the photograph. Do not
+reintroduce a query-param variant switch. `e2e/hero.spec.ts` asserts that `?hero=c` still
+renders the photograph and no mock, so a revival fails the suite.
 
-This switch is **not** meant to ship long-term. Once the owner picks a variant:
+### Headlines that must break in a specific place
 
-- Photo (B) wins → delete `components/home/HeroBgMock.tsx` + `.module.css`.
-- Mock (C) wins → delete `components/home/HeroBgPhoto.tsx` + `.module.css` and
-  `public/assets/hero/hero-stock.jpg` + `SOURCES.md`.
-- Either way: delete `components/home/HeroBackground.tsx` and the `?hero=c` switch, and
-  have `Hero.tsx` render the winning background component directly. Tracked in `TODO.md`
-  phase 3.
+`home.hero.title` is rendered with `t.rich`, and two tags are available: `<mark>` wraps the
+annotated word (`components/ui/Annotated.tsx`), and `<line>` forces its contents onto their own
+line. Only the Spanish string uses `<line>` today, because "Nosotros nos ocupamos." and "Tú
+creces." must never share a line; every other locale omits the tag and wraps naturally. Add
+`<line>` to a locale's string when that language needs the same break, and to no others.
 
 ### Reviews data
 
-`data/reviews.json` drives `components/home/Reviews.tsx`. It now holds real content: the two
-client video reviews (Calsot and La Pulpería) and the two Google reviews on Dimonova's own
-Google Business profile, with `rating: 5`.
+`data/reviews.json` drives `components/home/Reviews.tsx`. It holds real content: the two client
+video reviews (Calsot and La Pulpería), the two Google reviews on Dimonova's own Google
+Business profile, and `rating: 5`.
+
+The section is a stack of full-width rows, one per video, alternating sides: the video and its
+client's written review, video-left for the first row and video-right for the second. There is
+no carousel and no outbound link on a card; the only link to Google is the section's rating
+badge.
+
+**A row shows a quote only when the video declares which review is its own**, via the optional
+`reviewId` on the video entry pointing at a `google[]` entry's `id`. Never pair by array
+position: the two arrays are not parallel, and `google[]` contains a reviewer whose venue is
+not recorded anywhere, so position-pairing would put words in a real person's mouth. A video
+with no `reviewId` (or one naming a missing id) falls back to showing the venue's name and
+location; Google reviews not claimed by any video render as plain cards after the rows. To add
+La Pulpería's written review later, edit `data/reviews.json` alone: append the review with an
+id, then set that id as the video's `reviewId`.
 
 The **videos are not in this repo**. The source `.mov` files were 200-350 MB each; they were
 transcoded to 1080p H.264 and uploaded to the `web-media` public bucket on the project's own
 Supabase instance (`reviews/*.mp4`), and `data/reviews.json` points at the public URLs. The
 **posters are local** (`public/assets/reviews/*.jpg`), on purpose: nothing is fetched from
-Supabase when a page loads, only when a visitor presses play. Keep it that way, or
-`e2e/tokens.spec.ts`'s "no third-party font requests" test (which fails on *any* non-localhost
-request during load) will start failing, and the cookie policy's third-party statement will
-stop being true.
+Supabase when a page loads, only when a visitor presses play, which is the whole job of
+`components/home/ReviewsVideo.tsx`. Keep it that way, or `e2e/tokens.spec.ts`'s "no
+third-party font requests" test (which fails on *any* non-localhost request during load) will
+start failing, and the cookie policy's third-party statement will stop being true.
 
 Add a new video by transcoding it, uploading it to that bucket, saving a local poster frame,
 and adding an entry to the `videos` array. Do not add reviews that were not actually written or
-recorded by a client. `e2e/home-sections.spec.ts`'s `populated reviews render as cards` test
-enables itself automatically as soon as the file is non-empty, which it now is.
+recorded by a client.
 
 ### Moving strips (Marquee)
 
-`components/ui/Marquee.tsx` **never pauses** — not on hover, not on focus, and there is no
-pause button. The owner asked for that explicitly. The only stop is
-`prefers-reduced-motion: reduce`, which drops the animation and turns the strip into an
-ordinary horizontal scroller; that branch is what keeps this acceptable, so do not remove it.
-Because of it the pills in `DifferentiatorBand` show their explanation at all times rather
-than on hover: a hover panel on a strip that never stops is unreadable in practice.
+`components/ui/Marquee.tsx` has exactly one way to stop: `pauseOnHover`, which halts the strip
+while the pointer is over it. There is no pause button and no `:focus-within` stop, by the
+owner's explicit instruction. `DifferentiatorBand`'s two claim rows opt in; `LogoStrip` does
+not and never stops. The `prefers-reduced-motion: reduce` branch in the stylesheet drops the
+animation entirely and turns the strip into an ordinary horizontal scroller; that branch is
+what keeps this acceptable, so do not remove it.
+
+The claim pills show their explanation at all times rather than on hover: the hover state's job
+is to hold the strip still so a claim can be read, not to also uncover the text.
 
 Pass `repeat` when a strip has only a handful of children (`LogoStrip` uses 6, the
 differentiator rows use 3) so the loop's seam is pushed off screen and the list reads as
 endless. Only the first copy is exposed to assistive tech; every other copy is `aria-hidden`
 and `inert`.
+
+### The "ask an AI" section
+
+`components/home/AiCompare.tsx` links the visitor's question out to four assistants. Each one
+is shown with its **own official mark**, downloaded from that provider's own site;
+`public/assets/ai/SOURCES.md` records every URL, the single edit made to the OpenAI file, and
+the trademark-permission question that is still open. Do not redraw, recolour or restyle these
+marks; the white disc behind them in `AiCompare.module.css` exists so they sit on a neutral
+ground without being altered. `lib/aiPrompt.ts` holds the ids, labels, logo paths and deep
+links. Gemini is the one provider with no documented parameter for pre-filling its composer,
+which is why the section also offers a copy button.
 
 ### OG image
 
@@ -201,14 +220,12 @@ Playwright e2e lives in `e2e/`. Run with `npm run test:e2e`. The suite covers:
 - Venue pill selection (contact page)
 - Full contact-form validation flow
 - Demo modal and video modal (open/close, focus trap, error fallback)
-- The home hero (`e2e/hero.spec.ts`), including the `?hero=c` query param that switches the
-  hero background from the photo (default) to the phone-mock variant — see "Home hero — two
-  background variants" above
+- The home hero (`e2e/hero.spec.ts`), including a guard that the deleted `?hero=c` mock
+  variant has not come back — see "Home hero background" above
 - The rest of the home page's sections (`e2e/home-sections.spec.ts`) — service cards, logo
   strip, AI demo, Bálamo showcase, differentiator band, reviews, AI-compare. One test there,
-  `populated reviews render as cards`, is `test.skip`'d while `data/reviews.json` ships empty
-  and enables itself automatically once real review content is added (see "Reviews data"
-  above)
+  `populated reviews render as cards`, guards the section now that `data/reviews.json` carries
+  real content (see "Reviews data" above)
 - An accessibility sweep (`e2e/a11y.spec.ts`) across all six real pages — `/`, `/features`,
   `/pricing`, `/about`, `/contact`, and `/legal/privacy` as the representative legal page —
   each checked for exactly one `<h1>`, an `alt` attribute on every `<img>`, an accessible name
@@ -220,7 +237,7 @@ Playwright e2e lives in `e2e/`. Run with `npm run test:e2e`. The suite covers:
 Unit tests (Playwright `expect`, no browser) live next to the modules they cover — except
 when the covered module can't live under `lib/` itself, in which case the spec still sits in
 `lib/` and imports it by relative path (e.g. `lib/reviewCards.test.ts` covers
-`components/home/reviews-types.ts`) — and run separately:
+`buildReviewRows` in `components/home/reviews-types.ts`) — and run separately:
 `npx playwright test -c playwright.unit.config.ts`.
 
 The message-sync script has its own Node test runner spec:

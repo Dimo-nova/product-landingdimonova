@@ -26,7 +26,7 @@
      card's own edge and get sliced off by `.section`'s overflow:hidden on narrow viewports. */
   min-width: 0;
   width: 100%;
-  max-width: 620px;
+  max-width: 800px;
   padding: clamp(32px, 6vw, 72px);
   color: var(--paper);
 }
@@ -38,6 +38,12 @@
 .title {
   color: var(--paper);
   margin: 0 0 20px;
+}
+
+/* See Hero.tsx: the Spanish headline wraps its second sentence in <line> so it always starts
+   a new line. Locales that don't use the tag never render this element. */
+.titleLine {
+  display: block;
 }
 
 .lead {

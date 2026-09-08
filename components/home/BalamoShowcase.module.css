@@ -124,21 +124,23 @@
   min-width: 0;
 }
 
+/* The case label sits above the logo, not beside it. */
 .brandRow {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
   gap: 10px;
   margin: 0 0 16px;
 }
 
 .logo {
-  height: 28px;
+  height: 36px;
   width: auto;
   display: block;
 }
 
-/* This eyebrow sits inline next to the Bálamo logo (see .brandRow above), which already
-   supplies the 16px gap the shared Eyebrow component's own margin is meant for. */
+/* .brandRow supplies the spacing between this label and the logo below it, so the shared
+   Eyebrow component's own bottom margin would double it. */
 .eyebrowInline {
   margin: 0;
 }

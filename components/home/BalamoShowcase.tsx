@@ -47,12 +47,12 @@ export default async function BalamoShowcase() {
 
           <Reveal delay={0.1} className={styles.copy}>
             <div className={styles.brandRow}>
-              {/* alt="": the visible "Case: Bálamo Restaurante" eyebrow right after it already
-                  carries the meaning — an alt text here would announce the name twice. */}
-              <img src="/assets/Logos/balamo.svg" alt="" className={styles.logo} />
               <Eyebrow as="span" className={styles.eyebrowInline}>
                 {t("home.balamo.eyebrow")}
               </Eyebrow>
+              {/* alt="": the visible "Case: Bálamo Restaurante" eyebrow right above it already
+                  carries the meaning, so real alt text would announce the name twice. */}
+              <img src="/assets/Logos/balamo.svg" alt="" className={styles.logo} />
             </div>
             <h2 className={styles.title}>{t("home.balamo.title")}</h2>
             <p className={styles.body}>{t("home.balamo.body")}</p>

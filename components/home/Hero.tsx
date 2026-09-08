@@ -5,17 +5,17 @@ import { Link } from "@/lib/routing";
 import { ADMIN_URL, HERO_VIDEO_POSTER, HERO_VIDEO_SRC } from "@/lib/config";
 import EmailCta from "./EmailCta";
 import HeroPlayPill from "./HeroPlayPill";
-import HeroBackground from "./HeroBackground";
+import HeroBgPhoto from "./HeroBgPhoto";
 import styles from "./Hero.module.css";
 
-/** Home hero: owns the page's only <h1>, the email CTA, and the (temporary) photo/mock background switch. */
+/** Home hero: owns the page's only <h1>, the email CTA and the photographic background. */
 export default async function Hero() {
   const t = await getTranslations();
 
   return (
     <Container>
       <section className={styles.section}>
-        <HeroBackground photoAlt={t("alt.heroPhoto")} mockAlt={t("alt.heroMock")} />
+        <HeroBgPhoto alt={t("alt.heroPhoto")} />
 
         <div className={styles.content}>
           {HERO_VIDEO_SRC && (
@@ -25,7 +25,14 @@ export default async function Hero() {
           )}
 
           <h1 className={styles.title}>
-            {t.rich("home.hero.title", { mark: (chunks) => <Annotated>{chunks}</Annotated> })}
+            {t.rich("home.hero.title", {
+              mark: (chunks) => <Annotated>{chunks}</Annotated>,
+              // Only the Spanish headline uses <line>: "Nosotros nos ocupamos." and "Tú creces."
+              // must never share a line, and a hard break in the copy is the only way to say
+              // that per language. Locales whose string omits the tag are unaffected, so the
+              // English headline keeps wrapping wherever the width puts it.
+              line: (chunks) => <span className={styles.titleLine}>{chunks}</span>,
+            })}
           </h1>
 
           <p className={styles.lead}>{t("home.hero.lead")}</p>

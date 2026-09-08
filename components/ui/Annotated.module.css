@@ -1,3 +1,12 @@
 .wrap { position: relative; display: inline-block; white-space: nowrap; }
 .svg { position: absolute; inset: -0.18em -0.25em; width: calc(100% + 0.5em); height: calc(100% + 0.36em); overflow: visible; pointer-events: none; }
-.path { fill: none; stroke: var(--brand); stroke-width: 6; stroke-linecap: round; vector-effect: non-scaling-stroke; }
+/*
+ * No `vector-effect: non-scaling-stroke` here, deliberately. It looks like the right way to
+ * keep an even stroke under this element's non-uniform `preserveAspectRatio="none"` stretch,
+ * but it also switches dash lengths to screen units, which breaks the `pathLength="1"`
+ * normalisation Motion's draw animation relies on: the "1 1" dash then covered only ~60% of
+ * the real on-screen length and the loop rendered permanently unfinished, missing its whole
+ * bottom-left quarter. Plain scaled strokes vary a little in weight between the horizontal and
+ * vertical parts of the ellipse, which suits a hand-drawn mark anyway.
+ */
+.path { fill: none; stroke: var(--brand); stroke-width: 4; stroke-linecap: round; }

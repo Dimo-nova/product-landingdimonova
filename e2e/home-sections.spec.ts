@@ -241,19 +241,31 @@ test("no review card links out to Google — only the rating badge does", async 
   await expect(links.first()).toHaveText(/\/5 on Google$/);
 });
 
-test("the claim marquee keeps running under the pointer", async ({ page }) => {
-  // Regression guard for the owner's explicit instruction: no pause button, and no pause on
-  // hover or focus either. Only the OS-level reduced-motion preference stops the strip, which
-  // this test deliberately does not emulate.
+test("the claim marquee stops under the pointer and the logo strip does not", async ({ page }) => {
+  // Two halves of one instruction from the owner: the claim rows must hold still long enough
+  // to read a claim, and the logo strip must never stop. There is no pause button and no
+  // keyboard pause on either.
   await page.goto("/");
-  const track = page.locator("[data-diff] [data-diff-item]").first();
-  await track.hover({ force: true, trial: false }).catch(() => {});
-  const playState = await track.evaluate((el) => {
-    const group = el.parentElement;
-    const trackEl = group?.parentElement as HTMLElement | null;
-    return trackEl ? getComputedStyle(trackEl).animationPlayState : null;
-  });
-  expect(playState).toBe("running");
+  const claims = page.locator("[data-diff] [data-pause]").first();
+  await claims.scrollIntoViewIfNeeded();
+  const box = (await claims.boundingBox())!;
+  // Two moves: a single move can land before the page registers a pointer at all, and :hover
+  // then never applies.
+  await page.mouse.move(box.x + 40, box.y + box.height / 2);
+  await page.mouse.move(box.x + 41, box.y + box.height / 2);
+  const state = await claims.evaluate((el) => getComputedStyle(el.firstElementChild!).animationPlayState);
+  expect(state).toBe("paused");
+
+  // The logo strip does not even carry the opt-in attribute, so nothing can pause it.
+  await expect(page.locator("[data-logo-strip] [data-pause]")).toHaveCount(0);
+  const logo = page.locator("[data-logo-strip] img").first();
+  const logoBox = (await logo.boundingBox())!;
+  await page.mouse.move(logoBox.x + 10, logoBox.y + logoBox.height / 2);
+  await page.mouse.move(logoBox.x + 11, logoBox.y + logoBox.height / 2);
+  // Marquee's structure is wrap > track > group > children, so the track is the image's
+  // grandparent. Class names are hashed by CSS Modules, hence walking the DOM instead.
+  const logoState = await logo.evaluate((el) => getComputedStyle(el.parentElement!.parentElement!).animationPlayState);
+  expect(logoState).toBe("running");
 });
 
 test("each AI provider link carries the full prompt", async ({ page }) => {
@@ -289,7 +301,7 @@ test("the AI provider links show their names and fit a phone screen", async ({ p
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto("/");
   const section = page.locator("#ai-compare");
-  for (const name of ["ChatGPT", "Claude", "Perplexity", "Google AI Mode"]) {
+  for (const name of ["ChatGPT", "Claude", "Perplexity", "Gemini"]) {
     await expect(section.getByRole("link", { name })).toBeVisible();
   }
   const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);

@@ -4,12 +4,15 @@ import es from "../messages/es.json";
 
 /** The live headline is rendered via t.rich with a <mark> wrapper around one word (see
  *  components/home/Hero.tsx / Annotated). Strip the tag to get the plain text a11y tree exposes. */
-const stripMark = (title: string) => title.replace(/<\/?mark>/g, "");
+// The headline copy carries two markup tags that Hero.tsx turns into elements, neither of
+// which contributes text: <mark> for the drawn annotation and <line> for a forced line break
+// (Spanish only). Both come out here so the assertion compares words to words.
+const stripTags = (title: string) => title.replace(/<\/?(?:mark|line)>/g, "");
 
 test("home hero heading renders the current headline", async ({ page }) => {
   await page.goto("/");
   const h1 = page.getByRole("heading", { level: 1 }).first();
-  await expect(h1).toContainText(stripMark(en.home.hero.title));
+  await expect(h1).toContainText(stripTags(en.home.hero.title));
 });
 
 test("home shows venue logo strip with La Pulpería", async ({ page }) => {
@@ -25,7 +28,7 @@ test("home shows venue logo strip with La Pulpería", async ({ page }) => {
 test("/es renders the hero in Spanish", async ({ page }) => {
   await page.goto("/es");
   const h1 = page.getByRole("heading", { level: 1 }).first();
-  await expect(h1).toContainText(stripMark(es.home.hero.title));
+  await expect(h1).toContainText(stripTags(es.home.hero.title));
 });
 
 test("home renders all nine sections, in order, with no legacy markup on <main>", async ({ page }) => {

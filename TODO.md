@@ -69,11 +69,9 @@ Status legend: `[ ]` not started · `[~]` in progress · `[x]` done
       real screenshots/illustrations per service (the eight slugs in `lib/services.ts`:
       `menu, ai, ordering, training, multi, reviews, daily, translate`), sized for the
       `DeviceFrame`/card media area.
-- [ ] **Pick hero B or C.** Compare `/?hero=` (photo, default) and `/?hero=c` (mock) with the
-      owner, then delete the losing variant and the temporary switch — see the "Home hero —
-      two background variants" section in `CLAUDE.md` for exactly which files that means
-      (`HeroBgPhoto`/`HeroBgMock` + `.module.css`, `HeroBackground.tsx`, and possibly
-      `public/assets/hero/`).
+- [x] **Hero variant chosen.** The owner picked the photograph. `HeroBgMock`, its stylesheet
+      and the `HeroBackground` `?hero=c` switch are deleted; `Hero.tsx` renders `HeroBgPhoto`
+      directly.
 - [ ] **Hero photograph.** The current variant-B background is a real but generic CC0 pub
       interior (`public/assets/hero/hero-stock.jpg`, sourced in
       `public/assets/hero/SOURCES.md`) — not a Dimonova venue. Get a better photograph (ideally
@@ -118,11 +116,16 @@ Status legend: `[ ]` not started · `[~]` in progress · `[x]` done
 
 ## 🔎 Before launch — quality
 
-- [ ] **Moving strips have no pause control.** At the owner's explicit request the marquees no
-      longer stop on hover, on focus, or via a button, which is a departure from WCAG 2.2.2
-      (Level A) for content that moves for more than five seconds. The `prefers-reduced-motion`
-      branch in `components/ui/Marquee.module.css` is the only remaining escape hatch. Revisit
-      if accessibility conformance is ever claimed formally.
+- [ ] **Moving strips pause on hover only.** The claim rows stop under the pointer; the logo
+      strip never stops, and neither has a keyboard-reachable pause, which is a departure from
+      WCAG 2.2.2 (Level A) for content that moves for more than five seconds. The
+      `prefers-reduced-motion` branch in `components/ui/Marquee.module.css` is the other escape
+      hatch. Revisit if accessibility conformance is ever claimed formally.
+- [ ] **Trademark permission for the four assistant marks.** `public/assets/ai/` now carries
+      OpenAI's, Anthropic's, Perplexity's and Google's official logos, used to label the
+      outbound links in the "ask an AI" section. That is ordinary nominative use, but each
+      company publishes usage guidelines and some ask for written permission on commercial
+      sites. Nobody has sought it. See `public/assets/ai/SOURCES.md`.
 - [ ] **Accessibility pass:** verify keyboard/screen-reader behaviour, `aria-current` on active nav link, `aria-label` on icon-only buttons (WhatsApp FAB, mobile menu), `alt` text on images once added.
 - [ ] Cross-browser / device QA (iOS Safari, Android Chrome).
 

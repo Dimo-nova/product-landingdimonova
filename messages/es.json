@@ -36,7 +36,7 @@
   "home": {
     "hero": {
       "playPill": "Cómo empezó Dimonova",
-      "title": "Nosotros nos ocupamos. Tú <mark>creces</mark>.",
+      "title": "Nosotros nos ocupamos. <line>Tú <mark>creces</mark>.</line>",
       "lead": "Carta digital, comandero y reseñas a medida de tu restaurante, montados y cuidados 24/7 por un equipo de frikis de confianza. Sin plantillas. Listo para escalar.",
       "emailPlaceholder": "Tu email",
       "cta": "Pedir demo",
@@ -603,7 +603,6 @@
     "features": "La ficha de un plato del menú digital, con foto, precio, alérgenos y platos recomendados para acompañar.",
     "dishes": "La pantalla de gestión de platos del restaurante, con disponibilidad, categorías y precios.",
     "managerData": "El panel del gestor con el número de platos activos, las categorías y un ranking de los platos más vistos.",
-    "heroMock": "La carta digital de Bálamo abierta en un móvil, con fotos de platos y la estética del propio restaurante.",
     "heroPhoto": "Una sala de restaurante en pleno servicio, vista desde el pase.",
     "balamoPhone": "La carta digital de Bálamo en un móvil: su logo, la sección de bienvenida y las fotos de sus platos.",
     "serviceCard": "{title} dentro del panel de Dimonova."

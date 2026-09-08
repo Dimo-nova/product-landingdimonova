@@ -1,8 +1,8 @@
 import { test, expect } from "@playwright/test";
-import { AI_PROVIDER_IDS, buildProviderUrl } from "./aiPrompt";
+import { AI_PROVIDER_IDS, AI_PROVIDER_LOGOS, buildProviderUrl } from "./aiPrompt";
 
 test("exposes the four providers in display order", () => {
-  expect(AI_PROVIDER_IDS).toEqual(["chatgpt", "claude", "perplexity", "google"]);
+  expect(AI_PROVIDER_IDS).toEqual(["chatgpt", "claude", "perplexity", "gemini"]);
 });
 
 test("encodes the question into each provider's URL", () => {
@@ -15,6 +15,12 @@ test("encodes the question into each provider's URL", () => {
   }
 });
 
-test("google uses the AI mode parameter", () => {
-  expect(buildProviderUrl("google", "x")).toContain("udm=50");
+test("gemini points at Gemini itself, not at Search", () => {
+  expect(new URL(buildProviderUrl("gemini", "x")).host).toBe("gemini.google.com");
+});
+
+test("every provider has a mark on disk", () => {
+  for (const id of AI_PROVIDER_IDS) {
+    expect(AI_PROVIDER_LOGOS[id]).toMatch(/^\/assets\/ai\/[a-z]+\.svg$/);
+  }
 });

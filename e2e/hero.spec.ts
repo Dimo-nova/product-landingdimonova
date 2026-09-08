@@ -39,11 +39,14 @@ test("the play pill opens the story video", async ({ page }) => {
   await expect(page.getByRole("dialog")).toBeVisible();
 });
 
-test("photo is the default background and ?hero=c switches to the mock", async ({ page }) => {
+test("the photograph is the only hero background left", async ({ page }) => {
+  // The owner picked the photograph; the phone-mock variant and its ?hero=c switch are gone.
+  // This guards against either coming back by accident.
   await page.goto("/");
   await expect(page.locator("[data-hero-bg='photo']")).toHaveCount(1);
   await page.goto("/?hero=c");
-  await expect(page.locator("[data-hero-bg='mock']")).toHaveCount(1);
+  await expect(page.locator("[data-hero-bg='photo']")).toHaveCount(1);
+  await expect(page.locator("[data-hero-bg='mock']")).toHaveCount(0);
 });
 
 test("the client-dashboard link points at the panel", async ({ page }) => {

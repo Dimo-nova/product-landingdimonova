@@ -107,8 +107,11 @@ export async function POST(req: NextRequest) {
       },
     });
   } catch (err) {
+    // The full error goes to the server log only. It carries Notion's own message, which can
+    // name the integration, the database and why the token was refused; the browser gets the
+    // code alone, which is all the client component distinguishes anyway.
     console.error("[contact] Notion error:", err);
-    return NextResponse.json({ error: "notion_error", detail: String(err) }, { status: 500 });
+    return NextResponse.json({ error: "notion_error" }, { status: 500 });
   }
 
   // Email notification
