@@ -105,10 +105,19 @@ test("the home page does not overflow horizontally at a 390px viewport", async (
   expect(overflow).toBe(true);
 });
 
-test("the differentiator band lists all ten claims", async ({ page }) => {
+test("the differentiator band lists all ten claims, with the duplicate marquee copy hidden", async ({ page }) => {
+  // `aria-hidden` sits on Marquee's duplicated *group* wrapper, not on the individual
+  // `[data-diff-item]` pills inside it — a `:not([aria-hidden='true'])` filter on the items
+  // themselves excludes nothing, so this has to query through the accessibility tree instead.
+  // `getByRole` does exactly that: it prunes anything under an aria-hidden/inert ancestor
+  // (Marquee marks its duplicate `inert` too), so a count of 10 here genuinely proves the
+  // duplicate copy is invisible to assistive tech, not just an artifact of a Set collapsing
+  // twenty duplicated titles down to ten.
   await page.goto("/");
   const band = page.locator("[data-diff]");
-  const titles = await band.locator("[data-diff-item]:not([aria-hidden='true']) [data-diff-title]").allInnerTexts();
+  const items = band.getByRole("group");
+  await expect(items).toHaveCount(10);
+  const titles = await items.locator("[data-diff-title]").allInnerTexts();
   expect(new Set(titles).size).toBe(10);
 });
 
