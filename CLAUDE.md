@@ -21,7 +21,7 @@ keep it updated. Human-facing overview is in [`README.md`](./README.md).
 | Language | TypeScript (strict) |
 | i18n | `next-intl` · 5 locales: `en`, `es`, `de`, `fr`, `pt` · `localePrefix: "as-needed"` (English at `/`, others at `/es/`, `/de/`, etc.) |
 | Styling | The whole site runs on **CSS Modules** next to each component, with design tokens as CSS custom properties in `app/globals.css`, `motion` (`motion/react`) inside `'use client'` islands only, and `<MotionConfig reducedMotion="user">` in `components/layout/Providers.tsx`. No inline-style layer remains. |
-| Routing helpers | `lib/routing.ts` — calls `createNavigation(routing)` and re-exports `Link`, `redirect`, `useRouter`, `usePathname`, `getPathname` from `next-intl/navigation`. Always import these wrappers, not the `next/navigation` originals — `redirect` is what `app/[locale]/cases/page.tsx` uses to send `/cases` home while `CASES_PUBLISHED` is false. |
+| Routing helpers | `lib/routing.ts` — calls `createNavigation(routing)` and re-exports `Link`, `redirect`, `useRouter`, `usePathname`, `getPathname` from `next-intl/navigation`. Always import these wrappers, not the `next/navigation` originals — `redirect` is what `app/[locale]/cases/page.tsx` uses to send `/cases` home while `CASES_PUBLISHED` is false, which it currently is. |
 | SEO helpers | `lib/meta.ts` — `pageMetadata(locale, path, titleKey, descKey)` returns a `Metadata` object with canonical URL, `alternates.languages` (hreflang), and OpenGraph fields. |
 | Image helper | `lib/imgSrc.ts` — `imgSrc(base, locale)` returns a locale-specific screenshot path (falls back to the `en` asset). |
 | Home page | `components/home/` holds all nine redesigned home sections, composed by `app/[locale]/page.tsx` in this order: `Hero` (+ `HeroBgPhoto`, `HeroPlayPill`, `EmailCta`), `LogoStrip`, `ServiceCards`, `AiPanel` (+ `AiDemo`), `BalamoShowcase` (+ `BalamoPills`), `DifferentiatorBand`, `Reviews` (+ `ReviewsVideo`), `AiCompare`, `FinalCta`. |
@@ -299,9 +299,9 @@ Playwright e2e lives in `e2e/`. Run with `npm run test:e2e`. The suite covers:
   representative legal page —
   each checked for exactly one `<h1>`, an `alt` attribute on every `<img>`, an accessible name
   on every `<button>`/`<a>`, and no horizontal overflow (`scrollWidth` vs `innerWidth`, ±1px)
-  at a 390px viewport. `/cases` is deliberately excluded: it redirects home while
-  `CASES_PUBLISHED` is false, so there's nothing of its own to check — see the comment in the
-  spec before adding it back.
+  at a 390px viewport. `/cases` is swept only while `CASES_PUBLISHED` is true: unpublished it
+  redirects home, so every check would be measuring the home page a second time. The cases specs
+  in `e2e/pages.spec.ts` skip on the same flag, and one of them guards the redirect instead.
 
 Unit tests (Playwright `expect`, no browser) live next to the modules they cover — except
 when the covered module can't live under `lib/` itself, in which case the spec still sits in

@@ -1,4 +1,5 @@
 import { test, expect } from "@playwright/test";
+import { CASES_PUBLISHED } from "../lib/config";
 
 const pages = ["features", "pricing", "about"];
 for (const p of pages) {
@@ -116,19 +117,30 @@ test("the pricing FAQ reveals a question's answer on click, with no JavaScript r
   await expect(answer).toBeVisible();
 });
 
-// Cases page: published (CASES_PUBLISHED is true in lib/config.ts) now that the owner supplied
-// three real case studies. Every placeholder venue, the "example" disclaimer and the invented
-// stats are gone — the page names the three real clients and nothing else. If a venue name ever
-// disappears from these assertions, the copy has drifted back towards placeholders.
+// Cases page. It is written and holds the three real case studies, but whether it is reachable
+// is the owner's call, carried by CASES_PUBLISHED in lib/config.ts: with the flag off the route
+// redirects home, so the tests that read the page skip and one test guards the redirect instead.
+// The assertions below name the three real clients on purpose. If a venue name ever disappears
+// from them, the copy has drifted back towards placeholders.
 const CASE_VENUES = ["Calsot", "La Pulpería", "Bálamo"];
 
+test("an unpublished cases page redirects home instead of 404ing", async ({ page }) => {
+  test.skip(CASES_PUBLISHED, "the page is published");
+  await page.goto("/cases");
+  await expect(page).toHaveURL("/");
+  await page.goto("/es/cases");
+  await expect(page).toHaveURL("/es");
+});
+
 test("the cases page renders with exactly one h1", async ({ page }) => {
+  test.skip(!CASES_PUBLISHED, "cases page is unpublished");
   await page.goto("/cases");
   await expect(page).toHaveURL("/cases");
   await expect(page.locator("h1")).toHaveCount(1);
 });
 
 test("the cases page names the three real venues, in both locales", async ({ page }) => {
+  test.skip(!CASES_PUBLISHED, "cases page is unpublished");
   for (const path of ["/cases", "/es/cases"]) {
     await page.goto(path);
     for (const venue of CASE_VENUES) {
@@ -138,6 +150,7 @@ test("the cases page names the three real venues, in both locales", async ({ pag
 });
 
 test("the cases page carries no placeholder copy", async ({ page }) => {
+  test.skip(!CASES_PUBLISHED, "cases page is unpublished");
   await page.goto("/cases");
   const text = (await page.locator("main").innerText()).toLowerCase();
   for (const word of ["placeholder", "tbd", "venue name"]) {
@@ -146,6 +159,7 @@ test("the cases page carries no placeholder copy", async ({ page }) => {
 });
 
 test("each case reads before, what we did, result", async ({ page }) => {
+  test.skip(!CASES_PUBLISHED, "cases page is unpublished");
   await page.goto("/cases");
   for (const label of ["Before", "What we did", "Result"]) {
     await expect(page.locator("main").getByRole("heading", { name: label, exact: true })).toHaveCount(CASE_VENUES.length);
@@ -184,6 +198,10 @@ test("the about page hero plays the story video in place, and only on request", 
 
 test("the about page closing CTA opens the demo modal", async ({ page }) => {
   await page.goto("/about");
-  await page.locator("main").getByRole("button", { name: "Request a demo →" }).click();
-  await expect(page.getByRole("dialog")).toBeVisible();
+  // The button ships in the server HTML before React attaches its handler, so under parallel
+  // load a click can land before hydration and be swallowed. Retry until the dialog opens.
+  await expect(async () => {
+    await page.locator("main").getByRole("button", { name: "Request a demo →" }).click();
+    await expect(page.getByRole("dialog")).toBeVisible({ timeout: 2000 });
+  }).toPass({ timeout: 15_000 });
 });

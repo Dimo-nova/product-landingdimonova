@@ -2,6 +2,7 @@ import { test, expect } from "@playwright/test";
 import reviews from "../data/reviews.json";
 import en from "../messages/en.json";
 import es from "../messages/es.json";
+import { CASES_PUBLISHED } from "../lib/config";
 
 /**
  * /clients — the page that collects every client review, video and written.
@@ -72,7 +73,13 @@ test("/clients pairs quotes only where data/reviews.json declares the link", asy
   expect([...ids].sort()).toEqual([...known].sort());
 
   // A video with no `reviewId` still gets its row, with the venue line and no quote inside it.
-  for (const video of reviews.videos.filter((v) => !("reviewId" in v))) {
+  // Cast rather than `"reviewId" in v`: that narrows against the JSON literal, so the day every
+  // entry happens to carry one the whole branch becomes `never` and stops compiling, which says
+  // nothing about whether the page still handles an unpaired video.
+  const unpaired = (reviews.videos as { id: string; venue: string; reviewId?: string }[]).filter(
+    (v) => !v.reviewId,
+  );
+  for (const video of unpaired) {
     const row = page.locator(`[data-film="${video.id}"]`);
     await expect(row).toBeVisible();
     await expect(row.locator("[data-review-card='text']")).toHaveCount(0);
@@ -80,14 +87,24 @@ test("/clients pairs quotes only where data/reviews.json declares the link", asy
   }
 });
 
-test("/clients links out to the Google profile and through to the case studies", async ({ page }) => {
+test("/clients links out to the Google profile", async ({ page }) => {
   await page.goto("/clients");
 
   await expect(
     page.getByRole("link", { name: en.clients.badge.replace("{rating}", String(reviews.rating)) }),
   ).toHaveAttribute("href", reviews.profileUrl);
+});
 
-  await expect(page.getByRole("link", { name: en.clients.cases.link })).toHaveAttribute("href", "/cases");
+test("/clients shows the case-studies band only while that page is published", async ({ page }) => {
+  await page.goto("/clients");
+  const link = page.getByRole("link", { name: en.clients.cases.link });
+  if (CASES_PUBLISHED) {
+    await expect(link).toHaveAttribute("href", "/cases");
+  } else {
+    // Unpublished, /cases redirects home, so a band inviting a visitor into it would bounce them
+    // straight back out.
+    await expect(link).toHaveCount(0);
+  }
 });
 
 test("/clients works in Spanish", async ({ page }) => {

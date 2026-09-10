@@ -1,4 +1,5 @@
 import { test, expect } from "@playwright/test";
+import { CASES_PUBLISHED } from "../lib/config";
 
 test("the three service cards link to their own feature pages", async ({ page }) => {
   await page.goto("/");
@@ -116,9 +117,17 @@ test("the AI section explains that nothing is written without approval", async (
 test("the Bálamo case shows the real menu and its five pills", async ({ page }) => {
   await page.goto("/#balamo");
   const s = page.locator("#balamo");
-  await expect(s.getByAltText(/Bálamo's digital menu/)).toBeVisible();
+  await expect(s.getByAltText(/Bálamo/)).toBeVisible();
   await expect(s.locator("[data-balamo-pill]")).toHaveCount(5);
-  await expect(s.getByRole("link", { name: "See the case" })).toHaveAttribute("href", "/cases");
+  // Static, by the owner's instruction. The pills used to bob on a loop; the only transform left
+  // on any of them is .midLeft's own translateY(-50%), which is layout, not animation.
+  const animated = await s.locator("[data-balamo-pill]").evaluateAll((els) =>
+    els.filter((el) => el.getAnimations({ subtree: true }).length > 0).length,
+  );
+  expect(animated).toBe(0);
+  // No "see the case" link: /cases is unpublished (CASES_PUBLISHED in lib/config.ts), and a
+  // button that bounces a visitor back to the page they are on is worse than no button.
+  await expect(s.getByRole("link", { name: /see the case/i })).toHaveCount(CASES_PUBLISHED ? 1 : 0);
 });
 
 test("the home page does not overflow horizontally at a 390px viewport", async ({ page }) => {

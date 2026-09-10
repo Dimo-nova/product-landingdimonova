@@ -177,13 +177,12 @@
       "eyebrow": "Case: Bálamo Restaurante",
       "title": "Bálamo didn't want a menu. They wanted theirs.",
       "body": "Their menu lives on their own site and on the tablets in the VIP area, in their exact typography and colours. Every week the sommelier's wine selection goes up as a promotion. Reviews come back tagged by waiter and by area. It talks to the software they already use for the cellar. And support has no ticket limit.",
-      "cta": "See the case",
       "pills": [
-        "Reviews",
-        "VIP tablets",
-        "Wine of the week",
-        "Cellar integration",
-        "Unlimited support"
+        "Incentivos de avaliações",
+        "Design à medida",
+        "Vinhos da semana",
+        "Integração da garrafeira",
+        "Apoio ilimitado"
       ],
       "stats": [
         {
@@ -815,7 +814,8 @@
   },
   "alt": {
     "heroPhoto": "A restaurant in the middle of service.",
-    "balamoPhone": "Bálamo's digital menu on a phone: their logo, welcome section and dish photography.",
+    "balamoTablet": "Bálamo's menu open on a tablet in landscape, showing its categories, its filters and a photograph of every dish.",
+    "balamoPhone": "The Bálamo digital menu open on a phone, showing dish photographs and the restaurant's own branding.",
     "serviceCard": "{title} shown inside the Dimonova dashboard.",
     "storyVideo": "Calsot's owner telling how it all started, sitting on his restaurant's terrace."
   },

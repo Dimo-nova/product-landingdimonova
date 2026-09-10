@@ -60,8 +60,11 @@ export const MAX_UPLOAD_BYTES = 4 * 1024 * 1024;
 
 /**
  * Whether `/cases` is published. Kept here rather than declared locally on the page so
- * `app/sitemap.ts` can gate its `/cases` entry on the same flag instead of duplicating it.
- * The page now carries the three real client case studies (Calsot, La Pulpería, Bálamo),
- * written from the owner's own account of each project.
+ * `app/sitemap.ts` can gate its `/cases` entry, the footer can gate its link and the specs can
+ * gate their assertions on the same flag.
+ *
+ * The page is written and holds the three real client case studies (Calsot, La Pulpería,
+ * Bálamo). The owner took it back down; flip this to `true` to publish it again, and nothing
+ * else needs touching.
  */
-export const CASES_PUBLISHED: boolean = true;
+export const CASES_PUBLISHED: boolean = false;

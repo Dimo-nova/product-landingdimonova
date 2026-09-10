@@ -1,7 +1,6 @@
 import { getTranslations } from "next-intl/server";
 import Container from "@/components/ui/Container";
 import Reveal from "@/components/ui/Reveal";
-import Button from "@/components/ui/Button";
 import DeviceFrame from "@/components/ui/DeviceFrame";
 import Eyebrow from "@/components/page/Eyebrow";
 import BalamoPills from "./BalamoPills";
@@ -39,8 +38,8 @@ export default async function BalamoShowcase() {
               <span className={[styles.ring, styles.ringSmall].join(" ")} />
               <span className={[styles.ring, styles.ringLarge].join(" ")} />
             </div>
-            <div className={styles.phoneWrap}>
-              <DeviceFrame kind="phone" src="/assets/cases/balamo-phone.png" alt={t("alt.balamoPhone")} />
+            <div className={styles.deviceWrap}>
+              <DeviceFrame kind="tablet" landscape src="/assets/cases/balamo-tablet-landscape.webp" alt={t("alt.balamoTablet")} />
             </div>
             <BalamoPills labels={pills} />
           </Reveal>
@@ -56,9 +55,9 @@ export default async function BalamoShowcase() {
             </div>
             <h2 className={styles.title}>{t("home.balamo.title")}</h2>
             <p className={styles.body}>{t("home.balamo.body")}</p>
-            <Button href="/cases" variant="outline">
-              {t("home.balamo.cta")}
-            </Button>
+            {/* No "see the case" button: /cases is unpublished again (CASES_PUBLISHED in
+                lib/config.ts), so the only thing that button could do is bounce a visitor back to
+                the home page they are already on. */}
             <hr className={styles.hr} aria-hidden="true" />
             {stats.length > 0 && (
             <div className={styles.stats}>

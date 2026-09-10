@@ -18,10 +18,17 @@
   }
 }
 
-/* ==== Left: phone, rings, pills ==== */
+/* ==== Left: tablet, rings, pills ==== */
 
 .visual {
-  --phone-w: clamp(240px, 26vw, 320px);
+  /* Everything here is a percentage of this column, not of the viewport. The pills sit on the
+     inner ring and are about 150px wide, so a ring sized in `vw` fitted at 1440px and pushed
+     them past the section's edge by 960px. As a share of the column, the ring, the tablet and
+     the pill offsets all shrink together and the arrangement holds at every width.
+     --ring is the inner circle's diameter; --ring-r is what the pill offsets are built from. */
+  --device-w: min(380px, 58%);
+  --ring: 68%;
+  --ring-r: calc(var(--ring) / 2);
   position: relative;
   display: flex;
   flex-direction: column;
@@ -52,46 +59,44 @@
   border-radius: 50%;
 }
 
+/* `aspect-ratio` rather than a matching height: a percentage height would resolve against the
+   column's height, not its width, and the "circle" would come out as an ellipse. */
 .ringSmall {
-  width: 520px;
-  height: 520px;
+  width: var(--ring);
+  aspect-ratio: 1;
   opacity: 0.25;
 }
 
 .ringLarge {
-  width: 760px;
-  height: 760px;
+  width: calc(var(--ring) * 1.46);
+  aspect-ratio: 1;
   opacity: 0.12;
 }
 
-.phoneWrap {
+.deviceWrap {
   position: relative;
   z-index: 2;
-  width: var(--phone-w);
+  width: var(--device-w);
 }
 
 /*
- * Sized (and centred) to match `.phoneWrap`'s own footprint, not the whole visual column —
- * so the position percentages below read as "just outside the phone's edge" at every
- * viewport width, instead of drifting past the section's edge on narrower two-column
- * layouts (900–1280px) where the column is wide but the phone itself has floored out.
+ * The pills sit on the inner ring, not around the device's own box: the ring is the thing the
+ * eye reads as the orbit, so anchoring to it is what makes the arrangement look deliberate. The
+ * box is the whole visual column, sharing its centre with `.rings`.
  */
 .pills {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  width: var(--phone-w);
-  aspect-ratio: 390 / 844;
-  transform: translate(-50%, -50%);
+  inset: 0;
   z-index: 3;
 }
 
 @media (max-width: 900px) {
+  .visual {
+    --device-w: min(440px, 92%);
+  }
+
   .pills {
     position: static;
-    width: auto;
-    aspect-ratio: auto;
-    transform: none;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -100,22 +105,50 @@
   }
 }
 
+/*
+ * Five points on the ring, mirrored left to right: two at ±30° above the middle, two at the
+ * horizontal, one straight up. Nothing sits below the tablet. Each slot is centred on the ring's
+ * centre and then pushed out along its own angle with margins, so the transform stays free for
+ * the centring.
+ */
 .pillSlot {
   position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 @media (max-width: 900px) {
   .pillSlot {
     position: static;
     transform: none;
+    margin: 0;
   }
 }
 
-.topLeft { top: 6%; left: -18%; }
-.topRight { top: 2%; right: -22%; }
-.midLeft { top: 50%; left: -26%; transform: translateY(-50%); }
-.bottomRight { bottom: 20%; right: -24%; }
-.bottomLeft { bottom: 4%; left: -14%; }
+/* cos/sin of 150°, 30°, 180°, 0° and 90°. */
+.upLeft {
+  margin-left: calc(var(--ring-r) * -0.866);
+  margin-top: calc(var(--ring-r) * -0.5);
+}
+
+.upRight {
+  margin-left: calc(var(--ring-r) * 0.866);
+  margin-top: calc(var(--ring-r) * -0.5);
+}
+
+.left {
+  margin-left: calc(var(--ring-r) * -1);
+}
+
+.right {
+  margin-left: var(--ring-r);
+}
+
+/* Above the tablet, not below it: the owner wants nothing sitting under the device. */
+.top {
+  margin-top: calc(var(--ring-r) * -1);
+}
 
 /* ==== Right: copy, CTA, stats ==== */
 

@@ -177,10 +177,9 @@
       "eyebrow": "Caso: Bálamo Restaurante",
       "title": "No querían cualquier carta. Querían la suya.",
       "body": "Se aloja en su propia web y en las tablets de la zona VIP, con su tipografía y sus colores exactos. Cada semana sube la selección del sumiller como promoción. Las reseñas vuelven etiquetadas por camarero y por zona. Se entiende con el software que ya usan para la bodega. Y el soporte no tiene límite de consultas.",
-      "cta": "Ver el caso",
       "pills": [
-        "Reseñas",
-        "Tablets VIP",
+        "Incentivos de reseñas",
+        "Diseño a medida",
         "Vinos de la semana",
         "Integración bodega",
         "Soporte ilimitado"
@@ -842,7 +841,8 @@
   },
   "alt": {
     "heroPhoto": "Un restaurante en pleno servicio.",
-    "balamoPhone": "La carta digital de Bálamo en un móvil: su logo, la sección de bienvenida y las fotos de sus platos.",
+    "balamoTablet": "La carta de Bálamo abierta en una tablet en horizontal, con sus categorías, sus filtros y las fotos de cada plato.",
+    "balamoPhone": "La carta de Bálamo abierta en un móvil, con fotos de platos y la estética del propio restaurante.",
     "serviceCard": "{title} dentro del panel de Dimonova.",
     "storyVideo": "El dueño de Calsot contando cómo empezó todo, sentado en la terraza de su restaurante."
   }

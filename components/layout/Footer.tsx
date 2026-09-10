@@ -1,6 +1,6 @@
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/lib/routing";
-import { CONTACT, ADMIN_URL, COMPANY } from "@/lib/config";
+import { CONTACT, ADMIN_URL, CASES_PUBLISHED, COMPANY } from "@/lib/config";
 import { SERVICES } from "@/lib/services";
 import Container from "@/components/ui/Container";
 import Reveal from "@/components/ui/Reveal";
@@ -29,7 +29,9 @@ export default async function Footer() {
               <ul>
                 <li><Link href="/about">{t("nav.about")}</Link></li>
                 <li><Link href="/clients">{t("nav.clients")}</Link></li>
-                <li><Link href="/cases">{t("nav.cases")}</Link></li>
+                {/* Only while the page is published: unpublished, /cases redirects home, and a
+                    footer link that bounces you back to where you were is worse than no link. */}
+                {CASES_PUBLISHED && <li><Link href="/cases">{t("nav.cases")}</Link></li>}
                 <li><Link href="/pricing">{t("nav.pricing")}</Link></li>
                 <li><Link href="/contact">{t("nav.contact")}</Link></li>
               </ul>

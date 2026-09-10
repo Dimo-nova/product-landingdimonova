@@ -15,7 +15,8 @@
       "name": "La Pulpería",
       "venue": "Majadahonda, Madrid",
       "poster": "/assets/reviews/pulperia-poster.jpg",
-      "src": "https://dfulbdzlkaubgdksalnp.supabase.co/storage/v1/object/public/web-media/reviews/pulperia.mp4"
+      "src": "https://dfulbdzlkaubgdksalnp.supabase.co/storage/v1/object/public/web-media/reviews/pulperia.mp4",
+      "reviewId": "antonio-hernandez"
     }
   ],
   "google": [

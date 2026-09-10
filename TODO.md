@@ -104,7 +104,7 @@ Status legend: `[ ]` not started · `[~]` in progress · `[x]` done
 
 ## 📝 Before launch — content (replace placeholders)
 
-- [x] The **cases page** now carries the three real client case studies (Calsot, La Pulpería, Bálamo), written from the owner's own account of each project, and `CASES_PUBLISHED` is `true`. No photography of the venues exists yet; each case is presented on its logo instead.
+- [~] The **cases page** carries the three real client case studies (Calsot, La Pulpería, Bálamo), written from the owner's own account of each project. No photography of the venues exists yet; each case is presented on its logo instead. The owner has taken it back down: `CASES_PUBLISHED` is `false`, so the route redirects home, the footer link and the home page's "see the case" button are gone, and the sitemap drops it. Flip the flag to publish it again.
 - [ ] The **About team section** is likewise rebuilt but hidden behind `TEAM_PUBLISHED` in `app/[locale]/about/page.tsx` (the owner hid it in commit 249fec2), pending the owner's decision on who appears there and whether the leftover `about.team.{name,role1,role2,role3,role4,portrait}` message keys are used or should be pruned.
 - [ ] **Written client permission.** The cases page and the logo strip name and show three real clients. Confirm each one has agreed in writing to being named and to their logo being used.
 - [x] The home page's reviews section carries real content (see Phase 3 above); the old placeholder testimonial section no longer exists.
