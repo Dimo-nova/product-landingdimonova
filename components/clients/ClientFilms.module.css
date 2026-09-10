@@ -1,0 +1,87 @@
+.section {
+  background: var(--paper);
+  padding-block: clamp(40px, 6vw, 80px) clamp(56px, 8vw, 104px);
+}
+
+.head {
+  margin-bottom: clamp(32px, 5vw, 64px);
+}
+
+.title {
+  margin: 0 0 16px;
+  max-width: 20ch;
+}
+
+.note {
+  margin: 0;
+  max-width: 52ch;
+  color: var(--ink-2);
+  font-size: 15px;
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.item + .item {
+  margin-top: clamp(48px, 7vw, 104px);
+}
+
+/* The video is the wider half on purpose: on this page the films are the centrepiece, not an
+   illustration beside a quote. `minmax(0, ...)` on both tracks stops a long unbreakable string
+   in a quote from pushing the row past the container and scrolling the whole page sideways. */
+.row {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  gap: clamp(24px, 3.5vw, 56px);
+  align-items: center;
+}
+
+/* A flipped row puts the text first in the DOM as well as on screen, so the column widths have
+   to swap with it. */
+.flipped {
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+}
+
+@media (max-width: 900px) {
+  .row,
+  .flipped {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.video {
+  width: 100%;
+}
+
+.aside {
+  min-width: 0;
+}
+
+/* Decorative running number. Serif, oversized and set in --mist so it reads as a page mark
+   rather than as data; hidden from assistive tech, which gets the ordered list instead. */
+.index {
+  display: block;
+  font-family: var(--font-instrument-serif), Georgia, serif;
+  font-size: clamp(40px, 5vw, 64px);
+  line-height: 1;
+  color: var(--decor-ink);
+  margin-bottom: 12px;
+}
+
+.name {
+  margin: 0 0 4px;
+  font-size: var(--text-h3);
+}
+
+.venue {
+  margin: 0;
+  color: var(--ink-2);
+  font-size: 15px;
+}
+
+.quote {
+  margin-top: clamp(20px, 2.4vw, 28px);
+}

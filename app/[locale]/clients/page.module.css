@@ -1,0 +1,68 @@
+/* The Google rating badge in the hero.
+   Pill's `brand` tone pairs --brand-deep with --brand-soft, which measures 4.37:1 — just under
+   the 4.5:1 AA needs for text below 18px, and the axe sweep in e2e/a11y.spec.ts fails the page
+   on it. --brand-darkest exists for exactly this case (a coral ground where --brand-deep is not
+   dark enough) and clears ~5.9:1 against --brand-soft. The class is doubled so it beats Pill's
+   own single-class `.brand` rule whichever order the bundler emits the two CSS chunks in. */
+.ratingPill.ratingPill {
+  color: var(--brand-darkest);
+}
+
+/* Shown only when data/reviews.json holds nothing at all. */
+.pending {
+  text-align: center;
+  color: var(--ink-2);
+  font-size: var(--text-lead);
+  padding-block: clamp(48px, 10vw, 112px);
+  margin: 0;
+}
+
+/* ---- Through to the case studies ---- */
+
+.casesBand {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(16px, 3vw, 32px);
+  padding-block: clamp(40px, 6vw, 72px);
+  border-bottom: 1px solid var(--mist);
+}
+
+.casesCopy {
+  min-width: 0;
+  flex: 1 1 420px;
+}
+
+.casesTitle {
+  margin: 0 0 12px;
+  font-size: var(--text-h3);
+}
+
+.casesBody {
+  margin: 0;
+  max-width: 58ch;
+  color: var(--ink-2);
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+.casesLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex: 0 0 auto;
+  border: 1px solid var(--mist);
+  border-radius: var(--radius-pill);
+  padding: 14px 24px;
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--ink);
+  background: var(--cream);
+  transition: border-color 0.2s var(--ease-out), color 0.2s var(--ease-out);
+}
+
+.casesLink:hover {
+  border-color: var(--brand);
+  color: var(--brand-deep);
+}

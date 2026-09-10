@@ -71,13 +71,8 @@ export default function MobileNav() {
               {acc("products", t("nav.products"),
                 SERVICES.map((s) => <Link key={s.slug} href={s.href}>{t(`services.${s.slug}.title`)}</Link>))}
               <div className={styles.row}><Link className={styles.rowLink} href="/pricing">{t("nav.pricing")}</Link></div>
-              {acc("clients", t("nav.clients"), (
-                <>
-                  <Link href="/cases">{t("nav.mega.clientsFeatured")}</Link>
-                  <Link href="/cases">{t("nav.mega.clientsAll")}</Link>
-                  <Link href="/#reviews">{t("nav.mega.clientsVideos")}</Link>
-                </>
-              ))}
+              {/* Clients is a plain row, matching the desktop nav: one page, no panel. */}
+              <div className={styles.row}><Link className={styles.rowLink} href="/clients">{t("nav.clients")}</Link></div>
               {acc("resources", t("nav.resources"), (
                 <>
                   <Link href="/pricing#faq">{t("nav.mega.faq")}</Link>

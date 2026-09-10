@@ -6,7 +6,7 @@ import { SERVICES } from "@/lib/services";
 import { ServiceIcon } from "@/components/icons/ServiceIcons";
 import styles from "./ServiceCards.module.css";
 
-/** The eight service cards: what Dimonova builds, connects and keeps running. */
+/** The three service cards: what Dimonova builds, connects and keeps running. Each one links to its own page under `/features/[slug]`. */
 export default async function ServiceCards() {
   const t = await getTranslations();
 

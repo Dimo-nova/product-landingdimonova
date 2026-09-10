@@ -1,0 +1,13 @@
+/*
+ * Defensive clip for the three service pages. Their heroes carry decorative rings that are
+ * deliberately wider than the column they sit in, and the translations strip on /features/menu
+ * runs edge to edge; each of those already clips itself, but a single guard here means a new
+ * section can never be the one that gives the whole document a horizontal scrollbar at 390px
+ * (which e2e/a11y.spec.ts checks on all three routes).
+ *
+ * `clip` rather than `hidden`: `overflow: hidden` on an ancestor would turn this element into a
+ * scroll container and break `position: sticky` in the header above it.
+ */
+.page {
+  overflow-x: clip;
+}

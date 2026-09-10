@@ -1,0 +1,55 @@
+/* Shared chrome for the sections of the three /features/[slug] pages. */
+
+.section {
+  padding-block: clamp(48px, 8vw, 96px);
+}
+
+/* Full-bleed --cream band. Sits outside Container so the colour runs edge to edge. */
+.cream {
+  background: var(--cream);
+}
+
+/* Rounded near-black panel, same shape as the home page's AiPanel. */
+.dark {
+  background: var(--ink);
+  border-radius: var(--radius-panel);
+  margin: 16px;
+  padding: clamp(40px, 6vw, 88px);
+  color: var(--paper);
+}
+
+@media (max-width: 640px) {
+  .dark {
+    margin: 8px;
+    padding: 28px 20px;
+  }
+}
+
+.head {
+  max-width: 760px;
+  margin-bottom: clamp(32px, 4vw, 48px);
+}
+
+.headCenter {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.title {
+  margin: 0;
+}
+
+.body {
+  font-size: var(--text-lead);
+  color: var(--ink-2);
+  margin: 16px 0 0;
+}
+
+.onDark .title {
+  color: var(--paper);
+}
+
+.onDark .body {
+  color: var(--on-dark-text);
+}

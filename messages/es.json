@@ -17,11 +17,6 @@
     "language": "Elegir idioma",
     "mega": {
       "productsTitle": "Todo lo que gestionamos por ti",
-      "clientsFeatured": "Bálamo Restaurante",
-      "clientsFeaturedLine": "Su carta, su estética, en la web y en las tablets VIP.",
-      "clientsFeaturedCta": "Ver el caso",
-      "clientsAll": "Todos los casos",
-      "clientsVideos": "Reseñas en vídeo",
       "faq": "Preguntas frecuentes",
       "aiCompare": "Compara con IA",
       "contact": "Contacto"
@@ -94,13 +89,13 @@
       ]
     },
     "services": {
-      "title": "Todo lo que necesita tu restaurante. Y alguien que lo gestione.",
-      "lead": "Ocho cosas que montamos, conectamos y mantenemos por ti."
+      "title": "Todo lo que necesita tu restaurante. Con soporte 24/7.",
+      "lead": "Tres cosas que montamos, conectamos y mantenemos por ti."
     },
     "ai": {
       "eyebrow": "Panel + IA",
-      "title": "Dile a la carta lo que quieres. Ya está.",
-      "body": "Tu equipo hace cambios en bloque en segundos y tú los apruebas. No se escribe nada en tu carta hasta que alguien dice que sí.",
+      "title": "Dile a la carta lo que quieres.",
+      "body": "Pides cambios en bloque en segundos y los apruebas. No se escribe nada en tu carta hasta que alguien dice que sí.",
       "steps": [
         "Escríbelo",
         "Revisa el cambio",
@@ -179,8 +174,8 @@
     },
     "balamo": {
       "eyebrow": "Caso: Bálamo Restaurante",
-      "title": "Bálamo no quería una carta. Quería la suya.",
-      "body": "Su carta vive en su propia web y en las tablets de la zona VIP, con su tipografía y sus colores exactos. Cada semana sube la selección del sumiller como promoción. Las reseñas vuelven etiquetadas por camarero y por zona. Se entiende con el software que ya usan para la bodega. Y el soporte no tiene límite de consultas.",
+      "title": "No querían cualquier carta. Querían la suya.",
+      "body": "Se aloja en su propia web y en las tablets de la zona VIP, con su tipografía y sus colores exactos. Cada semana sube la selección del sumiller como promoción. Las reseñas vuelven etiquetadas por camarero y por zona. Se entiende con el software que ya usan para la bodega. Y el soporte no tiene límite de consultas.",
       "cta": "Ver el caso",
       "pills": [
         "Reseñas",
@@ -209,7 +204,8 @@
       "badge": "{rating}/5 en Google",
       "pending": "Reseñas muy pronto.",
       "playVideo": "Reproducir la reseña de {name}",
-      "stars": "{rating} de 5"
+      "stars": "{rating} de 5",
+      "moreTitle": "Más reseñas en Google"
     },
     "aiCompare": {
       "title": "Pregúntale a quien no trabaja aquí.",
@@ -226,64 +222,297 @@
   },
   "features": {
     "eyebrow": "Características",
-    "title": "Todo lo que necesitas para gestionar tu carta. Nada que sobre.",
-    "intro": "Cuatro partes en Dimonova: la carta digital que ven tus clientes, el panel desde el que la gestiona tu equipo, las analíticas que te dicen qué funciona y la incorporación llave en mano que lo pone todo en marcha.",
-    "f1": {
-      "eyebrow": "01 · La carta digital",
-      "title": "Una carta con la cara de tu local, no de una app de comida a domicilio.",
-      "body": "Fotos, descripciones, alérgenos, precios, secciones y sugerencias del día, bien maquetados. Carga rápido en el móvil. Vive dentro de tu web actual, así los clientes nunca sienten que los mandan a una herramienta externa.",
-      "p1": "<strong>Integrada, no redirigida.</strong> Vive en <span>tulocal.com/carta</span>, no en una URL genérica.",
-      "p2": "<strong>Alérgenos y etiquetas dietéticas</strong> en cada plato, filtrables para los clientes.",
-      "p3": "<strong>Códigos QR opcionales</strong> en tarjetas de mesa, carteles y tarjetas de visita que llevan directos a ella.",
-      "p4": "<strong>Estados de agotado</strong> que ocultan un plato al instante durante el servicio."
-    },
-    "f2": {
-      "eyebrow": "02 · El panel",
-      "title": "Si sabes usar Instagram, sabes usar esto.",
-      "body": "Sin cursos de maquetación de cartas, sin tickets a la agencia, sin «abre una solicitud para cambiar un precio». Quien lleve la sala puede ocultar un plato, subir un precio o cambiar una foto desde el móvil en menos de un minuto.",
-      "p1": "<strong>Los cambios se publican al instante</strong>. Sin cola de publicación, sin esperar a un desarrollador.",
-      "p2": "<strong>Carta en varios idiomas</strong>. Cada cliente la ve en el suyo automáticamente.",
-      "p3": "<strong>Totalmente personalizada a tu marca</strong>: colores, tipografía y estilo diseñados para tu restaurante.",
-      "p4": "<strong>Funciona en cualquier dispositivo.</strong> El móvil del camarero, el iPad del encargado, el portátil del dueño.",
-      "viz_menu": "Carta",
-      "viz_all": "Todos los platos",
-      "viz_starters": "Entrantes",
-      "viz_mains": "Principales",
-      "viz_desserts": "Postres",
-      "viz_drinks": "Bebidas",
-      "viz_insights": "Datos",
-      "viz_popularity": "Popularidad",
-      "viz_newdish": "+ Nuevo plato",
-      "viz_soldout": "Agotado"
-    },
-    "f3": {
-      "eyebrow": "03 · Analíticas",
-      "title": "Por fin la carta te da datos, no suposiciones.",
-      "body": "Cada vista de un plato queda registrada. Ves qué miran los clientes, qué se saltan y qué los pierde en la descripción. Lanza una sugerencia de brunch; comprueba si alguien la leyó. Tu próxima carta serán decisiones, no opiniones.",
-      "p1": "<strong>Popularidad de los platos</strong> por semana y mes, para saber qué se vende y cuándo.",
-      "p2": "<strong>Vista de platos activos</strong>: todo lo que tienes en carta de un vistazo.",
-      "p3": "<strong>Categorías personalizadas</strong>: organiza las secciones de tu carta a tu manera.",
-      "viz_title": "Vistas de las últimas 12 semanas",
-      "viz_total": "Vistas totales",
-      "viz_top": "Sección destacada",
-      "viz_trend": "Tendencia",
-      "viz_top_value": "Principales"
-    },
-    "f4": {
-      "eyebrow": "04 · Incorporación llave en mano",
-      "title": "La parte que nadie más hace. La hacemos por ti.",
-      "c1_title": "Montaje de la carta",
-      "c1_body": "Envíanos tu carta en el formato que tengas. La transcribimos, la estructuramos, la organizamos por secciones, añadimos los alérgenos y revisamos cada plato contigo antes de publicarla.",
-      "c2_title": "Diseño de marca",
-      "c2_body": "Colores, tipografías y estilo de fotografía, a juego con tu local. La carta debe sentirse de tu marca, no de la nuestra. Nos guiamos por tu web y tu señalética actuales.",
-      "c3_title": "Integración en la web",
-      "c3_body": "La integramos nosotros directamente en tu web actual. Squarespace, Wix, WordPress, desarrollo a medida: nos encargamos. Tu carta vive en tulocal.com/carta, no en el dominio de otro.",
-      "c4_title": "Formación del equipo",
-      "c4_body": "Una única sesión de 30 minutos con quien vaya a gestionar el panel, normalmente el dueño y el encargado de sala. Compartimos pantalla, tú tomas notas. Después, eres independiente."
+    "title": "Tres cosas. Llave en mano, de principio a fin.",
+    "intro": "Una carta digital en tu propio dominio, pedido desde la mesa y un sistema de reseñas que te cuenta qué falló antes que internet. Entra en la que te interese.",
+    "index": {
+      "cardCta": "Ver cómo funciona"
     },
     "cta": {
       "title": "Míralo en tu carta, no en la nuestra.",
       "body": "Reserva una demo y maquetamos una sección de tu carta real. Sin compromiso, sin diapositivas."
+    },
+    "pages": {
+      "menu": {
+        "seo": {
+          "title": "Carta digital · Dimonova",
+          "desc": "Tu carta en tu propio dominio y con tu marca, con panel con IA, todos tus locales en un sitio, el menú del día desde el móvil, traducciones con un clic y soporte sin límite."
+        },
+        "eyebrow": "Carta digital",
+        "title": "Tu carta. Tu marca. Cambiada en <mark>segundos</mark>.",
+        "lead": "Montamos la carta, la ponemos en el dominio que ya es tuyo y la adaptamos a tu marca. Después la gestionas tú, desde un panel que entiende una frase normal.",
+        "pills": [
+          "En tu propio dominio",
+          "Publicada en días",
+          "Soporte sin límite"
+        ],
+        "s1": {
+          "eyebrow": "La carta",
+          "title": "Carga antes de que terminen de sentarse.",
+          "body": "Fotos, secciones, precios y alérgenos, bien maquetados y servidos desde tu propio dominio. Sin app que instalar y sin el logo de otro encima de tu marca.",
+          "bullets": [
+            "En tu propio dominio y con tu marca. No un enlace genérico con el nombre de otro.",
+            "Fotos, descripciones, alérgenos y precio en cada plato, con filtros.",
+            "Rápida en el móvil, con la peor cobertura del comedor.",
+            "El estado de agotado oculta un plato al instante, en pleno servicio."
+          ]
+        },
+        "s2": {
+          "eyebrow": "Panel con IA",
+          "title": "Dilo una vez. Lee qué cambiaría. Apruébalo.",
+          "body": "Pides un cambio en una sola frase y el panel te lo propone línea a línea. Cualquiera de la sala puede pedirlo; no se escribe nada en la carta publicada hasta que alguien dice que sí.",
+          "steps": [
+            "Quien esté en la sala pide el cambio, con sus palabras.",
+            "El panel enseña exactamente qué líneas tocaría.",
+            "El dueño aprueba. Solo entonces llega a la carta publicada."
+          ]
+        },
+        "s3": {
+          "eyebrow": "Traducciones",
+          "title": "Toda la carta, en todos los idiomas, con un clic.",
+          "body": "Un botón traduce cada plato, cada descripción y cada nota de alérgenos. Tu cliente abre la carta en su idioma sin tener que pedirle ayuda a nadie.",
+          "langs": [
+            {
+              "label": "Español",
+              "dish": "Pulpo a la brasa"
+            },
+            {
+              "label": "Inglés",
+              "dish": "Grilled octopus"
+            },
+            {
+              "label": "Alemán",
+              "dish": "Gegrillter Oktopus"
+            },
+            {
+              "label": "Francés",
+              "dish": "Poulpe grillé"
+            },
+            {
+              "label": "Portugués",
+              "dish": "Polvo grelhado"
+            },
+            {
+              "label": "Italiano",
+              "dish": "Polpo alla griglia"
+            }
+          ]
+        },
+        "s4": {
+          "eyebrow": "También incluido",
+          "title": "Lo que solo importa cuando ya lo estás usando.",
+          "cards": [
+            {
+              "title": "Un panel, todos tus locales",
+              "body": "Dos locales o doce, viven en el mismo panel. Los permisos se dan por local, así un encargado ve el suyo y nada más."
+            },
+            {
+              "title": "El menú del día, desde el móvil",
+              "body": "Cambia el menú de hoy cada mañana desde el móvil que llevas encima. Lo escribes, lo apruebas y está en la carta antes de abrir."
+            },
+            {
+              "title": "Formación y soporte sin límite",
+              "body": "Una sesión de 30 minutos con quien vaya a gestionar el panel, vídeos tutoriales de todo el panel y soporte ilimitado. No hay un tope de preguntas."
+            }
+          ]
+        },
+        "faq": {
+          "eyebrow": "Preguntas",
+          "title": "Antes de que preguntes",
+          "items": [
+            {
+              "q": "¿Necesitamos una web nueva?",
+              "a": "No. La carta va en el dominio que ya tienes, en una dirección tipo tulocal.com/carta. La integración la hacemos nosotros, esté hecha tu web con lo que esté."
+            },
+            {
+              "q": "¿Quién monta la carta la primera vez?",
+              "a": "Nosotros. Mándala en el formato que tengas, un PDF, una foto, un Word. La transcribimos, la estructuramos, añadimos los alérgenos y revisamos cada plato contigo antes de publicarla."
+            },
+            {
+              "q": "¿Y si la IA escribe algo que no queríamos?",
+              "a": "No puede. El panel propone el cambio y te enseña las líneas exactas que tocaría. Nada llega a la carta publicada hasta que alguien le da a aprobar."
+            }
+          ]
+        },
+        "cta": {
+          "title": "Míralo con tus propios platos.",
+          "body": "Reserva una demo y montamos una sección de tu carta real antes de que decidas nada."
+        }
+      },
+      "ordering": {
+        "seo": {
+          "title": "Comandero · Dimonova",
+          "desc": "Piden desde el QR de la mesa. El pedido entra en tu TPV y en tus impresoras. Pensado para hoteles y beach clubs, donde la barra queda lejos."
+        },
+        "eyebrow": "Comandero",
+        "title": "Piden desde la mesa. Tú sigues con <mark>un</mark> solo sistema.",
+        "lead": "El comandero va montado sobre la carta digital que ya te hemos hecho. Se conecta con tu TPV y tus impresoras, así la cocina sigue leyendo los mismos tickets de siempre.",
+        "pills": [
+          "Un QR",
+          "Tu TPV",
+          "Tus impresoras"
+        ],
+        "s1": {
+          "eyebrow": "Por qué vende",
+          "title": "Todas las rondas que no llegaron a pedir.",
+          "body": "Nadie se salta una copa porque haya dejado de apetecerle. Se la salta por el paseo, por la cola y por la pereza de levantarse.",
+          "moments": [
+            "Me apetece un mojito, pero buf, qué lejos está la barra.",
+            "Qué cola hay.",
+            "Qué pereza levantarme.",
+            "Ya pedimos cuando pase alguien."
+          ],
+          "close": "El QR se carga las cuatro. El pedido sale desde el sitio en el que ya están sentados."
+        },
+        "s2": {
+          "eyebrow": "Cómo funciona",
+          "title": "Tres pasos, y ninguno es tuyo.",
+          "steps": [
+            {
+              "title": "Escanean",
+              "body": "El mismo QR que abre tu carta. Sin app, sin cuenta, sin descargar nada."
+            },
+            {
+              "title": "Piden",
+              "body": "Desde la carta que ya tienes, con tus fotos, tus precios y tus platos agotados."
+            },
+            {
+              "title": "Lo imprimes",
+              "body": "El ticket entra en tu TPV y en tus impresoras, en el formato que tu cocina ya lee."
+            }
+          ]
+        },
+        "s3": {
+          "eyebrow": "Ticket medio",
+          "title": "Square midió un 35 % más de ventas en los primeros 30 días.",
+          "body": "Square publica que los negocios ven un 35 % más de ventas en los primeros 30 días desde que implantan el pedido con código QR, y que los que permiten dejar la cuenta abierta ven tickets medios un 42 % más altos. Son cifras de Square, medidas entre los clientes de Square. No son nuestras, y no te prometemos lo mismo.",
+          "stats": [
+            {
+              "value": "35 %",
+              "label": "más ventas en los primeros 30 días, según Square"
+            },
+            {
+              "value": "42 %",
+              "label": "más de ticket medio con la cuenta abierta, según Square"
+            }
+          ],
+          "source": "Fuente: Square, pedidos con código QR y ticket medio"
+        },
+        "s4": {
+          "eyebrow": "Hoteles y beach clubs",
+          "title": "Una hamaca es una mesa de la que nadie quiere levantarse.",
+          "body": "Aquí es donde el comandero se paga solo antes. Pones un QR en la hamaca, en la habitación, en la terraza. Un camarero acerca el pedido. Nadie tiene que cruzar la piscina para pedir una copa.",
+          "cards": [
+            {
+              "title": "Hamacas y piscina",
+              "body": "Un QR por hamaca. Piden sin moverse y un camarero se lo acerca."
+            },
+            {
+              "title": "Habitaciones y terrazas",
+              "body": "La misma carta y la misma cocina, desde cualquier punto del establecimiento."
+            },
+            {
+              "title": "Horas punta",
+              "body": "La barra sigue tomando pedidos durante la hora en la que la cola estaría echando gente."
+            }
+          ]
+        },
+        "cta": {
+          "title": "Dinos qué TPV tienes.",
+          "body": "Cuéntanos tu TPV y tus impresoras y te enseñamos un pedido entrando en ellos."
+        }
+      },
+      "reviews": {
+        "seo": {
+          "title": "Sistema de reseñas · Dimonova",
+          "desc": "El cliente valora su visita y todas las valoraciones llegan a Google. Las bajas te dicen antes el motivo, el camarero y la zona del local. No se filtra ni se esconde nada."
+        },
+        "eyebrow": "Sistema de reseñas",
+        "title": "Tú te enteras <mark>antes</mark>. Google también se entera.",
+        "lead": "Al cliente se le pide que valore la visita. Todas las valoraciones van a Google, buenas y malas. La diferencia es que, antes de que una mala llegue, le preguntamos qué falló y dónde, así te enteras por él y no por internet.",
+        "pills": [
+          "Todas llegan a Google",
+          "Motivo, camarero, zona",
+          "Sin filtrar nada"
+        ],
+        "s1": {
+          "eyebrow": "El recorrido",
+          "title": "El mismo destino. Una pregunta más.",
+          "body": "Los dos caminos terminan en Google. El de la valoración baja da un rodeo por el camino, y ese rodeo es el producto entero.",
+          "highTitle": "Cuatro o cinco estrellas",
+          "highBody": "Directo a Google, sin nada en medio.",
+          "lowTitle": "De una a tres estrellas",
+          "lowBody": "Le preguntamos el motivo, lo etiquetamos a un camarero o a una zona del local, y después lo mandamos a Google.",
+          "note": "Tú tienes el motivo, el nombre y el sitio antes de que la reseña sea pública. La reseña se publica igual.",
+          "demo": {
+            "ratingLabel": "¿Qué tal ha ido la visita?",
+            "chips": [
+              "Motivo",
+              "Camarero",
+              "Zona"
+            ],
+            "destination": "Reseña en Google"
+          }
+        },
+        "s2": {
+          "eyebrow": "Que quede claro",
+          "title": "Esto no es filtrar reseñas.",
+          "body": "No se filtra, ni se esconde, ni se retiene, ni se desvía nada fuera de Google. Una valoración de una estrella llega a Google igual que una de cinco. Lo que cambia es que tú lees el motivo unos minutos antes, con un nombre y una zona de la sala al lado.",
+          "doesTitle": "Lo que hace",
+          "does": [
+            "Pedir a cada cliente que valore la visita",
+            "Preguntar el motivo cuando la valoración es baja",
+            "Etiquetar ese motivo a un camarero o a una zona",
+            "Mandar todas las valoraciones a Google"
+          ],
+          "doesNotTitle": "Lo que nunca hace",
+          "doesNot": [
+            "Esconder una mala reseña",
+            "Filtrar quién puede opinar",
+            "Impedir que alguien llegue a Google",
+            "Escribir nada en nombre del cliente"
+          ]
+        },
+        "s3": {
+          "eyebrow": "Lo que aprendes",
+          "title": "Una estrella no te dice nada. Un motivo te dice qué arreglar.",
+          "cards": [
+            {
+              "title": "Por camarero",
+              "body": "Cada valoración baja lleva el camarero con el que pasó. Un patrón sale en una semana, no en un trimestre."
+            },
+            {
+              "title": "Por zona",
+              "body": "Terraza, barra, comedor, primera planta. Te enteras de que el problema tiene un sitio antes de enterarte de que tiene una reseña."
+            },
+            {
+              "title": "Por motivo",
+              "body": "La espera, la temperatura, el precio, el trato, la limpieza. El motivo llega con la valoración, con las palabras del cliente."
+            }
+          ]
+        },
+        "faq": {
+          "eyebrow": "Preguntas",
+          "title": "Antes de que preguntes",
+          "items": [
+            {
+              "q": "¿Estáis escondiendo nuestras malas reseñas?",
+              "a": "No. Todas las valoraciones se mandan a Google, sea cual sea la nota. Lo único distinto en una baja es que antes preguntamos el motivo y te lo pasamos."
+            },
+            {
+              "q": "¿El cliente tiene que escribirlo dos veces?",
+              "a": "No. El motivo que le pedimos son unos toques en la pantalla, sin escribir nada. La reseña pública en Google es lo mismo que iba a hacer de todos modos."
+            },
+            {
+              "q": "¿Dónde funciona esto?",
+              "a": "En el mismo QR y en la misma carta que ya usan tus clientes. No hay nada más que instalar ni nada más que llevar encima a tu equipo."
+            }
+          ]
+        },
+        "cta": {
+          "title": "Actívalo primero en una zona.",
+          "body": "Empieza por la terraza o por la barra, lee lo que llega y decide desde ahí."
+        }
+      }
     }
   },
   "pricing": {
@@ -320,15 +549,15 @@
     "faq": {
       "title": "Preguntas frecuentes",
       "q1": "¿Hay permanencia?",
-      "a1": "Un acuerdo de servicio sencillo, cancelable con un mes de aviso. Sin ataduras de varios años.",
+      "a1": "No.",
       "q2": "¿Y si mi carta cambia mucho?",
-      "a2": "Edítala tú mismo, tantas veces como quieras. Tu cuota mensual no varía según la frecuencia de los cambios.",
+      "a2": "Edítala tú mismo, o pídenos que lo hagamos tantas veces como quieras. Tu cuota mensual no varía según la frecuencia de los cambios.",
       "q3": "¿Necesito una web nueva?",
       "a3": "No. La tuya actual se queda. Integramos la carta en ella. Squarespace, Wix, WordPress o un desarrollo a medida: todo vale.",
       "q4": "¿Y las fotos de los platos?",
       "a4": "Puedes aportar las tuyas, usar las de tu web actual u omitir las fotos. Complemento opcional: organizamos un fotógrafo.",
-      "q5": "¿Cuánto tardamos en estar en línea?",
-      "a5": "De cinco a siete días laborables desde que recibimos tu carta, en la mayoría de los casos. Fijaremos una fecha en la llamada de demo."
+      "q5": "¿Cuánto tardamos en entregar tu carta?",
+      "a5": "De cinco a siete días laborables desde que firmamos, en la mayoría de los casos. Fijaremos una fecha en la llamada de demo."
     }
   },
   "cases": {
@@ -380,6 +609,33 @@
     },
     "cta": {
       "title": "¿Quieres ser el próximo caso de éxito?"
+    }
+  },
+  "clients": {
+    "eyebrow": "Clientes",
+    "title": "Cada palabra de esta página <mark>es suya</mark>.",
+    "intro": "Los locales con los que trabajamos, en vídeo y en Google. Nada de esto lo hemos escrito nosotros.",
+    "badge": "{rating}/5 en Google",
+    "playVideo": "Reproducir la reseña de {name}",
+    "posterAlt": "Un fotograma de la reseña en vídeo de {name}.",
+    "stars": "{rating} de 5",
+    "films": {
+      "eyebrow": "En vídeo",
+      "title": "Los dueños, con sus propias palabras.",
+      "note": "Dale al play para verlo. Hasta entonces no se descarga nada."
+    },
+    "written": {
+      "eyebrow": "En Google",
+      "title": "Más reseñas en Google.",
+      "link": "Léelas en Google"
+    },
+    "cases": {
+      "title": "La versión larga.",
+      "body": "Los casos de éxito cuentan qué tenía cada local antes, qué construimos y qué tienen hoy.",
+      "link": "Ver los casos de éxito"
+    },
+    "cta": {
+      "title": "¿Quieres tu local en esta página?"
     }
   },
   "about": {
@@ -472,7 +728,7 @@
     },
     "features": {
       "title": "Características · Dimonova",
-      "desc": "Un menú digital con tu marca, un panel fácil de usar, analíticas reales y onboarding completo. Todo lo que necesita tu local."
+      "desc": "Tres cosas, llave en mano: una carta digital en tu propio dominio, pedido desde la mesa y un sistema de reseñas que te cuenta antes qué falló."
     },
     "pricing": {
       "title": "Precios · Dimonova",
@@ -481,6 +737,10 @@
     "cases": {
       "title": "Casos de éxito · Dimonova",
       "desc": "Lo que hicimos para Calsot, La Pulpería y Bálamo: qué tenía cada local antes, qué construimos y qué tienen ahora."
+    },
+    "clients": {
+      "title": "Reseñas de clientes · Dimonova",
+      "desc": "Reseñas en vídeo y en Google de los restaurantes para los que hacemos la carta digital. En sus palabras, no en las nuestras."
     },
     "about": {
       "title": "Sobre nosotros · Dimonova",
@@ -523,35 +783,15 @@
   "services": {
     "menu": {
       "title": "Carta digital",
-      "line": "En tu web, con tu estética, al píxel."
-    },
-    "ai": {
-      "title": "Panel + IA",
-      "line": "Cambia toda la carta en una frase."
+      "line": "Tu carta en tu web, con panel, IA, menú del día, traducciones y formación."
     },
     "ordering": {
       "title": "Comandero",
-      "line": "Integrado con tu TPV, impresoras y pago en mesa."
-    },
-    "training": {
-      "title": "Formación y soporte",
-      "line": "Ilimitado. Con vídeos de todo el panel."
-    },
-    "multi": {
-      "title": "Multirestaurante",
-      "line": "Un panel. Todos tus locales."
+      "line": "Piden desde el QR de la mesa. El pedido entra en tu TPV y en tus impresoras."
     },
     "reviews": {
-      "title": "Reseñas inteligentes",
+      "title": "Sistema de reseñas",
       "line": "Sabes qué falló antes de que lo publiquen. Todas acaban en Google."
-    },
-    "daily": {
-      "title": "Menú del día",
-      "line": "Cámbialo cada mañana desde el móvil."
-    },
-    "translate": {
-      "title": "Traducciones con IA",
-      "line": "Toda la carta, todos los idiomas, un clic."
     }
   },
   "modal": {
@@ -600,11 +840,9 @@
     "menuHint": "¿Buscabas la carta de un restaurante? Las cartas viven en el dominio de cada restaurante, no aquí."
   },
   "alt": {
-    "features": "La ficha de un plato del menú digital, con foto, precio, alérgenos y platos recomendados para acompañar.",
-    "dishes": "La pantalla de gestión de platos del restaurante, con disponibilidad, categorías y precios.",
-    "managerData": "El panel del gestor con el número de platos activos, las categorías y un ranking de los platos más vistos.",
     "heroPhoto": "Una sala de restaurante en pleno servicio, vista desde el pase.",
     "balamoPhone": "La carta digital de Bálamo en un móvil: su logo, la sección de bienvenida y las fotos de sus platos.",
-    "serviceCard": "{title} dentro del panel de Dimonova."
+    "serviceCard": "{title} dentro del panel de Dimonova.",
+    "storyVideo": "El dueño de Calsot contando cómo empezó todo, sentado en la terraza de su restaurante."
   }
 }

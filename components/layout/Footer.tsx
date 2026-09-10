@@ -28,7 +28,8 @@ export default async function Footer() {
               <h2>{t("footer.colCompany")}</h2>
               <ul>
                 <li><Link href="/about">{t("nav.about")}</Link></li>
-                <li><Link href="/cases">{t("nav.clients")}</Link></li>
+                <li><Link href="/clients">{t("nav.clients")}</Link></li>
+                <li><Link href="/cases">{t("nav.cases")}</Link></li>
                 <li><Link href="/pricing">{t("nav.pricing")}</Link></li>
                 <li><Link href="/contact">{t("nav.contact")}</Link></li>
               </ul>

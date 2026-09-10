@@ -1,0 +1,91 @@
+import { getTranslations } from "next-intl/server";
+import Container from "@/components/ui/Container";
+import Reveal from "@/components/ui/Reveal";
+import Eyebrow from "@/components/page/Eyebrow";
+import CardGrid from "@/components/page/CardGrid";
+import Card from "@/components/page/Card";
+import SectionHead from "./SectionHead";
+import OrderingMoments from "./OrderingMoments";
+import OrderingFlow from "./OrderingFlow";
+import OrderingTicketStats from "./OrderingTicketStats";
+import section from "./Section.module.css";
+import styles from "./OrderingSections.module.css";
+
+type Step = { title: string; body: string };
+type Stat = { value: string; label: string };
+type CardCopy = { title: string; body: string };
+
+/**
+ * Square's own published write-up of the figures quoted in the "average ticket" section. It is
+ * linked in the visible copy, and the copy attributes the numbers to Square by name: they are
+ * Square's measurements across Square's customers, never presented as Dimonova's own.
+ */
+const SQUARE_SOURCE =
+  "https://squareup.com/us/en/the-bottom-line/reaching-customers/qr-code-ordering-system-ticket-size";
+
+/** The body of `/features/ordering`: why guests stop ordering, the three steps, the published ticket figures, and where it pays off first. */
+export default async function OrderingSections() {
+  const t = await getTranslations("features.pages.ordering");
+
+  const moments = t.raw("s1.moments") as string[];
+  const steps = t.raw("s2.steps") as Step[];
+  const stats = t.raw("s3.stats") as Stat[];
+  const cards = t.raw("s4.cards") as CardCopy[];
+
+  return (
+    <>
+      {/* ---- The four thoughts that kill a round ---- */}
+      <section className={[section.section, section.cream].join(" ")}>
+        <Container>
+          <SectionHead eyebrow={t("s1.eyebrow")} title={t("s1.title")} body={t("s1.body")} />
+          <OrderingMoments moments={moments} />
+          <Reveal delay={0.15}>
+            <p className={styles.momentsClose}>{t("s1.close")}</p>
+          </Reveal>
+        </Container>
+      </section>
+
+      {/* ---- Scan, order, print ---- */}
+      <Container>
+        <section className={section.section}>
+          <SectionHead eyebrow={t("s2.eyebrow")} title={t("s2.title")} />
+          <OrderingFlow steps={steps} />
+        </section>
+      </Container>
+
+      {/* ---- Square's published figures. Attributed in the copy and linked out; never ours. ---- */}
+      <Container>
+        <section className={[section.dark, styles.statSection].join(" ")}>
+          <div className={styles.statGrid}>
+            <Reveal className={styles.statCopy}>
+              {/* tone="dark": this sits on the --ink panel, where --brand clears AA and --brand-deep would not. */}
+              <Eyebrow tone="dark">{t("s3.eyebrow")}</Eyebrow>
+              <h2 className={styles.statTitle}>{t("s3.title")}</h2>
+              <p className={styles.statBody}>{t("s3.body")}</p>
+              <a className={styles.statSource} href={SQUARE_SOURCE} target="_blank" rel="noopener noreferrer">
+                {t("s3.source")} <span aria-hidden="true">↗</span>
+              </a>
+            </Reveal>
+            <Reveal delay={0.1} className={styles.statCol}>
+              <OrderingTicketStats stats={stats} />
+            </Reveal>
+          </div>
+        </section>
+      </Container>
+
+      {/* ---- Hotels and beach clubs ---- */}
+      <Container>
+        <section className={section.section}>
+          <SectionHead eyebrow={t("s4.eyebrow")} title={t("s4.title")} body={t("s4.body")} />
+          <CardGrid columns={3}>
+            {cards.map((card, i) => (
+              <Reveal key={card.title} delay={i * 0.06} className={styles.cell}>
+                <Card title={card.title} body={card.body} />
+              </Reveal>
+            ))}
+          </CardGrid>
+        </section>
+      </Container>
+    </>
+  );
+}

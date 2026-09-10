@@ -42,10 +42,47 @@ const PAGES: PageSpec[] = [
   {
     path: "/features",
     titleKey: "features.title",
-    // features.f1.title..f4.title: the four FeatureBlock/onboarding sections, in the order
-    // app/[locale]/features/page.tsx renders them. features.cta.title is the closing PageCta
-    // band's own <h2> (components/page/PageCta.tsx renders `title` as an <h2>).
-    h2Keys: ["features.f1.title", "features.f2.title", "features.f3.title", "features.f4.title", "features.cta.title"],
+    // /features is a short index now: one <h2> per service card (read from lib/services.ts, in
+    // registry order) and then the closing PageCta band's own <h2> (components/page/PageCta.tsx
+    // renders `title` as an <h2>).
+    h2Keys: ["services.menu.title", "services.ordering.title", "services.reviews.title", "features.cta.title"],
+  },
+  {
+    // The flagship service page. It absorbed the five services the owner folded into the digital
+    // menu, so its sections are the menu itself, the dashboard and its assistant, translations,
+    // the bundled extras (multi-venue, daily menu, training) and a FAQ.
+    path: "/features/menu",
+    titleKey: "features.pages.menu.title",
+    h2Keys: [
+      "features.pages.menu.s1.title",
+      "features.pages.menu.s2.title",
+      "features.pages.menu.s3.title",
+      "features.pages.menu.s4.title",
+      "features.pages.menu.faq.title",
+      "features.pages.menu.cta.title",
+    ],
+  },
+  {
+    path: "/features/ordering",
+    titleKey: "features.pages.ordering.title",
+    h2Keys: [
+      "features.pages.ordering.s1.title",
+      "features.pages.ordering.s2.title",
+      "features.pages.ordering.s3.title",
+      "features.pages.ordering.s4.title",
+      "features.pages.ordering.cta.title",
+    ],
+  },
+  {
+    path: "/features/reviews",
+    titleKey: "features.pages.reviews.title",
+    h2Keys: [
+      "features.pages.reviews.s1.title",
+      "features.pages.reviews.s2.title",
+      "features.pages.reviews.s3.title",
+      "features.pages.reviews.faq.title",
+      "features.pages.reviews.cta.title",
+    ],
   },
   {
     path: "/pricing",

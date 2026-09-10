@@ -6,7 +6,7 @@ import { Link, usePathname } from "@/lib/routing";
 import { SERVICES } from "@/lib/services";
 import styles from "./MegaMenu.module.css";
 
-type Key = "products" | "clients" | "resources";
+type Key = "products" | "resources";
 const OPEN_DELAY = 120;
 const CLOSE_DELAY = 200;
 
@@ -82,7 +82,9 @@ export default function MegaMenu() {
       <nav className={styles.nav} aria-label="Main">
         {trigger("products", t("nav.products"))}
         {link("/pricing", t("nav.pricing"))}
-        {trigger("clients", t("nav.clients"))}
+        {/* Clients is a plain link, not a trigger: the page behind it is a single list of client
+            reviews, so a panel would only ever have held one item. */}
+        {link("/clients", t("nav.clients"))}
         {trigger("resources", t("nav.resources"))}
         {link("/about", t("nav.about"))}
       </nav>
@@ -114,21 +116,8 @@ export default function MegaMenu() {
                   </div>
                 </>
               )}
-              {open === "clients" && (
-                <div className={styles.clients}>
-                  <Link href="/cases" className={styles.featured} onClick={() => close()}>
-                    <h3>{t("nav.mega.clientsFeatured")}</h3>
-                    <p>{t("nav.mega.clientsFeaturedLine")}</p>
-                    <span className={styles.featuredCta}>{t("nav.mega.clientsFeaturedCta")} →</span>
-                  </Link>
-                  <div className={styles.list}>
-                    <Link href="/cases" onClick={() => close()}>{t("nav.mega.clientsAll")}</Link>
-                    <Link href="/#reviews" onClick={() => close()}>{t("nav.mega.clientsVideos")}</Link>
-                  </div>
-                </div>
-              )}
               {open === "resources" && (
-                <div className={styles.list} style={{ maxWidth: 360 }}>
+                <div className={styles.listRow}>
                   <Link href="/pricing#faq" onClick={() => close()}>{t("nav.mega.faq")}</Link>
                   <Link href="/#ai-compare" onClick={() => close()}>{t("nav.mega.aiCompare")}</Link>
                   <Link href="/contact" onClick={() => close()}>{t("nav.mega.contact")}</Link>

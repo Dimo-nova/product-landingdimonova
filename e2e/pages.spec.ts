@@ -12,40 +12,82 @@ for (const p of pages) {
   });
 }
 
-// Features page: the home page's eight service cards and the header's Resources menu link to
-// /features#menu, #ai, #ordering, #training, #multi, #reviews, #daily, #translate. Every one of
-// those anchors must resolve to a real element on this page, or the link scrolls nowhere — and
-// that element's scroll-margin-top must clear the sticky header, or the target lands hidden
-// behind it (see app/[locale]/features/page.module.css .anchor).
-const FEATURES_ANCHORS = ["menu", "ai", "ordering", "training", "multi", "reviews", "daily", "translate"];
+// Features: /features is now a short index of the three services, and each service has a real
+// page of its own at /features/<slug> (app/[locale]/features/[slug]/page.tsx). The eight
+// #menu/#ai/#ordering/... scroll anchors that used to live on one long page are gone with the
+// four-block tour they belonged to — lib/services.ts links to the pages now, not to anchors.
+const SERVICE_SLUGS = ["menu", "ordering", "reviews"];
 
 test("features page has exactly one h1", async ({ page }) => {
   await page.goto("/features");
   await expect(page.locator("h1")).toHaveCount(1);
 });
 
-test("all eight /features anchors resolve to an element clear of the sticky header", async ({ page }) => {
-  for (const anchor of FEATURES_ANCHORS) {
-    await page.goto(`/features#${anchor}`);
-    const headerBox = await page.getByRole("banner").boundingBox();
-    const target = page.locator(`#${anchor}`);
-    await expect(target).toHaveCount(1);
-    const box = await target.boundingBox();
-    expect(box, `#${anchor} has no box`).not.toBeNull();
-    expect(box!.y, `#${anchor} lands under the sticky header`).toBeGreaterThanOrEqual(headerBox!.height - 2);
-  }
-});
-
-test("the three features screenshots have real alt text", async ({ page }) => {
+test("the features index links to each of the three service pages", async ({ page }) => {
   await page.goto("/features");
-  const alts = await page.locator("main img").evaluateAll((els) => els.map((el) => el.getAttribute("alt") ?? ""));
-  expect(alts.length).toBeGreaterThanOrEqual(3);
-  for (const alt of alts) {
-    expect(alt.trim().length, `alt text too short: "${alt}"`).toBeGreaterThan(10);
+  // Scoped to the service links: <main> also holds the closing CTA's WhatsApp link, so counting
+  // every link here would break whenever that band gains or loses one.
+  const cards = page.locator('main a[href^="/features/"]');
+  await expect(cards).toHaveCount(SERVICE_SLUGS.length);
+  for (const slug of SERVICE_SLUGS) {
+    await expect(page.locator(`main a[href="/features/${slug}"]`)).toHaveCount(1);
   }
 });
 
-test("the features page closing CTA opens the demo modal", async ({ page }) => {
+test("every service page renders, in both locales", async ({ page }) => {
+  for (const prefix of ["", "/es"]) {
+    for (const slug of SERVICE_SLUGS) {
+      const response = await page.goto(`${prefix}/features/${slug}`);
+      expect(response?.status(), `${prefix}/features/${slug} did not respond 200`).toBe(200);
+      await expect(page.locator("h1")).toHaveCount(1);
+    }
+  }
+});
+
+test("an unknown service slug 404s", async ({ page }) => {
+  const response = await page.goto("/features/nope");
+  expect(response?.status()).toBe(404);
+});
+
+test("each service page's hero CTA opens the demo modal", async ({ page }) => {
+  for (const slug of SERVICE_SLUGS) {
+    await page.goto(`/features/${slug}`);
+    // Scoped to <main>: the header carries its own, differently-labelled "Request a demo" button,
+    // and the page's closing PageCta band repeats this one.
+    await page.locator("main").getByRole("button", { name: "Request a demo →" }).first().click();
+    await expect(page.getByRole("dialog")).toBeVisible();
+  }
+});
+
+test("the ordering page attributes the ticket figures to Square and links the source", async ({ page }) => {
+  await page.goto("/features/ordering");
+  const main = page.locator("main");
+  await expect(main).toContainText("Square");
+  const source = main.getByRole("link", { name: /Square/ });
+  await expect(source).toHaveAttribute("href", /squareup\.com/);
+  await expect(source).toHaveAttribute("target", "_blank");
+  await expect(source).toHaveAttribute("rel", /noopener/);
+});
+
+// The review product is not review gating and must never be described as one: every rating
+// reaches Google, and the only difference for a low one is that the reason is collected first.
+// This locks both halves of that promise, in both locales.
+const REVIEWS_PROMISE = [
+  { path: "/features/reviews", phrases: ["this is not review gating", "reaches google"] },
+  { path: "/es/features/reviews", phrases: ["esto no es filtrar reseñas", "llega a google"] },
+];
+
+for (const { path, phrases } of REVIEWS_PROMISE) {
+  test(`${path} states that every rating still reaches Google`, async ({ page }) => {
+    await page.goto(path);
+    const text = (await page.locator("main").innerText()).toLowerCase();
+    for (const phrase of phrases) {
+      expect(text, `"${phrase}" is missing from ${path}`).toContain(phrase);
+    }
+  });
+}
+
+test("the features index closing CTA opens the demo modal", async ({ page }) => {
   await page.goto("/features");
   // Scoped to <main>: the header carries its own, differently-labelled "Request a demo" button.
   await page.locator("main").getByRole("button", { name: "Request a demo →" }).click();
@@ -113,8 +155,7 @@ test("each case reads before, what we did, result", async ({ page }) => {
 // About page: the team section (two real headshots, Pablo and Sergio) is rebuilt on the current
 // design system but stays hidden behind TEAM_PUBLISHED in app/[locale]/about/page.tsx — the
 // owner turned it off in commit 249fec2 and this phase must not silently turn it back on. The
-// hero also must not grow a dead-end video control — the spec calls for the first client's video
-// here, but that clip doesn't exist yet.
+// hero now carries the first client's story video, played in place rather than in a modal.
 
 test("about page has exactly one h1", async ({ page }) => {
   await page.goto("/about");
@@ -128,10 +169,17 @@ test("the about page team section stays hidden behind TEAM_PUBLISHED", async ({ 
   await expect(page.getByAltText(/Sergio, co-owner/)).toHaveCount(0);
 });
 
-test("the about page hero has no dead-end video control", async ({ page }) => {
+test("the about page hero plays the story video in place, and only on request", async ({ page }) => {
   await page.goto("/about");
+  const play = page.locator("main").getByRole("button", { name: /How Dimonova started/i });
+  await expect(play).toBeVisible();
+  // Nothing is mounted up front: the .mp4 lives on Supabase, so a <video> in the initial DOM
+  // would mean a third-party request on page load.
   await expect(page.locator("main video")).toHaveCount(0);
-  await expect(page.getByRole("button", { name: /play/i })).toHaveCount(0);
+  await play.click();
+  await expect(page.locator("main video")).toHaveCount(1);
+  // In place, not in a modal.
+  await expect(page.getByRole("dialog")).toHaveCount(0);
 });
 
 test("the about page closing CTA opens the demo modal", async ({ page }) => {

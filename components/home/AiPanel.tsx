@@ -33,7 +33,7 @@ export default async function AiPanel() {
               ))}
             </ol>
 
-            <Button href="/features#ai" variant="outline" onDark>
+            <Button href="/features/menu" variant="outline" onDark>
               {t("home.ai.cta")}
             </Button>
           </Reveal>

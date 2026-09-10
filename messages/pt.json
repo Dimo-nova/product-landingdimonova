@@ -17,11 +17,6 @@
     "language": "Choose language",
     "mega": {
       "productsTitle": "Everything we run for you",
-      "clientsFeatured": "Bálamo Restaurante",
-      "clientsFeaturedLine": "Their menu, their look, on the web and on the VIP tablets.",
-      "clientsFeaturedCta": "See the case",
-      "clientsAll": "All case studies",
-      "clientsVideos": "Video reviews",
       "faq": "FAQ",
       "aiCompare": "Compare with AI",
       "contact": "Contact"
@@ -95,7 +90,7 @@
     },
     "services": {
       "title": "Everything your restaurant needs. And someone to run it.",
-      "lead": "Eight things we build, connect and keep running for you."
+      "lead": "Três coisas que montamos, ligamos e mantemos por ti."
     },
     "ai": {
       "eyebrow": "Dashboard + AI",
@@ -209,7 +204,8 @@
       "badge": "{rating}/5 no Google",
       "pending": "Reviews coming soon.",
       "playVideo": "Play the review from {name}",
-      "stars": "{rating} out of 5"
+      "stars": "{rating} out of 5",
+      "moreTitle": "Mais avaliações no Google"
     },
     "aiCompare": {
       "title": "Ask someone who doesn't work here.",
@@ -226,65 +222,298 @@
   },
   "features": {
     "eyebrow": "Funcionalidades",
-    "title": "Tudo o que precisas para gerir a tua ementa. Nada a mais.",
-    "intro": "Quatro partes na Dimonova: a ementa digital que os teus clientes veem, o painel a partir do qual a tua equipa a gere, as análises que te dizem o que funciona e a integração chave na mão que põe tudo online.",
-    "f1": {
-      "eyebrow": "01 · A ementa digital",
-      "title": "Uma ementa com a cara do teu espaço, não de uma app de entregas.",
-      "body": "Fotos, descrições, alergénios, preços, secções, sugestões do dia, bem compostos. Carrega depressa no telemóvel. Vive dentro do teu site atual, para que os clientes nunca sintam que foram encaminhados para uma ferramenta externa.",
-      "p1": "<strong>Integrada, não redirecionada.</strong> Vive em <span>oteuespaco.pt/ementa</span>, não num URL genérico.",
-      "p2": "<strong>Alergénios e etiquetas alimentares</strong> em cada prato, filtráveis para os clientes.",
-      "p3": "<strong>Códigos QR opcionais</strong> (cartões de mesa, cartazes, cartões de visita) levam diretamente até ela.",
-      "p4": "<strong>Os estados de esgotado</strong> retiram um prato instantaneamente durante o serviço."
-    },
-    "f2": {
-      "eyebrow": "02 · O painel",
-      "title": "Se sabes usar o Instagram, sabes usar isto.",
-      "body": "Sem formação para te tornares perito em ementas, sem tickets para a agência, sem «abre um pedido de apoio para mudar um preço». Quem gere a sala pode retirar um prato, subir um preço ou trocar uma foto a partir do telemóvel em menos de um minuto.",
-      "p1": "<strong>As alterações ficam online de imediato</strong>: sem filas de publicação, sem esperar por um programador.",
-      "p2": "<strong>Ementa em vários idiomas</strong>: os clientes veem-na automaticamente no seu idioma.",
-      "p3": "<strong>Totalmente personalizada à tua marca</strong>: cores, tipos de letra e estilo feitos para o teu espaço.",
-      "p4": "<strong>Funciona em qualquer dispositivo.</strong> O telemóvel do empregado de bar, o iPad do responsável, o portátil do dono.",
-      "viz_menu": "Ementa",
-      "viz_all": "Todos os pratos",
-      "viz_starters": "Entradas",
-      "viz_mains": "Pratos principais",
-      "viz_desserts": "Sobremesas",
-      "viz_drinks": "Bebidas",
-      "viz_insights": "Análises",
-      "viz_popularity": "Popularidade",
-      "viz_newdish": "+ Novo prato",
-      "viz_soldout": "Esgotado"
-    },
-    "f3": {
-      "eyebrow": "03 · Análises",
-      "title": "A ementa dá-te finalmente dados, não suposições.",
-      "body": "Cada visualização de um prato fica registada. Vês o que os clientes olham, o que ignoram e o que os perde logo na descrição. Lança uma sugestão de brunch; vê se alguém a leu. A tua próxima ementa serão decisões, não opiniões.",
-      "p1": "<strong>Popularidade dos pratos</strong> por semana e mês: vê o que vende e quando.",
-      "p2": "<strong>Vista de pratos ativos</strong>: todos os teus itens em linha num relance.",
-      "p3": "<strong>Categorias personalizadas</strong>: organiza as secções da tua ementa à tua maneira.",
-      "viz_title": "Visualizações: últimas 12 semanas",
-      "viz_total": "Visualizações totais",
-      "viz_top": "Secção em destaque",
-      "viz_trend": "Tendência",
-      "viz_top_value": "Pratos principais"
-    },
-    "f4": {
-      "eyebrow": "04 · Integração chave na mão",
-      "title": "A parte que mais ninguém faz. Fazemo-la por ti.",
-      "c1_title": "Montagem da ementa",
-      "c1_body": "Envia-nos a tua ementa no formato que tiveres. Transcrevemo-la, estruturamo-la, organizamo-la por secções, acrescentamos os alergénios e verificamos cada prato contigo antes de ficar online.",
-      "c2_title": "Design de marca",
-      "c2_body": "Cores, tipos de letra, estilo de fotografia, a condizer com o teu espaço. A ementa deve sentir-se como sendo da tua marca, não da nossa. Inspiramo-nos no teu site e na tua sinalética atuais.",
-      "c3_title": "Integração no site",
-      "c3_body": "Integrada diretamente no teu site atual por nós. Squarespace, Wix, WordPress, desenvolvimento à medida, tratamos disso. A tua ementa vive em oteuespaco.pt/ementa, não no domínio de outra pessoa.",
-      "c4_title": "Formação da equipa",
-      "c4_body": "Uma única sessão de 30 minutos com quem vai gerir o painel, normalmente o dono e o responsável de sala. Partilhamos o ecrã, tu tomas notas. Depois disso, ficas autónomo."
-    },
     "cta": {
       "title": "Vê-o na tua ementa, não na nossa.",
       "body": "Marca uma demo e montamos uma secção da tua ementa real, sem compromisso, sem slides."
-    }
+    },
+    "index": {
+      "cardCta": "See how it works"
+    },
+    "pages": {
+      "menu": {
+        "seo": {
+          "title": "Digital menu · Dimonova",
+          "desc": "Your menu on your own domain and in your own brand, with an AI dashboard, every venue in one place, the daily menu from a phone, one click translations and support with no cap."
+        },
+        "eyebrow": "Digital menu",
+        "title": "Your menu. Your brand. Changed in <mark>seconds</mark>.",
+        "lead": "We build the menu, put it on the domain you already own and match it to your brand. Then you run it yourself, from a dashboard that understands a plain sentence.",
+        "pills": [
+          "On your own domain",
+          "Live in days",
+          "Support with no cap"
+        ],
+        "s1": {
+          "eyebrow": "The menu",
+          "title": "It loads before they finish sitting down.",
+          "body": "Photos, sections, prices and allergens, typeset properly and served from your own domain. No app to install, and nobody else's logo on top of your brand.",
+          "bullets": [
+            "On your own domain, in your own brand. Not a generic link with someone else's name on it.",
+            "Photos, descriptions, allergens and price on every dish, filterable.",
+            "Fast on a phone, on the worst signal in the dining room.",
+            "Sold out hides a dish instantly, in the middle of service."
+          ]
+        },
+        "s2": {
+          "eyebrow": "Dashboard and AI",
+          "title": "Say it once. Read what it would change. Approve it.",
+          "body": "Ask for a change in a single sentence and the dashboard proposes it line by line. Anyone on the floor can ask; nothing is written to the live menu until someone says yes.",
+          "steps": [
+            "Whoever is on the floor asks for the change, in their own words.",
+            "The dashboard shows exactly which lines it would touch.",
+            "The owner approves. Only then does it reach the live menu."
+          ]
+        },
+        "s3": {
+          "eyebrow": "Translations",
+          "title": "The whole menu, every language, one click.",
+          "body": "One button translates every dish, every description and every allergen note. Your guest opens the menu in their own language without having to ask anyone for help.",
+          "langs": [
+            {
+              "label": "Spanish",
+              "dish": "Pulpo a la brasa"
+            },
+            {
+              "label": "English",
+              "dish": "Grilled octopus"
+            },
+            {
+              "label": "German",
+              "dish": "Gegrillter Oktopus"
+            },
+            {
+              "label": "French",
+              "dish": "Poulpe grillé"
+            },
+            {
+              "label": "Portuguese",
+              "dish": "Polvo grelhado"
+            },
+            {
+              "label": "Italian",
+              "dish": "Polpo alla griglia"
+            }
+          ]
+        },
+        "s4": {
+          "eyebrow": "Also included",
+          "title": "The parts that only matter once you are actually running it.",
+          "cards": [
+            {
+              "title": "One dashboard, every venue",
+              "body": "Two venues or twelve, they live in the same dashboard. Permissions are set per venue, so a manager sees their own and nothing else."
+            },
+            {
+              "title": "The daily menu, from your phone",
+              "body": "Change today's menu each morning from the phone in your pocket. Write it, approve it, and it is on the menu before the doors open."
+            },
+            {
+              "title": "Training and support with no cap",
+              "body": "One 30 minute session with whoever runs the dashboard, tutorial videos covering the whole thing, and unlimited support. There is no limit on how many questions you get to ask."
+            }
+          ]
+        },
+        "faq": {
+          "title": "Before you ask",
+          "items": [
+            {
+              "q": "Do we need a new website?",
+              "a": "No. The menu goes on the domain you already have, at an address like yourvenue.com/menu. We do the linking, whatever your site is built on."
+            },
+            {
+              "q": "Who builds the menu the first time?",
+              "a": "We do. Send it in whatever format you have, a PDF, a photo, a Word file. We type it up, structure it, add the allergens and check every dish with you before it goes live."
+            },
+            {
+              "q": "What if the AI writes something we did not want?",
+              "a": "It cannot. The dashboard proposes the change and shows you the exact lines it would touch. Nothing reaches the live menu until someone presses approve."
+            }
+          ],
+          "eyebrow": "Questions"
+        },
+        "cta": {
+          "title": "See it with your own dishes.",
+          "body": "Book a demo and we will build a section of your real menu before you decide anything."
+        }
+      },
+      "ordering": {
+        "seo": {
+          "title": "Order at the table · Dimonova",
+          "desc": "Guests order from the QR at the table. The order lands on your POS and your printers. Built for hotels and beach clubs, where the bar is a long walk away."
+        },
+        "eyebrow": "Order at the table",
+        "title": "They order from the table. You keep <mark>one</mark> system.",
+        "lead": "Ordering sits on top of the digital menu we already built for you. It connects to your POS and your printers, so the kitchen keeps reading the same tickets it always read.",
+        "pills": [
+          "One QR",
+          "Your POS",
+          "Your printers"
+        ],
+        "s1": {
+          "eyebrow": "Why it sells",
+          "title": "Every round they never ordered.",
+          "body": "Nobody skips a drink because they stopped wanting it. They skip it because of the walk, the queue, and the effort of standing up.",
+          "moments": [
+            "I fancy a mojito, but ugh, the bar is miles away.",
+            "Look at that queue.",
+            "I really cannot be bothered to get up.",
+            "We'll order when someone finally comes past."
+          ],
+          "close": "The QR removes all four. The order goes in from the seat they are already sitting in."
+        },
+        "s2": {
+          "eyebrow": "How it works",
+          "title": "Three steps, and none of them are yours.",
+          "steps": [
+            {
+              "title": "They scan",
+              "body": "The same QR that opens your menu. No app, no account, nothing to download."
+            },
+            {
+              "title": "They order",
+              "body": "From the menu you already have, with your photos, your prices and your sold out states."
+            },
+            {
+              "title": "You print it",
+              "body": "The ticket lands on your POS and your printers, in the format your kitchen already reads."
+            }
+          ]
+        },
+        "s3": {
+          "eyebrow": "Average ticket",
+          "title": "Square measured a 35% jump in the first 30 days.",
+          "body": "Square reports that businesses see a 35% increase in sales in the first 30 days after implementing self serve ordering with QR codes, and that the ones enabling open tabs see 42% higher average ticket sizes. Those are Square's figures, measured across Square's own customers. They are not ours, and we do not promise you the same.",
+          "stats": [
+            {
+              "value": "35%",
+              "label": "more sales in the first 30 days, per Square"
+            },
+            {
+              "value": "42%",
+              "label": "higher average ticket with open tabs, per Square"
+            }
+          ],
+          "source": "Source: Square, QR code ordering and ticket size"
+        },
+        "s4": {
+          "eyebrow": "Hotels and beach clubs",
+          "title": "A sunbed is a table nobody wants to leave.",
+          "body": "This is where ordering pays for itself fastest. Put a QR on the sunbed, in the room, on the terrace. A waiter carries the order out. Nobody has to cross the pool to ask for a drink.",
+          "cards": [
+            {
+              "title": "Sunbeds and pool",
+              "body": "One QR per sunbed. They order without moving, and a waiter brings it over."
+            },
+            {
+              "title": "Rooms and terraces",
+              "body": "The same menu and the same kitchen, from anywhere on the property."
+            },
+            {
+              "title": "Peak hours",
+              "body": "The bar keeps taking orders through the hour when the queue would otherwise be turning people away."
+            }
+          ]
+        },
+        "cta": {
+          "title": "Tell us which POS you run.",
+          "body": "Give us your POS and your printers and we will show you an order landing on them."
+        }
+      },
+      "reviews": {
+        "seo": {
+          "title": "Review system · Dimonova",
+          "desc": "Diners rate their visit and every rating reaches Google. A low one tells you the reason, the waiter and the area of the venue first. Nothing is filtered or hidden."
+        },
+        "eyebrow": "Review system",
+        "title": "You hear it <mark>first</mark>. Google hears it too.",
+        "lead": "The diner is asked to rate the visit. Every rating goes to Google, good or bad. The difference is that before a low one gets there, we ask what went wrong and where, so you hear it from them and not from the internet.",
+        "pills": [
+          "Every rating reaches Google",
+          "Reason, waiter, area",
+          "Nothing filtered"
+        ],
+        "s1": {
+          "eyebrow": "The flow",
+          "title": "Same destination. One extra question.",
+          "body": "Both paths end at Google. The low rating takes one detour on the way, and that detour is the whole product.",
+          "highTitle": "Four or five stars",
+          "highBody": "Straight to Google, with nothing in the way.",
+          "lowTitle": "One to three stars",
+          "lowBody": "We ask for the reason, tag it to a waiter or an area of the venue, and then send them on to Google.",
+          "note": "You get the reason, the name and the place before the review is public. The review still gets published.",
+          "demo": {
+            "ratingLabel": "How was your visit?",
+            "chips": [
+              "Reason",
+              "Waiter",
+              "Area"
+            ],
+            "destination": "Google review"
+          }
+        },
+        "s2": {
+          "eyebrow": "Let us be clear",
+          "title": "This is not review gating.",
+          "body": "Nothing is filtered, hidden, held back or steered away from Google. A one star rating reaches Google exactly the way a five star one does. What changes is that you read the reason a few minutes earlier, with a name and a part of the room attached to it.",
+          "doesTitle": "What it does",
+          "does": [
+            "Asks every diner to rate the visit",
+            "Asks a low rating for the reason",
+            "Tags that reason to a waiter or an area",
+            "Sends every rating on to Google"
+          ],
+          "doesNotTitle": "What it never does",
+          "doesNot": [
+            "Hide a bad review",
+            "Filter who gets to review you",
+            "Stop anyone reaching Google",
+            "Write anything on a diner's behalf"
+          ]
+        },
+        "s3": {
+          "eyebrow": "What you learn",
+          "title": "A star rating tells you nothing. A reason tells you what to fix.",
+          "cards": [
+            {
+              "title": "By waiter",
+              "body": "Every low rating carries the waiter it happened with. A pattern shows up in a week, not in a quarter."
+            },
+            {
+              "title": "By area",
+              "body": "Terrace, bar, dining room, first floor. You find out the problem has a place before you find out it has a review."
+            },
+            {
+              "title": "By reason",
+              "body": "The wait, the temperature, the price, the service, the cleaning. The reason arrives with the rating, in the diner's own words."
+            }
+          ]
+        },
+        "faq": {
+          "title": "Before you ask",
+          "items": [
+            {
+              "q": "Are you hiding our bad reviews?",
+              "a": "No. Every rating is sent on to Google, whatever the score. The only difference with a low one is that we ask for the reason first and pass it to you."
+            },
+            {
+              "q": "Does the diner have to write it twice?",
+              "a": "No. The reason we ask for is a few taps, no typing required. Writing the public review on Google is the same thing they were going to do anyway."
+            },
+            {
+              "q": "Where does this run?",
+              "a": "On the same QR and the same menu your diners already use. There is nothing else to install and nothing else for your team to carry around."
+            }
+          ],
+          "eyebrow": "Questions"
+        },
+        "cta": {
+          "title": "Turn it on for one part of the room.",
+          "body": "Start with the terrace or the bar, read what comes back, and decide from there."
+        }
+      }
+    },
+    "title": "Three things. Done for you, end to end.",
+    "intro": "A digital menu on your own domain, ordering from the table, and a review system that tells you what went wrong before the internet does. Pick the one you came for."
   },
   "pricing": {
     "eyebrow": "Preços",
@@ -472,7 +701,7 @@
     },
     "features": {
       "title": "Funcionalidades · Dimonova",
-      "desc": "Um menu digital com a tua marca, um painel fácil de usar, analíticas reais e onboarding completo. Tudo o que o teu espaço precisa."
+      "desc": "Three things, done for you end to end: a digital menu on your own domain, ordering from the table, and a review system that tells you what went wrong first."
     },
     "pricing": {
       "title": "Preços · Dimonova",
@@ -489,6 +718,10 @@
     "contact": {
       "title": "Contacto & demo · Dimonova",
       "desc": "Reserva uma demo de 20 minutos. Mostramos-te o painel, percorremos configurações reais e respondemos às tuas perguntas. Sem compromisso."
+    },
+    "clients": {
+      "title": "Client reviews · Dimonova",
+      "desc": "Video and Google reviews from the restaurants we build digital menus for. Their words, not ours."
     }
   },
   "errors": {
@@ -522,36 +755,16 @@
   },
   "services": {
     "menu": {
-      "title": "Digital menu",
-      "line": "On your site, in your style, to the pixel."
-    },
-    "ai": {
-      "title": "Dashboard + AI",
-      "line": "Change the whole menu in one sentence."
+      "title": "Ementa digital",
+      "line": "A tua ementa no teu site, com painel, IA, menu do dia, traduções e formação."
     },
     "ordering": {
-      "title": "Ordering",
-      "line": "Wired to your POS, printers and pay-at-table."
-    },
-    "training": {
-      "title": "Training & support",
-      "line": "Unlimited. With videos of the whole dashboard."
-    },
-    "multi": {
-      "title": "Multi-venue",
-      "line": "One dashboard. All your venues."
+      "title": "Pedido à mesa",
+      "line": "Pedem a partir do QR da mesa. O pedido entra no teu POS e nas tuas impressoras."
     },
     "reviews": {
-      "title": "Smart reviews",
-      "line": "You know what went wrong before it is posted. Every review still reaches Google."
-    },
-    "daily": {
-      "title": "Daily menu",
-      "line": "Change it every morning from your phone."
-    },
-    "translate": {
-      "title": "AI translations",
-      "line": "Whole menu, every language, one click."
+      "title": "Sistema de avaliações",
+      "line": "Sabes o que correu mal antes de publicarem. Todas acabam no Google."
     }
   },
   "modal": {
@@ -600,11 +813,36 @@
     "menuHint": "Looking for a restaurant's menu? Menus live on each restaurant's own domain, not here."
   },
   "alt": {
-    "features": "A dish detail screen on the digital menu, showing a photo, price, allergen list and suggested pairings.",
-    "dishes": "The restaurant's dish-management screen, listing menu items with availability toggles, categories and prices.",
-    "managerData": "The manager dashboard showing active dish counts, categories and a most-viewed-dishes ranking.",
     "heroPhoto": "A dining room during service, seen from behind the pass.",
     "balamoPhone": "Bálamo's digital menu on a phone: their logo, welcome section and dish photography.",
-    "serviceCard": "{title} shown inside the Dimonova dashboard."
+    "serviceCard": "{title} shown inside the Dimonova dashboard.",
+    "storyVideo": "Calsot's owner telling how it all started, sitting on his restaurant's terrace."
+  },
+  "clients": {
+    "eyebrow": "Clients",
+    "title": "Every word here <mark>is theirs</mark>.",
+    "intro": "The venues we work with, on camera and on Google. We wrote none of it.",
+    "badge": "{rating}/5 on Google",
+    "playVideo": "Play the review from {name}",
+    "posterAlt": "A still from {name}'s video review.",
+    "stars": "{rating} out of 5",
+    "films": {
+      "eyebrow": "On camera",
+      "title": "The owners, in their own words.",
+      "note": "Press play to watch. Nothing downloads until you do."
+    },
+    "written": {
+      "eyebrow": "On Google",
+      "title": "More from Google.",
+      "link": "Read them on Google"
+    },
+    "cases": {
+      "title": "The longer version.",
+      "body": "The case studies go through what each venue had before, what we built, and what they run today.",
+      "link": "Read the case studies"
+    },
+    "cta": {
+      "title": "Want your venue on this page?"
+    }
   }
 }

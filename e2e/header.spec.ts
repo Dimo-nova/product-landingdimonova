@@ -1,26 +1,28 @@
 import { test, expect } from "@playwright/test";
 
 test.describe("desktop header", () => {
-  test("mega menu opens on hover and lists the 8 services", async ({ page }) => {
+  test("mega menu opens on hover and lists the three services", async ({ page }) => {
     await page.goto("/");
     const products = page.getByRole("navigation", { name: "Main" }).getByRole("button", { name: "Features" });
     await products.hover();
     const panel = page.locator("#mega-products");
     await expect(panel).toBeVisible();
-    await expect(panel.getByRole("link")).toHaveCount(8);
-    await expect(panel.getByRole("link", { name: /Digital menu/ })).toHaveAttribute("href", "/features#menu");
+    await expect(panel.getByRole("link")).toHaveCount(3);
+    await expect(panel.getByRole("link", { name: /Digital menu/ })).toHaveAttribute("href", "/features/menu");
     await expect(products).toHaveAttribute("aria-expanded", "true");
   });
 
   test("mega menu opens with keyboard and closes with Escape", async ({ page }) => {
     await page.goto("/");
-    const clients = page.getByRole("button", { name: "Clients" });
-    await clients.focus();
+    // "Resources" rather than "Clients": Clients is now a plain link to /clients, not a mega
+    // trigger, so it has no panel to open (see the comment in components/layout/MegaMenu.tsx).
+    const resources = page.getByRole("button", { name: "Resources" });
+    await resources.focus();
     await page.keyboard.press("Enter");
-    await expect(page.locator("#mega-clients")).toBeVisible();
+    await expect(page.locator("#mega-resources")).toBeVisible();
     await page.keyboard.press("Escape");
-    await expect(page.locator("#mega-clients")).toBeHidden();
-    await expect(clients).toBeFocused();
+    await expect(page.locator("#mega-resources")).toBeHidden();
+    await expect(resources).toBeFocused();
   });
 
   test("direct links and CTAs", async ({ page }) => {
