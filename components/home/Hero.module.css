@@ -1,9 +1,25 @@
+/*
+ * The hero has to fit on screen on first load, so its height budget is the viewport minus the
+ * two things that sit outside it: the sticky header (--header-h) and this card's own top and
+ * bottom margins. A plain `88vh` did not account for either, which is why the card ran 29px to
+ * 195px past the fold depending on the viewport.
+ *
+ * `svh` rather than `vh` so a mobile browser measures against its *collapsed* toolbar state and
+ * the card cannot grow taller than the screen the moment the toolbar hides. The `vh` line above
+ * it is the fallback for anything that does not know the unit.
+ *
+ * This stays `min-height`, not `height`: `.section` clips with `overflow: hidden`, so pinning
+ * the height would slice the copy off rather than let the card grow. Everything inside is sized
+ * to fit the budget instead (see `.content` and `.title`), and the card only ever exceeds it in
+ * the extreme cases those clamps cannot cover.
+ */
 .section {
   position: relative;
   background: var(--ink);
   border-radius: var(--radius-panel);
   margin: 16px;
-  min-height: 88vh;
+  min-height: calc(100vh - var(--header-h) - 32px);
+  min-height: calc(100svh - var(--header-h) - 32px);
   overflow: hidden;
   isolation: isolate;
   display: flex;
@@ -27,17 +43,26 @@
   min-width: 0;
   width: 100%;
   max-width: 800px;
-  padding: clamp(32px, 6vw, 72px);
+  /* Block padding scales with the viewport's *height*, not its width: on a 720px-tall laptop the
+     old flat 72px top and bottom spent 144px of a 600px budget on air. */
+  padding: clamp(24px, 4.5vh, 56px) clamp(32px, 6vw, 72px);
   color: var(--paper);
 }
 
 .pillRow {
-  margin-bottom: 24px;
+  margin-bottom: 16px;
 }
 
+/*
+ * Overrides the global --text-h1 clamp, which is width-only. The Spanish headline is three lines
+ * (see `.titleLine`), so at 88px it alone claimed 269px of a short laptop screen. Capping the
+ * size against viewport height as well keeps a three-line headline proportional to the space it
+ * actually has, while a tall monitor still gets the full 88px.
+ */
 .title {
+  font-size: clamp(40px, min(7vw, 8.6vh), 88px);
   color: var(--paper);
-  margin: 0 0 20px;
+  margin: 0 0 16px;
 }
 
 /* See Hero.tsx: the Spanish headline wraps its second sentence in <line> so it always starts
@@ -49,18 +74,18 @@
 .lead {
   font-size: var(--text-lead);
   color: var(--on-dark-text);
-  max-width: 520px;
-  margin: 0 0 32px;
+  max-width: 560px;
+  margin: 0 0 24px;
 }
 
 .cta {
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 }
 
 .legal {
   font-size: 13px;
   color: var(--on-dark-muted);
-  margin: 0 0 28px;
+  margin: 0 0 18px;
 }
 
 .legal a {

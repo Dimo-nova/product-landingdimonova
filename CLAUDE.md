@@ -26,6 +26,7 @@ keep it updated. Human-facing overview is in [`README.md`](./README.md).
 | Image helper | `lib/imgSrc.ts` — `imgSrc(base, locale)` returns a locale-specific screenshot path (falls back to the `en` asset). |
 | Home page | `components/home/` holds all nine redesigned home sections, composed by `app/[locale]/page.tsx` in this order: `Hero` (+ `HeroBgPhoto`, `HeroPlayPill`, `EmailCta`), `LogoStrip`, `ServiceCards`, `AiPanel` (+ `AiDemo`), `BalamoShowcase` (+ `BalamoPills`), `DifferentiatorBand`, `Reviews` (+ `ReviewsVideo`), `AiCompare`, `FinalCta`. |
 | Inner pages | `components/page/` holds the shared kit (`PageHero`, `FeatureBlock`, `Card`/`CardGrid`, `Faq`, `PageCta`) that `features`, `pricing`, `cases`, `about` and `contact` build on, each with its own `page.module.css`. |
+| Service pages | `components/features/` holds the `/features/[slug]` kit: `ServiceHero` (+ `ServiceHeroCta`), `SectionHead`, the three `HeroArt*` illustrations and the three `*Sections` bodies. |
 
 ### Route map
 
@@ -36,7 +37,8 @@ app/
   [locale]/
     layout.tsx            # sets <html lang>, wraps NextIntlClientProvider
     page.tsx              # home — composes components/home/*
-    features/page.tsx
+    features/page.tsx       # index of the three services
+    features/[slug]/page.tsx # one page per service (menu, ordering, reviews)
     pricing/page.tsx
     cases/page.tsx
     about/page.tsx
@@ -79,13 +81,59 @@ surface sitting directly on `--brand`, and the `--on-dark-*` set everywhere else
 
 ### Services registry
 
-`lib/services.ts` is the single list of the 8 services (slugs `menu, ai, ordering, training, multi, reviews, daily, translate`). Copy lives in `messages/*.json` under `services.<slug>.{title,line}`. Mega-menu, footer and (phase 2) home cards read from it.
+`lib/services.ts` is the single list of the three things Dimonova sells (slugs `menu, ordering, reviews`). It used to hold eight; the owner folded `ai`, `multi`, `daily`, `training` and `translate` into the digital menu, which is what they always were — sub-features, not products. One-line copy lives in `messages/*.json` under `services.<slug>.{title,line}`. The mega-menu, the mobile nav, the footer, the home cards, `app/sitemap.ts` and the `/features/[slug]` routes all read from it, so adding a fourth service is a one-line change plus its copy.
+
+### The three service pages
+
+`app/[locale]/features/[slug]/page.tsx` is one route with `generateStaticParams` over `SERVICES`
+and `dynamicParams = false`, so the only URLs that exist are `/features/menu`, `/features/ordering`
+and `/features/reviews`; anything else 404s. `/features` itself is now just a **short index** of
+those three, reading the list from `lib/services.ts` — the four-block tour that used to live there
+(`features.f1`–`f4`) is gone, and so are the eight `#menu`/`#ai`/… scroll anchors it carried.
+
+The route shares a shell — `ServiceHero` (dark panel, the page's one `<h1>`, the demo CTA) and the
+closing `PageCta` — but each slug brings its **own hero illustration** (`HeroArtMenu`,
+`HeroArtOrdering`, `HeroArtReviews`), its own background wash (`tone`) and its own sections
+(`MenuSections`, `OrderingSections`, `ReviewsSections`). Copy is nested under
+`features.pages.<slug>.*` in `messages/*.json`. Keep it that way: three pages sharing one component
+with three sets of strings would read as a template, which is exactly what the owner asked us not
+to ship.
+
+Every `HeroArt*` and every reveal runs through `motion`'s `animate`/`variants` props, so the
+app-wide `<MotionConfig reducedMotion="user">` turns them off on its own. Two components are driven
+by hand from timers and therefore carry their **own `useReducedMotion()` guard** —
+`OrderingTicketStats` (the count-up) and `ReviewsFlow` (the self-playing rating demo). Both also
+render their *finished* state as initial state, so the content is real with JavaScript off. If you
+add another hand-driven animation here, it needs the same guard.
+
+**Two things on these pages are not free copy.**
+
+1. `/features/ordering`'s average-ticket figures are **Square's**, not ours: Square reports a 35%
+   increase in sales in the first 30 days after implementing QR self-serve ordering, and 42% higher
+   average tickets where open tabs are enabled. The copy attributes them to Square by name and
+   `OrderingSections.tsx` links the source. Never restate them as Dimonova's own measurement, and
+   never print a bare unattributed percentage.
+2. `/features/reviews` describes a flow where **every rating reaches Google**. A low one is asked
+   for a reason and tagged to a waiter or an area *before* being forwarded — that is the whole
+   product. It is not review gating and must never be described as filtering, hiding or holding
+   back a review. `e2e/pages.spec.ts` locks both halves of that promise in English and Spanish.
 
 ### Home hero background
 
-The hero's background is `components/home/HeroBgPhoto.tsx` + `.module.css`: a real CC0
-photograph at `public/assets/hero/hero-stock.jpg` (source recorded in
-`public/assets/hero/SOURCES.md`), a Ken Burns zoom, and an `--ink` gradient overlay.
+The hero's background is `components/home/HeroBgPhoto.tsx` + `.module.css`: a **still**
+photograph with an `--ink` gradient overlay. It used to drift with a Ken Burns zoom; the owner
+asked for a static background, so there is no animation left to disable there.
+
+The file it points at is `public/assets/hero/dudoso.jpg`, which has **no recorded licence** —
+see `public/assets/hero/SOURCES.md` and `TODO.md`. The documented CC0 `hero-stock.jpg` is still
+in the repo as the fallback. `e2e/hero.spec.ts` deliberately matches the folder rather than a
+file name so swapping the photograph does not turn the suite red.
+
+The hero is sized to fit the first screen: `.section`'s `min-height` is
+`calc(100svh - var(--header-h) - 32px)` (the viewport minus the sticky header and the card's own
+margins), the block padding scales with viewport height, and `.title` caps its font size against
+`vh` as well as `vw` so the three-line Spanish headline still fits a short laptop screen. If you
+add anything to the hero column, re-measure at 1280×720 before assuming it still fits.
 
 The phone-mock alternative (`HeroBgMock`) and the `?hero=c` switch (`HeroBackground`) that
 existed so the two could be compared are **deleted**: the owner picked the photograph. Do not
@@ -226,8 +274,9 @@ Playwright e2e lives in `e2e/`. Run with `npm run test:e2e`. The suite covers:
   strip, AI demo, Bálamo showcase, differentiator band, reviews, AI-compare. One test there,
   `populated reviews render as cards`, guards the section now that `data/reviews.json` carries
   real content (see "Reviews data" above)
-- An accessibility sweep (`e2e/a11y.spec.ts`) across all six real pages — `/`, `/features`,
-  `/pricing`, `/about`, `/contact`, and `/legal/privacy` as the representative legal page —
+- An accessibility sweep (`e2e/a11y.spec.ts`) across every real page — `/`, `/features`, the three
+  `/features/<slug>` service pages, `/pricing`, `/about`, `/contact`, and `/legal/privacy` as the
+  representative legal page —
   each checked for exactly one `<h1>`, an `alt` attribute on every `<img>`, an accessible name
   on every `<button>`/`<a>`, and no horizontal overflow (`scrollWidth` vs `innerWidth`, ±1px)
   at a 390px viewport. `/cases` is deliberately excluded: it redirects home while

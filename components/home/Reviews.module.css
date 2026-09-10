@@ -25,21 +25,15 @@
 
 /* ==== Rows ==== */
 
-/* The video half is deliberately the wider one: the clips are the centrepiece of the section,
-   not an illustration beside the quote. `minmax(0, ...)` on both tracks stops a long
-   unbreakable string in the quote from pushing the row past the container and making the whole
-   page scroll sideways. */
+/* Half and half: the owner asked for the video to take half the width, so both tracks are equal
+   and the video's 16:9 frame fills its side. `minmax(0, ...)` stops a long unbreakable string in
+   the quote from pushing the row past the container and making the whole page scroll sideways.
+   Because the tracks are symmetrical, a flipped row needs no separate template. */
 .row {
   display: grid;
-  grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: clamp(20px, 3vw, 48px);
   align-items: center;
-}
-
-/* Every other row flips, so the eye zig-zags down the section. The DOM order flips with it
-   (see Reviews.tsx), so this only has to mirror the track widths. */
-.rowFlipped {
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.45fr);
 }
 
 .row + .row {
@@ -47,54 +41,17 @@
 }
 
 @media (max-width: 900px) {
-  .row,
-  .rowFlipped {
+  .row {
     grid-template-columns: minmax(0, 1fr);
   }
 }
 
 /* ==== Video half ==== */
 
+/* The frame, poster fit, play button and 16:9 ratio all live in InlineVideo.module.css, which
+   owns playback. This only has to say how big the card is inside the row. */
 .videoCard {
-  position: relative;
-  /* The client review videos were filmed landscape on a phone at 4K 16:9. A portrait card would
-     centre-crop them to a head-and-shoulders sliver and throw away the venue behind the
-     speaker, which is half of what the clip shows. */
-  aspect-ratio: 16 / 9;
-  border-radius: var(--radius-card);
-  overflow: hidden;
-  background: var(--ink);
-  box-shadow: var(--shadow-deep);
-  user-select: none;
-}
-
-.poster {
-  object-fit: cover;
-  pointer-events: none;
-}
-
-.playBtn {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: clamp(64px, 5vw, 88px);
-  height: clamp(64px, 5vw, 88px);
-  border-radius: 50%;
-  border: none;
-  background: var(--brand);
-  color: var(--paper);
-  font-size: clamp(22px, 1.8vw, 30px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  box-shadow: var(--shadow-deep);
-  transition: transform 0.2s var(--ease-out);
-}
-
-.playBtn:hover {
-  transform: translate(-50%, -50%) scale(1.06);
+  width: 100%;
 }
 
 /* ==== Text half ==== */
@@ -167,16 +124,36 @@
 
 /* ==== Written reviews with no video of their own ==== */
 
+/* Its own band, with a rule and a heading above it. Laid out flush under the last row, a
+   lone card read as if it belonged to the client in that row, which would put a stranger's
+   words in that venue's mouth. */
 .extras {
+  margin-top: clamp(48px, 6vw, 88px);
+  padding-top: clamp(28px, 4vw, 48px);
+  border-top: 1px solid var(--mist);
+}
+
+.extrasTitle {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  margin: 0 0 clamp(20px, 2.5vw, 28px);
+  text-align: center;
+}
+
+.extrasGrid {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: clamp(20px, 2vw, 32px);
-  margin-top: clamp(32px, 5vw, 72px);
 }
 
 .extraCard {
   flex: 1 1 320px;
-  max-width: 560px;
+  max-width: 480px;
 }
 
 @media (max-width: 640px) {

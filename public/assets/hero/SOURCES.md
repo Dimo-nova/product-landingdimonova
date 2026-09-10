@@ -1,5 +1,20 @@
 # Hero background image sources
 
+## dudoso.jpg — CURRENTLY IN USE, SOURCE UNKNOWN
+
+`components/home/HeroBgPhoto.tsx` points at this file, so it is the photograph the home page
+ships today. **Nothing is recorded about where it came from.** It carries no EXIF and no
+embedded copyright or author field, its dimensions are 1920 × 1080, and the file name suggests
+whoever added it was unsure about it.
+
+Before launch this needs one of two things: a licence and attribution written up here the way
+`hero-stock.jpg` is below, or a replacement. A stock photograph used without a licence is the
+one image risk on this site that is not theoretical. Tracked in `TODO.md`.
+
+`hero-stock.jpg` is kept in the repository as the fallback: it is CC0 and its provenance is
+documented, so switching back is a one-line change in `HeroBgPhoto.tsx`.
+
+
 ## hero-stock.jpg
 
 - **Title:** Red Lion Pub Room Interior 2024

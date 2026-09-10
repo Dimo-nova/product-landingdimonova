@@ -1,3 +1,9 @@
+/* The story video in the hero. Capped so it stays a hero element rather than filling the whole
+   first screen on a wide monitor. */
+.storyVideo {
+  max-width: 900px;
+}
+
 /* ---- Why we exist: prose beside a quote panel ---- */
 
 .whySection {

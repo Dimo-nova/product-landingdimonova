@@ -9,6 +9,9 @@
 .light { background: var(--paper); color: var(--ink); border-color: var(--mist); box-shadow: var(--shadow-soft); }
 .dark { background: var(--on-dark-surface); color: var(--paper); border-color: var(--on-dark-border); }
 .outline { background: transparent; color: var(--ink); border-color: var(--mist); }
-.brand { background: var(--brand-soft); color: var(--brand-deep); }
+/* --brand-darkest rather than --brand-deep: at this pill's 13px the text needs 4.5:1 and
+   --brand-deep on --brand-soft measures 4.37:1, which is close enough to look fine and still
+   fails. --brand-darkest clears it at 5.9:1 with no visible change of hue. */
+.brand { background: var(--brand-soft); color: var(--brand-darkest); }
 
 a.pill:hover { border-color: currentColor; }

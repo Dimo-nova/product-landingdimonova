@@ -46,7 +46,16 @@
      wash barely lifts it and a filled pill would read as flat coral with no visible surface.
      This token keeps the same family at a strength that stays legible specifically on --brand. */
   --on-brand-surface: rgba(255, 255, 255, .14);
+  /* The ink-side counterpart. A white wash on --brand *lightens* it, so white text on top ends
+     up around 2.8:1; these darken it instead, which is what a filled control carrying white
+     text on the coral section needs in order to clear AA. Rest state, then hover. */
+  --on-brand-surface-ink: rgba(15, 14, 13, .30);
+  --on-brand-surface-ink-strong: rgba(15, 14, 13, .46);
   --ink-raised: #201D1A;
+  /* Large display numerals and other oversized decorative type on --paper. --mist reads as a
+     whisper at 64px but measures 1.2:1, so it is invisible to anyone with low vision; this is
+     the lightest neutral that still clears AA's 3:1 threshold for text at or above 24px. */
+  --decor-ink: #979289;
   /* Near-opaque wash for a gradient overlay on media (photo/video), so light captions stay
      legible over a busy background — stronger than the --shadow-* set below, which are drop
      shadows, not surface washes. */

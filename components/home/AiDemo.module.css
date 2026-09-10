@@ -33,9 +33,12 @@
   border-color: var(--on-dark-text);
 }
 
+/* --brand-darkest, not --brand: this label is 13px, so AA asks for 4.5:1 and white on the plain
+   coral measures 3.22:1. The owner's decision to keep white on coral covers the solid buttons in
+   components/ui/Button.tsx, whose text is bigger and heavier, not a tab label this small. */
 .tabActive {
-  background: var(--brand);
-  border-color: var(--brand);
+  background: var(--brand-darkest);
+  border-color: var(--brand-darkest);
   color: var(--paper);
 }
 
@@ -161,7 +164,8 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  background: var(--brand);
+  /* 14px white: see the note on .tabActive above for why this is not the plain coral. */
+  background: var(--brand-darkest);
   color: var(--paper);
   font-weight: 600;
   font-size: 14px;
@@ -174,6 +178,7 @@
 .applyPressed {
   transform: scale(0.97);
   background: var(--brand-deep);
+  color: var(--paper);
 }
 
 .toast {

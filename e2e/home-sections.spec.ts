@@ -1,12 +1,12 @@
 import { test, expect } from "@playwright/test";
 
-test("the eight service cards link to their feature anchors", async ({ page }) => {
+test("the three service cards link to their own feature pages", async ({ page }) => {
   await page.goto("/");
   const grid = page.locator("#services");
   const cards = grid.getByRole("link");
-  await expect(cards).toHaveCount(8);
-  await expect(grid.getByRole("link", { name: /Digital menu/ })).toHaveAttribute("href", "/features#menu");
-  await expect(grid.getByRole("link", { name: /Smart reviews/ })).toHaveAttribute("href", "/features#reviews");
+  await expect(cards).toHaveCount(3);
+  await expect(grid.getByRole("link", { name: /Digital menu/ })).toHaveAttribute("href", "/features/menu");
+  await expect(grid.getByRole("link", { name: /Review system/ })).toHaveAttribute("href", "/features/reviews");
 });
 
 test("the service card body text meets AA contrast", async ({ page }) => {
@@ -30,7 +30,7 @@ test("no card claims that bad reviews are withheld from Google", async ({ page }
   await page.goto("/");
   const text = (await page.locator("#services").innerText()).toLowerCase();
   expect(text).not.toContain("bad ones come to you first");
-  expect(text).toContain("every review still reaches google");
+  expect(text).toContain("every review ends up on google");
 });
 
 test("the logo strip renders each client logo once for assistive tech", async ({ page }) => {
@@ -194,6 +194,26 @@ test("the reviews section shows the Google rating badge, not the empty state", a
   await expect(s).toBeVisible();
   await expect(s).not.toContainText("Reviews coming soon.");
   await expect(s.getByText(/^\d(?:[.,]\d)?\/5 on Google$/)).toHaveCount(1);
+});
+
+test("a review video plays in place, with no modal", async ({ page }) => {
+  await page.goto("/#reviews");
+  const section = page.locator("#reviews");
+  // No <video> until asked: the .mp4 is on Supabase and must not be fetched on page load.
+  await expect(section.locator("video")).toHaveCount(0);
+  const play = section.getByRole("button", { name: /Play the review/i }).first();
+  await play.click();
+  await expect(section.locator("video")).toHaveCount(1);
+  await expect(page.getByRole("dialog")).toHaveCount(0);
+});
+
+test("the video and the quote each take half of a review row", async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto("/#reviews");
+  const video = (await page.locator("#reviews [data-review-card='video']").first().boundingBox())!;
+  const text = (await page.locator("#reviews [data-review-card='text']").first().boundingBox())!;
+  // Equal tracks, allowing for sub-pixel rounding.
+  expect(Math.abs(video.width - text.width)).toBeLessThanOrEqual(2);
 });
 
 test("populated reviews render as cards", async ({ page }) => {

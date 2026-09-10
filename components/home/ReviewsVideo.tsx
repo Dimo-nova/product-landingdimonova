@@ -1,45 +1,26 @@
-"use client";
-import Image from "next/image";
-import { useTranslations } from "next-intl";
-import { openVideo } from "@/lib/events";
+import InlineVideo from "@/components/ui/InlineVideo";
+import { getTranslations } from "next-intl/server";
 import type { VideoReview } from "./reviews-types";
 import styles from "./Reviews.module.css";
 
 /**
- * The video half of a review row: the local poster frame plus a coral play button. Never a
- * mounted `<video>` — the .mp4 lives on Supabase and must not be requested on page load, so
- * pressing the button dispatches `openVideo` and the globally-mounted `VideoModal` owns
- * playback. The clips were filmed landscape, hence `orientation: "landscape"`.
- *
- * This is the only client-side piece of the section; everything around it is server-rendered.
+ * The video half of a review row. Playback happens in place, not in a modal: `InlineVideo`
+ * keeps the local poster on screen until the visitor presses play and only then mounts a
+ * `<video>` pointing at the .mp4 on Supabase, so nothing third-party is requested on load.
  */
-export default function ReviewsVideo({ video }: { video: VideoReview }) {
-  const t = useTranslations("home.reviews");
+export default async function ReviewsVideo({ video }: { video: VideoReview }) {
+  const t = await getTranslations("home.reviews");
 
   return (
-    <div className={styles.videoCard} data-review-card="video" data-review-id={video.id}>
-      <Image
-        src={video.poster}
-        alt={video.name}
-        fill
-        sizes="(max-width: 900px) 92vw, 830px"
-        className={styles.poster}
+    <div data-review-card="video" data-review-id={video.id}>
+      <InlineVideo
+        src={video.src}
+        poster={video.poster}
+        posterAlt={video.name}
+        playLabel={t("playVideo", { name: video.name })}
+        sizes="(max-width: 900px) 92vw, 700px"
+        className={styles.videoCard}
       />
-      <button
-        type="button"
-        className={styles.playBtn}
-        aria-label={t("playVideo", { name: video.name })}
-        onClick={() =>
-          openVideo({
-            src: video.src,
-            poster: video.poster,
-            title: video.name,
-            orientation: "landscape",
-          })
-        }
-      >
-        <span aria-hidden="true">▶</span>
-      </button>
     </div>
   );
 }

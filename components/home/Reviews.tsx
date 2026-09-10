@@ -19,9 +19,11 @@ const reviews = rawReviews satisfies ReviewsData;
  * section.
  *
  * A row only shows a quote when the video declares the review's id (`reviewId`), never by array
- * position — see `buildReviewRows`. Written reviews no video claims are laid out after the rows
- * as plain text cards. With neither videos nor reviews the section falls back to the honest
- * "coming soon" line rather than skeletons or invented quotes.
+ * position — see `buildReviewRows`. Written reviews no video claims are laid out in their own
+ * titled band below the rows, deliberately separated: flush under the last row, a lone card
+ * read as if the person had written it about the venue in that row. With neither videos nor
+ * reviews the section falls back to the honest "coming soon" line rather than skeletons or
+ * invented quotes.
  *
  * No card links out to Google: the section's one outbound link is the rating badge in the head.
  */
@@ -50,16 +52,19 @@ export default async function Reviews() {
             ))}
 
             {unpaired.length > 0 && (
-              <div className={styles.extras}>
-                {unpaired.map((review) => (
-                  <TextCard
-                    key={review.id}
-                    review={review}
-                    starsLabel={starsLabelFor(t, review)}
-                    className={styles.extraCard}
-                  />
-                ))}
-              </div>
+              <Reveal className={styles.extras}>
+                <h3 className={styles.extrasTitle}>{t("home.reviews.moreTitle")}</h3>
+                <div className={styles.extrasGrid}>
+                  {unpaired.map((review) => (
+                    <TextCard
+                      key={review.id}
+                      review={review}
+                      starsLabel={starsLabelFor(t, review)}
+                      className={styles.extraCard}
+                    />
+                  ))}
+                </div>
+              </Reveal>
             )}
           </>
         )}
@@ -92,7 +97,7 @@ function Row({ row, flipped, starsLabel }: { row: ReviewRow; flipped: boolean; s
   );
 
   return (
-    <Reveal className={[styles.row, flipped ? styles.rowFlipped : ""].filter(Boolean).join(" ")}>
+    <Reveal className={styles.row}>
       {flipped ? words : media}
       {flipped ? media : words}
     </Reveal>

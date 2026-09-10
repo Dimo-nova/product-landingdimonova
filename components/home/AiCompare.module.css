@@ -44,8 +44,9 @@
   max-width: 100%;
 }
 
-/* Wide pill with the provider's mark and name — see --on-brand-surface in
-   app/globals.css for why the fill isn't the shared --on-dark-surface token. */
+/* Wide pill with the provider's mark and name. The fill darkens the coral rather than lightening
+   it: the label is 18px at normal weight, so AA asks for 4.5:1, and white over the old white wash
+   measured 2.82:1. See --on-brand-surface-ink in app/globals.css. */
 .provider {
   display: inline-flex;
   align-items: center;
@@ -53,7 +54,7 @@
   padding: 10px 22px 10px 12px;
   border-radius: var(--radius-pill);
   border: 1px solid var(--on-dark-border);
-  background: var(--on-brand-surface);
+  background: var(--on-brand-surface-ink);
   color: var(--paper);
   font-size: 18px;
   font-weight: 600;
@@ -63,7 +64,7 @@
 
 .provider:hover,
 .provider:focus-visible {
-  background: var(--on-dark-border);
+  background: var(--on-brand-surface-ink-strong);
   transform: translateY(-4px);
 }
 

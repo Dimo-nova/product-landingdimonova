@@ -54,8 +54,15 @@ test("the client-dashboard link points at the panel", async ({ page }) => {
   await expect(page.getByRole("link", { name: /Already a client/ })).toHaveAttribute("href", "https://menuadmin.dimonova.com");
 });
 
-test("the hero photograph is present in the prerendered HTML", async ({ request }) => {
+test("the hero photograph is present in the prerendered HTML, with its preload", async ({ request }) => {
   const html = await (await request.get("/")).text();
   expect(html).toContain('data-hero-bg="photo"');
-  expect(html).toMatch(/hero-stock/);
+  // Matched on the folder, not on a filename: the owner swaps the photograph itself from time to
+  // time, and a test that names the file turns that into a red suite for no reason. What has to
+  // hold is that the image ships in the static HTML at all (crawlers and the LCP depend on it)
+  // and that next/image's `priority` really did emit its high-fetchpriority tag.
+  expect(html).toMatch(/assets(?:%2F|\/)hero(?:%2F|\/)/);
+  // next/image turns `priority` into a preload link in the document head rather than an
+  // attribute on the <img>, so that is what proves the LCP hint survived.
+  expect(html).toMatch(/rel="preload"[^>]*as="image"[^>]*assets(?:%2F|\/)hero/);
 });

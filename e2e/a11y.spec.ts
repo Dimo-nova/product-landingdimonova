@@ -13,7 +13,22 @@ test("the skip link is the first tab stop on / and moves focus to #main", async 
 });
 
 // Every real page, with /legal/privacy standing in for the three legal documents.
-const PAGES = ["/", "/features", "/pricing", "/cases", "/about", "/contact", "/legal/privacy"];
+const PAGES = [
+  "/",
+  "/features",
+  // The three service pages (app/[locale]/features/[slug]/page.tsx). They carry the most motion
+  // and the most bespoke layout of any inner page, so they get the full sweep rather than a
+  // spot check.
+  "/features/menu",
+  "/features/ordering",
+  "/features/reviews",
+  "/pricing",
+  "/cases",
+  "/clients",
+  "/about",
+  "/contact",
+  "/legal/privacy",
+];
 
 for (const path of PAGES) {
   test(`every <img> on ${path} has an alt attribute`, async ({ page }) => {
@@ -89,7 +104,7 @@ for (const path of PAGES) {
 // ("PageHero-module__aBcDe__eyebrow"), so this matches on the local name after the last "__"
 // rather than the exact hash, and stays correct across rebuilds. The contrast formula mirrors
 // the `contrast()` helper in e2e/footer.spec.ts.
-const EYEBROW_PAGES = ["/features", "/pricing", "/cases", "/about", "/"];
+const EYEBROW_PAGES = ["/features", "/features/menu", "/features/ordering", "/features/reviews", "/pricing", "/cases", "/about", "/"];
 
 for (const path of EYEBROW_PAGES) {
   test(`every eyebrow label on ${path} meets 4.5:1 contrast`, async ({ page }) => {
@@ -148,9 +163,31 @@ for (const path of EYEBROW_PAGES) {
 // fix in this same review pass for an example of one that was fixed instead.
 const SOLID_BUTTON_CLASS = "__solid"; // CSS module hash looks like "Button-module__XXXXXX__solid"
 
+/**
+ * Scroll the page end to end, then come back to the top and let everything settle.
+ *
+ * axe measures colour by walking the DOM and scrolling each candidate into view. On a page whose
+ * sections fade in with `whileInView` that scroll is itself what *starts* the fade, so axe reads
+ * the element a few milliseconds into it: at opacity 0.02 a black heading computes as #fdfdfd on
+ * white and fails contrast at 1.01:1, for a state no visitor ever sees. Triggering every reveal
+ * first and waiting for the 0.6s transitions to finish makes the sweep measure the settled page.
+ */
+async function settleReveals(page: import("@playwright/test").Page) {
+  await page.evaluate(async () => {
+    const step = Math.max(200, window.innerHeight);
+    for (let y = 0; y < document.body.scrollHeight; y += step) {
+      window.scrollTo(0, y);
+      await new Promise((resolve) => setTimeout(resolve, 120));
+    }
+    window.scrollTo(0, 0);
+  });
+  await page.waitForTimeout(1200);
+}
+
 for (const path of PAGES) {
   test(`${path} has no axe wcag2a/wcag2aa violations`, async ({ page }) => {
     await page.goto(path);
+    await settleReveals(page);
     const results = await new AxeBuilder({ page })
       .withTags(["wcag2a", "wcag2aa"])
       .analyze();

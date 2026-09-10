@@ -72,6 +72,11 @@ Status legend: `[ ]` not started · `[~]` in progress · `[x]` done
 - [x] **Hero variant chosen.** The owner picked the photograph. `HeroBgMock`, its stylesheet
       and the `HeroBackground` `?hero=c` switch are deleted; `Hero.tsx` renders `HeroBgPhoto`
       directly.
+- [ ] **The hero photograph in use has no recorded source.** `public/assets/hero/dudoso.jpg` is
+      what `HeroBgPhoto.tsx` ships today. It has no EXIF, no embedded author or copyright field,
+      and no entry in `public/assets/hero/SOURCES.md`. Either document its licence and
+      attribution there or replace it. The documented CC0 `hero-stock.jpg` is still in the repo
+      as a one-line fallback.
 - [ ] **Hero photograph.** The current variant-B background is a real but generic CC0 pub
       interior (`public/assets/hero/hero-stock.jpg`, sourced in
       `public/assets/hero/SOURCES.md`) — not a Dimonova venue. Get a better photograph (ideally

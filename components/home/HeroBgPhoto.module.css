@@ -5,15 +5,8 @@
   overflow: hidden;
 }
 
-.img {
-  animation: kenburns 20s var(--ease-out) alternate infinite;
-}
-
-@keyframes kenburns {
-  from { transform: scale(1); }
-  to { transform: scale(1.06); }
-}
-
+/* The photograph is deliberately still. It used to carry a 20s Ken Burns drift; the owner asked
+   for a static background, so there is nothing to disable under prefers-reduced-motion either. */
 .overlay {
   position: absolute;
   inset: 0;
@@ -24,8 +17,4 @@
   position: absolute;
   inset: 0;
   background: linear-gradient(0deg, var(--ink) 0%, transparent 45%);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .img { animation: none; }
 }
