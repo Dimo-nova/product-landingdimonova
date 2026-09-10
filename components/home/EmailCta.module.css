@@ -5,3 +5,25 @@
 .row:focus-within { box-shadow: 0 0 0 3px var(--brand), var(--shadow-cta); }
 .error { font-size: 13px; color: var(--brand); font-weight: 600; }
 .onDark .error { color: var(--on-dark-danger); }
+
+/*
+ * The field and the button stop sharing a line on narrow phones. Side by side they need about
+ * 285px, which a 360px screen does not have once the card's margins and the copy's padding are
+ * taken out, so the form pushed 9px past the document and the whole page scrolled sideways.
+ * Stacked, the button keeps its full width and the pill becomes a rounded box.
+ */
+@media (max-width: 420px) {
+  .row {
+    flex-direction: column;
+    border-radius: 24px;
+    padding: 8px;
+  }
+
+  .input {
+    padding: 10px 12px;
+  }
+
+  .row > :last-child {
+    width: 100%;
+  }
+}

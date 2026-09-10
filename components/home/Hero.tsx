@@ -15,8 +15,6 @@ export default async function Hero() {
   return (
     <Container>
       <section className={styles.section}>
-        <HeroBgPhoto alt={t("alt.heroPhoto")} />
-
         <div className={styles.content}>
           {HERO_VIDEO_SRC && (
             <div className={styles.pillRow}>
@@ -49,6 +47,12 @@ export default async function Hero() {
             {t("home.hero.clientLink")} <span aria-hidden="true">→</span>
           </a>
         </div>
+
+        {/* After the copy in the DOM, not before it. On desktop this is absolutely positioned so
+            the order is irrelevant, but below 900px the card becomes a plain column and the
+            photograph sits under the text with nothing on top of it, which is the order a
+            screen reader and a narrow screen should both get. */}
+        <HeroBgPhoto alt={t("alt.heroPhoto")} />
       </section>
     </Container>
   );

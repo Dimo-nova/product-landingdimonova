@@ -20,14 +20,27 @@
 }
 
 /*
- * Below 900px the card stops being a wide letterbox and becomes taller than it is wide, so
- * `cover` trims the sides instead of the top and bottom. A centred slice of a 16:9 frame lands
- * between the waiter and the background, leaving half a face at the edge; the subject sits at
- * about two thirds across, so that is where the window goes.
+ * Below 900px the photograph leaves the background and becomes the bottom half of a column (see
+ * Hero.module.css). It is a flow item taking whatever height the copy leaves, and the two
+ * gradients go with it: their whole job was to keep text readable over the image, and there is
+ * no text over the image any more.
  */
 @media (max-width: 900px) {
+  .wrap {
+    position: relative;
+    inset: auto;
+    flex: 1 1 auto;
+    min-height: 130px;
+    border-radius: 0 0 var(--radius-panel) var(--radius-panel);
+  }
+
+  .overlay,
+  .overlayBottom {
+    display: none;
+  }
+
   .img {
-    object-position: 66% 14%;
+    object-position: 55% 30%;
   }
 }
 
@@ -41,4 +54,10 @@
   position: absolute;
   inset: 0;
   background: linear-gradient(0deg, var(--ink) 0%, transparent 45%);
+}
+
+@media (max-width: 900px) and (max-height: 700px) {
+  .wrap {
+    min-height: 110px;
+  }
 }
