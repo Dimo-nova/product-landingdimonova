@@ -33,6 +33,7 @@
       "playPill": "How Dimonova started",
       "title": "We take care of it. You <mark>grow</mark>.",
       "lead": "Digital menu, ordering and reviews made to measure, built and looked after 24/7 by a team of geeks you can trust. No templates. Ready to scale.",
+      "leadShort": "Ementa digital, pedido à mesa e avaliações. Montados e cuidados por nós.",
       "emailPlaceholder": "Your email",
       "cta": "Book a demo",
       "legal": "We only use your email to get in touch. <link>Privacy</link>.",
@@ -813,7 +814,7 @@
     "menuHint": "Looking for a restaurant's menu? Menus live on each restaurant's own domain, not here."
   },
   "alt": {
-    "heroPhoto": "A waiter carrying two plates to a table across a busy restaurant dining room.",
+    "heroPhoto": "A restaurant in the middle of service.",
     "balamoPhone": "Bálamo's digital menu on a phone: their logo, welcome section and dish photography.",
     "serviceCard": "{title} shown inside the Dimonova dashboard.",
     "storyVideo": "Calsot's owner telling how it all started, sitting on his restaurant's terrace."

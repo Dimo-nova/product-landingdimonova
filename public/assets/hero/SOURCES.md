@@ -1,22 +1,28 @@
 # Hero background image sources
 
-## hero.webp — CURRENTLY IN USE, SOURCE UNKNOWN
+## hero.webp and hero-mobile.webp — CURRENTLY IN USE, SOURCE UNKNOWN
 
-`components/home/HeroBgPhoto.tsx` points at this file, so it is the photograph the home page
-ships today. It was produced from `upscale_image_01.png`, supplied by the owner, with:
+`components/home/HeroBgPhoto.tsx` points at these two files, so they are the photographs the home
+page ships today: `hero.webp` on desktop (a dining room during service) and `hero-mobile.webp`
+below 900px (a pan on the fire). They were produced from `upscale_image_01.png` and
+`sarten_canva.png`, both supplied by the owner, with:
 
 ```bash
 ffmpeg -i upscale_image_01.png -vf scale=2560:-2 -c:v libwebp -quality 82 -compression_level 6 -preset photo hero.webp
+ffmpeg -i sarten_canva.png -c:v libwebp -quality 82 -compression_level 6 -preset photo hero-mobile.webp
 ```
 
-3840 × 2160 down to 2560 × 1440, and 1.3 MB down to 152 KB. The source PNG carried no EXIF and
-no embedded copyright or author field, and it has been moved out of the repository to
-`../_media-originals/hero/` so an unused 1.3 MB file is not deployed.
+3840 × 2160 down to 2560 × 1440 and 1.3 MB down to 152 KB for the first; 1920 × 1080 kept as is
+and 2.8 MB down to 131 KB for the second. Neither source carried EXIF or an embedded copyright or
+author field, and both have been moved out of the repository to `../_media-originals/hero/` so
+unused multi-megabyte files are not deployed.
 
-**Nothing is recorded about where the photograph came from.** Before launch this needs either a
+**Nothing is recorded about where either photograph came from.** Before launch this needs either a
 licence and attribution written up here the way `hero-stock.jpg` is below, or a replacement. A
 stock or generated image used without a licence is the one image risk on this site that is not
-theoretical. Tracked in `TODO.md`.
+theoretical. Tracked in `TODO.md`. The `_canva` in the second file's original name suggests it
+came out of Canva, whose licence terms depend on the plan and on whether the photo is a Canva
+stock asset, so that one needs checking specifically.
 
 `hero-stock.jpg` is kept in the repository as the fallback: it is CC0 and its provenance is
 documented, so switching back is a one-line change in `HeroBgPhoto.tsx`.

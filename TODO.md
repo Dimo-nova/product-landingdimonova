@@ -72,12 +72,14 @@ Status legend: `[ ]` not started · `[~]` in progress · `[x]` done
 - [x] **Hero variant chosen.** The owner picked the photograph. `HeroBgMock`, its stylesheet
       and the `HeroBackground` `?hero=c` switch are deleted; `Hero.tsx` renders `HeroBgPhoto`
       directly.
-- [ ] **The hero photograph in use has no recorded source.** `public/assets/hero/hero.webp` is
-      what `HeroBgPhoto.tsx` ships today, converted from a PNG the owner supplied. Neither file
-      carries EXIF, an author or a copyright field, and there is no licence for it in
-      `public/assets/hero/SOURCES.md`. Either document its licence and attribution there or
-      replace it. The documented CC0 `hero-stock.jpg` is still in the repo as a one-line
-      fallback.
+- [ ] **Neither hero photograph has a recorded source.** `hero.webp` (desktop) and
+      `hero-mobile.webp` (phone) are what `HeroBgPhoto.tsx` ships today, converted from PNGs the
+      owner supplied. No source file carries EXIF, an author or a copyright field, and there is
+      no licence for either in `public/assets/hero/SOURCES.md`. The phone one was named
+      `sarten_canva.png`, so it probably came out of Canva, whose licence depends on the plan and
+      on whether the photo is a Canva stock asset: check that one specifically. Either document
+      the licences there or replace the images. The documented CC0 `hero-stock.jpg` is still in
+      the repo as a fallback.
 - [ ] **Hero photograph.** The current variant-B background is a real but generic CC0 pub
       interior (`public/assets/hero/hero-stock.jpg`, sourced in
       `public/assets/hero/SOURCES.md`) — not a Dimonova venue. Get a better photograph (ideally

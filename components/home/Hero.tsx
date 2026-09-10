@@ -8,12 +8,21 @@ import HeroPlayPill from "./HeroPlayPill";
 import HeroBgPhoto from "./HeroBgPhoto";
 import styles from "./Hero.module.css";
 
-/** Home hero: owns the page's only <h1>, the email CTA and the photographic background. */
+/**
+ * Home hero: owns the page's only <h1>, the email CTA and the photographic background.
+ *
+ * Desktop and phone are two different designs sharing one DOM, not two components. They have to:
+ * a second hero would mean a second <h1>, and `display: none` does not undo that for a crawler
+ * counting headings or for the "exactly one h1" checks in e2e/a11y.spec.ts. Everything except the
+ * heading can differ, and the lead does: `home.hero.lead` on desktop, the shorter
+ * `home.hero.leadShort` on a phone, with CSS showing one and hiding the other. `display: none`
+ * takes the hidden one out of the accessibility tree too, so nothing is read twice.
+ */
 export default async function Hero() {
   const t = await getTranslations();
 
   return (
-    <Container>
+    <Container className={styles.frame}>
       <section className={styles.section}>
         <div className={styles.content}>
           {HERO_VIDEO_SRC && (
@@ -34,6 +43,7 @@ export default async function Hero() {
           </h1>
 
           <p className={styles.lead}>{t("home.hero.lead")}</p>
+          <p className={styles.leadShort}>{t("home.hero.leadShort")}</p>
 
           <div className={styles.cta}>
             <EmailCta source="hero" onDark />

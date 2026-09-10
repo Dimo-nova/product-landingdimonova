@@ -54,15 +54,37 @@ test("the client-dashboard link points at the panel", async ({ page }) => {
   await expect(page.getByRole("link", { name: /Already a client/ })).toHaveAttribute("href", "https://menuadmin.dimonova.com");
 });
 
-test("the hero photograph is present in the prerendered HTML, with its preload", async ({ request }) => {
+test("the hero ships one photograph per breakpoint in the prerendered HTML", async ({ request }) => {
   const html = await (await request.get("/")).text();
   expect(html).toContain('data-hero-bg="photo"');
-  // Matched on the folder, not on a filename: the owner swaps the photograph itself from time to
-  // time, and a test that names the file turns that into a red suite for no reason. What has to
-  // hold is that the image ships in the static HTML at all (crawlers and the LCP depend on it)
-  // and that next/image's `priority` really did emit its high-fetchpriority tag.
-  expect(html).toMatch(/assets(?:%2F|\/)hero(?:%2F|\/)/);
-  // next/image turns `priority` into a preload link in the document head rather than an
-  // attribute on the <img>, so that is what proves the LCP hint survived.
-  expect(html).toMatch(/rel="preload"[^>]*as="image"[^>]*assets(?:%2F|\/)hero/);
+  // Matched on the folder, not on file names: the owner swaps these photographs from time to
+  // time, and a test that names the files turns that into a red suite for no reason. What has to
+  // hold is that the picture ships in the static HTML at all (crawlers and the LCP depend on it),
+  // that it is art-directed with a <source media> rather than one image for every device, and
+  // that the LCP hint survived.
+  expect(html).toMatch(/<source[^>]*media="\(max-width: 900px\)"[^>]*assets\/hero\//);
+  expect(html).toMatch(/<img[^>]*assets\/hero\//);
+  expect(html.toLowerCase()).toContain('fetchpriority="high"');
+});
+
+test("each breakpoint downloads only its own hero photograph", async ({ page }) => {
+  // The whole reason this is a <picture> and not two hidden <img>s: a hidden image still
+  // downloads, so a phone would pay for the desktop photograph as well.
+  const seen = new Set<string>();
+  page.on("request", (r) => {
+    if (r.resourceType() === "image" && r.url().includes("/assets/hero/")) {
+      seen.add(r.url().split("/").pop()!);
+    }
+  });
+
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/");
+  await page.waitForLoadState("networkidle");
+  expect(seen.size, `phone fetched ${[...seen].join(", ")}`).toBe(1);
+
+  seen.clear();
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto("/");
+  await page.waitForLoadState("networkidle");
+  expect(seen.size, `desktop fetched ${[...seen].join(", ")}`).toBe(1);
 });

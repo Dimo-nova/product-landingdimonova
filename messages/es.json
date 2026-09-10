@@ -33,6 +33,7 @@
       "playPill": "Cómo empezó Dimonova",
       "title": "Nosotros nos ocupamos. <line>Tú <mark>creces</mark>.</line>",
       "lead": "Carta digital, comandero y reseñas a medida de tu restaurante, montados y cuidados 24/7 por un equipo de frikis de confianza. Sin plantillas. Listo para escalar.",
+      "leadShort": "Carta digital, comandero y reseñas. Montados y cuidados por nosotros.",
       "emailPlaceholder": "Tu email",
       "cta": "Pedir demo",
       "legal": "Solo usamos tu email para contactarte. <link>Privacidad</link>.",
@@ -840,7 +841,7 @@
     "menuHint": "¿Buscabas la carta de un restaurante? Las cartas viven en el dominio de cada restaurante, no aquí."
   },
   "alt": {
-    "heroPhoto": "Una camarera lleva dos platos a una mesa en la sala de un restaurante lleno.",
+    "heroPhoto": "Un restaurante en pleno servicio.",
     "balamoPhone": "La carta digital de Bálamo en un móvil: su logo, la sección de bienvenida y las fotos de sus platos.",
     "serviceCard": "{title} dentro del panel de Dimonova.",
     "storyVideo": "El dueño de Calsot contando cómo empezó todo, sentado en la terraza de su restaurante."

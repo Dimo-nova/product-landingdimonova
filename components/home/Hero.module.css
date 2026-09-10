@@ -13,6 +13,12 @@
  * to fit the budget instead (see `.content` and `.title`), and the card only ever exceeds it in
  * the extreme cases those clamps cannot cover.
  */
+/* Wraps the section so the phone layout can cancel the container's side padding and run the
+   photograph edge to edge. On desktop it does nothing. */
+.frame {
+  position: relative;
+}
+
 .section {
   position: relative;
   background: var(--ink);
@@ -70,6 +76,11 @@
   margin: 0 0 24px;
 }
 
+/* The phone's shorter lead. See Hero.tsx for why both are in the DOM. */
+.leadShort {
+  display: none;
+}
+
 .cta {
   margin-bottom: 12px;
 }
@@ -97,67 +108,78 @@
 .dashboardLink:hover { opacity: .82; }
 
 /*
- * ==== Phones and small tablets ====
+ * ==== Phones ====
  *
- * Below 900px the card stops being a photograph with copy laid over it and becomes a plain
- * column: the copy on the --ink panel, then the photograph beneath it with nothing on top of it.
- * The overlaid treatment only works while there is width to keep the text clear of the subject;
- * at phone widths the two fought each other whatever the crop.
- *
- * The card still has to fit one screen, so the copy takes the height it needs and the photograph
- * takes whatever is left (`flex: 1` on `.wrap`, see HeroBgPhoto.module.css) down to a floor. Type
- * is a step smaller here than the width-based clamps above would give: every pixel saved is a
- * pixel the photograph gets, and on a 360x740 phone the copy alone would otherwise fill the
- * screen on its own.
+ * A different design, not the desktop one squeezed. The card becomes a full-bleed panel: no
+ * margins, no radius, the photograph running edge to edge behind everything with its brightness
+ * pulled down (see HeroBgPhoto.module.css) instead of the two directional gradients, which only
+ * ever made sense when the copy sat in a column on one side. The copy is centred over it and
+ * swaps to the short lead.
  *
  * These rules must stay at the end of the file. They share their specificity with the desktop
  * rules above, so source order is the only thing that makes them win.
  */
 @media (max-width: 900px) {
+  .frame {
+    padding-inline: 0;
+    max-width: none;
+  }
+
   .section {
-    flex-direction: column;
-    align-items: stretch;
-    min-height: calc(100vh - var(--header-h) - 32px);
-    min-height: calc(100svh - var(--header-h) - 32px);
+    margin: 0;
+    border-radius: 0;
+    min-height: calc(100vh - var(--header-h));
+    min-height: calc(100svh - var(--header-h));
+    align-items: center;
+    justify-content: center;
+    text-align: center;
   }
 
   .content {
-    max-width: none;
-    padding: clamp(16px, 2.6vh, 32px) clamp(18px, 5vw, 32px);
+    max-width: 520px;
+    padding: clamp(24px, 5vh, 56px) clamp(20px, 6vw, 40px);
   }
 
   .title {
-    font-size: clamp(28px, 8vw, 44px);
-    margin-bottom: 10px;
+    font-size: clamp(40px, 12vw, 60px);
+    margin-bottom: 14px;
   }
 
   .lead {
-    font-size: 15px;
+    display: none;
+  }
+
+  .leadShort {
+    display: block;
+    font-size: 17px;
     line-height: 1.45;
-    margin-bottom: 16px;
+    color: var(--paper);
+    max-width: 34ch;
+    margin: 0 auto 24px;
   }
 
-  .pillRow { margin-bottom: 10px; }
-  .cta { margin-bottom: 8px; }
-  .legal { margin-bottom: 10px; font-size: 12px; }
-}
-
-@media (max-width: 640px) {
-  .section {
-    margin: 8px;
-    min-height: calc(100vh - var(--header-h) - 16px);
-    min-height: calc(100svh - var(--header-h) - 16px);
-  }
-}
-
-/* Short phones (an iPhone SE is 375x667). One more notch off the vertical rhythm, so the copy
-   plus the photograph's floor still add up to less than one screen. */
-@media (max-width: 900px) and (max-height: 700px) {
-  .content {
-    padding-block: 14px;
+  /* Centred, and the email form stops being a left-aligned block. */
+  .pillRow {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
   }
 
-  .lead { margin-bottom: 12px; }
-  .pillRow { margin-bottom: 8px; }
-  .legal { margin-bottom: 8px; }
+  .cta {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 14px;
+  }
+
+  .legal {
+    /* Brighter than the desktop --on-dark-muted: there it sits on flat --ink, here on a dimmed
+       photograph whose local brightness varies, and 60% white was the first thing to wash out. */
+    color: var(--on-dark-text);
+    margin: 0 auto 16px;
+    max-width: 38ch;
+  }
+
+  .dashboardLink {
+    justify-content: center;
+  }
 }

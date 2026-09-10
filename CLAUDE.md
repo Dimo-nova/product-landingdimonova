@@ -120,25 +120,45 @@ add another hand-driven animation here, it needs the same guard.
 
 ### Home hero background
 
-The hero's background is `components/home/HeroBgPhoto.tsx` + `.module.css`: a **still**
-photograph with an `--ink` gradient overlay. It used to drift with a Ken Burns zoom; the owner
-asked for a static background, so there is no animation left to disable there.
+`components/home/HeroBgPhoto.tsx` is a plain `<picture>`, not `next/image`. The two breakpoints
+show **different photographs** (a dining room during service on desktop, a pan on the fire on a
+phone), which is art direction, and `next/image` cannot express it. Two `<Image>`s hidden with
+`display: none` would not work either: a hidden `<img>` still downloads, so every visitor would
+pay for both. `<source media>` makes the preload scanner fetch exactly one, early, and
+`fetchPriority="high"` replaces what `priority` used to emit. `e2e/hero.spec.ts` asserts both
+halves of that: the `<source media>` is in the static HTML, and each breakpoint fetches exactly
+one file.
 
-The file it points at is `public/assets/hero/hero.webp`, which has **no recorded licence** —
-see `public/assets/hero/SOURCES.md` and `TODO.md`. The documented CC0 `hero-stock.jpg` is still
-in the repo as the fallback. `e2e/hero.spec.ts` deliberately matches the folder rather than a
-file name so swapping the photograph does not turn the suite red.
+Both files are pre-encoded WebP with **no recorded licence** — see
+`public/assets/hero/SOURCES.md` and `TODO.md`; the phone one came out of Canva, whose terms
+depend on the plan, so it needs checking specifically. The documented CC0 `hero-stock.jpg` stays
+in the repo as the fallback. The spec matches the folder rather than file names so swapping a
+photograph does not turn the suite red.
 
-The hero is sized to fit the first screen: `.section`'s `min-height` is
-`calc(100svh - var(--header-h) - 32px)` (the viewport minus the sticky header and the card's own
-margins), the block padding scales with viewport height, and `.title` caps its font size against
-`vh` as well as `vw` so the three-line Spanish headline still fits a short laptop screen. If you
-add anything to the hero column, re-measure at 1280×720 before assuming it still fits.
+One `<picture>` means one `alt`, so `alt.heroPhoto` has to be true of both photographs and
+describes a restaurant at work rather than either specific scene.
 
-The phone-mock alternative (`HeroBgMock`) and the `?hero=c` switch (`HeroBackground`) that
-existed so the two could be compared are **deleted**: the owner picked the photograph. Do not
-reintroduce a query-param variant switch. `e2e/hero.spec.ts` asserts that `?hero=c` still
-renders the photograph and no mock, so a revival fails the suite.
+The photograph is still: a Ken Burns drift used to live here and the owner asked for it to go.
+
+**Desktop and phone are two designs sharing one DOM**, in `Hero.tsx` and the media queries at the
+end of `Hero.module.css`. They have to share it: a second hero component would mean a second
+`<h1>`, and `display: none` does not undo that for a crawler counting headings or for the
+"exactly one h1" checks. Everything except the heading may differ, and the lead does
+(`home.hero.lead` on desktop, the shorter `home.hero.leadShort` on a phone, one of them hidden
+with `display: none`, which takes it out of the accessibility tree too).
+
+- **Desktop:** a rounded card inset by 16px, copy in a left-hand column over the photograph, the
+  two directional `--ink` gradients keeping it readable. `min-height` is
+  `calc(100svh - var(--header-h) - 32px)` — the viewport minus the sticky header and the card's
+  own margins — the block padding scales with viewport height, and `.title` caps its font size
+  against `vh` as well as `vw` so the three-line Spanish headline still fits a short laptop.
+- **Phone (≤900px):** full bleed. No margins, no radius, the photograph edge to edge with its
+  brightness pulled down instead of the gradients, and the copy centred over it. The gradients
+  are shaped for a left-aligned column and would leave the middle of a centred one exposed.
+
+If you add anything to the hero column, re-measure at 1280×720 and at 375×667 before assuming it
+still fits. The media queries must stay at the end of `Hero.module.css`: they share their
+specificity with the desktop rules, so source order is the only thing that makes them win.
 
 ### Headlines that must break in a specific place
 
