@@ -1,19 +1,25 @@
 # Hero background image sources
 
-## dudoso.jpg — CURRENTLY IN USE, SOURCE UNKNOWN
+## hero.webp — CURRENTLY IN USE, SOURCE UNKNOWN
 
 `components/home/HeroBgPhoto.tsx` points at this file, so it is the photograph the home page
-ships today. **Nothing is recorded about where it came from.** It carries no EXIF and no
-embedded copyright or author field, its dimensions are 1920 × 1080, and the file name suggests
-whoever added it was unsure about it.
+ships today. It was produced from `upscale_image_01.png`, supplied by the owner, with:
 
-Before launch this needs one of two things: a licence and attribution written up here the way
-`hero-stock.jpg` is below, or a replacement. A stock photograph used without a licence is the
-one image risk on this site that is not theoretical. Tracked in `TODO.md`.
+```bash
+ffmpeg -i upscale_image_01.png -vf scale=2560:-2 -c:v libwebp -quality 82 -compression_level 6 -preset photo hero.webp
+```
+
+3840 × 2160 down to 2560 × 1440, and 1.3 MB down to 152 KB. The source PNG carried no EXIF and
+no embedded copyright or author field, and it has been moved out of the repository to
+`../_media-originals/hero/` so an unused 1.3 MB file is not deployed.
+
+**Nothing is recorded about where the photograph came from.** Before launch this needs either a
+licence and attribution written up here the way `hero-stock.jpg` is below, or a replacement. A
+stock or generated image used without a licence is the one image risk on this site that is not
+theoretical. Tracked in `TODO.md`.
 
 `hero-stock.jpg` is kept in the repository as the fallback: it is CC0 and its provenance is
 documented, so switching back is a one-line change in `HeroBgPhoto.tsx`.
-
 
 ## hero-stock.jpg
 

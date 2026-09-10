@@ -5,8 +5,32 @@
   overflow: hidden;
 }
 
-/* The photograph is deliberately still. It used to carry a 20s Ken Burns drift; the owner asked
-   for a static background, so there is nothing to disable under prefers-reduced-motion either. */
+/*
+ * The photograph is deliberately still. It used to carry a 20s Ken Burns drift; the owner asked
+ * for a static background, so there is nothing to disable under prefers-reduced-motion either.
+ *
+ * The hero card is between 1.9:1 and 2.2:1 depending on the viewport, and the photograph is 16:9,
+ * so `cover` always has to trim it top and bottom. `object-position` biases that trim upward:
+ * centred, the waiter's head was the first thing to go, while what it gains at the bottom is the
+ * edge of the lower plate, which the card's own bottom-up --ink gradient already swallows.
+ */
+.img {
+  object-fit: cover;
+  object-position: 50% 6%;
+}
+
+/*
+ * Below 900px the card stops being a wide letterbox and becomes taller than it is wide, so
+ * `cover` trims the sides instead of the top and bottom. A centred slice of a 16:9 frame lands
+ * between the waiter and the background, leaving half a face at the edge; the subject sits at
+ * about two thirds across, so that is where the window goes.
+ */
+@media (max-width: 900px) {
+  .img {
+    object-position: 66% 14%;
+  }
+}
+
 .overlay {
   position: absolute;
   inset: 0;

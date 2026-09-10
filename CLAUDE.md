@@ -124,7 +124,7 @@ The hero's background is `components/home/HeroBgPhoto.tsx` + `.module.css`: a **
 photograph with an `--ink` gradient overlay. It used to drift with a Ken Burns zoom; the owner
 asked for a static background, so there is no animation left to disable there.
 
-The file it points at is `public/assets/hero/dudoso.jpg`, which has **no recorded licence** —
+The file it points at is `public/assets/hero/hero.webp`, which has **no recorded licence** —
 see `public/assets/hero/SOURCES.md` and `TODO.md`. The documented CC0 `hero-stock.jpg` is still
 in the repo as the fallback. `e2e/hero.spec.ts` deliberately matches the folder rather than a
 file name so swapping the photograph does not turn the suite red.
