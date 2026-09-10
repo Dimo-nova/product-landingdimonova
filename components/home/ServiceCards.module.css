@@ -67,8 +67,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--on-dark-text);
-  background-image: repeating-linear-gradient(135deg, var(--on-dark-surface) 0 10px, transparent 10px 20px);
+  /* The illustration inherits this as `currentColor`, so the whole drawing recolours with the
+     card rather than carrying its own palette. --paper, not --on-dark-text: on the coral the
+     drawing wants to read as white line-work, and its own opacity steps do the shading. */
+  color: var(--paper);
   transition: transform .3s var(--ease-out);
 }
 

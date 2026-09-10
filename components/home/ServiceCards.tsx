@@ -3,7 +3,7 @@ import Container from "@/components/ui/Container";
 import Reveal from "@/components/ui/Reveal";
 import { Link } from "@/lib/routing";
 import { SERVICES } from "@/lib/services";
-import { ServiceIcon } from "@/components/icons/ServiceIcons";
+import { ServiceArt } from "./ServiceArt";
 import styles from "./ServiceCards.module.css";
 
 /** The three service cards: what Dimonova builds, connects and keeps running. Each one links to its own page under `/features/[slug]`. */
@@ -24,11 +24,12 @@ export default async function ServiceCards() {
             return (
               <Reveal key={service.slug} delay={i * 0.06} className={styles.cardWrap}>
                 <Link href={service.href} className={styles.card}>
-                  {/* Striped placeholder for the not-yet-shot service screenshot: aria-hidden so
-                      assistive tech doesn't announce an "image" that isn't there and prefix the
-                      link's accessible name with it. Swap in a real <img alt={t("alt.serviceCard", { title })}> once real screenshots land. */}
+                  {/* A drawn illustration per service (components/home/ServiceArt.tsx), not a
+                      screenshot: none exists for these three yet, and none would survive the
+                      card's coral gradient anyway. aria-hidden so it doesn't get read out ahead
+                      of the link's own name, which the heading below already carries. */}
                   <div className={styles.media} aria-hidden="true">
-                    <ServiceIcon slug={service.slug} size={40} />
+                    <ServiceArt slug={service.slug} />
                   </div>
                   <div className={styles.body}>
                     <h3>{title}</h3>

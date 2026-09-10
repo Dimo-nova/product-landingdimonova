@@ -1,0 +1,55 @@
+/*
+ * One vocabulary for all three card illustrations (see ServiceArt.tsx). Everything is built from
+ * `currentColor`, inherited from `.media` in ServiceCards.module.css, so the whole set recolours
+ * with the card rather than carrying its own hard-coded palette.
+ */
+.art {
+  width: 100%;
+  height: 100%;
+  display: block;
+  padding: 12px;
+}
+
+/* The drawing's foreground: dish rows, the QR's eyes, a given star. */
+.solid {
+  fill: currentColor;
+  opacity: 0.92;
+}
+
+/* The panel each drawing sits on. */
+.surface {
+  fill: currentColor;
+  opacity: 0.16;
+}
+
+/* A second panel behind the first, or a chip that is not the point of the drawing. */
+.ghost {
+  fill: currentColor;
+  opacity: 0.09;
+}
+
+/* Secondary copy inside a panel. */
+.hint {
+  fill: currentColor;
+  opacity: 0.45;
+}
+
+/* The one element in each drawing that carries the idea: the price, the printed ticket, the tag
+   the review comes back with. Solid --paper so it reads as the highlight against the coral. */
+.accent {
+  fill: var(--paper);
+}
+
+/* Lines printed on `.accent`, so they need the card's own ground rather than currentColor. */
+.onAccent {
+  fill: var(--brand-deep);
+}
+
+.stroke {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.75;
+}
