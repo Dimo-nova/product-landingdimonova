@@ -85,6 +85,25 @@ test("valid submit shows success state", async ({ page }) => {
   await expect(page.getByText(/we'll be in touch/i)).toBeVisible();
 });
 
+// The contact page and the demo modal share /api/contact; `source` is how the owner's email
+// gets a "Contacto:" subject instead of "Demo solicitada:" (see the route).
+test("the contact form names its origin in the request", async ({ page }) => {
+  let source: string | null = null;
+  await page.route("**/api/contact", async (route) => {
+    const body = route.request().postData() ?? "";
+    source = /name="source"\r\n\r\n([^\r]*)/.exec(body)?.[1] ?? null;
+    await route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ ok: true }) });
+  });
+  await page.goto("/contact");
+  await page.getByLabel(/your name/i).fill("Test User");
+  await page.getByLabel(/venue name/i).fill("The Test Pub");
+  await page.getByLabel(/email/i).fill("test@example.com");
+  await page.locator("#contact-consent").check();
+  await page.getByRole("main").getByRole("button", { name: /request a demo/i }).click();
+  await expect(page.getByText(/we'll be in touch/i)).toBeVisible();
+  expect(source).toBe("contact-page");
+});
+
 test("unticked consent blocks submission with an inline error and sends no request", async ({ page }) => {
   let calls = 0;
   await page.route("**/api/contact", async (route) => {

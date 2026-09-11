@@ -86,10 +86,10 @@ export default function MobileNav() {
                 <>
                   <Link href="/pricing#faq">{t("nav.mega.faq")}</Link>
                   <Link href="/#ai-compare">{t("nav.mega.aiCompare")}</Link>
-                  <Link href="/contact">{t("nav.mega.contact")}</Link>
                 </>
               ))}
               <div className={styles.row}><Link className={styles.rowLink} href="/about">{t("nav.about")}</Link></div>
+              <div className={styles.row}><Link className={styles.rowLink} href="/contact">{t("nav.contact")}</Link></div>
             </div>
             <div className={styles.ctas}>
               <Button size="lg" onClick={() => { setOpen(false); openDemo({ source: "header" }); }}>{t("nav.demo")}</Button>

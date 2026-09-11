@@ -96,6 +96,7 @@ export default function ContactForm() {
       fd.append("menuUrl", fields.menuUrl);
       fd.append("locale", locale);
       fd.append("consent", "yes");
+      fd.append("source", "contact-page");
       if (menuFile) fd.append("menuFile", menuFile);
 
       const res = await fetch("/api/contact", { method: "POST", body: fd });

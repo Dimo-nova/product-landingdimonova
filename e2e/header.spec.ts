@@ -32,6 +32,8 @@ test.describe("desktop header", () => {
     const nav = page.getByRole("navigation", { name: "Main" });
     await expect(nav.getByRole("link", { name: "Pricing" })).toHaveAttribute("href", "/pricing");
     await expect(nav.getByRole("link", { name: "About" })).toHaveAttribute("href", "/about");
+    // Contact is a top-level link now, not an entry hidden inside the Resources panel.
+    await expect(nav.getByRole("link", { name: "Contact" })).toHaveAttribute("href", "/contact");
     await expect(page.getByRole("banner").getByRole("link", { name: "Client login" })).toHaveAttribute("href", "https://menuadmin.dimonova.com");
     await page.getByRole("banner").getByRole("button", { name: "Request a demo" }).click();
     await expect(page.getByRole("dialog", { name: "Book your demo" })).toBeVisible();
@@ -133,6 +135,7 @@ test.describe("mobile header", () => {
       await page.getByRole("button", { name: "Open menu" }).click();
       await expect(panel).toBeVisible({ timeout: 2000 });
     }).toPass({ timeout: 15000 });
+    await expect(panel.getByRole("link", { name: "Contact" })).toHaveAttribute("href", "/contact");
     await panel.getByRole("button", { name: "Features" }).click();
     // A button, not a link: the service pages are unpublished (FEATURES_PUBLISHED).
     await expect(panel.getByRole("button", { name: /Digital menu/ })).toBeVisible();

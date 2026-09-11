@@ -84,6 +84,13 @@ export async function POST(req: NextRequest) {
   const menuToday = (fd.get("menuToday") as string)?.trim() ?? "";
   const source = (fd.get("source") as string)?.trim() ?? "";
 
+  // The contact page and the demo modal post to the same route; the subject and heading say
+  // which one it was so the owner can tell a question from a demo request in the inbox.
+  const fromContactPage = source === "contact-page";
+  const who = `${venue.replace(/[\r\n]+/g, " ")} — ${name.replace(/[\r\n]+/g, " ")}`;
+  const subject = fromContactPage ? `Contacto: ${who}` : `Demo solicitada: ${who}`;
+  const heading = fromContactPage ? "Formulario de contacto" : "Formulario de demo completo";
+
   // The notification itself. The full error goes to the server log only; the browser gets the
   // code alone, which is all the client components distinguish anyway.
   try {
@@ -91,10 +98,10 @@ export async function POST(req: NextRequest) {
     await resend.emails.send({
       from: "Dimonova Web <noreply@dimonova.com>",
       to: CONTACT.email,
-      subject: `Demo solicitada: ${venue.replace(/[\r\n]+/g, " ")} — ${name.replace(/[\r\n]+/g, " ")}`,
+      subject,
       attachments,
       html: `
-        <h2 style="font-family:sans-serif">Formulario de demo completo</h2>
+        <h2 style="font-family:sans-serif">${heading}</h2>
         <table style="font-family:sans-serif;font-size:14px;border-collapse:collapse">
           <tr><td style="padding:4px 12px 4px 0;color:#666">Nombre</td><td><strong>${esc(name)}</strong></td></tr>
           <tr><td style="padding:4px 12px 4px 0;color:#666">Email</td><td><a href="mailto:${esc(email)}">${esc(email)}</a></td></tr>

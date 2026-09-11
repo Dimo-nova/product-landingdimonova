@@ -334,7 +334,8 @@ does):
    ha pedido una demo". Fire-and-forget on the client: a failure is logged server-side and never
    shown to the visitor.
 2. `/api/contact` — the full demo modal or contact form. Subject "Demo solicitada: <venue> —
-   <name>", with the attachment if any. A Resend failure returns `email_error` (500) and the
+   <name>" from the modal, "Contacto: <venue> — <name>" when the contact page posted it (the
+   form sends `source=contact-page`), with the attachment if any. A Resend failure returns `email_error` (500) and the
    form shows its error state with the WhatsApp fallback, because there is no other copy.
 
 ## Testing

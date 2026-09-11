@@ -89,6 +89,7 @@ export default function MegaMenu() {
         {link("/clients", t("nav.clients"))}
         {trigger("resources", t("nav.resources"))}
         {link("/about", t("nav.about"))}
+        {link("/contact", t("nav.contact"))}
       </nav>
 
       <AnimatePresence>
@@ -130,7 +131,6 @@ export default function MegaMenu() {
                 <div className={styles.listRow}>
                   <Link href="/pricing#faq" onClick={() => close()}>{t("nav.mega.faq")}</Link>
                   <Link href="/#ai-compare" onClick={() => close()}>{t("nav.mega.aiCompare")}</Link>
-                  <Link href="/contact" onClick={() => close()}>{t("nav.mega.contact")}</Link>
                 </div>
               )}
             </div>
