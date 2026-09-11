@@ -6,7 +6,7 @@ import Modal from "@/components/ui/Modal";
 import Button from "@/components/ui/Button";
 import { Link } from "@/lib/routing";
 import { DEMO_OPEN, useWindowEvent, type DemoOpenPayload } from "@/lib/events";
-import { CONTACT } from "@/lib/config";
+import { waLink } from "@/lib/wa";
 import styles from "./DemoModal.module.css";
 import fieldStyles from "@/components/ui/Field.module.css";
 
@@ -17,6 +17,7 @@ type Errors = Partial<Record<"name" | "email" | "venue" | "consent", string>>;
 export default function DemoModal() {
   const t = useTranslations("modal.demo");
   const locale = useLocale();
+  const tw = useTranslations("wa.msg");
   const [open, setOpen] = useState(false);
   const [email, setEmail] = useState("");
   // The error state renders a different subtree than the form, so the form (and its uncontrolled
@@ -54,7 +55,7 @@ export default function DemoModal() {
   }, [status]);
 
   const close = useCallback(() => setOpen(false), []);
-  const waUrl = locale === "es" ? CONTACT.whatsappES : CONTACT.whatsappIE;
+  const waUrl = waLink(locale, `${tw("hello")} ${tw("ctx.formFailed")}`);
 
   function validate(fd: FormData): Errors {
     const e: Errors = {};

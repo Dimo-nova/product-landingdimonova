@@ -790,7 +790,28 @@
     "chip_restaurant": "Llevo un restaurante",
     "chip_pub": "Llevo un pub",
     "chip_cafe": "Llevo una cafetería",
-    "continue": "Continuar en WhatsApp"
+    "continue": "Continuar en WhatsApp",
+    "msg": {
+      "hello": "Hola.",
+      "chip": {
+        "restaurant": "Hola, llevo un restaurante.",
+        "pub": "Hola, llevo un pub.",
+        "cafe": "Hola, llevo una cafetería."
+      },
+      "ctx": {
+        "home": "Quiero ver cómo funciona la carta digital.",
+        "pricing": "Tengo una duda sobre los precios.",
+        "clients": "He visto las reseñas de vuestros clientes y quiero saber más.",
+        "about": "Me gustaría hablar con vosotros.",
+        "contact": "Quiero pedir una demo.",
+        "generic": "Quiero saber más de Dimonova.",
+        "serviceMenu": "Me interesa la carta digital.",
+        "serviceOrdering": "Me interesan las comandas por QR.",
+        "serviceReviews": "Me interesa el sistema de reseñas.",
+        "formSent": "Acabo de enviaros el formulario de demo.",
+        "formFailed": "He intentado enviaros el formulario y ha fallado."
+      }
+    }
   },
   "services": {
     "menu": {

@@ -790,7 +790,28 @@
     "chip_restaurant": "Ich betreibe ein Restaurant",
     "chip_pub": "Ich betreibe einen Pub",
     "chip_cafe": "Ich betreibe ein Café",
-    "continue": "Weiter zu WhatsApp"
+    "continue": "Weiter zu WhatsApp",
+    "msg": {
+      "hello": "Hi.",
+      "chip": {
+        "restaurant": "Hi, I run a restaurant.",
+        "pub": "Hi, I run a pub.",
+        "cafe": "Hi, I run a café."
+      },
+      "ctx": {
+        "home": "I'd like to see how the digital menu works.",
+        "pricing": "I have a question about pricing.",
+        "clients": "I've seen your clients' reviews and want to know more.",
+        "about": "I'd like to talk to you.",
+        "contact": "I'd like to book a demo.",
+        "generic": "I'd like to know more about Dimonova.",
+        "serviceMenu": "I'm interested in the digital menu.",
+        "serviceOrdering": "I'm interested in ordering at the table by QR.",
+        "serviceReviews": "I'm interested in the reviews system.",
+        "formSent": "I've just sent you the demo form.",
+        "formFailed": "I tried to send you the demo form and it failed."
+      }
+    }
   },
   "services": {
     "menu": {

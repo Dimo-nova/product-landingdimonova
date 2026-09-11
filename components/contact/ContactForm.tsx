@@ -3,7 +3,9 @@ import { useEffect, useRef, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import Button from "@/components/ui/Button";
 import { Link } from "@/lib/routing";
-import { CONTACT, MAX_UPLOAD_BYTES } from "@/lib/config";
+import { MAX_UPLOAD_BYTES } from "@/lib/config";
+import { openWa } from "@/lib/events";
+import { waLink } from "@/lib/wa";
 import fieldStyles from "@/components/ui/Field.module.css";
 import styles from "./ContactForm.module.css";
 
@@ -47,7 +49,9 @@ export default function ContactForm() {
     if (status === "success" || status === "error") stateRef.current?.focus();
   }, [status]);
 
-  const waUrl = locale === "es" ? CONTACT.whatsappES : CONTACT.whatsappIE;
+  // The error state links straight out (the panel would be one more thing to click through),
+  // with the message already saying the form failed.
+  const waUrl = waLink(locale, `${t("wa.msg.hello")} ${t("wa.msg.ctx.formFailed")}`);
 
   function setField<K extends keyof typeof EMPTY_FIELDS>(key: K, value: string) {
     setFields((prev) => ({ ...prev, [key]: value }));
@@ -124,7 +128,7 @@ export default function ContactForm() {
             <Button
               type="button"
               variant="outline"
-              onClick={() => window.dispatchEvent(new CustomEvent("dimonova:open-wa"))}
+              onClick={() => openWa({ context: "formSent" })}
             >
               {WA_ICON}
               <span>{t("contact.success.wa")}</span>

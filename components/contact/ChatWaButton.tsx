@@ -1,5 +1,6 @@
 "use client";
 import Button from "@/components/ui/Button";
+import { openWa } from "@/lib/events";
 import styles from "./ChatWaButton.module.css";
 
 const WA_ICON = (
@@ -20,7 +21,7 @@ export default function ChatWaButton({ children }: { children: React.ReactNode }
       type="button"
       variant="outline"
       className={styles.btn}
-      onClick={() => window.dispatchEvent(new CustomEvent("dimonova:open-wa"))}
+      onClick={() => openWa()}
     >
       {WA_ICON}
       <span>{children}</span>

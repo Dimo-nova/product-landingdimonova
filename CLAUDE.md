@@ -294,7 +294,9 @@ Write new keys in `messages/en.json` and `messages/es.json`, then run `npm run s
 
 ### WhatsApp widget state
 
-The WA panel state is managed by `components/WhatsAppWidget.tsx`, mounted once in `app/[locale]/layout.tsx`. It toggles on the FAB click, on the legacy `dimonova:open-wa` window event, and on the "Continue" button. The "Continue" button links to `https://wa.me/<number>`.
+The WA panel state is managed by `components/WhatsAppWidget.tsx`, mounted once in `app/[locale]/layout.tsx`. It toggles on the FAB click and opens on the `dimonova:open-wa` window event (`openWa({ context? })` in `lib/events.ts`). Spanish visitors reach Pablo's number, everyone else Sergio's (`CONTACT.whatsapp*`).
+
+**Every link out carries a pre-filled `?text=`** — the chip's opener ("Hola, llevo un pub.", or "Hola." from the "Continue" button) plus one sentence for the flow, resolved in `lib/wa.ts` in this order: the `context` the opener passed (`formSent` from the contact form's success state), the last service walkthrough opened on the current page (`service:open`, forgotten on route change), then the route (`/` home, `/pricing`, `/clients`, `/about`, `/contact`, anything else `generic`). The error states of `DemoModal` and `ContactForm` link straight out with `formFailed`. Copy is under `wa.msg.*`; unit tests in `lib/wa.test.ts`, the flows in `e2e/footer-wa.spec.ts`, design note in `docs/superpowers/specs/2026-09-11-whatsapp-prefill-design.md`.
 
 ## Archive
 
