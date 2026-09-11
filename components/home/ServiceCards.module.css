@@ -19,17 +19,15 @@
   gap: 20px;
 }
 
-@media (max-width: 1100px) {
-  .grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
 .cardWrap {
   min-width: 0;
 }
 
-@media (max-width: 720px) {
+/* Below the three-up width the row becomes a horizontal scroller, on tablets as well as phones:
+   a two-column grid used to take over at 1100px and left the third card wrapped on its own,
+   which the owner asked to lose. Card width is the phone's 76vw, capped so a tablet shows
+   two and a bit rather than two huge ones. */
+@media (max-width: 1100px) {
   .grid {
     display: flex;
     overflow-x: auto;
@@ -39,8 +37,8 @@
   }
 
   .cardWrap {
-    flex: 0 0 76vw;
-    min-width: 76vw;
+    flex: 0 0 clamp(260px, 76vw, 340px);
+    min-width: clamp(260px, 76vw, 340px);
     scroll-snap-align: start;
   }
 }

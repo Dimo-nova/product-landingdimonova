@@ -391,3 +391,15 @@ test("on a phone the AI provider links keep their names, show only their marks, 
   const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
   expect(overflow).toBeLessThanOrEqual(1);
 });
+
+test("on a tablet the service cards scroll sideways in one row rather than wrapping", async ({ page }) => {
+  await page.setViewportSize({ width: 820, height: 1180 });
+  await page.goto("/");
+  const cards = page.locator("#services [data-service-card]");
+  await expect(cards).toHaveCount(3);
+  const tops = new Set(await cards.evaluateAll((els) => els.map((el) => Math.round(el.getBoundingClientRect().top))));
+  expect(tops.size).toBe(1);
+  // The row itself scrolls; the page does not grow sideways.
+  const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+  expect(overflow).toBeLessThanOrEqual(1);
+});
