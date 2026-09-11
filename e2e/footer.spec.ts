@@ -65,7 +65,7 @@ test("clicking the footer email copies it and says so, without leaving the page"
   const email = footer.getByRole("link", { name: "pablo@dimonova.com" });
   await expect(email).toHaveAttribute("href", "mailto:pablo@dimonova.com");
   await email.click();
-  await expect(footer.getByRole("status")).toHaveText("Copied to clipboard");
+  await expect(footer.getByRole("status")).toHaveText("Copied to clipboard!");
   await expect(page).toHaveURL(/\/$/);
   expect(await page.evaluate(() => navigator.clipboard.readText())).toBe("pablo@dimonova.com");
 });
