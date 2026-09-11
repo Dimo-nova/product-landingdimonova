@@ -1,7 +1,6 @@
 import { getTranslations } from "next-intl/server";
 import Container from "@/components/ui/Container";
 import Reveal from "@/components/ui/Reveal";
-import Button from "@/components/ui/Button";
 import Eyebrow from "@/components/page/Eyebrow";
 import AiDemo from "./AiDemo";
 import styles from "./AiPanel.module.css";
@@ -32,10 +31,6 @@ export default async function AiPanel() {
                 </li>
               ))}
             </ol>
-
-            <Button href="/features/menu" variant="outline" onDark>
-              {t("home.ai.cta")}
-            </Button>
           </Reveal>
 
           <Reveal delay={0.1} className={styles.demoCol}>
