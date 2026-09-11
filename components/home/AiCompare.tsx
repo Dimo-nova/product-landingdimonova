@@ -6,6 +6,7 @@ import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
 import Reveal from "@/components/ui/Reveal";
 import { AI_PROVIDER_IDS, AI_PROVIDER_LABELS, AI_PROVIDER_LOGOS, buildProviderUrl } from "@/lib/aiPrompt";
+import { copyText } from "@/lib/clipboard";
 import styles from "./AiCompare.module.css";
 
 /**
@@ -27,40 +28,6 @@ function ExternalIcon() {
       <path d="M13 3L7 9" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
-}
-
-/**
- * Copies `text` to the clipboard, trying three tiers so a visitor is never left with a
- * silent no-op: the async Clipboard API, then a legacy `execCommand("copy")` on a
- * temporary textarea, and finally "nothing worked" so the caller can fall back to a
- * visible, read-only textarea the visitor can select and copy by hand.
- */
-async function copyText(text: string): Promise<boolean> {
-  try {
-    if (typeof navigator !== "undefined" && navigator.clipboard?.writeText) {
-      await navigator.clipboard.writeText(text);
-      return true;
-    }
-  } catch {
-    // fall through to the legacy path below
-  }
-
-  try {
-    const ta = document.createElement("textarea");
-    ta.value = text;
-    ta.setAttribute("readonly", "");
-    ta.style.position = "fixed";
-    ta.style.top = "-1000px";
-    ta.style.opacity = "0";
-    document.body.appendChild(ta);
-    ta.focus();
-    ta.select();
-    const ok = document.execCommand("copy");
-    document.body.removeChild(ta);
-    return ok;
-  } catch {
-    return false;
-  }
 }
 
 /**

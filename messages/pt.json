@@ -780,7 +780,8 @@
     "whatsappEs": "WhatsApp Espanha",
     "whatsappIe": "WhatsApp Irlanda",
     "madeIn": "Feito em Dublin e Madrid",
-    "copyright": "© {year} Dimonova. Todos os direitos reservados."
+    "copyright": "© {year} Dimonova. Todos os direitos reservados.",
+    "emailCopied": "Copied to clipboard"
   },
   "wa": {
     "name": "Equipa Dimonova",

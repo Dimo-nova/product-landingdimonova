@@ -41,8 +41,13 @@ test("chips and Continue pre-fill the page's context", async ({ page }) => {
 
 test("a service walkthrough opened on the page wins over the route", async ({ page }) => {
   await page.goto("/");
-  await page.locator("#services").getByRole("button", { name: "See how it gets set up" }).nth(1).click();
-  await expect(page.getByRole("dialog")).toBeVisible();
+  // The card's button only works once React has hydrated; a click that lands before that is
+  // swallowed, so retry until the walkthrough is actually open.
+  const cta = page.locator("#services").getByRole("button", { name: "See how it gets set up" }).nth(1);
+  await expect(async () => {
+    await cta.click();
+    await expect(page.getByRole("dialog")).toBeVisible({ timeout: 1000 });
+  }).toPass();
   await page.keyboard.press("Escape");
   await expect(page.getByRole("dialog")).toBeHidden();
 

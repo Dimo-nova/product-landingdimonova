@@ -57,3 +57,15 @@ test("footer language switcher options are readable when opened", async ({ page 
     expect(hasAlpha, `${lang}: color should be fully opaque`).toBe(false);
   }
 });
+
+test("clicking the footer email copies it and says so, without leaving the page", async ({ page, context }) => {
+  await context.grantPermissions(["clipboard-read", "clipboard-write"]);
+  await page.goto("/");
+  const footer = page.locator("footer");
+  const email = footer.getByRole("link", { name: "pablo@dimonova.com" });
+  await expect(email).toHaveAttribute("href", "mailto:pablo@dimonova.com");
+  await email.click();
+  await expect(footer.getByRole("status")).toHaveText("Copied to clipboard");
+  await expect(page).toHaveURL(/\/$/);
+  expect(await page.evaluate(() => navigator.clipboard.readText())).toBe("pablo@dimonova.com");
+});

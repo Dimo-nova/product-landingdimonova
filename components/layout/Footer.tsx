@@ -6,6 +6,7 @@ import ServiceButton from "./ServiceButton";
 import Container from "@/components/ui/Container";
 import Reveal from "@/components/ui/Reveal";
 import LangSwitcher from "./LangSwitcher";
+import CopyEmail from "./CopyEmail";
 import styles from "./Footer.module.css";
 
 export default async function Footer() {
@@ -63,7 +64,7 @@ export default async function Footer() {
             <div className={styles.col}>
               <h2>{t("footer.colContact")}</h2>
               <ul>
-                <li><a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a></li>
+                <li><CopyEmail email={CONTACT.email} /></li>
                 <li><a href={CONTACT.whatsappES} target="_blank" rel="noopener noreferrer">{t("footer.whatsappEs")}</a></li>
                 <li><a href={CONTACT.whatsappIE} target="_blank" rel="noopener noreferrer">{t("footer.whatsappIe")}</a></li>
               </ul>
