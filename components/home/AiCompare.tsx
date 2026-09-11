@@ -128,7 +128,9 @@ export default function AiCompare() {
                 <span className={styles.plate}>
                   <img src={AI_PROVIDER_LOGOS[id]} alt="" className={styles.logo} />
                 </span>
-                {AI_PROVIDER_LABELS[id]}
+                {/* On a phone the four links collapse to their marks in one row; the name stays
+                    in the DOM, visually hidden, so the link keeps its accessible name. */}
+                <span className={styles.label}>{AI_PROVIDER_LABELS[id]}</span>
                 <ExternalIcon />
               </a>
             ))}

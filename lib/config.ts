@@ -68,3 +68,13 @@ export const MAX_UPLOAD_BYTES = 4 * 1024 * 1024;
  * else needs touching.
  */
 export const CASES_PUBLISHED: boolean = false;
+
+/**
+ * Whether `/features` and the three `/features/<slug>` service pages are published. The owner
+ * moved everything the service pages said onto the home page: each service card there opens a
+ * walkthrough modal (components/home/ServiceModal.tsx) instead of linking to a page. While this
+ * is false the routes redirect home, the sitemap omits them, and the header, mobile nav and
+ * footer open the modal in place of the link. The pages themselves stay in the repo; flip this
+ * to `true` to publish them again.
+ */
+export const FEATURES_PUBLISHED: boolean = false;

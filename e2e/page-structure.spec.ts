@@ -1,6 +1,7 @@
 import { test, expect } from "@playwright/test";
 import en from "../messages/en.json";
 import es from "../messages/es.json";
+import { FEATURES_PUBLISHED } from "../lib/config";
 
 /**
  * Locks Phase 4's promise for the five rebuilt inner pages: each keeps its sections, their
@@ -38,7 +39,7 @@ type PageSpec = {
   h2Keys: string[];
 };
 
-const PAGES: PageSpec[] = [
+const FEATURE_PAGES: PageSpec[] = [
   {
     path: "/features",
     titleKey: "features.title",
@@ -84,6 +85,11 @@ const PAGES: PageSpec[] = [
       "features.pages.reviews.cta.title",
     ],
   },
+];
+
+const PAGES: PageSpec[] = [
+  // Only while the service pages are published (FEATURES_PUBLISHED in lib/config.ts).
+  ...(FEATURES_PUBLISHED ? FEATURE_PAGES : []),
   {
     path: "/pricing",
     titleKey: "pricing.title",

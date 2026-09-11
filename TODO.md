@@ -64,11 +64,26 @@ Status legend: `[ ]` not started · `[~]` in progress · `[x]` done
       `home.balamo.stats` (`messages/en.json` and `messages/es.json`, then
       `npm run sync:messages`) with the real dishes-managed / languages / average
       change-time figures for the Bálamo case.
-- [ ] **Service card screenshots.** `components/home/ServiceCards.tsx` currently renders the
-      striped `repeating-linear-gradient` placeholder for all eight cards. Replace it with
-      real screenshots/illustrations per service (the eight slugs in `lib/services.ts`:
-      `menu, ai, ordering, training, multi, reviews, daily, translate`), sized for the
-      `DeviceFrame`/card media area.
+- [ ] **Service pages unpublished** (`FEATURES_PUBLISHED` in `lib/config.ts`). Their content
+      now lives in the home page's service cards and the walkthrough modal. Decide whether the
+      pages come back (flip the flag) or get deleted; the placeholder list below only matters
+      if they come back.
+- [ ] **Image placeholders on the service pages.** `components/ui/Placeholder.tsx` marks every
+      spot that wants a real capture or photograph. Replace each with an `<Image>` and delete
+      the matching `placeholder` string in `messages/*.json`:
+      - `/features/menu` → "Also included" cards: dashboard capture of the venue switcher, the
+        dashboard on a phone with today's menu, a photo of a training session at a venue.
+      - `/features/ordering` → step 3 "You print it": a photo of the ticket coming out of the
+        kitchen printer. "Hotels and beach clubs" cards: a QR on a sunbed, a room or terrace
+        with the QR, the bar at peak hour.
+      - `/features/reviews` → "What you learn" cards: dashboard captures of ratings by waiter,
+        by area, and the reasons in the diner's words.
+      Digital-menu captures must be Bálamo, Le Club or Skybar (owner's instruction). Skybar has
+      not been captured yet.
+- [x] **Service card illustrations.** `components/home/ServiceCards.tsx` now renders a drawn
+      scene per service from `components/home/ServiceArt.tsx` (the diner's phone plus what
+      the service produces on paper), instead of the striped placeholder. Real product
+      screenshots can still replace them later if the owner wants photography here.
 - [x] **Hero variant chosen.** The owner picked the photograph. `HeroBgMock`, its stylesheet
       and the `HeroBackground` `?hero=c` switch are deleted; `Hero.tsx` renders `HeroBgPhoto`
       directly.
@@ -78,12 +93,11 @@ Status legend: `[ ]` not started · `[~]` in progress · `[x]` done
       no licence for either in `public/assets/hero/SOURCES.md`. The phone one was named
       `sarten_canva.png`, so it probably came out of Canva, whose licence depends on the plan and
       on whether the photo is a Canva stock asset: check that one specifically. Either document
-      the licences there or replace the images. The documented CC0 `hero-stock.jpg` is still in
-      the repo as a fallback.
-- [ ] **Hero photograph.** The current variant-B background is a real but generic CC0 pub
-      interior (`public/assets/hero/hero-stock.jpg`, sourced in
-      `public/assets/hero/SOURCES.md`) — not a Dimonova venue. Get a better photograph (ideally
-      a real client's dining room/kitchen pass) if this one isn't right for launch.
+      the licences there or replace the images. (The CC0 `hero-stock.jpg` fallback was deleted
+      with the other unused media on 2026-09-11; its record stays in `SOURCES.md`.)
+- [ ] **Hero photograph.** The two current backgrounds are stock/Canva images, not a Dimonova
+      venue. Get a better photograph (ideally a real client's dining room/kitchen pass) if these
+      aren't right for launch.
 
 ## ✅ Completed — Next.js port
 
@@ -117,7 +131,7 @@ Status legend: `[ ]` not started · `[~]` in progress · `[x]` done
 
 ## 🔌 Before launch — functional
 
-- [x] **Wire up the contact form.** It posts to `/api/contact`, which creates a Notion lead and sends an email notification via Resend.
+- [x] **Wire up the contact form.** It posts to `/api/contact`, which emails the owner via Resend (Notion was dropped on 2026-09-11; see "Lead notifications" in CLAUDE.md). The hero's email field also fires `/api/demo-interest` for an early heads-up.
 - [x] **Make the WhatsApp widget real.** Point "Continue to WhatsApp" at `https://wa.me/<number>` with the real number.
 - [x] Add real **legal pages** — Privacy, Terms and Cookies are written in full (`content/legal/`) and linked from the footer. `COMPANY` identity fields in `lib/config.ts` are still `«PENDIENTE»` placeholders — fill them with the real registered company data before deploy (see `.superpowers/sdd/legal-report.md`).
 - [ ] Add an **`og:image`** for social sharing previews.

@@ -1,15 +1,17 @@
 import type { MetadataRoute } from "next";
 import { routing } from "@/lib/routing";
-import { CASES_PUBLISHED } from "@/lib/config";
+import { CASES_PUBLISHED, FEATURES_PUBLISHED } from "@/lib/config";
 import { SERVICES } from "@/lib/services";
 
 const BASE = "https://dimonova.com";
 const PAGES = [
   { path: "", priority: 1.0 },
-  { path: "/features", priority: 0.8 },
-  // One entry per service page. Derived from the registry rather than listed by hand, so a
-  // fourth service appears here the moment lib/services.ts grows one.
-  ...SERVICES.map(({ slug }) => ({ path: `/features/${slug}`, priority: 0.8 })),
+  // The features index and one entry per service page, derived from the registry so a fourth
+  // service appears here the moment lib/services.ts grows one — but only while those pages are
+  // published (FEATURES_PUBLISHED in lib/config.ts); unpublished they redirect home.
+  ...(FEATURES_PUBLISHED
+    ? [{ path: "/features", priority: 0.8 }, ...SERVICES.map(({ slug }) => ({ path: `/features/${slug}`, priority: 0.8 }))]
+    : []),
   { path: "/pricing", priority: 0.8 },
   // Gated on the same flag as the page itself (see lib/config.ts and
   // app/[locale]/cases/page.tsx): while CASES_PUBLISHED is false /cases redirects home, and

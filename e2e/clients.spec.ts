@@ -3,6 +3,7 @@ import reviews from "../data/reviews.json";
 import en from "../messages/en.json";
 import es from "../messages/es.json";
 import { CASES_PUBLISHED } from "../lib/config";
+import { buildReviewRows } from "../components/home/reviews-types";
 
 /**
  * /clients — the page that collects every client review, video and written.
@@ -87,12 +88,17 @@ test("/clients pairs quotes only where data/reviews.json declares the link", asy
   }
 });
 
-test("/clients links out to the Google profile", async ({ page }) => {
+test("/clients links out to the Google profile once, at the end of the written wall", async ({ page }) => {
   await page.goto("/clients");
 
-  await expect(
-    page.getByRole("link", { name: en.clients.badge.replace("{rating}", String(reviews.rating)) }),
-  ).toHaveAttribute("href", reviews.profileUrl);
+  // The hero used to carry a "5/5 on Google" pill as well; the owner had it removed, so the
+  // written wall's closing link is the page's only way out to the profile — and the wall only
+  // renders when some Google review is not already paired with a video.
+  const { unpaired } = buildReviewRows(reviews.videos, reviews.google);
+  const out = page.getByRole("link", { name: en.clients.written.link });
+  await expect(out).toHaveCount(unpaired.length > 0 ? 1 : 0);
+  if (unpaired.length > 0) await expect(out).toHaveAttribute("href", reviews.profileUrl);
+  await expect(page.locator("main")).not.toContainText(`${reviews.rating}/5`);
 });
 
 test("/clients shows the case-studies band only while that page is published", async ({ page }) => {

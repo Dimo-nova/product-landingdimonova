@@ -34,8 +34,8 @@ export default async function Hero() {
           <h1 className={styles.title}>
             {t.rich("home.hero.title", {
               mark: (chunks) => <Annotated>{chunks}</Annotated>,
-              // Only the Spanish headline uses <line>: "Nosotros nos ocupamos." and "Tú creces."
-              // must never share a line, and a hard break in the copy is the only way to say
+              // Every locale wraps its second sentence in <line> ("You grow.", "Tú creces."): the
+              // owner wants it on its own line everywhere, and a hard break in the copy is the only way to say
               // that per language. Locales whose string omits the tag are unaffected, so the
               // English headline keeps wrapping wherever the width puts it.
               line: (chunks) => <span className={styles.titleLine}>{chunks}</span>,

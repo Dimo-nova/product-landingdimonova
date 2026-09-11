@@ -7,13 +7,14 @@ import FeatureBlock from "@/components/page/FeatureBlock";
 import CardGrid from "@/components/page/CardGrid";
 import Card from "@/components/page/Card";
 import Faq from "@/components/page/Faq";
+import Placeholder from "@/components/ui/Placeholder";
 import AiDemo from "@/components/home/AiDemo";
 import SectionHead from "./SectionHead";
 import section from "./Section.module.css";
 import styles from "./MenuSections.module.css";
 
 type Lang = { label: string; dish: string };
-type CardCopy = { title: string; body: string };
+type CardCopy = { title: string; body: string; placeholder?: string };
 type FaqItem = { q: string; a: string };
 
 // Roman numerals, matching the shape the features page's onboarding cards already used.
@@ -45,7 +46,7 @@ export default async function MenuSections() {
             title={t("s1.title")}
             body={t("s1.body")}
             bullets={bullets}
-            image="/assets/cases/balamo-phone.png"
+            image="/assets/cases/balamo-phone-carta.webp"
             imageAlt={tAlt("balamoPhone")}
             side="right"
           />
@@ -94,7 +95,8 @@ export default async function MenuSections() {
         </Marquee>
       </section>
 
-      {/* ---- Multi-venue, daily menu, training and support ---- */}
+      {/* ---- Multi-venue, daily menu, training and support. Each card reserves the space for
+              the capture or photograph that will show it (see TODO.md). ---- */}
       <Container>
         <section className={section.section}>
           <SectionHead eyebrow={t("s4.eyebrow")} title={t("s4.title")} />
@@ -102,6 +104,7 @@ export default async function MenuSections() {
             {cards.map((card, i) => (
               <Reveal key={card.title} delay={i * 0.06} className={styles.cell}>
                 <Card
+                  media={card.placeholder ? <Placeholder label={card.placeholder} /> : undefined}
                   icon={
                     <span className={styles.numeral} aria-hidden="true">
                       {NUMERALS[i]}

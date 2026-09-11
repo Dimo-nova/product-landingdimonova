@@ -1,55 +1,161 @@
 /*
- * One vocabulary for all three card illustrations (see ServiceArt.tsx). Everything is built from
- * `currentColor`, inherited from `.media` in ServiceCards.module.css, so the whole set recolours
- * with the card rather than carrying its own hard-coded palette.
+ * One vocabulary for all three card illustrations (see ServiceArt.tsx). The white line-work is
+ * `currentColor`, inherited from `.media` in ServiceCards.module.css; every other fill, every
+ * gradient stop and every shadow is a token, so the drawings carry no palette of their own.
  */
 .art {
   width: 100%;
   height: 100%;
   display: block;
-  padding: 12px;
 }
 
-/* The drawing's foreground: dish rows, the QR's eyes, a given star. */
-.solid {
+/* ---- The ground ---- */
+
+/* A soft disc behind the scene, so the devices sit in a pool of light rather than on flat coral. */
+.halo {
   fill: currentColor;
-  opacity: 0.92;
+  opacity: 0.07;
 }
 
-/* The panel each drawing sits on. */
-.surface {
-  fill: currentColor;
-  opacity: 0.16;
+/* ---- The screen: the diner's phone and the kitchen printer ---- */
+
+.device {
+  fill: var(--ink-raised);
+  stroke: var(--on-dark-border);
+  stroke-width: 1;
 }
 
-/* A second panel behind the first, or a chip that is not the point of the drawing. */
-.ghost {
-  fill: currentColor;
-  opacity: 0.09;
+.screen {
+  fill: var(--ink);
 }
 
-/* Secondary copy inside a panel. */
-.hint {
-  fill: currentColor;
-  opacity: 0.45;
+.island {
+  fill: var(--ink-raised);
 }
 
-/* The one element in each drawing that carries the idea: the price, the printed ticket, the tag
-   the review comes back with. Solid --paper so it reads as the highlight against the coral. */
-.accent {
+/* The printer's paper tray, one step lighter than its body. */
+.deviceTray {
+  fill: var(--on-dark-surface);
+}
+
+.lineFaint  { fill: var(--on-dark-border); }
+
+/* ---- The paper: what the service produces ---- */
+
+.paper {
   fill: var(--paper);
 }
 
-/* Lines printed on `.accent`, so they need the card's own ground rather than currentColor. */
-.onAccent {
-  fill: var(--brand-deep);
+/* Copy printed on paper, in two weights. */
+.paperLine       { fill: var(--mist); }
+.paperLineStrong { fill: var(--decor-ink); }
+
+.paperDash {
+  stroke: var(--mist);
+  stroke-width: 1.5;
+  stroke-dasharray: 3 3;
 }
 
-.stroke {
+/* The QR's modules and the quantity boxes on the ticket. */
+.qr {
+  fill: var(--ink);
+}
+
+/* ---- Brand accents ---- */
+
+.brand     { fill: var(--brand); }
+.brandDeep { fill: var(--brand-deep); }
+.brandSoft { fill: var(--brand-soft); }
+
+/* A printed order, a published review. */
+.ok {
+  fill: var(--ok);
+}
+
+.checkMark {
+  fill: none;
+  stroke: var(--paper);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ---- Strokes ---- */
+
+/* Small glyphs drawn on paper: the globe on the language chip. */
+.glyph {
+  fill: none;
+  stroke: var(--ink-2);
+  stroke-width: 1.4;
+}
+
+.glyphThin {
+  fill: none;
+  stroke: var(--ink-2);
+  stroke-width: 0.9;
+  stroke-linecap: round;
+}
+
+/* The path an order or a review travels, and its arrowhead. */
+.dash {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-dasharray: 5 6;
+  opacity: 0.8;
+}
+
+.strokeArrow {
   fill: none;
   stroke: currentColor;
   stroke-width: 2;
   stroke-linecap: round;
   stroke-linejoin: round;
-  opacity: 0.75;
+  opacity: 0.8;
+}
+
+/* ---- Gradient and shadows (stops and flood colours come from tokens, not attributes) ---- */
+
+.stopGlareStart { stop-color: var(--paper); stop-opacity: 0.12; }
+.stopGlareEnd   { stop-color: var(--paper); stop-opacity: 0; }
+
+.shadow {
+  flood-color: var(--ink);
+  flood-opacity: 0.32;
+}
+
+.shadowSoft {
+  flood-color: var(--ink);
+  flood-opacity: 0.22;
+}
+
+/* ---- Hover ----
+ * The paper layers lift a little when the card is hovered or focused, on top of the media's own
+ * scale-up. `.float` sits inside a group that carries the attribute transform, because a CSS
+ * transform would replace that attribute rather than compose with it. */
+.float {
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: transform 0.45s var(--ease-out);
+}
+
+.floatLate {
+  transition-delay: 0.05s;
+}
+
+:global(a:hover) .float,
+:global(a:focus-visible) .float {
+  transform: translateY(-7px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .float {
+    transition: none;
+  }
+
+  :global(a:hover) .float,
+  :global(a:focus-visible) .float {
+    transform: none;
+  }
 }

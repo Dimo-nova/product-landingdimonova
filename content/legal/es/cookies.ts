@@ -4,9 +4,9 @@ import type { LegalDoc } from "../types";
 export const cookies: LegalDoc = {
   slug: "cookies",
   title: "Política de cookies",
-  description: "Las dos cookies que usa dimonova.com, para qué sirven y por qué no necesitas un banner de consentimiento para ellas.",
+  description: "La única cookie que usa dimonova.com, para qué sirve y por qué no necesitas un banner de consentimiento para ella.",
   intro:
-    "Esta página explica qué cookies usa dimonova.com. Son solo dos, ambas propias y estrictamente necesarias para el funcionamiento del sitio.",
+    "Esta página explica qué cookies usa dimonova.com. Es solo una, propia y estrictamente necesaria para el funcionamiento del sitio.",
   sections: [
     {
       heading: "1. Qué es una cookie",
@@ -30,17 +30,11 @@ export const cookies: LegalDoc = {
               "Guarda el idioma que eliges con el selector de idiomas, para que el resto de páginas se muestren en ese idioma. Solo se crea si cambias el idioma a mano: si te limitas a navegar, no se instala",
               "De sesión: se borra al cerrar el navegador",
             ],
-            [
-              "dim-lang-dismissed",
-              "Propia, técnica/preferencia",
-              "Recuerda que cerraste el aviso que te ofrecía ver el sitio en el idioma de tu navegador, para no volver a mostrarlo",
-              "90 días",
-            ],
           ],
         },
         {
           kind: "p",
-          text: "Estas son las únicas dos cookies que usamos. Ambas son propias (de dimonova.com) y ninguna se utiliza para identificarte ni para seguirte entre distintos sitios web.",
+          text: "Esta es la única cookie que usamos. Es propia (de dimonova.com) y no se utiliza para identificarte ni para seguirte entre distintos sitios web.",
         },
       ],
     },
@@ -58,7 +52,7 @@ export const cookies: LegalDoc = {
       blocks: [
         {
           kind: "p",
-          text: "Las dos cookies que usamos son estrictamente necesarias para prestar una función que has solicitado (ver el sitio en tu idioma), por lo que están exentas del deber de consentimiento previo que establecen el artículo 22.2 de la LSSI-CE y la normativa ePrivacy equivalente.",
+          text: "La cookie que usamos es estrictamente necesaria para prestar una función que has solicitado (ver el sitio en tu idioma), por lo que está exenta del deber de consentimiento previo que establecen el artículo 22.2 de la LSSI-CE y la normativa ePrivacy equivalente.",
         },
         {
           kind: "p",
@@ -71,7 +65,7 @@ export const cookies: LegalDoc = {
       blocks: [
         {
           kind: "p",
-          text: "Puedes eliminar o bloquear las cookies desde la configuración de tu navegador. Bloquear estas dos únicamente hará que el sitio olvide el idioma que elegiste.",
+          text: "Puedes eliminar o bloquear las cookies desde la configuración de tu navegador. Bloquearla únicamente hará que el sitio olvide el idioma que elegiste.",
         },
         {
           kind: "p",

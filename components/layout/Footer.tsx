@@ -1,7 +1,8 @@
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/lib/routing";
-import { CONTACT, ADMIN_URL, CASES_PUBLISHED, COMPANY } from "@/lib/config";
+import { CONTACT, ADMIN_URL, CASES_PUBLISHED, COMPANY, FEATURES_PUBLISHED } from "@/lib/config";
 import { SERVICES } from "@/lib/services";
+import ServiceButton from "./ServiceButton";
 import Container from "@/components/ui/Container";
 import Reveal from "@/components/ui/Reveal";
 import LangSwitcher from "./LangSwitcher";
@@ -20,7 +21,14 @@ export default async function Footer() {
               <h2>{t("footer.colProduct")}</h2>
               <ul>
                 {SERVICES.map((s) => (
-                  <li key={s.slug}><Link href={s.href}>{t(`services.${s.slug}.title`)}</Link></li>
+                  <li key={s.slug}>
+                    {FEATURES_PUBLISHED ? (
+                      <Link href={s.href}>{t(`services.${s.slug}.title`)}</Link>
+                    ) : (
+                      /* Unpublished service pages: opens the service walkthrough instead. */
+                      <ServiceButton slug={s.slug} className={styles.serviceBtn}>{t(`services.${s.slug}.title`)}</ServiceButton>
+                    )}
+                  </li>
                 ))}
               </ul>
             </div>

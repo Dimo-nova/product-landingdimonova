@@ -303,15 +303,18 @@
           "cards": [
             {
               "title": "Un panel, todos tus locales",
-              "body": "Dos locales o doce, viven en el mismo panel. Los permisos se dan por local, así un encargado ve el suyo y nada más."
+              "body": "Dos locales o doce, viven en el mismo panel. Los permisos se dan por local, así un encargado ve el suyo y nada más.",
+              "placeholder": "Captura del panel: selector de locales"
             },
             {
               "title": "El menú del día, desde el móvil",
-              "body": "Cambia el menú de hoy cada mañana desde el móvil que llevas encima. Lo escribes, lo apruebas y está en la carta antes de abrir."
+              "body": "Cambia el menú de hoy cada mañana desde el móvil que llevas encima. Lo escribes, lo apruebas y está en la carta antes de abrir.",
+              "placeholder": "Captura del panel en el móvil: menú del día"
             },
             {
               "title": "Formación y soporte sin límite",
-              "body": "Una sesión de 30 minutos con quien vaya a gestionar el panel, vídeos tutoriales de todo el panel y soporte ilimitado. No hay un tope de preguntas."
+              "body": "Una sesión de 30 minutos con quien vaya a gestionar el panel, vídeos tutoriales de todo el panel y soporte ilimitado. No hay un tope de preguntas.",
+              "placeholder": "Foto: formación al equipo en el local"
             }
           ]
         },
@@ -377,7 +380,8 @@
             },
             {
               "title": "Lo imprimes",
-              "body": "El ticket entra en tu TPV y en tus impresoras, en el formato que tu cocina ya lee."
+              "body": "El ticket entra en tu TPV y en tus impresoras, en el formato que tu cocina ya lee.",
+              "placeholder": "Foto: el ticket saliendo de la impresora de cocina"
             }
           ]
         },
@@ -404,15 +408,18 @@
           "cards": [
             {
               "title": "Hamacas y piscina",
-              "body": "Un QR por hamaca. Piden sin moverse y un camarero se lo acerca."
+              "body": "Un QR por hamaca. Piden sin moverse y un camarero se lo acerca.",
+              "placeholder": "Foto: un QR en una hamaca"
             },
             {
               "title": "Habitaciones y terrazas",
-              "body": "La misma carta y la misma cocina, desde cualquier punto del establecimiento."
+              "body": "La misma carta y la misma cocina, desde cualquier punto del establecimiento.",
+              "placeholder": "Foto: habitación o terraza con el QR de la carta"
             },
             {
               "title": "Horas punta",
-              "body": "La barra sigue tomando pedidos durante la hora en la que la cola estaría echando gente."
+              "body": "La barra sigue tomando pedidos durante la hora en la que la cola estaría echando gente.",
+              "placeholder": "Foto: la barra en hora punta"
             }
           ]
         },
@@ -478,15 +485,18 @@
           "cards": [
             {
               "title": "Por camarero",
-              "body": "Cada valoración baja lleva el camarero con el que pasó. Un patrón sale en una semana, no en un trimestre."
+              "body": "Cada valoración baja lleva el camarero con el que pasó. Un patrón sale en una semana, no en un trimestre.",
+              "placeholder": "Captura del panel: valoraciones por camarero"
             },
             {
               "title": "Por zona",
-              "body": "Terraza, barra, comedor, primera planta. Te enteras de que el problema tiene un sitio antes de enterarte de que tiene una reseña."
+              "body": "Terraza, barra, comedor, primera planta. Te enteras de que el problema tiene un sitio antes de enterarte de que tiene una reseña.",
+              "placeholder": "Captura del panel: valoraciones por zona"
             },
             {
               "title": "Por motivo",
-              "body": "La espera, la temperatura, el precio, el trato, la limpieza. El motivo llega con la valoración, con las palabras del cliente."
+              "body": "La espera, la temperatura, el precio, el trato, la limpieza. El motivo llega con la valoración, con las palabras del cliente.",
+              "placeholder": "Captura del panel: los motivos, con las palabras del cliente"
             }
           ]
         },
@@ -615,7 +625,6 @@
     "eyebrow": "Clientes",
     "title": "Cada palabra de esta página <mark>es suya</mark>.",
     "intro": "Los locales con los que trabajamos, en vídeo y en Google. Nada de esto lo hemos escrito nosotros.",
-    "badge": "{rating}/5 en Google",
     "playVideo": "Reproducir la reseña de {name}",
     "posterAlt": "Un fotograma de la reseña en vídeo de {name}.",
     "stars": "{rating} de 5",
@@ -641,25 +650,22 @@
   "about": {
     "eyebrow": "Nosotros",
     "title": "Un equipo pequeño. Un trabajo concreto.",
-    "intro": "Dimonova existe porque la carta, la página más leída de la web de cualquier restaurante, se trataba como algo secundario. Nosotros la creamos, la gestionamos y la cuidamos por ti.",
+    "intro": "Montamos, conectamos y mantenemos la carta digital de tu local. Así empezó, contado por el primer cliente.",
     "why": {
       "eyebrow": "Por qué existimos",
-      "title": "La mayoría de cartas digitales son malas. Las buenas dan demasiado trabajo.",
-      "p1": "Todos los restaurantes tienen el mismo problema: la carta cambia constantemente, pero la web nunca lo refleja. Los PDF están desactualizados. La agencia web tiene una cola de tickets de dos semanas. El producto de QR es un infierno de editar. En algún momento, la carta, lo que los clientes de verdad quieren mirar, se convirtió en la parte peor mantenida de la presencia online del local.",
-      "p2": "Creamos Dimonova porque ese problema no es realmente un problema de software. Es un problema de servicio. El software no hace tu carta profesional. Lo hace un diseñador. El software no la conecta con tu web. Lo hace un desarrollador. El software no forma a tu equipo. Lo hace una persona. Así que hacemos todo eso, y el software es lo que lo hace lo bastante barato para que tenga sentido.",
-      "p3": "Trabajamos con restaurantes, pubs y cafeterías.",
-      "aside_label": "En resumen",
-      "aside_quote": "«Hacemos cartas digitales para sitios que se toman en serio su comida y no quieren pensar en software.»",
-      "aside_sign": "El equipo de Dimonova"
+      "title": "La carta es lo que más se mira. Y lo que peor se cuida.",
+      "p1": "Todos los locales tienen el mismo problema: la carta cambia cada semana y la web nunca se entera. El PDF está viejo, la agencia tarda dos semanas y el producto de QR es una plantilla que nadie quiere tocar.",
+      "p2": "Dimonova existe para hacer ese trabajo por ti. Montamos la carta en tu dominio con tu marca, la conectamos con tu TPV y tus impresoras si pides desde la mesa, formamos a tu equipo y contestamos cuando escribes. El software lo hace barato; las personas lo hacen bien.",
+      "p3": "Trabajamos con restaurantes, hoteles, beach clubs, pubs y cafeterías. Una cuota fija al mes, sin cobrar por comensal ni por plato, y la carta vive en tu dominio, no en el nuestro."
     },
     "principles": {
       "eyebrow": "Cómo trabajamos",
-      "title": "Tres principios, y no muchos más.",
-      "p1_title": "Hacer el trabajo por ellos.",
+      "title": "Nuestros principios:",
+      "p1_title": "Llave en mano.",
       "p1_body": "Si la incorporación le lleva al cliente más de 30 minutos de su tiempo, la hemos diseñado mal.",
-      "p2_title": "Precios que pueden prever.",
+      "p2_title": "Precios previsibles.",
       "p2_body": "Cuota mensual fija. Sin cargos por comensal, sin cargos por plato, sin facturas sorpresa en semanas con mucho movimiento.",
-      "p3_title": "Su marca, no la nuestra.",
+      "p3_title": "Tu marca, siempre.",
       "p3_body": "La carta vive en el dominio del local, con el estilo del local. Nosotros somos quienes, en silencio, hacemos que funcione."
     },
     "team": {
@@ -670,6 +676,12 @@
     },
     "cta": {
       "title": "¿Quieres ver cómo funcionaría para tu local?"
+    },
+    "hero": {
+      "play": "Reproducir la historia",
+      "pause": "Pausar",
+      "mute": "Silenciar",
+      "unmute": "Activar el sonido"
     }
   },
   "contact": {
@@ -783,15 +795,82 @@
   "services": {
     "menu": {
       "title": "Carta digital",
-      "line": "Tu carta en tu web, con panel, IA, menú del día, traducciones y formación."
+      "line": "Tu carta en tu web, con panel, IA, menú del día, traducciones y formación.",
+      "bullets": [
+        "Carta en tu dominio, con tu marca",
+        "Panel con IA: cambios en bloque y traducciones",
+        "Menú del día desde el móvil",
+        "Formación al equipo y soporte sin límite"
+      ],
+      "steps": [
+        {
+          "title": "Nos pasas la carta",
+          "body": "Un PDF, unas fotos o la carta en papel. Con eso la montamos en tu dominio, con tus colores, tu tipografía y tus fotos."
+        },
+        {
+          "title": "La ves y la corriges",
+          "body": "Te la enseñamos funcionando en tu web. Cambias lo que quieras, las veces que haga falta, hasta que es la tuya."
+        },
+        {
+          "title": "Sale y te formamos",
+          "body": "QR en las mesas, carta publicada, 30 minutos con quien la vaya a gestionar y soporte sin límite desde ese día."
+        }
+      ]
     },
     "ordering": {
       "title": "Comandero",
-      "line": "Piden desde el QR de la mesa. El pedido entra en tu TPV y en tus impresoras."
+      "line": "Piden desde el QR de la mesa. El pedido entra en tu TPV y en tus impresoras.",
+      "bullets": [
+        "Piden desde el QR de la mesa, sin app",
+        "El pedido entra en tu TPV y tus impresoras",
+        "Pensado para hoteles, hamacas y terrazas",
+        "Montado sobre tu carta digital"
+      ],
+      "steps": [
+        {
+          "title": "Conectamos TPV e impresoras",
+          "body": "Nos dices qué TPV y qué impresoras tienes. Lo conectamos nosotros, con el mismo formato de ticket que ya lee tu cocina."
+        },
+        {
+          "title": "Lo probamos en una zona",
+          "body": "Un QR por mesa, hamaca o habitación. Un servicio de prueba en la terraza o en la barra, con nosotros al lado."
+        },
+        {
+          "title": "Lo extendemos al local entero",
+          "body": "Cuando el primer servicio sale limpio, lo ponemos en todas las zonas y formamos a la sala."
+        }
+      ]
     },
     "reviews": {
       "title": "Sistema de reseñas",
-      "line": "Sabes qué falló antes de que lo publiquen. Todas acaban en Google."
+      "line": "Sabes qué falló antes de que lo publiquen. Todas acaban en Google.",
+      "bullets": [
+        "Todas las valoraciones llegan a Google",
+        "Las bajas te avisan antes: motivo, camarero y zona",
+        "Patrones por camarero y por zona en el panel",
+        "Sin filtrar ni esconder nada"
+      ],
+      "steps": [
+        {
+          "title": "Mapeamos sala y equipo",
+          "body": "Zonas del local y camareros. Cada QR o enlace sabe desde dónde se abre y quién ha atendido."
+        },
+        {
+          "title": "Ponemos los enlaces",
+          "body": "En el ticket, en la mesa o en el mensaje de después. El cliente valora en veinte segundos."
+        },
+        {
+          "title": "Empiezas a leer motivos",
+          "body": "Toda valoración va a Google. Las bajas te llegan antes con el motivo, el camarero y la zona."
+        }
+      ]
+    },
+    "modal": {
+      "eyebrow": "Cómo se monta",
+      "includes": "Qué incluye",
+      "open": "Ver cómo se monta",
+      "close": "Cerrar",
+      "stepLabel": "Paso {n} de 3"
     }
   },
   "modal": {
@@ -843,6 +922,8 @@
     "heroPhoto": "Un restaurante en pleno servicio.",
     "balamoTablet": "La carta de Bálamo abierta en una tablet en horizontal, con sus categorías, sus filtros y las fotos de cada plato.",
     "balamoPhone": "La carta de Bálamo abierta en un móvil, con fotos de platos y la estética del propio restaurante.",
-    "storyVideo": "El dueño de Calsot contando cómo empezó todo, sentado en la terraza de su restaurante."
+    "storyVideo": "El dueño de Calsot contando cómo empezó todo, sentado en la terraza de su restaurante.",
+    "leclubPhone": "La carta digital de Le Club abierta en un móvil, con un plato ya en el carrito.",
+    "ownerPhoto": "El dueño de un bar apoyado en su barra, con el camarero trabajando detrás."
   }
 }

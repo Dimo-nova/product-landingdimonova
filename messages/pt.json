@@ -7,134 +7,135 @@
     "contact": "Contacto",
     "home": "Início",
     "whatsapp": "WhatsApp",
-    "demo": "Pedir uma demo",
-    "products": "Features",
-    "clients": "Clients",
-    "resources": "Resources",
-    "clientAccess": "Client login",
-    "openMenu": "Open menu",
-    "closeMenu": "Close menu",
-    "language": "Choose language",
+    "demo": "Pedir uma demonstração",
+    "products": "Funcionalidades",
+    "clients": "Clientes",
+    "resources": "Recursos",
+    "clientAccess": "Acesso de clientes",
+    "openMenu": "Abrir menu",
+    "closeMenu": "Fechar menu",
+    "language": "Escolher idioma",
     "mega": {
-      "productsTitle": "Everything we run for you",
-      "faq": "FAQ",
-      "aiCompare": "Compare with AI",
-      "contact": "Contact"
+      "productsTitle": "Tudo o que gerimos por si",
+      "faq": "Perguntas frequentes",
+      "aiCompare": "Comparar com IA",
+      "contact": "Contacto"
     }
   },
   "common": {
-    "chat_wa": "Conversar no WhatsApp",
-    "demo": "Pedir uma demo",
-    "demo_arrow": "Pedir uma demo →",
-    "skipToContent": "Skip to content"
+    "chat_wa": "Falar no WhatsApp",
+    "skipToContent": "Ir para o conteúdo",
+    "demo": "Pedir uma demonstração",
+    "demo_arrow": "Pedir uma demonstração →"
   },
   "home": {
     "hero": {
-      "playPill": "How Dimonova started",
-      "title": "We take care of it. You <mark>grow</mark>.",
-      "lead": "Digital menu, ordering and reviews made to measure, built and looked after 24/7 by a team of geeks you can trust. No templates. Ready to scale.",
-      "leadShort": "Ementa digital, pedido à mesa e avaliações. Montados e cuidados por nós.",
-      "emailPlaceholder": "Your email",
-      "cta": "Book a demo",
-      "legal": "We only use your email to get in touch. <link>Privacy</link>.",
-      "clientLink": "Already a client? Go to the dashboard",
-      "emailInvalid": "Enter a valid email"
+      "playPill": "Como começou a Dimonova",
+      "title": "Nós tratamos disto. <line>Você <mark>cresce</mark>.</line>",
+      "lead": "Menu digital, pedidos e avaliações feitos à medida, criados e geridos 24 horas por dia por uma equipa de confiança. Sem templates. Prontos para crescer.",
+      "leadShort": "Menu digital, pedidos e avaliações. Criados e geridos por nós.",
+      "emailPlaceholder": "O seu email",
+      "cta": "Marcar demonstração",
+      "legal": "Usamos o seu email apenas para entrar em contacto. <link>Privacidade</link>.",
+      "clientLink": "Já é cliente? Aceda ao painel",
+      "emailInvalid": "Introduza um email válido"
     },
     "logos": {
-      "title": "Trusted by"
+      "title": "Confiam em nós"
     },
     "diff": {
-      "title": "What nobody else does.",
-      "lead": "The parts a template cannot give you, and a support queue will not do for you.",
+      "title": "O que mais ninguém faz.",
+      "lead": "As partes que um template não lhe consegue dar, e que uma fila de suporte não resolve por si.",
       "items": [
         {
-          "title": "Pixel-perfect styling",
-          "body": "Your fonts, your colours, your spacing. Not a theme with your logo dropped in."
+          "title": "Estilo perfeito ao pormenor",
+          "body": "As suas fontes, as suas cores, os seus espaçamentos. Não um tema com o seu logótipo colado."
         },
         {
-          "title": "Events and promotions",
-          "body": "Set them up once and they appear and disappear on their own."
+          "title": "Eventos e promoções",
+          "body": "Configure-os uma vez e eles aparecem e desaparecem sozinhos."
         },
         {
-          "title": "Support with no question limit",
-          "body": "Ask as often as you need. Nobody is counting."
+          "title": "Suporte sem limite de perguntas",
+          "body": "Pergunte quantas vezes precisar. Ninguém está a contar."
         },
         {
-          "title": "Training at your venue",
-          "body": "We come in and teach the team on their own devices."
+          "title": "Formação no seu estabelecimento",
+          "body": "Vamos até si e formamos a equipa nos próprios equipamentos."
         },
         {
-          "title": "Integration with your software",
-          "body": "POS, printers, cellar, reservations. We connect what you already use."
+          "title": "Integração com o seu software",
+          "body": "TPV, impressoras, cave, reservas. Ligamos o que já utiliza."
         },
         {
-          "title": "Multi-venue",
-          "body": "One dashboard, every location, per-venue permissions."
+          "title": "Multi-estabelecimento",
+          "body": "Um só painel, todos os locais, permissões por estabelecimento."
         },
         {
-          "title": "No templates",
-          "body": "Every menu is built for one restaurant. Yours."
+          "title": "Sem templates",
+          "body": "Cada menu é construído para um único restaurante. O seu."
         },
         {
-          "title": "Same-day changes",
-          "body": "Tell us in the morning, it is live for the evening service."
+          "title": "Alterações no próprio dia",
+          "body": "Avise-nos de manhã, está publicado até ao serviço da noite."
         },
         {
-          "title": "Tablets, QR or web",
-          "body": "The menu goes wherever your guests look."
+          "title": "Tablets, QR ou web",
+          "body": "O menu chega onde os seus clientes olharem."
         },
         {
-          "title": "Someone on the other end",
-          "body": "A person who knows your venue, not a chatbot."
+          "title": "Alguém do outro lado",
+          "body": "Uma pessoa que conhece o seu espaço, não um chatbot."
         }
       ]
     },
     "services": {
-      "title": "Everything your restaurant needs. And someone to run it.",
-      "lead": "Três coisas que montamos, ligamos e mantemos por ti."
+      "title": "Tudo o que o seu restaurante precisa. Com suporte 24 horas por dia.",
+      "lead": "Três coisas que construímos, ligamos e mantemos a funcionar por si."
     },
     "ai": {
-      "eyebrow": "Dashboard + AI",
-      "title": "Tell the menu what you want. Done.",
-      "body": "Your team makes changes in bulk in seconds and you approve them. Nothing is written to your menu until someone says yes.",
+      "eyebrow": "Painel + IA",
+      "title": "Diga ao menu o que quer.",
+      "body": "A sua equipa faz alterações em massa em segundos e é você quem aprova. Nada é escrito no seu menu até alguém dizer sim.",
       "steps": [
-        "Write it",
-        "Check the change",
-        "Apply"
+        "Escrever",
+        "Confirmar a alteração",
+        "Aplicar"
       ],
-      "cta": "See how it works",
+      "cta": "Ver como funciona",
       "demo": {
+        "tablist": "Exemplos do assistente",
         "tabs": [
-          "Bulk changes",
-          "Translations",
-          "Descriptions"
+          "Alterações em massa",
+          "Traduções",
+          "Descrições"
         ],
         "prompts": [
-          "Put all the wines up by 5%",
-          "Translate the menu into German",
-          "Write the description for the grilled octopus"
+          "Subir todos os vinhos 5%",
+          "Traduzir o menu para alemão",
+          "Escrever a descrição do polvo grelhado"
         ],
         "rows": [
           [
             [
               "Rioja Reserva",
-              "18.00 €",
-              "18.90 €"
+              "18,00 €",
+              "18,90 €"
             ],
             [
               "Albariño",
-              "16.00 €",
-              "16.80 €"
+              "16,00 €",
+              "16,80 €"
             ],
             [
               "Ribera del Duero",
-              "21.00 €",
-              "22.05 €"
+              "21,00 €",
+              "22,05 €"
             ],
             [
               "Cava Brut",
-              "14.00 €",
-              "14.70 €"
+              "14,00 €",
+              "14,70 €"
             ]
           ],
           [
@@ -161,509 +162,547 @@
           ],
           [
             [
-              "Grilled octopus",
-              "No description",
-              "Galician octopus, grilled over embers, potato cream and smoked paprika."
+              "Polvo grelhado",
+              "Sem descrição",
+              "Polvo galego, grelhado em brasa, creme de batata e pimentão fumado."
             ]
           ]
         ],
-        "proposed": "Proposed changes",
-        "apply": "Apply selected",
-        "toast": "{count, plural, one {# dish updated} other {# dishes updated}}",
-        "tablist": "Assistant examples"
+        "proposed": "Alterações propostas",
+        "apply": "Aplicar selecionadas",
+        "toast": "{count, plural, one {# prato atualizado} other {# pratos atualizados}}"
       }
     },
     "balamo": {
-      "eyebrow": "Case: Bálamo Restaurante",
-      "title": "Bálamo didn't want a menu. They wanted theirs.",
-      "body": "Their menu lives on their own site and on the tablets in the VIP area, in their exact typography and colours. Every week the sommelier's wine selection goes up as a promotion. Reviews come back tagged by waiter and by area. It talks to the software they already use for the cellar. And support has no ticket limit.",
+      "eyebrow": "Caso: Bálamo Restaurante",
+      "title": "O Bálamo não queria um menu. Queria o dele.",
+      "body": "O menu está no site deles e nos tablets da zona VIP, com a tipografia e as cores exatas da marca. Todas as semanas a seleção de vinhos do sommelier sobe como promoção. As avaliações voltam identificadas por empregado e por zona. Comunica com o software que já usam para a cave. E o suporte não tem limite de pedidos.",
       "pills": [
-        "Incentivos de avaliações",
-        "Design à medida",
+        "Incentivos a avaliações",
+        "Design feito à medida",
         "Vinhos da semana",
-        "Integração da garrafeira",
-        "Apoio ilimitado"
+        "Integração com a cave",
+        "Suporte ilimitado"
       ],
       "stats": [
         {
           "value": "—",
-          "label": "dishes managed"
+          "label": "pratos geridos"
         },
         {
           "value": "—",
-          "label": "languages"
+          "label": "idiomas"
         },
         {
           "value": "—",
-          "label": "average time to change a dish"
+          "label": "tempo médio para alterar um prato"
         }
       ]
     },
     "reviews": {
-      "title": "Their words, not ours.",
+      "title": "As palavras deles, não as nossas.",
       "badge": "{rating}/5 no Google",
-      "pending": "Reviews coming soon.",
-      "playVideo": "Play the review from {name}",
-      "stars": "{rating} out of 5",
+      "pending": "Avaliações brevemente.",
+      "playVideo": "Reproduzir a avaliação de {name}",
+      "stars": "{rating} em 5",
       "moreTitle": "Mais avaliações no Google"
     },
     "aiCompare": {
-      "title": "Ask someone who doesn't work here.",
-      "lead": "Open the question in the AI you already use. We do not touch the answer.",
-      "copy": "Copy the question",
-      "copied": "Copied",
-      "prompt": "I run a restaurant with about 20 tables and I am considering hiring Dimonova (dimonova.com). It is a done-for-you service: they build the digital menu inside my own website in my exact branding rather than from a template, they keep it updated, they train my team with videos and in person, and support has no limit on the number of questions. It includes a dashboard with an AI assistant for bulk changes and translations, ordering wired to my POS and kitchen printers with pay-at-table, a review system that asks unhappy diners what went wrong before sending everyone on to Google and tags each review by waiter and area, a daily set menu, promotions and events, and multi-venue management from one dashboard. Compare that with a self-service QR menu builder based on templates. Tell me honestly which kind of restaurant this managed service is worth the money for and which kind it is not, and what I should ask them before signing."
+      "title": "Pergunte a alguém que não trabalha aqui.",
+      "lead": "Abra a pergunta na IA que já utiliza. Não tocamos na resposta.",
+      "copy": "Copiar a pergunta",
+      "copied": "Copiado",
+      "prompt": "Tenho um restaurante com cerca de 20 mesas e estou a considerar contratar a Dimonova (dimonova.com). É um serviço chave-na-mão: constroem o menu digital dentro do meu próprio site, com a minha identidade visual exata e não a partir de um template, mantêm-no atualizado, formam a minha equipa com vídeos e presencialmente, e o suporte não tem limite de perguntas. Inclui um painel com um assistente de IA para alterações em massa e traduções, pedidos ligados ao meu TPV e às impressoras da cozinha com pagamento à mesa, um sistema de avaliações que pergunta aos clientes insatisfeitos o que correu mal antes de os encaminhar para o Google e etiqueta cada avaliação por empregado e por zona, um menu do dia, promoções e eventos, e gestão multi-estabelecimento a partir de um único painel. Compare isto com um criador de menus QR de autosserviço baseado em templates. Diga-me com honestidade para que tipo de restaurante vale a pena este serviço gerido e para que tipo não vale, e o que devo perguntar-lhes antes de assinar."
     },
     "finalCta": {
-      "title": "We take care of it. You grow.",
-      "lead": "Tell us your email and we will show you what your menu would look like.",
-      "whatsapp": "or message us on WhatsApp"
+      "title": "Nós tratamos disto. Você cresce.",
+      "lead": "Diga-nos o seu email e mostramos-lhe como o seu menu poderia ficar.",
+      "whatsapp": "ou fale connosco no WhatsApp"
     }
   },
   "features": {
     "eyebrow": "Funcionalidades",
-    "cta": {
-      "title": "Vê-o na tua ementa, não na nossa.",
-      "body": "Marca uma demo e montamos uma secção da tua ementa real, sem compromisso, sem slides."
-    },
+    "title": "Três coisas. Feitas por nós, do início ao fim.",
+    "intro": "Um menu digital no seu próprio domínio, pedidos a partir da mesa e um sistema de avaliações que lhe conta o que correu mal antes de a internet o fazer. Escolha aquele que procura.",
     "index": {
-      "cardCta": "See how it works"
+      "cardCta": "Ver como funciona"
+    },
+    "cta": {
+      "title": "Veja-o no seu menu, não no nosso.",
+      "body": "Marque uma demonstração e criamos uma secção do seu menu real. Sem compromisso, sem apresentações."
     },
     "pages": {
       "menu": {
         "seo": {
-          "title": "Digital menu · Dimonova",
-          "desc": "Your menu on your own domain and in your own brand, with an AI dashboard, every venue in one place, the daily menu from a phone, one click translations and support with no cap."
+          "title": "Menu digital · Dimonova",
+          "desc": "O seu menu no seu próprio domínio e com a sua própria marca, com um painel de IA, todos os estabelecimentos num só lugar, o menu do dia a partir de um telemóvel, traduções num clique e suporte sem limite."
         },
-        "eyebrow": "Digital menu",
-        "title": "Your menu. Your brand. Changed in <mark>seconds</mark>.",
-        "lead": "We build the menu, put it on the domain you already own and match it to your brand. Then you run it yourself, from a dashboard that understands a plain sentence.",
+        "eyebrow": "Menu digital",
+        "title": "O seu menu. A sua marca. Alterado em <mark>segundos</mark>.",
+        "lead": "Construímos o menu, colocamo-lo no domínio que já tem e ajustamo-lo à sua marca. Depois é você quem o gere, a partir de um painel que entende uma frase simples.",
         "pills": [
-          "On your own domain",
-          "Live in days",
-          "Support with no cap"
+          "No seu próprio domínio",
+          "Ativo em dias",
+          "Suporte sem limite"
         ],
         "s1": {
-          "eyebrow": "The menu",
-          "title": "It loads before they finish sitting down.",
-          "body": "Photos, sections, prices and allergens, typeset properly and served from your own domain. No app to install, and nobody else's logo on top of your brand.",
+          "eyebrow": "O menu",
+          "title": "Carrega antes de eles acabarem de se sentar.",
+          "body": "Fotos, secções, preços e alergénios, bem composto e servido a partir do seu próprio domínio. Sem aplicação para instalar, e sem o logótipo de outra pessoa sobre a sua marca.",
           "bullets": [
-            "On your own domain, in your own brand. Not a generic link with someone else's name on it.",
-            "Photos, descriptions, allergens and price on every dish, filterable.",
-            "Fast on a phone, on the worst signal in the dining room.",
-            "Sold out hides a dish instantly, in the middle of service."
+            "No seu próprio domínio, com a sua própria marca. Não uma ligação genérica com o nome de outra pessoa.",
+            "Fotos, descrições, alergénios e preço em cada prato, com filtros.",
+            "Rápido num telemóvel, mesmo com o pior sinal da sala.",
+            "Esgotado esconde um prato de imediato, a meio do serviço."
           ]
         },
         "s2": {
-          "eyebrow": "Dashboard and AI",
-          "title": "Say it once. Read what it would change. Approve it.",
-          "body": "Ask for a change in a single sentence and the dashboard proposes it line by line. Anyone on the floor can ask; nothing is written to the live menu until someone says yes.",
+          "eyebrow": "Painel e IA",
+          "title": "Diga uma vez. Veja o que mudaria. Aprove.",
+          "body": "Peça uma alteração numa única frase e o painel propõe-na linha a linha. Qualquer pessoa na sala pode pedir; nada é escrito no menu ativo até alguém dizer sim.",
           "steps": [
-            "Whoever is on the floor asks for the change, in their own words.",
-            "The dashboard shows exactly which lines it would touch.",
-            "The owner approves. Only then does it reach the live menu."
+            "Quem está na sala pede a alteração, por palavras próprias.",
+            "O painel mostra exatamente que linhas iria alterar.",
+            "O responsável aprova. Só então chega ao menu ativo."
           ]
         },
         "s3": {
-          "eyebrow": "Translations",
-          "title": "The whole menu, every language, one click.",
-          "body": "One button translates every dish, every description and every allergen note. Your guest opens the menu in their own language without having to ask anyone for help.",
+          "eyebrow": "Traduções",
+          "title": "O menu inteiro, em todos os idiomas, num clique.",
+          "body": "Um botão traduz cada prato, cada descrição e cada nota de alergénios. O seu cliente abre o menu no próprio idioma sem ter de pedir ajuda a ninguém.",
           "langs": [
             {
-              "label": "Spanish",
+              "label": "Espanhol",
               "dish": "Pulpo a la brasa"
             },
             {
-              "label": "English",
+              "label": "Inglês",
               "dish": "Grilled octopus"
             },
             {
-              "label": "German",
+              "label": "Alemão",
               "dish": "Gegrillter Oktopus"
             },
             {
-              "label": "French",
+              "label": "Francês",
               "dish": "Poulpe grillé"
             },
             {
-              "label": "Portuguese",
+              "label": "Português",
               "dish": "Polvo grelhado"
             },
             {
-              "label": "Italian",
+              "label": "Italiano",
               "dish": "Polpo alla griglia"
             }
           ]
         },
         "s4": {
-          "eyebrow": "Also included",
-          "title": "The parts that only matter once you are actually running it.",
+          "eyebrow": "Também incluído",
+          "title": "As partes que só importam quando já está em funcionamento.",
           "cards": [
             {
-              "title": "One dashboard, every venue",
-              "body": "Two venues or twelve, they live in the same dashboard. Permissions are set per venue, so a manager sees their own and nothing else."
+              "title": "Um painel, todos os estabelecimentos",
+              "body": "Dois estabelecimentos ou doze, vivem no mesmo painel. As permissões definem-se por estabelecimento, para que cada gerente veja apenas o seu.",
+              "placeholder": "Captura do painel: o seletor de estabelecimentos"
             },
             {
-              "title": "The daily menu, from your phone",
-              "body": "Change today's menu each morning from the phone in your pocket. Write it, approve it, and it is on the menu before the doors open."
+              "title": "O menu do dia, a partir do telemóvel",
+              "body": "Altere o menu de hoje todas as manhãs a partir do telemóvel que tem no bolso. Escreva, aprove, e está no menu antes de abrirem as portas.",
+              "placeholder": "Painel num telemóvel: o menu de hoje"
             },
             {
-              "title": "Training and support with no cap",
-              "body": "One 30 minute session with whoever runs the dashboard, tutorial videos covering the whole thing, and unlimited support. There is no limit on how many questions you get to ask."
+              "title": "Formação e suporte sem limite",
+              "body": "Uma sessão de 30 minutos com quem gere o painel, vídeos tutoriais que cobrem tudo, e suporte ilimitado. Não há limite de quantas perguntas pode fazer.",
+              "placeholder": "Foto: a formar a equipa no estabelecimento"
             }
           ]
         },
         "faq": {
-          "title": "Before you ask",
+          "eyebrow": "Perguntas",
+          "title": "Antes de perguntar",
           "items": [
             {
-              "q": "Do we need a new website?",
-              "a": "No. The menu goes on the domain you already have, at an address like yourvenue.com/menu. We do the linking, whatever your site is built on."
+              "q": "Precisamos de um site novo?",
+              "a": "Não. O menu fica no domínio que já tem, num endereço como oseuestabelecimento.com/menu. Nós fazemos a ligação, seja qual for a tecnologia do seu site."
             },
             {
-              "q": "Who builds the menu the first time?",
-              "a": "We do. Send it in whatever format you have, a PDF, a photo, a Word file. We type it up, structure it, add the allergens and check every dish with you before it goes live."
+              "q": "Quem constrói o menu pela primeira vez?",
+              "a": "Nós. Envie-o no formato que tiver, um PDF, uma foto, um ficheiro Word. Nós escrevemo-lo, estruturamo-lo, adicionamos os alergénios e revemos cada prato consigo antes de ficar ativo."
             },
             {
-              "q": "What if the AI writes something we did not want?",
-              "a": "It cannot. The dashboard proposes the change and shows you the exact lines it would touch. Nothing reaches the live menu until someone presses approve."
+              "q": "E se a IA escrever algo que não queríamos?",
+              "a": "Não pode. O painel propõe a alteração e mostra-lhe exatamente as linhas que iria mudar. Nada chega ao menu ativo até alguém carregar em aprovar."
             }
-          ],
-          "eyebrow": "Questions"
+          ]
         },
         "cta": {
-          "title": "See it with your own dishes.",
-          "body": "Book a demo and we will build a section of your real menu before you decide anything."
+          "title": "Veja-o com os seus próprios pratos.",
+          "body": "Marque uma demonstração e construímos uma secção do seu menu real antes de decidir seja o que for."
         }
       },
       "ordering": {
         "seo": {
-          "title": "Order at the table · Dimonova",
-          "desc": "Guests order from the QR at the table. The order lands on your POS and your printers. Built for hotels and beach clubs, where the bar is a long walk away."
+          "title": "Pedidos à mesa · Dimonova",
+          "desc": "Os clientes pedem através do QR na mesa. O pedido chega ao seu TPV e às suas impressoras. Feito para hotéis e beach clubs, onde o bar fica longe."
         },
-        "eyebrow": "Order at the table",
-        "title": "They order from the table. You keep <mark>one</mark> system.",
-        "lead": "Ordering sits on top of the digital menu we already built for you. It connects to your POS and your printers, so the kitchen keeps reading the same tickets it always read.",
+        "eyebrow": "Pedidos à mesa",
+        "title": "Eles pedem a partir da mesa. Você mantém <mark>um só</mark> sistema.",
+        "lead": "Os pedidos assentam sobre o menu digital que já construímos para si. Ligam-se ao seu TPV e às suas impressoras, para que a cozinha continue a ler os mesmos talões de sempre.",
         "pills": [
-          "One QR",
-          "Your POS",
-          "Your printers"
+          "Um só QR",
+          "O seu TPV",
+          "As suas impressoras"
         ],
         "s1": {
-          "eyebrow": "Why it sells",
-          "title": "Every round they never ordered.",
-          "body": "Nobody skips a drink because they stopped wanting it. They skip it because of the walk, the queue, and the effort of standing up.",
+          "eyebrow": "Porque vende mais",
+          "title": "Todas as rondas que nunca chegaram a pedir.",
+          "body": "Ninguém deixa de pedir uma bebida porque deixou de a querer. Deixa de a pedir por causa do caminho, da fila e do esforço de se levantar.",
           "moments": [
-            "I fancy a mojito, but ugh, the bar is miles away.",
-            "Look at that queue.",
-            "I really cannot be bothered to get up.",
-            "We'll order when someone finally comes past."
+            "Apetece-me um mojito, mas ui, o bar fica tão longe.",
+            "Olha aquela fila.",
+            "Não me apetece nada levantar-me.",
+            "Pedimos quando alguém finalmente passar por aqui."
           ],
-          "close": "The QR removes all four. The order goes in from the seat they are already sitting in."
+          "close": "O QR elimina os quatro. O pedido segue a partir do lugar onde já estão sentados."
         },
         "s2": {
-          "eyebrow": "How it works",
-          "title": "Three steps, and none of them are yours.",
+          "eyebrow": "Como funciona",
+          "title": "Três passos, e nenhum deles é seu.",
           "steps": [
             {
-              "title": "They scan",
-              "body": "The same QR that opens your menu. No app, no account, nothing to download."
+              "title": "Digitalizam",
+              "body": "O mesmo QR que abre o seu menu. Sem aplicação, sem conta, nada para descarregar."
             },
             {
-              "title": "They order",
-              "body": "From the menu you already have, with your photos, your prices and your sold out states."
+              "title": "Pedem",
+              "body": "A partir do menu que já tem, com as suas fotos, os seus preços e os seus esgotados."
             },
             {
-              "title": "You print it",
-              "body": "The ticket lands on your POS and your printers, in the format your kitchen already reads."
+              "title": "Você imprime",
+              "body": "O talão chega ao seu TPV e às suas impressoras, no formato que a sua cozinha já lê.",
+              "placeholder": "Foto: o talão a sair da impressora da cozinha"
             }
           ]
         },
         "s3": {
-          "eyebrow": "Average ticket",
-          "title": "Square measured a 35% jump in the first 30 days.",
-          "body": "Square reports that businesses see a 35% increase in sales in the first 30 days after implementing self serve ordering with QR codes, and that the ones enabling open tabs see 42% higher average ticket sizes. Those are Square's figures, measured across Square's own customers. They are not ours, and we do not promise you the same.",
+          "eyebrow": "Ticket médio",
+          "title": "A Square mediu um salto de 35% nos primeiros 30 dias.",
+          "body": "A Square reporta que os negócios registam um aumento de 35% nas vendas nos primeiros 30 dias após implementarem pedidos de autosserviço com códigos QR, e que os que ativam contas abertas registam tickets médios 42% mais altos. São valores da Square, medidos junto dos próprios clientes da Square. Não são nossos, e não lhe prometemos o mesmo.",
           "stats": [
             {
               "value": "35%",
-              "label": "more sales in the first 30 days, per Square"
+              "label": "mais vendas nos primeiros 30 dias, segundo a Square"
             },
             {
               "value": "42%",
-              "label": "higher average ticket with open tabs, per Square"
+              "label": "ticket médio mais alto com contas abertas, segundo a Square"
             }
           ],
-          "source": "Source: Square, QR code ordering and ticket size"
+          "source": "Fonte: Square, QR code ordering and ticket size"
         },
         "s4": {
-          "eyebrow": "Hotels and beach clubs",
-          "title": "A sunbed is a table nobody wants to leave.",
-          "body": "This is where ordering pays for itself fastest. Put a QR on the sunbed, in the room, on the terrace. A waiter carries the order out. Nobody has to cross the pool to ask for a drink.",
+          "eyebrow": "Hotéis e beach clubs",
+          "title": "Uma espreguiçadeira é uma mesa que ninguém quer deixar.",
+          "body": "É aqui que os pedidos se pagam mais depressa a si próprios. Ponha um QR na espreguiçadeira, no quarto, no terraço. Um empregado leva o pedido. Ninguém tem de atravessar a piscina para pedir uma bebida.",
           "cards": [
             {
-              "title": "Sunbeds and pool",
-              "body": "One QR per sunbed. They order without moving, and a waiter brings it over."
+              "title": "Espreguiçadeiras e piscina",
+              "body": "Um QR por espreguiçadeira. Pedem sem se mexer, e um empregado leva-lhes o pedido.",
+              "placeholder": "Foto: um QR numa espreguiçadeira"
             },
             {
-              "title": "Rooms and terraces",
-              "body": "The same menu and the same kitchen, from anywhere on the property."
+              "title": "Quartos e terraços",
+              "body": "O mesmo menu e a mesma cozinha, a partir de qualquer ponto do estabelecimento.",
+              "placeholder": "Foto: um quarto ou terraço com o QR do menu"
             },
             {
-              "title": "Peak hours",
-              "body": "The bar keeps taking orders through the hour when the queue would otherwise be turning people away."
+              "title": "Horas de ponta",
+              "body": "O bar continua a receber pedidos durante a hora em que a fila normalmente afastaria clientes.",
+              "placeholder": "Foto: o bar na hora de ponta"
             }
           ]
         },
         "cta": {
-          "title": "Tell us which POS you run.",
-          "body": "Give us your POS and your printers and we will show you an order landing on them."
+          "title": "Diga-nos qual é o seu TPV.",
+          "body": "Dê-nos o seu TPV e as suas impressoras e mostramos-lhe um pedido a chegar a eles."
         }
       },
       "reviews": {
         "seo": {
-          "title": "Review system · Dimonova",
-          "desc": "Diners rate their visit and every rating reaches Google. A low one tells you the reason, the waiter and the area of the venue first. Nothing is filtered or hidden."
+          "title": "Sistema de avaliações · Dimonova",
+          "desc": "Os clientes avaliam a visita e todas as avaliações chegam ao Google. Uma avaliação baixa diz-lhe primeiro o motivo, o empregado e a zona do estabelecimento. Nada é filtrado nem escondido."
         },
-        "eyebrow": "Review system",
-        "title": "You hear it <mark>first</mark>. Google hears it too.",
-        "lead": "The diner is asked to rate the visit. Every rating goes to Google, good or bad. The difference is that before a low one gets there, we ask what went wrong and where, so you hear it from them and not from the internet.",
+        "eyebrow": "Sistema de avaliações",
+        "title": "Você sabe <mark>primeiro</mark>. O Google também sabe.",
+        "lead": "Ao cliente pede-se que avalie a visita. Todas as avaliações vão para o Google, boas ou más. A diferença é que, antes de uma avaliação baixa lá chegar, perguntamos o que correu mal e onde, para que saiba diretamente e não pela internet.",
         "pills": [
-          "Every rating reaches Google",
-          "Reason, waiter, area",
-          "Nothing filtered"
+          "Todas as avaliações chegam ao Google",
+          "Motivo, empregado, zona",
+          "Nada é filtrado"
         ],
         "s1": {
-          "eyebrow": "The flow",
-          "title": "Same destination. One extra question.",
-          "body": "Both paths end at Google. The low rating takes one detour on the way, and that detour is the whole product.",
-          "highTitle": "Four or five stars",
-          "highBody": "Straight to Google, with nothing in the way.",
-          "lowTitle": "One to three stars",
-          "lowBody": "We ask for the reason, tag it to a waiter or an area of the venue, and then send them on to Google.",
-          "note": "You get the reason, the name and the place before the review is public. The review still gets published.",
+          "eyebrow": "O percurso",
+          "title": "O mesmo destino. Uma pergunta extra.",
+          "body": "Os dois caminhos terminam no Google. A avaliação baixa faz um desvio pelo caminho, e esse desvio é todo o produto.",
+          "highTitle": "Quatro ou cinco estrelas",
+          "highBody": "Direto para o Google, sem nada pelo caminho.",
+          "lowTitle": "Uma a três estrelas",
+          "lowBody": "Perguntamos o motivo, associamo-lo a um empregado ou a uma zona do estabelecimento, e depois encaminhamos para o Google.",
+          "note": "Você recebe o motivo, o nome e o local antes de a avaliação ser pública. A avaliação continua a ser publicada.",
           "demo": {
-            "ratingLabel": "How was your visit?",
+            "ratingLabel": "Como foi a sua visita?",
             "chips": [
-              "Reason",
-              "Waiter",
-              "Area"
+              "Motivo",
+              "Empregado",
+              "Zona"
             ],
-            "destination": "Google review"
+            "destination": "Avaliação no Google"
           }
         },
         "s2": {
-          "eyebrow": "Let us be clear",
-          "title": "This is not review gating.",
-          "body": "Nothing is filtered, hidden, held back or steered away from Google. A one star rating reaches Google exactly the way a five star one does. What changes is that you read the reason a few minutes earlier, with a name and a part of the room attached to it.",
-          "doesTitle": "What it does",
+          "eyebrow": "Para não haver dúvidas",
+          "title": "Isto não é ocultação de avaliações.",
+          "body": "Nada é filtrado, escondido, retido ou desviado do Google. Uma avaliação de uma estrela chega ao Google exatamente da mesma forma que uma de cinco. O que muda é que você lê o motivo uns minutos antes, com um nome e uma parte da sala associados.",
+          "doesTitle": "O que faz",
           "does": [
-            "Asks every diner to rate the visit",
-            "Asks a low rating for the reason",
-            "Tags that reason to a waiter or an area",
-            "Sends every rating on to Google"
+            "Pede a cada cliente que avalie a visita",
+            "Pergunta o motivo quando a avaliação é baixa",
+            "Associa esse motivo a um empregado ou a uma zona",
+            "Envia todas as avaliações para o Google"
           ],
-          "doesNotTitle": "What it never does",
+          "doesNotTitle": "O que nunca faz",
           "doesNot": [
-            "Hide a bad review",
-            "Filter who gets to review you",
-            "Stop anyone reaching Google",
-            "Write anything on a diner's behalf"
+            "Esconder uma avaliação má",
+            "Filtrar quem pode avaliá-lo",
+            "Impedir alguém de chegar ao Google",
+            "Escrever seja o que for em nome de um cliente"
           ]
         },
         "s3": {
-          "eyebrow": "What you learn",
-          "title": "A star rating tells you nothing. A reason tells you what to fix.",
+          "eyebrow": "O que aprende",
+          "title": "Uma classificação em estrelas não diz nada. Um motivo diz-lhe o que corrigir.",
           "cards": [
             {
-              "title": "By waiter",
-              "body": "Every low rating carries the waiter it happened with. A pattern shows up in a week, not in a quarter."
+              "title": "Por empregado",
+              "body": "Cada avaliação baixa fica associada ao empregado envolvido. Um padrão aparece numa semana, não num trimestre.",
+              "placeholder": "Captura do painel: avaliações por empregado"
             },
             {
-              "title": "By area",
-              "body": "Terrace, bar, dining room, first floor. You find out the problem has a place before you find out it has a review."
+              "title": "Por zona",
+              "body": "Terraço, bar, sala, primeiro andar. Descobre que o problema tem um lugar antes de descobrir que tem uma avaliação.",
+              "placeholder": "Captura do painel: avaliações por zona"
             },
             {
-              "title": "By reason",
-              "body": "The wait, the temperature, the price, the service, the cleaning. The reason arrives with the rating, in the diner's own words."
+              "title": "Por motivo",
+              "body": "A espera, a temperatura, o preço, o serviço, a limpeza. O motivo chega junto com a avaliação, nas palavras do próprio cliente.",
+              "placeholder": "Captura do painel: os motivos, nas palavras do próprio cliente"
             }
           ]
         },
         "faq": {
-          "title": "Before you ask",
+          "eyebrow": "Perguntas",
+          "title": "Antes de perguntar",
           "items": [
             {
-              "q": "Are you hiding our bad reviews?",
-              "a": "No. Every rating is sent on to Google, whatever the score. The only difference with a low one is that we ask for the reason first and pass it to you."
+              "q": "Estão a esconder as nossas avaliações más?",
+              "a": "Não. Todas as avaliações são enviadas para o Google, seja qual for a pontuação. A única diferença numa avaliação baixa é que perguntamos primeiro o motivo e transmitimo-lo a si."
             },
             {
-              "q": "Does the diner have to write it twice?",
-              "a": "No. The reason we ask for is a few taps, no typing required. Writing the public review on Google is the same thing they were going to do anyway."
+              "q": "O cliente tem de escrever duas vezes?",
+              "a": "Não. O motivo que pedimos leva apenas alguns toques, sem necessidade de escrever. Escrever a avaliação pública no Google é a mesma coisa que já ia fazer."
             },
             {
-              "q": "Where does this run?",
-              "a": "On the same QR and the same menu your diners already use. There is nothing else to install and nothing else for your team to carry around."
+              "q": "Onde é que isto funciona?",
+              "a": "No mesmo QR e no mesmo menu que os seus clientes já usam. Não há mais nada para instalar nem mais nada para a sua equipa transportar."
             }
-          ],
-          "eyebrow": "Questions"
+          ]
         },
         "cta": {
-          "title": "Turn it on for one part of the room.",
-          "body": "Start with the terrace or the bar, read what comes back, and decide from there."
+          "title": "Ative-o numa parte da sala.",
+          "body": "Comece pelo terraço ou pelo bar, leia os resultados, e decida a partir daí."
         }
       }
-    },
-    "title": "Three things. Done for you, end to end.",
-    "intro": "A digital menu on your own domain, ordering from the table, and a review system that tells you what went wrong before the internet does. Pick the one you came for."
+    }
   },
   "pricing": {
     "eyebrow": "Preços",
-    "title": "Preços à medida para <em>o teu</em> espaço.",
-    "intro": "Fala-nos do teu espaço e construímos um valor à tua medida. Isto é o que está sempre incluído.",
+    "title": "Preço definido à volta do <em>seu</em> estabelecimento.",
+    "intro": "Conte-nos sobre o seu estabelecimento e construímos um valor à volta dele. Eis o que está sempre incluído.",
     "included": {
       "eyebrow": "O que está sempre incluído",
-      "title": "Tudo o que cada cliente recebe, independentemente do tamanho do espaço.",
-      "i1": "Ementa estruturada e construída por nós, com o que tiveres",
-      "i2": "Desenhada a condizer com a tua marca atual",
-      "i3": "Integrada no teu site atual: sem precisar de um site novo",
-      "i4": "Alterações de pratos, preços e secções ilimitadas, feitas por ti, instantaneamente",
-      "i5": "Análises de popularidade e resumo semanal",
-      "i6": "Alojamento, segurança e atualizações de software, sempre ativo",
-      "i7": "Apoio humano de verdade: e-mail e WhatsApp",
+      "title": "Tudo o que cada cliente recebe, independentemente do tamanho do estabelecimento.",
+      "i1": "Menu estruturado e construído por nós, a partir do que já tiver",
+      "i2": "Estilizado para corresponder à sua marca atual",
+      "i3": "Integrado no seu site atual, sem necessidade de um site novo",
+      "i4": "Atualizações ilimitadas de pratos, preços e secções, feitas por si, na hora",
+      "i5": "Análises de popularidade dos pratos e resumo semanal",
+      "i6": "Alojamento, segurança e atualizações de software, sempre ativos",
+      "i7": "Suporte humano real por email e WhatsApp",
       "i8": "Códigos QR para mesas e impressão (extra opcional)",
-      "i9": "Sessão de integração de 30 minutos por videochamada"
+      "i9": "Sessão de integração de 30 minutos, por videochamada"
     },
     "shape": {
-      "eyebrow": "O que define o teu orçamento",
-      "intro": "Há alguns fatores que influenciam o valor, falamos de todos eles na chamada.",
+      "eyebrow": "O que define o seu orçamento",
+      "intro": "Há alguns fatores que influenciam o valor, e falamos de todos eles na chamada.",
       "i1": "Número de pratos e secções",
-      "i2": "Fotografia: a tua, do teu site, ou organizamos nós",
-      "i3": "Uma ementa ou várias (bebidas, época, eventos)",
+      "i2": "Fotografia: sua, contratada por nós, ou já existente",
+      "i3": "Um menu ou vários (bebidas, sazonal, eventos)",
       "i4": "Idiomas: um ou vários",
-      "i5": "Como o teu site atual está construído"
+      "i5": "Como está construído o seu site atual"
     },
     "strip": {
       "title": "Pronto para falar de valores?",
-      "body": "Fala-nos do teu espaço e preparamos um orçamento na chamada.",
+      "body": "Conte-nos sobre o seu estabelecimento e preparamos um orçamento na chamada.",
       "cta": "Pedir um orçamento à medida →"
     },
     "faq": {
       "title": "Perguntas frequentes",
-      "q1": "Existe fidelização?",
-      "a1": "Um simples acordo de serviço, cancelável com um mês de aviso. Sem amarras de vários anos.",
-      "q2": "E se a minha ementa mudar muito?",
-      "a2": "Edita-a tu mesmo, tantas vezes quantas quiseres. A tua mensalidade não muda consoante a frequência das alterações.",
+      "q1": "Existe um contrato?",
+      "a1": "Um contrato de serviço simples, cancelável com um mês de aviso prévio. Sem fidelizações de vários anos.",
+      "q2": "E se o meu menu mudar muito?",
+      "a2": "Edite-o você mesmo, quantas vezes quiser. A sua mensalidade não muda consoante a frequência das alterações.",
       "q3": "Preciso de um site novo?",
-      "a3": "Não. O teu atual fica. Integramos a ementa nele. Squarespace, Wix, WordPress ou um desenvolvimento à medida, tudo serve.",
+      "a3": "Não. O seu site atual mantém-se. Nós integramos o menu nele. Squarespace, Wix, WordPress, ou uma solução personalizada: tudo bem.",
       "q4": "E as fotos dos pratos?",
-      "a4": "Podes fornecer as tuas, usar as do teu site atual ou dispensar as fotos. Extra opcional: tratamos de um fotógrafo.",
-      "q5": "Quanto tempo até estarmos online?",
-      "a5": "Cinco a sete dias úteis após recebermos a tua ementa, na maioria dos casos. Combinamos uma data na chamada de demo."
+      "a4": "Pode fornecer as suas próprias, usar as que já tem no seu site, ou prescindir de fotos. Extra opcional: tratamos da contratação de um fotógrafo.",
+      "q5": "Quanto tempo até estarmos ativos?",
+      "a5": "Cinco a sete dias úteis a partir da receção do seu menu, na maioria dos casos. Comprometemo-nos com uma data na chamada de demonstração."
     }
   },
   "cases": {
-    "eyebrow": "Case studies",
-    "title": "Three venues. <em>Three real menus.</em>",
-    "intro": "Three restaurants, three different problems. Here is what each one had before, what we built for them, and what they have now.",
+    "eyebrow": "Casos de sucesso",
+    "title": "Três estabelecimentos. <em>Três menus reais.</em>",
+    "intro": "Três restaurantes, três problemas diferentes. Eis o que cada um tinha antes, o que construímos para eles, e o que têm agora.",
     "steps": {
-      "before": "Before",
-      "work": "What we did",
-      "result": "Result"
+      "before": "Antes",
+      "work": "O que fizemos",
+      "result": "Resultado"
     },
     "items": {
       "calsot": {
         "name": "Calsot",
-        "type": "Catalan restaurant, Madrid",
-        "before": "A very well known Catalan restaurant in Madrid, running its menu on an off the shelf SaaS. No personality, hard to use, and a lot of information and photos missing. Reading the menu was an ordeal. They had nobody who could build them something professional.",
-        "work": "We took the menu over and rebuilt it: a design that looks like the restaurant, a menu you can actually move through, and the dish information and photos that were never there.",
-        "result": "The SaaS menu is gone. Their menu now carries the restaurant's own personality, it reads easily, and the information and photos that were missing are in it.",
+        "type": "Restaurante catalão, Madrid",
+        "before": "Um restaurante catalão muito conhecido em Madrid, com o menu numa plataforma SaaS genérica. Sem personalidade, difícil de usar, e com muita informação e fotos em falta. Ler o menu era uma odisseia. Não tinham ninguém que lhes pudesse construir algo profissional.",
+        "work": "Assumimos o menu e reconstruímo-lo: um design que parece o restaurante, um menu por onde se consegue navegar de facto, e a informação e as fotos dos pratos que nunca lá tinham estado.",
+        "result": "O menu SaaS desapareceu. O menu deles tem agora a personalidade do próprio restaurante, lê-se com facilidade, e a informação e as fotos que faltavam já lá estão.",
         "tags": [
-          "Replaced a SaaS menu",
-          "Custom design",
-          "Photos and dish information"
+          "Substituição de um menu SaaS",
+          "Design personalizado",
+          "Fotos e informação dos pratos"
         ]
       },
       "pulperia": {
         "name": "La Pulpería",
-        "type": "Restaurant, Majadahonda, Madrid",
-        "before": "A restaurant of real standing in Majadahonda, Madrid. They had no digital menu at all, but they could see the value of one. Again, nobody technical on their side who could build it for them.",
-        "work": "We handled all of it. We bought them a domain, connected the digital menu to it and gave it personality, with their promotions, their sharing plates and their daily menu built in.",
-        "result": "A digital menu of their own, on their own domain, with promotions, sharing plates and the daily menu in one place. Nothing left for them to set up.",
+        "type": "Restaurante, Majadahonda, Madrid",
+        "before": "Um restaurante de renome em Majadahonda, Madrid. Não tinham qualquer menu digital, mas percebiam o valor de ter um. Também aqui, ninguém técnico do lado deles que o pudesse construir.",
+        "work": "Tratámos de tudo. Comprámos-lhes um domínio, ligámos o menu digital a ele e demos-lhe personalidade, com as promoções, os pratos para partilhar e o menu do dia integrados.",
+        "result": "Um menu digital próprio, no seu próprio domínio, com promoções, pratos para partilhar e o menu do dia num só lugar. Nada ficou por configurar do lado deles.",
         "tags": [
-          "Own domain",
-          "Daily menu",
-          "Promotions and sharing plates"
+          "Domínio próprio",
+          "Menu do dia",
+          "Promoções e pratos para partilhar"
         ]
       },
       "balamo": {
         "name": "Bálamo",
-        "type": "Seafood restaurant",
-        "before": "The largest seafood restaurant in Spain. They already had a SaaS digital menu, but it was not adapted to what they needed: the integration with their wine system was hard for a guest to understand, and the interface was not built for tablet.",
-        "work": "We built them a completely custom digital menu, made to measure for their VIP area, which will use tablets to show it. They had a lot of graphic material for the dishes, photos and video, so we optimised all of it and adapted the menu to show it off.",
-        "result": "A menu built for the tablets in their VIP area, presenting their photos and video in a way that meets the standard of a restaurant of that calibre.",
+        "type": "Restaurante de marisco",
+        "before": "O maior restaurante de marisco de Espanha. Já tinham um menu digital SaaS, mas não estava adaptado ao que precisavam: a integração com o sistema de vinhos era difícil de entender para um cliente, e a interface não estava pensada para tablet.",
+        "work": "Construímos-lhes um menu digital totalmente personalizado, feito à medida para a zona VIP, que usará tablets para o mostrar. Tinham muito material gráfico dos pratos, fotos e vídeo, por isso otimizámos tudo e adaptámos o menu para os destacar.",
+        "result": "Um menu construído para os tablets da zona VIP, apresentando as suas fotos e vídeos ao nível que um restaurante deste calibre exige.",
         "tags": [
-          "VIP area on tablet",
-          "Custom build",
-          "Photo and video optimised"
+          "Zona VIP em tablet",
+          "Construção personalizada",
+          "Fotos e vídeo otimizados"
         ]
       }
     },
     "cta": {
-      "title": "Want to be the next case study?"
+      "title": "Quer ser o próximo caso de sucesso?"
+    }
+  },
+  "clients": {
+    "eyebrow": "Clientes",
+    "title": "Cada palavra aqui <mark>é deles</mark>.",
+    "intro": "Os estabelecimentos com quem trabalhamos, em vídeo e no Google. Não escrevemos nada disto.",
+    "playVideo": "Reproduzir a avaliação de {name}",
+    "posterAlt": "Uma imagem do vídeo de avaliação de {name}.",
+    "stars": "{rating} em 5",
+    "films": {
+      "eyebrow": "Em vídeo",
+      "title": "Os proprietários, nas suas próprias palavras.",
+      "note": "Carregue em reproduzir para ver. Nada é descarregado até o fazer."
+    },
+    "written": {
+      "eyebrow": "No Google",
+      "title": "Mais avaliações no Google.",
+      "link": "Ler no Google"
+    },
+    "cases": {
+      "title": "A versão completa.",
+      "body": "Os casos de sucesso explicam o que cada estabelecimento tinha antes, o que construímos, e o que têm hoje em funcionamento.",
+      "link": "Ler os casos de sucesso"
+    },
+    "cta": {
+      "title": "Quer o seu estabelecimento nesta página?"
     }
   },
   "about": {
     "eyebrow": "Sobre nós",
-    "title": "Uma equipa pequena. Uma tarefa específica.",
-    "intro": "A Dimonova existe porque a ementa, a página mais lida do site de qualquer restaurante, era tratada como algo secundário. Nós criamo-la, gerimo-la e cuidamos dela por ti.",
+    "title": "Uma equipa pequena. Uma missão específica.",
+    "intro": "Construímos, ligamos e gerimos o menu digital do seu estabelecimento. Foi assim que tudo começou, contado pelo primeiro cliente.",
     "why": {
       "eyebrow": "Porque existimos",
-      "title": "A maioria das ementas digitais é má. As boas dão demasiado trabalho.",
-      "p1": "Todos os restaurantes têm o mesmo problema: a ementa muda constantemente, mas o site nunca o reflete. Os PDF estão desatualizados. A agência web tem uma fila de pedidos de duas semanas. O produto de QR é um pesadelo para editar. A certa altura, a ementa, aquilo que os clientes querem mesmo ver, tornou-se a parte pior mantida da presença online do espaço.",
-      "p2": "Criámos a Dimonova porque esse problema não é, na verdade, um problema de software. É um problema de serviço. O software não torna a tua ementa profissional. Isso fá-lo um designer. O software não a liga ao teu site. Isso fá-lo um programador. O software não forma a tua equipa. Isso fá-lo uma pessoa. Por isso fazemos tudo isso, e o software é o que torna tudo barato o suficiente para fazer sentido.",
-      "p3": "Trabalhamos com restaurantes, pubs e cafés.",
-      "aside_label": "Em resumo",
-      "aside_quote": "«Fazemos ementas digitais para sítios que levam a sua comida a sério e não querem pensar em software.»",
-      "aside_sign": "A equipa Dimonova"
+      "title": "O menu é a página mais lida. E a pior tratada.",
+      "p1": "Todos os estabelecimentos têm o mesmo problema: o menu muda todas as semanas e o site nunca fica a saber. O PDF está desatualizado, a agência demora duas semanas e o produto QR é um template que ninguém quer tocar.",
+      "p2": "A Dimonova existe para fazer esse trabalho por si. Construímos o menu no seu domínio com a sua marca, ligamo-lo ao seu TPV e às impressoras se recebe pedidos à mesa, formamos a sua equipa e respondemos quando nos escreve. O software torna-o económico; as pessoas tornam-no bom.",
+      "p3": "Trabalhamos com restaurantes, hotéis, beach clubs, pubs e cafés. Uma mensalidade fixa, sem cobrança por cliente nem por prato, e o menu fica no seu domínio, não no nosso."
     },
     "principles": {
       "eyebrow": "Como trabalhamos",
       "title": "Três princípios, e não muitos mais.",
       "p1_title": "Fazer o trabalho por eles.",
-      "p1_body": "Se a integração custar ao cliente mais de 30 minutos do seu tempo, desenhámo-la mal.",
-      "p2_title": "Preços que conseguem prever.",
-      "p2_body": "Mensalidade fixa. Sem custos por cliente, sem custos por prato, sem faturas surpresa em semanas de muito movimento.",
+      "p1_body": "Se a integração levar ao cliente mais de 30 minutos do seu tempo, desenhámo-la mal.",
+      "p2_title": "Preços que se conseguem prever.",
+      "p2_body": "Mensalidade fixa. Sem cobranças por cliente, sem cobranças por prato, sem faturas surpresa nas semanas de maior movimento.",
       "p3_title": "A marca deles, não a nossa.",
-      "p3_body": "A ementa vive no domínio do espaço, com o estilo do espaço. Somos nós que, em silêncio, fazemos com que funcione."
+      "p3_body": "O menu fica no domínio do estabelecimento, ao estilo do estabelecimento. Somos nós que, em silêncio, o fazemos funcionar."
     },
     "team": {
       "eyebrow": "A equipa",
-      "title": "As pessoas com quem vais mesmo falar.",
-      "role1": "Fundador e responsável de montagem",
-      "role2": "Design e estilo"
+      "title": "As pessoas com quem realmente vai falar.",
+      "role1": "Fundador e responsável técnico",
+      "role2": "Design e identidade visual"
     },
     "cta": {
-      "title": "Queres ver como funcionaria para o teu espaço?"
+      "title": "Quer ver como funcionaria no seu estabelecimento?"
+    },
+    "hero": {
+      "play": "Play the story",
+      "pause": "Pause",
+      "mute": "Mute",
+      "unmute": "Unmute"
     }
   },
   "contact": {
     "eyebrow": "Contacto",
-    "title": "Fala-nos do teu espaço. <em>Nós fazemos o resto.</em>",
-    "intro": "Uma demo dura normalmente 20 minutos, mostramos-te o painel, percorremos configurações reais e damos-te um orçamento na chamada.",
+    "title": "Conte-nos sobre o seu estabelecimento. <em>Nós tratamos do resto.</em>",
+    "intro": "Uma demonstração dura normalmente 20 minutos. Mostramos-lhe o painel, percorremos casos reais de outros estabelecimentos, e apresentamos um orçamento na chamada.",
     "success": {
-      "title": "Recebido. Entramos em contacto.",
-      "body": "Espera um e-mail da nossa equipa dentro de um dia útil para marcar a demo. Se for urgente, escreve-nos no WhatsApp.",
-      "wa": "Escreve-nos no WhatsApp",
+      "title": "Recebido. Entraremos em contacto.",
+      "body": "Espere um email da nossa equipa no prazo de um dia útil para marcar a demonstração. Se for urgente, contacte-nos pelo WhatsApp.",
+      "wa": "Falar no WhatsApp",
       "again": "Enviar outro"
     },
     "form": {
-      "eyebrow": "Pedir uma demo",
-      "name_label": "O teu nome",
+      "eyebrow": "Pedir uma demonstração",
+      "name_label": "O seu nome",
       "name_ph": "Aoife Kennedy",
-      "email_label": "E-mail",
+      "email_label": "Email",
       "email_ph": "aoife@crowingcock.com",
-      "venue_label": "Nome do espaço",
+      "venue_label": "Nome do estabelecimento",
       "venue_ph": "The Crowing Cock",
-      "vtype_label": "Tipo de espaço",
+      "vtype_label": "Tipo de estabelecimento",
       "vtype_restaurant": "Restaurante",
       "vtype_pub": "Pub",
       "vtype_cafe": "Café",
@@ -671,83 +710,83 @@
       "phone_label": "Telefone",
       "optional": "(opcional)",
       "phone_ph": "+351 …",
-      "message_label": "Algo que devamos saber?",
-      "message_ph": "Tamanho da ementa, site atual, qualquer coisa específica que queiras ver na demo…",
+      "message_label": "Há algo que devamos saber?",
+      "message_ph": "Tamanho do menu, site atual, algo específico que queira ver na demonstração…",
       "menuurl_label": "Menu digital atual",
-      "menuurl_ph": "https://teuMenu.pt",
+      "menuurl_ph": "https://oseumenu.com",
       "menufile_label": "Lista de pratos",
       "menufile_ph": "Carregar PDF ou Excel",
       "menufile_hint": "PDF, .xls ou .xlsx",
-      "disclaimer": "Só queremos saber mais sobre o teu negócio. Sem listas de marketing.",
-      "submit": "Pedir uma demo →",
-      "fileTooLarge": "That file is too large. The limit is 4 MB."
+      "fileTooLarge": "Esse ficheiro é demasiado grande. O limite é 4 MB.",
+      "disclaimer": "Queremos apenas saber mais sobre o seu negócio. Sem listas de marketing.",
+      "submit": "Pedir uma demonstração →"
     },
     "side": {
-      "chat_label": "Preferes conversar?",
-      "chat_body": "Mais rápido do que o e-mail. Costumamos responder em menos de uma hora.",
+      "chat_label": "Prefere falar diretamente?",
+      "chat_body": "Mais rápido do que o email. Normalmente respondemos dentro de uma hora.",
       "chat_btn": "Abrir WhatsApp",
       "old_label": "Ou, à moda antiga",
-      "email_label": "E-mail",
+      "email_label": "Email",
       "phone_label": "Telefone",
-      "phone_calls_label": "Chamadas",
+      "phone_calls_label": "Chamadas telefónicas",
       "phone_lang_en": "· Inglês",
       "phone_lang_es": "· Espanhol"
     }
   },
   "seo": {
     "home": {
-      "title": "Dimonova · Menus digitais para restaurantes, pubs & cafés",
-      "desc": "Construímos, estilizamos e configuramos o teu menu digital. Alteras um prato em dois toques. Um serviço completo para estabelecimentos independentes."
+      "title": "Dimonova · Menus digitais para restaurantes, pubs e cafés",
+      "desc": "Construímos, estilizamos e configuramos o seu menu digital. Você altera um prato em dois toques. Um serviço chave-na-mão para estabelecimentos independentes."
     },
     "features": {
       "title": "Funcionalidades · Dimonova",
-      "desc": "Three things, done for you end to end: a digital menu on your own domain, ordering from the table, and a review system that tells you what went wrong first."
+      "desc": "Três coisas, feitas por nós do início ao fim: um menu digital no seu próprio domínio, pedidos a partir da mesa, e um sistema de avaliações que lhe diz primeiro o que correu mal."
     },
     "pricing": {
       "title": "Preços · Dimonova",
-      "desc": "Uma taxa de configuração única e depois uma subscrição mensal fixa. Alojamento, suporte e atualizações incluídos."
+      "desc": "Uma taxa única de configuração, depois uma mensalidade fixa. Alojamento, suporte e atualizações incluídos. Peça um orçamento à medida para o seu estabelecimento."
     },
     "cases": {
-      "title": "Case studies · Dimonova",
-      "desc": "What we built for Calsot, La Pulpería and Bálamo: what each venue had before, what we did, and what they have now."
+      "title": "Casos de sucesso · Dimonova",
+      "desc": "O que construímos para a Calsot, a La Pulpería e o Bálamo: o que cada estabelecimento tinha antes, o que fizemos, e o que têm agora."
+    },
+    "clients": {
+      "title": "Avaliações de clientes · Dimonova",
+      "desc": "Avaliações em vídeo e no Google dos restaurantes para quem construímos menus digitais. As palavras deles, não as nossas."
     },
     "about": {
       "title": "Sobre nós · Dimonova",
-      "desc": "Uma equipa pequena com uma missão específica: criar e gerir menus digitais para espaços que levam a sua cozinha a sério."
+      "desc": "Uma equipa pequena com uma missão específica: construir e gerir menus digitais para estabelecimentos que levam a sua comida a sério."
     },
     "contact": {
-      "title": "Contacto & demo · Dimonova",
-      "desc": "Reserva uma demo de 20 minutos. Mostramos-te o painel, percorremos configurações reais e respondemos às tuas perguntas. Sem compromisso."
-    },
-    "clients": {
-      "title": "Client reviews · Dimonova",
-      "desc": "Video and Google reviews from the restaurants we build digital menus for. Their words, not ours."
+      "title": "Contacto e demonstração · Dimonova",
+      "desc": "Marque uma demonstração de 20 minutos. Mostramos-lhe o painel, percorremos casos reais de outros estabelecimentos, e respondemos às suas perguntas. Sem compromisso."
     }
   },
   "errors": {
-    "name": "O teu nome é obrigatório.",
-    "email_required": "O e-mail é obrigatório.",
-    "email_invalid": "Esse e-mail não parece correto.",
-    "venue": "O nome do espaço é obrigatório."
+    "name": "O seu nome é obrigatório.",
+    "email_required": "O email é obrigatório.",
+    "email_invalid": "Esse email não parece correto.",
+    "venue": "O nome do estabelecimento é obrigatório."
   },
   "footer": {
-    "colProduct": "Features",
-    "colCompany": "Company",
-    "colResources": "Resources",
+    "colProduct": "Funcionalidades",
+    "colCompany": "Empresa",
+    "colResources": "Recursos",
     "colLegal": "Legal",
-    "colContact": "Contact",
-    "privacy": "Privacy",
+    "colContact": "Contacto",
+    "privacy": "Privacidade",
     "cookies": "Cookies",
-    "terms": "Terms",
-    "whatsappEs": "WhatsApp Spain",
-    "whatsappIe": "WhatsApp Ireland",
-    "madeIn": "Made in Dublin and Madrid",
-    "copyright": "© {year} Dimonova. All rights reserved."
+    "terms": "Termos",
+    "whatsappEs": "WhatsApp Espanha",
+    "whatsappIe": "WhatsApp Irlanda",
+    "madeIn": "Feito em Dublin e Madrid",
+    "copyright": "© {year} Dimonova. Todos os direitos reservados."
   },
   "wa": {
     "name": "Equipa Dimonova",
-    "status": "Resposta normalmente numa hora",
-    "greeting": "Olá 👋 que tipo de espaço geres? Com todo o gosto mostramos-te uma visita de 30 segundos ao painel.",
+    "status": "Normalmente respondemos dentro de uma hora",
+    "greeting": "Olá 👋 que tipo de estabelecimento gere? Com todo o gosto mostramos-lhe uma demonstração de 30 segundos do painel.",
     "chip_restaurant": "Tenho um restaurante",
     "chip_pub": "Tenho um pub",
     "chip_cafe": "Tenho um café",
@@ -755,94 +794,136 @@
   },
   "services": {
     "menu": {
-      "title": "Ementa digital",
-      "line": "A tua ementa no teu site, com painel, IA, menu do dia, traduções e formação."
+      "title": "Menu digital",
+      "line": "O seu menu no seu site, com o painel, IA, menu do dia, traduções e formação.",
+      "bullets": [
+        "Menu no seu domínio, com a sua marca",
+        "Painel com IA: alterações em massa e traduções",
+        "Menu do dia a partir do telemóvel",
+        "Formação da equipa e suporte ilimitado"
+      ],
+      "steps": [
+        {
+          "title": "Envia-nos o menu",
+          "body": "Um PDF, algumas fotos ou o menu em papel. A partir daí construímo-lo no seu domínio, com as suas cores, o seu tipo de letra e as suas fotos."
+        },
+        {
+          "title": "Vê-o e corrige-o",
+          "body": "Mostramos-lho a funcionar no seu site. Altere o que quiser, tantas vezes quantas forem precisas, até ser seu."
+        },
+        {
+          "title": "Fica ativo e formamo-lo",
+          "body": "QR nas mesas, menu publicado, 30 minutos com quem o vai gerir, e suporte ilimitado a partir desse dia."
+        }
+      ]
     },
     "ordering": {
-      "title": "Pedido à mesa",
-      "line": "Pedem a partir do QR da mesa. O pedido entra no teu POS e nas tuas impressoras."
+      "title": "Pedidos à mesa",
+      "line": "Pedem através do QR na mesa. Chega ao seu TPV e às suas impressoras.",
+      "bullets": [
+        "Pedem através do QR da mesa, sem aplicação",
+        "Os pedidos chegam ao seu TPV e impressoras",
+        "Feito para hotéis, espreguiçadeiras e terraços",
+        "Funciona sobre o seu menu digital"
+      ],
+      "steps": [
+        {
+          "title": "Ligamos o seu TPV e as impressoras",
+          "body": "Diga-nos que TPV e que impressoras tem. Nós fazemos a ligação, com o formato de talão que a sua cozinha já lê."
+        },
+        {
+          "title": "Testamos numa zona",
+          "body": "Um QR por mesa, espreguiçadeira ou quarto. Um serviço de teste no terraço ou no bar, consigo ao nosso lado."
+        },
+        {
+          "title": "Alargamos a todo o estabelecimento",
+          "body": "Assim que o primeiro serviço correr bem, passa para todas as zonas e a equipa de sala recebe formação."
+        }
+      ]
     },
     "reviews": {
       "title": "Sistema de avaliações",
-      "line": "Sabes o que correu mal antes de publicarem. Todas acabam no Google."
+      "line": "Sabe o que correu mal antes de o publicarem. Todas as avaliações acabam no Google.",
+      "bullets": [
+        "Todas as avaliações chegam ao Google",
+        "As baixas avisam-no primeiro: motivo, empregado e zona",
+        "Padrões por empregado e por zona no painel",
+        "Nada filtrado, nada escondido"
+      ],
+      "steps": [
+        {
+          "title": "Mapeamos a sala e a equipa",
+          "body": "Zonas do estabelecimento e empregados. Cada QR ou ligação sabe onde foi aberto e quem serviu."
+        },
+        {
+          "title": "Colocamos as ligações",
+          "body": "No recibo, na mesa ou na mensagem depois. O cliente avalia em vinte segundos."
+        },
+        {
+          "title": "Começa a ler os motivos",
+          "body": "Todas as avaliações vão para o Google. As baixas chegam-lhe primeiro, com o motivo, o empregado e a zona."
+        }
+      ]
+    },
+    "modal": {
+      "eyebrow": "Como se configura",
+      "includes": "O que está incluído",
+      "open": "Ver como se configura",
+      "close": "Fechar",
+      "stepLabel": "Passo {n} de 3"
     }
   },
   "modal": {
     "demo": {
-      "title": "Book your demo",
-      "lead": "We'll write to you today and run it whenever suits you.",
-      "name": "Your name",
+      "title": "Marque a sua demonstração",
+      "lead": "Escrevemos-lhe hoje e realizamo-la quando lhe for conveniente.",
+      "name": "O seu nome",
       "email": "Email",
-      "venue": "Restaurant name",
-      "phone": "Phone (optional)",
-      "locations": "How many venues?",
+      "venue": "Nome do restaurante",
+      "phone": "Telefone (opcional)",
+      "locations": "Quantos estabelecimentos?",
       "locations1": "1",
       "locations2": "2–5",
       "locations6": "6+",
-      "menuToday": "How is your menu today? (optional)",
-      "menuPdf": "PDF / paper",
-      "menuWeb": "On my website",
-      "menuOther": "Another system",
-      "submit": "Book demo",
-      "sending": "Sending…",
-      "successTitle": "Done. We'll write to you today.",
-      "successBody": "Check your inbox (and spam, just in case).",
-      "close": "Close",
-      "errorTitle": "That didn't go through.",
-      "errorBody": "Try again, or message us on WhatsApp.",
-      "retry": "Try again",
-      "whatsapp": "Open WhatsApp",
-      "errRequired": "Required",
-      "errEmail": "Enter a valid email",
-      "consent": "I have read and accept the <link>privacy policy</link>. We will only use your details to answer your enquiry.",
-      "consentRequired": "Please accept the privacy policy"
+      "menuToday": "Como é o seu menu atualmente? (opcional)",
+      "menuPdf": "PDF / papel",
+      "menuWeb": "No meu site",
+      "menuOther": "Outro sistema",
+      "submit": "Marcar demonstração",
+      "sending": "A enviar…",
+      "successTitle": "Feito. Escrevemos-lhe hoje.",
+      "successBody": "Verifique a sua caixa de entrada (e o spam, por precaução).",
+      "close": "Fechar",
+      "errorTitle": "Isso não foi enviado.",
+      "errorBody": "Tente novamente, ou contacte-nos pelo WhatsApp.",
+      "retry": "Tentar novamente",
+      "whatsapp": "Abrir WhatsApp",
+      "errRequired": "Obrigatório",
+      "errEmail": "Introduza um email válido",
+      "consent": "Li e aceito a <link>política de privacidade</link>. Usaremos os seus dados apenas para responder à sua consulta.",
+      "consentRequired": "Aceite a política de privacidade, por favor"
     },
     "video": {
-      "close": "Close video",
-      "unavailable": "Can't play this right now.",
-      "openDirect": "Open the video"
+      "close": "Fechar vídeo",
+      "unavailable": "Não é possível reproduzir isto agora.",
+      "openDirect": "Abrir o vídeo"
     }
   },
   "banner": {},
   "notFound": {
-    "title": "This dish isn't on the menu.",
-    "body": "We may have moved it, or it never existed. Try one of these.",
-    "home": "Back to home",
-    "products": "See products",
-    "demo": "Book a demo",
-    "menuHint": "Looking for a restaurant's menu? Menus live on each restaurant's own domain, not here."
+    "title": "Este prato não está no menu.",
+    "body": "Podemos tê-lo movido, ou nunca existiu. Experimente uma destas opções.",
+    "home": "Voltar ao início",
+    "products": "Ver produtos",
+    "demo": "Marcar demonstração",
+    "menuHint": "Procura o menu de um restaurante? Os menus estão no domínio próprio de cada restaurante, não aqui."
   },
   "alt": {
-    "heroPhoto": "A restaurant in the middle of service.",
-    "balamoTablet": "Bálamo's menu open on a tablet in landscape, showing its categories, its filters and a photograph of every dish.",
-    "balamoPhone": "The Bálamo digital menu open on a phone, showing dish photographs and the restaurant's own branding.",
-    "storyVideo": "Calsot's owner telling how it all started, sitting on his restaurant's terrace."
-  },
-  "clients": {
-    "eyebrow": "Clients",
-    "title": "Every word here <mark>is theirs</mark>.",
-    "intro": "The venues we work with, on camera and on Google. We wrote none of it.",
-    "badge": "{rating}/5 on Google",
-    "playVideo": "Play the review from {name}",
-    "posterAlt": "A still from {name}'s video review.",
-    "stars": "{rating} out of 5",
-    "films": {
-      "eyebrow": "On camera",
-      "title": "The owners, in their own words.",
-      "note": "Press play to watch. Nothing downloads until you do."
-    },
-    "written": {
-      "eyebrow": "On Google",
-      "title": "More from Google.",
-      "link": "Read them on Google"
-    },
-    "cases": {
-      "title": "The longer version.",
-      "body": "The case studies go through what each venue had before, what we built, and what they run today.",
-      "link": "Read the case studies"
-    },
-    "cta": {
-      "title": "Want your venue on this page?"
-    }
+    "heroPhoto": "Um restaurante a meio do serviço.",
+    "balamoTablet": "O menu do Bálamo aberto num tablet em modo horizontal, mostrando as suas categorias, os seus filtros e uma fotografia de cada prato.",
+    "balamoPhone": "O menu digital do Bálamo aberto num telemóvel, mostrando fotografias dos pratos e a identidade visual do restaurante.",
+    "storyVideo": "O proprietário da Calsot a contar como tudo começou, sentado no terraço do seu restaurante.",
+    "leclubPhone": "O menu digital do Le Club aberto num telemóvel, com um prato já no carrinho.",
+    "ownerPhoto": "A bar owner leaning on his counter, with the bartender working behind him."
   }
 }

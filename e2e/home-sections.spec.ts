@@ -1,18 +1,41 @@
 import { test, expect } from "@playwright/test";
 import { CASES_PUBLISHED } from "../lib/config";
 
-test("the three service cards link to their own feature pages", async ({ page }) => {
+test("each service card opens its walkthrough modal, with three steps and what's included", async ({ page }) => {
   await page.goto("/");
   const grid = page.locator("#services");
-  const cards = grid.getByRole("link");
-  await expect(cards).toHaveCount(3);
-  await expect(grid.getByRole("link", { name: /Digital menu/ })).toHaveAttribute("href", "/features/menu");
-  await expect(grid.getByRole("link", { name: /Review system/ })).toHaveAttribute("href", "/features/reviews");
+  await expect(grid.locator("[data-service-card]")).toHaveCount(3);
+  // No page behind the cards while the service pages are unpublished (FEATURES_PUBLISHED).
+  await expect(grid.getByRole("link")).toHaveCount(0);
+
+  await grid.getByRole("button", { name: "See how it gets set up" }).nth(1).click();
+  const dialog = page.getByRole("dialog");
+  await expect(dialog).toBeVisible();
+  await expect(dialog.getByRole("heading", { name: "Order at the table" })).toBeVisible();
+  await expect(dialog.locator("[data-service-steps] li")).toHaveCount(3);
+  // The walkthrough opens on step 1 and moves only on a click: step 2 stays closed on its own.
+  const items = dialog.locator("[data-service-steps] li");
+  await expect(items.nth(0)).toHaveAttribute("data-step-open", "true");
+  await page.waitForTimeout(1500);
+  await expect(items.nth(1)).not.toHaveAttribute("data-step-open", "true");
+  await items.nth(2).getByRole("button").click();
+  await expect(items.nth(2)).toHaveAttribute("data-step-open", "true");
+  await expect(items.nth(0)).not.toHaveAttribute("data-step-open", "true");
+  await expect(dialog.getByText("What's included")).toBeVisible();
+  await page.keyboard.press("Escape");
+  await expect(dialog).toHaveCount(0);
+});
+
+test("the header's Features menu opens the same walkthrough", async ({ page }) => {
+  await page.goto("/");
+  await page.getByRole("navigation", { name: "Main" }).getByRole("button", { name: "Features" }).hover();
+  await page.locator("#mega-products").getByRole("button", { name: /Digital menu/ }).click();
+  await expect(page.getByRole("dialog").getByRole("heading", { name: "Digital menu" })).toBeVisible();
 });
 
 test("the service card body text meets AA contrast", async ({ page }) => {
   await page.goto("/");
-  const ratio = await page.locator("#services a").first().evaluate((card) => {
+  const ratio = await page.locator("#services [data-service-card]").first().evaluate((card) => {
     const body = card.querySelector("[data-card-body]") as HTMLElement;
     const lum = (c: string) => {
       const [r, g, b] = (c.match(/[\d.]+/g) ?? []).slice(0, 3).map(Number);
@@ -114,13 +137,17 @@ test("the AI section explains that nothing is written without approval", async (
   await expect(page.locator("#ai")).toContainText("Nothing is written to your menu until someone says yes.");
 });
 
-test("the Bálamo case shows the real menu and its five pills", async ({ page }) => {
+test("the Bálamo case shows the real menu on both devices and its five tags", async ({ page }) => {
   await page.goto("/#balamo");
   const s = page.locator("#balamo");
-  await expect(s.getByAltText(/Bálamo/)).toBeVisible();
+  // The tablet with the menu and, in front of it, the phone opened on a dish: two real images.
+  const devices = s.getByAltText(/Bálamo/);
+  await expect(devices).toHaveCount(2);
+  await expect(devices.first()).toBeVisible();
+  await expect(devices.last()).toBeVisible();
   await expect(s.locator("[data-balamo-pill]")).toHaveCount(5);
-  // Static, by the owner's instruction. The pills used to bob on a loop; the only transform left
-  // on any of them is .midLeft's own translateY(-50%), which is layout, not animation.
+  // Static, by the owner's instruction. The tags used to bob on a loop; the only transforms left
+  // on them are their fixed leans, which are layout, not animation.
   const animated = await s.locator("[data-balamo-pill]").evaluateAll((els) =>
     els.filter((el) => el.getAnimations({ subtree: true }).length > 0).length,
   );
@@ -233,25 +260,30 @@ test("populated reviews render as cards", async ({ page }) => {
 });
 
 test("the review rows alternate: the first leads with its video, the second with its words", async ({ page }) => {
-  // The owner asked for a zig-zag: video left / words right, then words left / video right.
-  // DOM order follows the visual order, so reading the cards top to bottom is the assertion.
+  // The owner asked for a zig-zag on desktop: video left / words right, then words left / video
+  // right. The DOM keeps the video first in every row, so the flip is checked by position.
   const { default: data } = await import("../data/reviews.json", { with: { type: "json" } });
   test.skip(data.videos.length < 2, "needs two client videos to alternate");
+  await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto("/#reviews");
 
   const cards = page.locator("#reviews [data-review-card]");
   const kinds = await cards.evaluateAll((els) => els.map((el) => el.getAttribute("data-review-card")));
   const ids = await cards.evaluateAll((els) => els.map((el) => el.getAttribute("data-review-id")));
 
-  // Row 1: the video first, then that client's words.
+  // Every row in the DOM: the video, then that client's words (a written review once there is
+  // one, the venue card until then).
   expect(kinds[0]).toBe("video");
   expect(ids[0]).toBe(data.videos[0].id);
   expect(kinds[1]).not.toBe("video");
-  // Row 2: the words half first (a written review once there is one, the venue card until
-  // then), and the video after it.
-  expect(kinds[2]).not.toBe("video");
-  expect(kinds[3]).toBe("video");
-  expect(ids[3]).toBe(data.videos[1].id);
+  expect(kinds[2]).toBe("video");
+  expect(ids[2]).toBe(data.videos[1].id);
+  expect(kinds[3]).not.toBe("video");
+
+  // On screen, row 1 has its video on the left and row 2 its video on the right.
+  const x = async (i: number) => (await cards.nth(i).boundingBox())!.x;
+  expect(await x(0)).toBeLessThan(await x(1));
+  expect(await x(2)).toBeGreaterThan(await x(3));
 
   // And the words beside the first video really are the review that video declares, not a
   // positional guess at one.
@@ -259,6 +291,23 @@ test("the review rows alternate: the first leads with its video, the second with
   const paired = data.google.find((review) => review.id === declared);
   test.skip(!paired, "the first video declares no written review yet");
   await expect(cards.nth(1)).toContainText(paired!.text.slice(0, 40));
+});
+
+test("on a phone the rows read video, words, video, words — never two text cards in a row", async ({ page }) => {
+  const { default: data } = await import("../data/reviews.json", { with: { type: "json" } });
+  test.skip(data.videos.length < 2, "needs two client videos to stack");
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/#reviews");
+
+  const cards = page.locator("#reviews [data-review-card]");
+  const tops = await cards.evaluateAll((els) => els.map((el) => el.getBoundingClientRect().top + window.scrollY));
+  const kinds = await cards.evaluateAll((els) => els.map((el) => el.getAttribute("data-review-card")));
+  // Sorted by where they land on the page, the kinds alternate starting with a video.
+  const order = kinds.map((kind, i) => ({ kind, top: tops[i] })).sort((a, b) => a.top - b.top).map((c) => c.kind);
+  expect(order[0]).toBe("video");
+  expect(order[1]).not.toBe("video");
+  expect(order[2]).toBe("video");
+  expect(order[3]).not.toBe("video");
 });
 
 test("no review card links out to Google — only the rating badge does", async ({ page }) => {
@@ -326,13 +375,19 @@ test("copy button reports success", async ({ page, context }) => {
   await expect(page.getByRole("button", { name: "Copied" })).toBeVisible();
 });
 
-test("the AI provider links show their names and fit a phone screen", async ({ page }) => {
+test("on a phone the AI provider links keep their names, show only their marks, and sit in one row", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto("/");
   const section = page.locator("#ai-compare");
+  const tops = new Set<number>();
   for (const name of ["ChatGPT", "Claude", "Perplexity", "Gemini"]) {
-    await expect(section.getByRole("link", { name })).toBeVisible();
+    const link = section.getByRole("link", { name });
+    await expect(link).toBeVisible();
+    // The name is the accessible name only: on a phone the link is the provider's mark alone.
+    await expect(link.getByText(name)).not.toBeInViewport();
+    tops.add(Math.round((await link.boundingBox())!.y));
   }
+  expect(tops.size).toBe(1);
   const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
   expect(overflow).toBeLessThanOrEqual(1);
 });

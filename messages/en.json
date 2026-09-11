@@ -31,7 +31,7 @@
   "home": {
     "hero": {
       "playPill": "How Dimonova started",
-      "title": "We take care of it. You <mark>grow</mark>.",
+      "title": "We take care of it. <line>You <mark>grow</mark>.</line>",
       "lead": "Digital menu, ordering and reviews made to measure, built and looked after 24/7 by a team of geeks you can trust. No templates. Ready to scale.",
       "leadShort": "Digital menu, ordering and reviews. Built and looked after by us.",
       "emailPlaceholder": "Your email",
@@ -303,15 +303,18 @@
           "cards": [
             {
               "title": "One dashboard, every venue",
-              "body": "Two venues or twelve, they live in the same dashboard. Permissions are set per venue, so a manager sees their own and nothing else."
+              "body": "Two venues or twelve, they live in the same dashboard. Permissions are set per venue, so a manager sees their own and nothing else.",
+              "placeholder": "Dashboard screenshot: the venue switcher"
             },
             {
               "title": "The daily menu, from your phone",
-              "body": "Change today's menu each morning from the phone in your pocket. Write it, approve it, and it is on the menu before the doors open."
+              "body": "Change today's menu each morning from the phone in your pocket. Write it, approve it, and it is on the menu before the doors open.",
+              "placeholder": "Dashboard on a phone: today's menu"
             },
             {
               "title": "Training and support with no cap",
-              "body": "One 30 minute session with whoever runs the dashboard, tutorial videos covering the whole thing, and unlimited support. There is no limit on how many questions you get to ask."
+              "body": "One 30 minute session with whoever runs the dashboard, tutorial videos covering the whole thing, and unlimited support. There is no limit on how many questions you get to ask.",
+              "placeholder": "Photo: training the team at the venue"
             }
           ]
         },
@@ -377,7 +380,8 @@
             },
             {
               "title": "You print it",
-              "body": "The ticket lands on your POS and your printers, in the format your kitchen already reads."
+              "body": "The ticket lands on your POS and your printers, in the format your kitchen already reads.",
+              "placeholder": "Photo: the ticket coming out of the kitchen printer"
             }
           ]
         },
@@ -404,15 +408,18 @@
           "cards": [
             {
               "title": "Sunbeds and pool",
-              "body": "One QR per sunbed. They order without moving, and a waiter brings it over."
+              "body": "One QR per sunbed. They order without moving, and a waiter brings it over.",
+              "placeholder": "Photo: a QR on a sunbed"
             },
             {
               "title": "Rooms and terraces",
-              "body": "The same menu and the same kitchen, from anywhere on the property."
+              "body": "The same menu and the same kitchen, from anywhere on the property.",
+              "placeholder": "Photo: a room or terrace with the menu's QR"
             },
             {
               "title": "Peak hours",
-              "body": "The bar keeps taking orders through the hour when the queue would otherwise be turning people away."
+              "body": "The bar keeps taking orders through the hour when the queue would otherwise be turning people away.",
+              "placeholder": "Photo: the bar at peak hour"
             }
           ]
         },
@@ -478,15 +485,18 @@
           "cards": [
             {
               "title": "By waiter",
-              "body": "Every low rating carries the waiter it happened with. A pattern shows up in a week, not in a quarter."
+              "body": "Every low rating carries the waiter it happened with. A pattern shows up in a week, not in a quarter.",
+              "placeholder": "Dashboard screenshot: ratings by waiter"
             },
             {
               "title": "By area",
-              "body": "Terrace, bar, dining room, first floor. You find out the problem has a place before you find out it has a review."
+              "body": "Terrace, bar, dining room, first floor. You find out the problem has a place before you find out it has a review.",
+              "placeholder": "Dashboard screenshot: ratings by area"
             },
             {
               "title": "By reason",
-              "body": "The wait, the temperature, the price, the service, the cleaning. The reason arrives with the rating, in the diner's own words."
+              "body": "The wait, the temperature, the price, the service, the cleaning. The reason arrives with the rating, in the diner's own words.",
+              "placeholder": "Dashboard screenshot: the reasons, in the diner's own words"
             }
           ]
         },
@@ -615,7 +625,6 @@
     "eyebrow": "Clients",
     "title": "Every word here <mark>is theirs</mark>.",
     "intro": "The venues we work with, on camera and on Google. We wrote none of it.",
-    "badge": "{rating}/5 on Google",
     "playVideo": "Play the review from {name}",
     "posterAlt": "A still from {name}'s video review.",
     "stars": "{rating} out of 5",
@@ -641,16 +650,13 @@
   "about": {
     "eyebrow": "About",
     "title": "A small team. A specific job.",
-    "intro": "Dimonova exists because the menu, the most-read page of any restaurant's website, was being treated as an afterthought. We build it, run it, and look after it for you.",
+    "intro": "We build, connect and run your venue's digital menu. This is how it started, told by the first client.",
     "why": {
       "eyebrow": "Why we exist",
-      "title": "Most digital menus are bad. The good ones are too much work.",
-      "p1": "Every restaurant has the same problem: the menu changes constantly, but the website never reflects it. PDFs are out of date. The website agency is on a two-week ticket queue. The QR code product is a nightmare to edit. Somewhere along the way, the menu, the thing diners actually want to look at, became the worst-maintained part of the venue's online presence.",
-      "p2": "We built Dimonova because that problem isn't really a software problem. It's a service problem. Software doesn't make your menu professional. A designer does. Software doesn't link it to your website. A developer does. Software doesn't train your team. A person does. So we do all of that, and the software is what makes it cheap enough to make sense.",
-      "p3": "We work with restaurants, pubs, and cafés.",
-      "aside_label": "In short",
-      "aside_quote": "\"We make digital menus for places that take their food seriously and don't want to think about software.\"",
-      "aside_sign": "The Dimonova team"
+      "title": "The menu is the most-read page. And the worst kept.",
+      "p1": "Every venue has the same problem: the menu changes every week and the website never finds out. The PDF is old, the agency takes two weeks and the QR product is a template nobody wants to touch.",
+      "p2": "Dimonova exists to do that work for you. We build the menu on your domain in your brand, connect it to your POS and printers if you take orders at the table, train your team and answer when you write. Software makes it cheap; people make it good.",
+      "p3": "We work with restaurants, hotels, beach clubs, pubs and cafés. One fixed monthly fee, no charge per diner or per dish, and the menu lives on your domain, not ours."
     },
     "principles": {
       "eyebrow": "How we work",
@@ -670,6 +676,12 @@
     },
     "cta": {
       "title": "Want to see how it'd work for your venue?"
+    },
+    "hero": {
+      "play": "Play the story",
+      "pause": "Pause",
+      "mute": "Mute",
+      "unmute": "Unmute"
     }
   },
   "contact": {
@@ -783,15 +795,82 @@
   "services": {
     "menu": {
       "title": "Digital menu",
-      "line": "Your menu on your site, with the dashboard, AI, daily menu, translations and training."
+      "line": "Your menu on your site, with the dashboard, AI, daily menu, translations and training.",
+      "bullets": [
+        "Menu on your domain, in your brand",
+        "Dashboard with AI: bulk changes and translations",
+        "Daily menu from your phone",
+        "Team training and unlimited support"
+      ],
+      "steps": [
+        {
+          "title": "You send us the menu",
+          "body": "A PDF, a few photos or the paper menu. From that we build it on your domain, in your colours, your type and your photos."
+        },
+        {
+          "title": "You see it and correct it",
+          "body": "We show it running on your site. Change whatever you want, as many times as it takes, until it is yours."
+        },
+        {
+          "title": "It goes live and we train you",
+          "body": "QR on the tables, menu published, 30 minutes with whoever will run it, and unlimited support from that day on."
+        }
+      ]
     },
     "ordering": {
       "title": "Order at the table",
-      "line": "They order from the QR at the table. It lands on your POS and your printers."
+      "line": "They order from the QR at the table. It lands on your POS and your printers.",
+      "bullets": [
+        "They order from the table's QR, no app",
+        "Orders land on your POS and printers",
+        "Built for hotels, sunbeds and terraces",
+        "Runs on top of your digital menu"
+      ],
+      "steps": [
+        {
+          "title": "We connect your POS and printers",
+          "body": "Tell us which POS and printers you have. We do the connection, with the ticket format your kitchen already reads."
+        },
+        {
+          "title": "We try it in one area",
+          "body": "One QR per table, sunbed or room. A trial service on the terrace or at the bar, with us next to you."
+        },
+        {
+          "title": "We roll it out to the whole venue",
+          "body": "Once the first service runs clean, it goes into every area and the floor team gets trained."
+        }
+      ]
     },
     "reviews": {
       "title": "Review system",
-      "line": "You know what went wrong before they publish it. Every review ends up on Google."
+      "line": "You know what went wrong before they publish it. Every review ends up on Google.",
+      "bullets": [
+        "Every rating reaches Google",
+        "Low ones warn you first: reason, waiter and area",
+        "Patterns by waiter and by area in the dashboard",
+        "Nothing filtered, nothing hidden"
+      ],
+      "steps": [
+        {
+          "title": "We map the floor and the team",
+          "body": "Areas of the venue and waiters. Every QR or link knows where it was opened and who served."
+        },
+        {
+          "title": "We place the links",
+          "body": "On the receipt, on the table or in the message afterwards. The diner rates in twenty seconds."
+        },
+        {
+          "title": "You start reading reasons",
+          "body": "Every rating goes to Google. Low ones reach you first, with the reason, the waiter and the area."
+        }
+      ]
+    },
+    "modal": {
+      "eyebrow": "How it gets set up",
+      "includes": "What's included",
+      "open": "See how it gets set up",
+      "close": "Close",
+      "stepLabel": "Step {n} of 3"
     }
   },
   "modal": {
@@ -843,6 +922,8 @@
     "heroPhoto": "A restaurant in the middle of service.",
     "balamoTablet": "Bálamo's menu open on a tablet in landscape, showing its categories, its filters and a photograph of every dish.",
     "balamoPhone": "The Bálamo digital menu open on a phone, showing dish photographs and the restaurant's own branding.",
-    "storyVideo": "Calsot's owner telling how it all started, sitting on his restaurant's terrace."
+    "storyVideo": "Calsot's owner telling how it all started, sitting on his restaurant's terrace.",
+    "leclubPhone": "Le Club's digital menu open on a phone, with a dish already in the cart.",
+    "ownerPhoto": "A bar owner leaning on his counter, with the bartender working behind him."
   }
 }

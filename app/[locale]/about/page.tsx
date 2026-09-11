@@ -2,9 +2,9 @@ import Image from "next/image";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { pageMetadata } from "@/lib/meta";
 import { HERO_VIDEO_POSTER, HERO_VIDEO_SRC } from "@/lib/config";
-import InlineVideo from "@/components/ui/InlineVideo";
 import Container from "@/components/ui/Container";
 import PageHero from "@/components/page/PageHero";
+import StoryHero from "@/components/about/StoryHero";
 import CardGrid from "@/components/page/CardGrid";
 import Card from "@/components/page/Card";
 import Eyebrow from "@/components/page/Eyebrow";
@@ -33,28 +33,24 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
 
   return (
     <main id="main" tabIndex={-1}>
-      {/* The first client's story video sits in the hero itself, not behind a button that opens
-          a modal: on this page the story is the point of the page. `InlineVideo` still keeps the
-          .mp4 (on the project's Supabase media bucket, see HERO_VIDEO_SRC in lib/config.ts)
-          unrequested until someone presses play, so the page loads with nothing third-party. It
-          renders only while that constant is set, so it can never become a player pointing at a
-          file that isn't there. */}
-      <PageHero eyebrow={t("about.eyebrow")} title={t("about.title")} intro={t("about.intro")}>
-        {HERO_VIDEO_SRC && (
-          <InlineVideo
-            src={HERO_VIDEO_SRC}
-            poster={HERO_VIDEO_POSTER}
-            posterAlt={t("alt.storyVideo")}
-            playLabel={t("home.hero.playPill")}
-            sizes="(max-width: 900px) 92vw, 900px"
-            className={styles.storyVideo}
-          />
-        )}
-      </PageHero>
+      {/* The first client's story video *is* the hero: the poster fills the panel with the page's
+          copy over its corner, and a play button starts it in place, with sound and a mute
+          toggle. Nothing is requested from Supabase until that press. Without the constant the
+          plain PageHero stands in, so the page can never ship a player pointing at a file that
+          isn't there. */}
+      {HERO_VIDEO_SRC ? (
+        <StoryHero
+          title={t("about.title")}
+          src={HERO_VIDEO_SRC}
+          poster={HERO_VIDEO_POSTER}
+          posterAlt={t("alt.storyVideo")}
+        />
+      ) : (
+        <PageHero eyebrow={t("about.eyebrow")} title={t("about.title")} intro={t("about.intro")} />
+      )}
 
-      {/* "Why we exist" — prose beside a pull-quote panel. A one-off shape: FeatureBlock's
-          image prop expects a screenshot path, not a quote, so this is built inline the same
-          way PricingShape/CasesFeatured were. */}
+      {/* "Why we exist" — prose beside a photograph of an owner at his bar (see
+          public/assets/about/SOURCES.md). */}
       <section className={styles.whySection}>
         <Container>
           <div className={styles.whyGrid}>
@@ -65,10 +61,14 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
               <p className={styles.whyBody}>{t("about.why.p2")}</p>
               <p className={styles.whyBody}>{t("about.why.p3")}</p>
             </div>
-            <div className={styles.asidePanel}>
-              <p className={styles.asideLabel}>{t("about.why.aside_label")}</p>
-              <p className={styles.asideQuote}>{t("about.why.aside_quote")}</p>
-              <p className={styles.asideSign}>{t("about.why.aside_sign")}</p>
+            <div className={styles.asidePhoto}>
+              <Image
+                src="/assets/about/owner-at-bar.webp"
+                alt={t("alt.ownerPhoto")}
+                fill
+                sizes="(max-width: 900px) 92vw, 560px"
+                className={styles.asidePhotoImage}
+              />
             </div>
           </div>
         </Container>

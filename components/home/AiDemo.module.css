@@ -193,3 +193,47 @@
 .toastShow {
   opacity: 1;
 }
+
+/* Phones: tighter chrome, the tabs in one scrollable row, and each row's change on its own line
+   under the dish name so neither the name nor the change has to be cut. */
+@media (max-width: 640px) {
+  .demo {
+    padding: 14px;
+    gap: 12px;
+  }
+
+  .tablist {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+    margin: 0 -14px;
+    padding: 0 14px;
+  }
+
+  .tablist::-webkit-scrollbar {
+    display: none;
+  }
+
+  .tab {
+    flex: none;
+  }
+
+  .card {
+    padding: 14px;
+  }
+
+  .row {
+    grid-template-columns: 20px minmax(0, 1fr);
+    row-gap: 4px;
+  }
+
+  .rowLabel {
+    white-space: normal;
+  }
+
+  .rowChange {
+    grid-column: 2;
+    flex-wrap: wrap;
+    white-space: normal;
+  }
+}

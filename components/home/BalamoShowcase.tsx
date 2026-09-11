@@ -9,14 +9,14 @@ import styles from "./BalamoShowcase.module.css";
 type Stat = { value: string; label: string };
 
 /**
- * The Bálamo client-case showcase: a real menu on a phone with two decorative coral rings and
- * five floating pills on the left, the pitch and three headline numbers on the right. Modelled
- * on the last.app client showcase.
+ * The Bálamo client-case showcase: the real menu on the left — the VIP-area tablet, tilted a
+ * few degrees like a product shot, and a phone in front of it opened on one dish, so the food is
+ * in the picture — with the five things the case is about as tags round the devices
+ * (BalamoPills). The pitch and the headline numbers sit on the right.
  *
- * The rings and the pills' bob loop are purely decorative motion — the rings are `aria-hidden`,
- * and the bob animation is driven through `motion`'s `animate` prop, which the app-wide
- * `MotionConfig reducedMotion="user"` (see components/layout/Providers.tsx) automatically turns
- * off under `prefers-reduced-motion`, so the pills sit still rather than bob.
+ * Nothing here moves: the tags used to bob and the owner asked for them to hold still, and the
+ * tilt is a plain CSS transform, not an animation. The warm glow behind the devices is decorative
+ * and `aria-hidden`; the two device images carry real alt text because they are the case.
  *
  * The three stat values are the literal placeholder "—": the real figures haven't been supplied
  * yet, so they're rendered as-is rather than invented (see CLAUDE.md).
@@ -29,22 +29,14 @@ export default async function BalamoShowcase() {
   // block reappears on its own once real numbers land in home.balamo.stats (see TODO.md).
   const stats = (t.raw("home.balamo.stats") as Stat[]).filter((stat) => stat.value !== "—");
 
+  // Three grid items rather than two, so a phone can show them in reading order — the case
+  // label, logo and headline first, then the devices, then the pitch — while on desktop the
+  // devices take the left column and the other two stack on the right.
   return (
     <section id="balamo" className={styles.section}>
       <Container>
         <div className={styles.layout}>
-          <Reveal className={styles.visual}>
-            <div className={styles.rings} aria-hidden="true">
-              <span className={[styles.ring, styles.ringSmall].join(" ")} />
-              <span className={[styles.ring, styles.ringLarge].join(" ")} />
-            </div>
-            <div className={styles.deviceWrap}>
-              <DeviceFrame kind="tablet" landscape src="/assets/cases/balamo-tablet-landscape.webp" alt={t("alt.balamoTablet")} />
-            </div>
-            <BalamoPills labels={pills} />
-          </Reveal>
-
-          <Reveal delay={0.1} className={styles.copy}>
+          <Reveal className={styles.head}>
             <div className={styles.brandRow}>
               <Eyebrow as="span" className={styles.eyebrowInline}>
                 {t("home.balamo.eyebrow")}
@@ -54,6 +46,22 @@ export default async function BalamoShowcase() {
               <img src="/assets/Logos/balamo.svg" alt="" className={styles.logo} />
             </div>
             <h2 className={styles.title}>{t("home.balamo.title")}</h2>
+          </Reveal>
+
+          <Reveal delay={0.05} className={styles.visual}>
+            <div className={styles.stage}>
+              <span className={styles.glow} aria-hidden="true" />
+              <div className={styles.tablet}>
+                <DeviceFrame kind="tablet" landscape src="/assets/cases/balamo-tablet-landscape.webp" alt={t("alt.balamoTablet")} />
+              </div>
+              <div className={styles.phone}>
+                <DeviceFrame kind="phone" compact src="/assets/cases/balamo-phone-dish.webp" alt={t("alt.balamoPhone")} />
+              </div>
+            </div>
+            <BalamoPills labels={pills} />
+          </Reveal>
+
+          <Reveal delay={0.1} className={styles.copy}>
             <p className={styles.body}>{t("home.balamo.body")}</p>
             {/* No "see the case" button: /cases is unpublished again (CASES_PUBLISHED in
                 lib/config.ts), so the only thing that button could do is bounce a visitor back to

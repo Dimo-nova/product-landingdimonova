@@ -1,12 +1,13 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { pageMetadata } from "@/lib/meta";
-import { Link } from "@/lib/routing";
+import { redirect } from "@/lib/routing";
+import { FEATURES_PUBLISHED } from "@/lib/config";
 import { SERVICES } from "@/lib/services";
-import { ServiceIcon } from "@/components/icons/ServiceIcons";
 import Container from "@/components/ui/Container";
 import Reveal from "@/components/ui/Reveal";
 import PageHero from "@/components/page/PageHero";
 import PageCta from "@/components/page/PageCta";
+import ServiceCard from "@/components/home/ServiceCard";
 import styles from "./page.module.css";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
@@ -21,9 +22,13 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
  *
  * The cards read from lib/services.ts — the same registry the mega menu, the mobile nav, the
  * footer and the home page's service cards use — so a fourth service would appear here on its own.
+ * They are the home page's own cards (components/home/ServiceCard.tsx), illustration and all, with
+ * a "see how it works" line added: a visitor who has seen the home recognises them at once.
  */
 export default async function FeaturesPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
+  // See FEATURES_PUBLISHED in lib/config.ts: everything this page said is on the home page now.
+  if (!FEATURES_PUBLISHED) redirect({ href: "/", locale });
   setRequestLocale(locale);
   const t = await getTranslations();
 
@@ -37,16 +42,13 @@ export default async function FeaturesPage({ params }: { params: Promise<{ local
             {SERVICES.map((service, i) => (
               <li key={service.slug} className={styles.cell}>
                 <Reveal delay={i * 0.06} className={styles.reveal}>
-                  <Link href={service.href} className={styles.card}>
-                    <span className={styles.icon} aria-hidden="true">
-                      <ServiceIcon slug={service.slug} size={28} />
-                    </span>
-                    <h2 className={styles.cardTitle}>{t(`services.${service.slug}.title`)}</h2>
-                    <p className={styles.cardBody}>{t(`services.${service.slug}.line`)}</p>
-                    <span className={styles.cardCta}>
-                      {t("features.index.cardCta")} <span aria-hidden="true">→</span>
-                    </span>
-                  </Link>
+                  <ServiceCard
+                    slug={service.slug}
+                    title={t(`services.${service.slug}.title`)}
+                    line={t(`services.${service.slug}.line`)}
+                    bullets={t.raw(`services.${service.slug}.bullets`) as string[]}
+                    cta={t("services.modal.open")}
+                  />
                 </Reveal>
               </li>
             ))}

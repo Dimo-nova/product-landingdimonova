@@ -151,7 +151,7 @@ test("success state has send another button that resets form", async ({ page }) 
 });
 
 test("a 500 response shows the WhatsApp fallback", async ({ page }) => {
-  await page.route("**/api/contact", (route) => route.fulfill({ status: 500, contentType: "application/json", body: JSON.stringify({ error: "notion_error" }) }));
+  await page.route("**/api/contact", (route) => route.fulfill({ status: 500, contentType: "application/json", body: JSON.stringify({ error: "email_error" }) }));
   await page.goto("/contact");
   await page.getByLabel(/your name/i).fill("Test User");
   await page.getByLabel(/venue name/i).fill("The Test Pub");
@@ -166,7 +166,7 @@ test("a 500 response shows the WhatsApp fallback", async ({ page }) => {
 });
 
 test("a 500 response in spanish links to the spanish WhatsApp number", async ({ page }) => {
-  await page.route("**/api/contact", (route) => route.fulfill({ status: 500, contentType: "application/json", body: JSON.stringify({ error: "notion_error" }) }));
+  await page.route("**/api/contact", (route) => route.fulfill({ status: 500, contentType: "application/json", body: JSON.stringify({ error: "email_error" }) }));
   await page.goto("/es/contact");
   await page.getByLabel(/tu nombre/i).fill("Test User");
   await page.getByLabel(/nombre del local/i).fill("The Test Pub");

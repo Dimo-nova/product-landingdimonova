@@ -7,8 +7,10 @@ test.describe("desktop header", () => {
     await products.hover();
     const panel = page.locator("#mega-products");
     await expect(panel).toBeVisible();
-    await expect(panel.getByRole("link")).toHaveCount(3);
-    await expect(panel.getByRole("link", { name: /Digital menu/ })).toHaveAttribute("href", "/features/menu");
+    // The service pages are unpublished (FEATURES_PUBLISHED in lib/config.ts), so the three
+    // entries are buttons that open the service walkthrough, not links to /features/<slug>.
+    await expect(panel.getByRole("button")).toHaveCount(3);
+    await expect(panel.getByRole("button", { name: /Digital menu/ })).toBeVisible();
     await expect(products).toHaveAttribute("aria-expanded", "true");
   });
 
@@ -33,6 +35,27 @@ test.describe("desktop header", () => {
     await expect(page.getByRole("banner").getByRole("link", { name: "Client login" })).toHaveAttribute("href", "https://menuadmin.dimonova.com");
     await page.getByRole("banner").getByRole("button", { name: "Request a demo" }).click();
     await expect(page.getByRole("dialog", { name: "Book your demo" })).toBeVisible();
+  });
+
+  test("client-side navigation lands at the very top, not under the sticky header", async ({ page }) => {
+    // Next's layout router focuses the new page's <main tabIndex=-1> after every client
+    // navigation. Chrome scrolls a focused element that is taller than the viewport so its top
+    // edge sits at the viewport top — 88px down, past the sticky header — unless `main`
+    // carries a matching scroll-margin-top. The visible symptom was a small jump on the home
+    // hero when arriving from any other page or switching language.
+    await page.goto("/contact");
+    await page.getByRole("banner").getByRole("link", { name: "Dimonova" }).click();
+    await expect(page).toHaveURL(/\/$/);
+    await expect(page.locator("main")).toBeFocused();
+    expect(await page.evaluate(() => window.scrollY)).toBe(0);
+  });
+
+  test("switching language lands at the very top too", async ({ page }) => {
+    await page.goto("/");
+    await page.getByRole("banner").locator('button[aria-label="Choose language"]').click();
+    await page.locator('[data-lang="es"]').click();
+    await expect(page).toHaveURL(/\/es(\/|$)/);
+    expect(await page.evaluate(() => window.scrollY)).toBe(0);
   });
 
   test("compacts on scroll", async ({ page }) => {
@@ -66,8 +89,9 @@ test.describe("desktop header", () => {
     await products.focus();
     await page.keyboard.press("Enter");
     await expect(page.locator("#mega-products")).toBeVisible();
-    // Tab through every link in the panel and out the other side
-    const links = await page.locator("#mega-products a").count();
+    // Tab through every entry in the panel (links while the service pages are published, buttons
+    // opening the walkthrough while they are not) and out the other side.
+    const links = await page.locator("#mega-products a, #mega-products button").count();
     for (let i = 0; i < links + 2; i++) await page.keyboard.press("Tab");
     await expect(page.locator("#mega-products")).toBeHidden();
   });
@@ -110,7 +134,8 @@ test.describe("mobile header", () => {
       await expect(panel).toBeVisible({ timeout: 2000 });
     }).toPass({ timeout: 15000 });
     await panel.getByRole("button", { name: "Features" }).click();
-    await expect(panel.getByRole("link", { name: /Digital menu/ })).toBeVisible();
+    // A button, not a link: the service pages are unpublished (FEATURES_PUBLISHED).
+    await expect(panel.getByRole("button", { name: /Digital menu/ })).toBeVisible();
     await panel.getByRole("link", { name: "Pricing" }).click();
     await expect(page).toHaveURL("/pricing");
   });

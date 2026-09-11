@@ -1,12 +1,15 @@
 import { NextRequest, NextResponse } from "next/server";
-import { Client } from "@notionhq/client";
 import { Resend } from "resend";
 import { esc, safeUrl } from "@/lib/html";
-import { MAX_UPLOAD_BYTES } from "@/lib/config";
+import { CONTACT, MAX_UPLOAD_BYTES } from "@/lib/config";
 
-const notion = new Client({ auth: process.env.NOTION_TOKEN });
+/**
+ * The second of the two lead notifications: the whole demo/contact form, as one email to the
+ * owner. (The first, `/api/demo-interest`, fires as soon as an address is typed into the hero.)
+ * Nothing is stored anywhere else — Notion used to get a copy and no longer does — so if the
+ * email cannot be sent the request fails and the visitor is told to try again or use WhatsApp.
+ */
 const resend = new Resend(process.env.RESEND_API_KEY);
-const DB_ID = process.env.NOTION_LEADS_DB_ID!;
 
 const vtypeMap: Record<string, string> = {
   restaurant: "Restaurante",
@@ -81,49 +84,17 @@ export async function POST(req: NextRequest) {
   const menuToday = (fd.get("menuToday") as string)?.trim() ?? "";
   const source = (fd.get("source") as string)?.trim() ?? "";
 
-  const extraLines = [
-    locations ? `Locales: ${locations}` : "",
-    menuToday ? `Carta hoy: ${menuToday}` : "",
-    source ? `Origen: ${source}` : "",
-    fileNote ? `Archivo adjunto: ${fileNote}` : "",
-    `Consentimiento: aceptado el ${consentTimestamp}`,
-  ].filter(Boolean);
-  const notionMessage = [message, ...extraLines].filter(Boolean).join("\n");
-
-  // Notion record
-  try {
-    await notion.pages.create({
-      parent: { database_id: DB_ID },
-      properties: {
-        Nombre: { title: [{ text: { content: name } }] },
-        Email: { email },
-        Local: { rich_text: [{ text: { content: venue } }] },
-        "Tipo de local": { select: { name: vtypeMap[vtype] ?? "Otro" } },
-        ...(phone ? { Teléfono: { phone_number: phone } } : {}),
-        ...(menuUrl ? { "URL menú actual": { url: menuUrl } } : {}),
-        ...(notionMessage ? { Mensaje: { rich_text: [{ text: { content: notionMessage } }] } } : {}),
-        Estado: { select: { name: "Nuevo" } },
-        Idioma: { rich_text: [{ text: { content: locale } }] },
-      },
-    });
-  } catch (err) {
-    // The full error goes to the server log only. It carries Notion's own message, which can
-    // name the integration, the database and why the token was refused; the browser gets the
-    // code alone, which is all the client component distinguishes anyway.
-    console.error("[contact] Notion error:", err);
-    return NextResponse.json({ error: "notion_error" }, { status: 500 });
-  }
-
-  // Email notification
+  // The notification itself. The full error goes to the server log only; the browser gets the
+  // code alone, which is all the client components distinguish anyway.
   try {
     const menuUrlHref = safeUrl(menuUrl);
     await resend.emails.send({
       from: "Dimonova Web <noreply@dimonova.com>",
-      to: "pablo@dimonova.com",
-      subject: `Nuevo lead: ${venue.replace(/[\r\n]+/g, " ")} — ${name.replace(/[\r\n]+/g, " ")}`,
+      to: CONTACT.email,
+      subject: `Demo solicitada: ${venue.replace(/[\r\n]+/g, " ")} — ${name.replace(/[\r\n]+/g, " ")}`,
       attachments,
       html: `
-        <h2 style="font-family:sans-serif">Nuevo lead desde dimonova.com</h2>
+        <h2 style="font-family:sans-serif">Formulario de demo completo</h2>
         <table style="font-family:sans-serif;font-size:14px;border-collapse:collapse">
           <tr><td style="padding:4px 12px 4px 0;color:#666">Nombre</td><td><strong>${esc(name)}</strong></td></tr>
           <tr><td style="padding:4px 12px 4px 0;color:#666">Email</td><td><a href="mailto:${esc(email)}">${esc(email)}</a></td></tr>
@@ -143,7 +114,7 @@ export async function POST(req: NextRequest) {
     });
   } catch (err) {
     console.error("[contact] Resend error:", err);
-    // Don't fail the request — lead already saved in Notion
+    return NextResponse.json({ error: "email_error" }, { status: 500 });
   }
 
   return NextResponse.json({ ok: true });

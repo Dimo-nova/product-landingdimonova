@@ -1,0 +1,170 @@
+/*
+ * Same frame as the home hero's desktop card: a rounded panel inset by 16px, the video filling
+ * it, copy in the lower-left corner over a directional --ink scrim. On phones it runs edge to
+ * edge and the copy sits at the bottom.
+ */
+.wrap {
+  /* Lets the phone breakpoint cancel the container's gutters and bleed the video. */
+  min-width: 0;
+}
+
+.section {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  margin: 16px 0;
+  border-radius: var(--radius-panel);
+  background: var(--ink);
+  color: var(--paper);
+  min-height: calc(100svh - var(--header-h) - 32px);
+  max-height: 860px;
+  display: flex;
+  align-items: flex-end;
+  padding: clamp(28px, 4vw, 56px);
+  padding-top: calc(var(--header-h) + 32px);
+}
+
+.video {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Once mounted the video is clickable (pause/resume), so it sits above the scrim. */
+.videoLive {
+  z-index: 1;
+  cursor: pointer;
+}
+
+.videoLive:focus-visible {
+  outline: 3px solid var(--brand);
+  outline-offset: -3px;
+}
+
+/* The big play button, centred on the panel, above the scrim. */
+.playBig {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 4;
+  transform: translate(-50%, -50%);
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  border: 0;
+  background: var(--brand);
+  color: var(--paper);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  box-shadow: var(--shadow-deep);
+  transition: transform 0.2s var(--ease-out);
+}
+
+.playBig:hover {
+  transform: translate(-50%, -50%) scale(1.06);
+}
+
+.playBig:focus-visible {
+  outline: 3px solid var(--paper);
+  outline-offset: 3px;
+}
+
+/* The mute toggle, once the story has started: top-right, under the sticky header, out of the
+   copy's way and away from the WhatsApp button that owns the bottom-right corner. */
+.controls {
+  position: absolute;
+  top: calc(var(--header-h) + 20px);
+  right: clamp(20px, 3vw, 40px);
+  z-index: 4;
+  display: flex;
+  gap: 8px;
+}
+
+.control {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--on-dark-border);
+  background: var(--scrim-strong);
+  color: var(--paper);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.control:hover {
+  background: var(--ink);
+}
+
+.control:focus-visible {
+  outline: 3px solid var(--paper);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .playBig {
+    transition: none;
+  }
+
+  .playBig:hover {
+    transform: translate(-50%, -50%);
+  }
+}
+
+/* Strongest where the copy is, clear where the faces are. */
+.scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background:
+    linear-gradient(0deg, var(--scrim-strong), transparent 62%),
+    linear-gradient(90deg, var(--scrim-strong), transparent 58%);
+}
+
+.copy {
+  position: relative;
+  z-index: 4;
+  max-width: 640px;
+  /* The video underneath takes the clicks; the title must not swallow them. */
+  pointer-events: none;
+}
+
+.title {
+  color: var(--paper);
+  font-size: min(var(--text-h1), 64px);
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .wrap {
+    padding: 0;
+  }
+
+  .section {
+    margin: 0;
+    border-radius: 0;
+    min-height: 84svh;
+    padding: 24px 20px 32px;
+    padding-top: calc(var(--header-h) + 24px);
+  }
+
+  .playBig {
+    width: 72px;
+    height: 72px;
+  }
+
+  .controls {
+    top: calc(var(--header-h) + 16px);
+    right: 16px;
+  }
+
+  .scrim {
+    background: linear-gradient(0deg, var(--scrim-strong) 20%, transparent 70%);
+  }
+}

@@ -5,7 +5,8 @@ import { AnimatePresence, motion } from "motion/react";
 import { Link, usePathname } from "@/lib/routing";
 import { SERVICES } from "@/lib/services";
 import { openDemo } from "@/lib/events";
-import { ADMIN_URL } from "@/lib/config";
+import { ADMIN_URL, FEATURES_PUBLISHED } from "@/lib/config";
+import ServiceButton from "./ServiceButton";
 import Button from "@/components/ui/Button";
 import { useFocusTrap } from "@/lib/useFocusTrap";
 import LangSwitcher from "./LangSwitcher";
@@ -69,7 +70,15 @@ export default function MobileNav() {
             </div>
             <div className={styles.body}>
               {acc("products", t("nav.products"),
-                SERVICES.map((s) => <Link key={s.slug} href={s.href}>{t(`services.${s.slug}.title`)}</Link>))}
+                SERVICES.map((s) =>
+                  FEATURES_PUBLISHED ? (
+                    <Link key={s.slug} href={s.href}>{t(`services.${s.slug}.title`)}</Link>
+                  ) : (
+                    <ServiceButton key={s.slug} slug={s.slug} className={styles.subBtn} onOpen={() => setOpen(false)}>
+                      {t(`services.${s.slug}.title`)}
+                    </ServiceButton>
+                  ),
+                ))}
               <div className={styles.row}><Link className={styles.rowLink} href="/pricing">{t("nav.pricing")}</Link></div>
               {/* Clients is a plain row, matching the desktop nav: one page, no panel. */}
               <div className={styles.row}><Link className={styles.rowLink} href="/clients">{t("nav.clients")}</Link></div>
@@ -85,7 +94,7 @@ export default function MobileNav() {
             <div className={styles.ctas}>
               <Button size="lg" onClick={() => { setOpen(false); openDemo({ source: "header" }); }}>{t("nav.demo")}</Button>
               <Button size="lg" variant="outline" href={ADMIN_URL} external>{t("nav.clientAccess")}</Button>
-              <LangSwitcher />
+              <LangSwitcher inline />
             </div>
           </motion.div>
         )}

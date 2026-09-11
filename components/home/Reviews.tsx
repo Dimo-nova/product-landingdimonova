@@ -16,7 +16,8 @@ const reviews = rawReviews satisfies ReviewsData;
  * Reviews section: one full-width row per client video, alternating sides — the first row puts
  * the video on the left and that client's written review on the right, the second flips it, and
  * so on. The video is the dominant half of each row on purpose; it is the centrepiece of the
- * section.
+ * section. The flip is visual only: the DOM keeps the video first in every row, so a phone
+ * reads video, words, video, words (see `Row`).
  *
  * A row only shows a quote when the video declares the review's id (`reviewId`), never by array
  * position — see `buildReviewRows`. Written reviews no video claims are laid out in their own
@@ -84,12 +85,12 @@ function clampRating(rating?: number) {
 }
 
 /**
- * One review row. The DOM order matches the visual order — on a flipped row the text really
- * does come first — so the reading order a screen reader or a narrow viewport gets is the one
- * on screen, and the halves simply stack in that order below 900px.
+ * One review row. The DOM always goes video first, then that client's words: below 900px the
+ * halves stack in DOM order, and this is what keeps a phone reading video → words → video →
+ * words instead of landing two text cards back to back where the second row flips. On desktop
+ * a flipped row swaps the two columns in CSS (`.rowFlipped`), so the zig-zag is unchanged there.
  */
 function Row({ row, flipped, starsLabel }: { row: ReviewRow; flipped: boolean; starsLabel: string }) {
-  const media = <ReviewsVideo video={row.video} />;
   const words = row.review ? (
     <TextCard review={row.review} starsLabel={starsLabel} />
   ) : (
@@ -97,9 +98,9 @@ function Row({ row, flipped, starsLabel }: { row: ReviewRow; flipped: boolean; s
   );
 
   return (
-    <Reveal className={styles.row}>
-      {flipped ? words : media}
-      {flipped ? media : words}
+    <Reveal className={[styles.row, flipped && styles.rowFlipped].filter(Boolean).join(" ")}>
+      <ReviewsVideo video={row.video} />
+      {words}
     </Reveal>
   );
 }

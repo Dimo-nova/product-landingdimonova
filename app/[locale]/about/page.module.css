@@ -1,13 +1,7 @@
-/* The story video in the hero. Capped so it stays a hero element rather than filling the whole
-   first screen on a wide monitor. */
-.storyVideo {
-  max-width: 900px;
-}
-
-/* ---- Why we exist: prose beside a quote panel ---- */
+/* ---- Why we exist: prose beside a photograph ---- */
 
 .whySection {
-  padding-block: clamp(24px, 4vw, 40px);
+  padding-block: clamp(40px, 6vw, 72px);
 }
 
 .whyGrid {
@@ -43,43 +37,20 @@
   margin-bottom: 0;
 }
 
-.asidePanel {
+/* The photograph, cropped 4:3 around the owner at the bar (public/assets/about/SOURCES.md). */
+.asidePhoto {
+  position: relative;
   min-width: 0;
-  align-self: stretch;
-  background: var(--cream);
+  align-self: center;
+  aspect-ratio: 4 / 3;
   border-radius: var(--radius-panel);
-  padding: clamp(24px, 4vw, 32px);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  min-height: 340px;
+  overflow: hidden;
+  background: var(--cream);
 }
 
-.asideLabel {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--ink);
-  margin: 0 0 18px;
-}
-
-.asideQuote {
-  font-family: var(--font-instrument-serif), serif;
-  font-style: italic;
-  font-size: clamp(22px, 2.4vw, 30px);
-  line-height: 1.25;
-  color: var(--ink);
-  margin: 0;
-}
-
-.asideSign {
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--ink-2);
-  margin: 32px 0 0;
+.asidePhotoImage {
+  object-fit: cover;
+  object-position: 60% 50%;
 }
 
 /* ---- Principles: three Cards, same roman-numeral-icon shape as features.f4 ---- */

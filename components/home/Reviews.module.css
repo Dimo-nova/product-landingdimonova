@@ -40,9 +40,29 @@
   margin-top: clamp(32px, 5vw, 72px);
 }
 
+/* The zig-zag: a flipped row shows its words on the left and its video on the right, while the
+   DOM keeps the video first (see Row in Reviews.tsx). Both children are pinned to row 1 so the
+   grid does not open a second row for the one moved to column 1. */
+.rowFlipped > :first-child {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.rowFlipped > :last-child {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+/* One column: the halves stack in DOM order, video first, on every row. */
 @media (max-width: 900px) {
   .row {
     grid-template-columns: minmax(0, 1fr);
+  }
+
+  .rowFlipped > :first-child,
+  .rowFlipped > :last-child {
+    grid-column: auto;
+    grid-row: auto;
   }
 }
 

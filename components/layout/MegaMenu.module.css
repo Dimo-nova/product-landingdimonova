@@ -21,7 +21,9 @@
 /* No icon: the owner asked for a plain text list where the hover wash is the only affordance. */
 .card {
   display: block;
+  width: 100%;
   padding: 14px; border-radius: 16px; color: var(--ink);
+  background: none; border: 0; text-align: left; font: inherit; cursor: pointer;
   transition: background .2s;
 }
 .card:hover { background: var(--cream); }

@@ -7,7 +7,12 @@ import styles from "./LangSwitcher.module.css";
 
 const LABELS: Record<string, string> = { en: "English", es: "Español", de: "Deutsch", fr: "Français", pt: "Português" };
 
-export default function LangSwitcher() {
+/**
+ * The language control. Default: a pill that opens a dropdown (header, footer). `inline`: the
+ * five languages laid out as a row of pills with no popover — for the mobile nav, where a
+ * dropdown opening downward from the panel's last row had nowhere to go.
+ */
+export default function LangSwitcher({ inline = false }: { inline?: boolean }) {
   const t = useTranslations("nav");
   const locale = useLocale();
   const pathname = usePathname();
@@ -27,6 +32,26 @@ export default function LangSwitcher() {
   function pick(code: string) {
     setOpen(false);
     router.replace(pathname, { locale: code });
+  }
+
+  if (inline) {
+    return (
+      <div className={styles.inline} role="group" aria-label={t("language")}>
+        {routing.locales.map((code) => (
+          <button
+            key={code}
+            type="button"
+            data-lang={code}
+            aria-current={code === locale}
+            className={styles.inlineItem}
+            onClick={() => pick(code)}
+          >
+            <FlagIcon locale={code} />
+            <span>{code.toUpperCase()}</span>
+          </button>
+        ))}
+      </div>
+    );
   }
 
   return (

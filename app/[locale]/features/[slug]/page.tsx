@@ -1,14 +1,13 @@
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { routing } from "@/lib/routing";
+import { redirect, routing } from "@/lib/routing";
 import { pageMetadata } from "@/lib/meta";
+import { FEATURES_PUBLISHED } from "@/lib/config";
 import { SERVICES, isServiceSlug } from "@/lib/services";
 import Annotated from "@/components/ui/Annotated";
 import PageCta from "@/components/page/PageCta";
 import ServiceHero from "@/components/features/ServiceHero";
-import HeroArtMenu from "@/components/features/HeroArtMenu";
-import HeroArtOrdering from "@/components/features/HeroArtOrdering";
-import HeroArtReviews from "@/components/features/HeroArtReviews";
+import { ServiceArt } from "@/components/home/ServiceArt";
 import MenuSections from "@/components/features/MenuSections";
 import OrderingSections from "@/components/features/OrderingSections";
 import ReviewsSections from "@/components/features/ReviewsSections";
@@ -37,17 +36,26 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
  * page's single <h1> and its demo CTA, then the page's own sections, then the closing CTA band —
  * but each slug brings its own hero illustration, its own background wash and its own sections,
  * so the three read as three pages rather than one template with the nouns swapped.
+ *
+ * The hero illustration is the same scene as the service's card on the home page
+ * (components/home/ServiceArt.tsx), drawn large: the card is the thumbnail, this is the poster,
+ * and a visitor who clicked the card lands on the picture they clicked.
  */
 export default async function ServicePage({ params }: { params: Promise<{ locale: string; slug: string }> }) {
   const { locale, slug } = await params;
   if (!isServiceSlug(slug)) notFound();
+  // See FEATURES_PUBLISHED in lib/config.ts: the service walkthroughs live on the home page now.
+  if (!FEATURES_PUBLISHED) redirect({ href: "/", locale });
   setRequestLocale(locale);
 
   const t = await getTranslations(`features.pages.${slug}`);
   const tCommon = await getTranslations("common");
 
-  const art =
-    slug === "menu" ? <HeroArtMenu /> : slug === "ordering" ? <HeroArtOrdering /> : <HeroArtReviews />;
+  const art = (
+    <div className={styles.art}>
+      <ServiceArt slug={slug} />
+    </div>
+  );
 
   return (
     <main id="main" tabIndex={-1} className={styles.page}>

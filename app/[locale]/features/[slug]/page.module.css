@@ -11,3 +11,12 @@
 .page {
   overflow-x: clip;
 }
+
+/* The hero illustration is the home card's scene (components/home/ServiceArt.tsx), which fills
+   whatever box it is given; this is that box. Same proportion as the card's media area, so the
+   phone runs off the bottom edge the same way. */
+.art {
+  width: 100%;
+  max-width: 480px;
+  aspect-ratio: 300 / 272;
+}

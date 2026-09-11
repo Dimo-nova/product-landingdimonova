@@ -4,9 +4,9 @@ import type { LegalDoc } from "../types";
 export const cookies: LegalDoc = {
   slug: "cookies",
   title: "Cookie policy",
-  description: "The two cookies dimonova.com uses, what they do, and why they don't need a consent banner.",
+  description: "The one cookie dimonova.com uses, what it does, and why it doesn't need a consent banner.",
   intro:
-    "This page explains what cookies dimonova.com uses. There are only two, both first-party and strictly necessary for the site to work.",
+    "This page explains what cookies dimonova.com uses. There is only one, first-party and strictly necessary for the site to work.",
   sections: [
     {
       heading: "1. What a cookie is",
@@ -30,17 +30,11 @@ export const cookies: LegalDoc = {
               "Stores the language you pick in the language selector, so the rest of the pages are shown in it. It is only created if you change the language yourself: simply browsing the site does not set it",
               "Session: deleted when you close your browser",
             ],
-            [
-              "dim-lang-dismissed",
-              "First-party, technical/preference",
-              "Records that you closed the bar offering the site in your browser's language, so it is not shown again",
-              "90 days",
-            ],
           ],
         },
         {
           kind: "p",
-          text: "These are the only two cookies we use. Both are first-party (set by dimonova.com), and neither is used to identify you or to track you across other websites.",
+          text: "This is the only cookie we use. It is first-party (set by dimonova.com), and it is not used to identify you or to track you across other websites.",
         },
       ],
     },
@@ -58,7 +52,7 @@ export const cookies: LegalDoc = {
       blocks: [
         {
           kind: "p",
-          text: "The two cookies we use are strictly necessary to provide a function you asked for (viewing the site in your language), so they are exempt from the prior-consent requirement in article 22.2 of the Spanish LSSI-CE and the equivalent ePrivacy rules.",
+          text: "The cookie we use is strictly necessary to provide a function you asked for (viewing the site in your language), so it is exempt from the prior-consent requirement in article 22.2 of the Spanish LSSI-CE and the equivalent ePrivacy rules.",
         },
         {
           kind: "p",
@@ -71,7 +65,7 @@ export const cookies: LegalDoc = {
       blocks: [
         {
           kind: "p",
-          text: "You can delete or block cookies in your browser settings. Blocking these two only means the site will forget the language you chose.",
+          text: "You can delete or block cookies in your browser settings. Blocking it only means the site will forget the language you chose.",
         },
         {
           kind: "p",

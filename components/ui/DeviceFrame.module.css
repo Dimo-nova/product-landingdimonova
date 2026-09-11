@@ -11,3 +11,10 @@
   width: 38%; height: 22px; background: var(--device-bezel); border-radius: 0 0 14px 14px; z-index: 1;
 }
 .tablet .notch { display: none; }
+
+/* `compact`: the same proportions scaled for a device drawn under ~200px wide. */
+.compact { border-radius: 22px; padding: 5px; }
+.compact .screen { border-radius: 18px; }
+.compact .notch { top: 5px; width: 34%; height: 12px; border-radius: 0 0 8px 8px; }
+.compact.tablet { border-radius: 16px; padding: 6px; }
+.compact.tablet .screen { border-radius: 11px; }

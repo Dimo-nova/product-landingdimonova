@@ -53,11 +53,12 @@ test("footer shows the business-identity line", async ({ page }) => {
   await expect(page.locator("[data-business-details]")).toBeVisible();
 });
 
-test("cookie policy names both cookies", async ({ page }) => {
+test("cookie policy names the one cookie and no longer the removed banner's", async ({ page }) => {
   await page.goto("/legal/cookies");
   const body = page.locator("main");
   await expect(body).toContainText("NEXT_LOCALE");
-  await expect(body).toContainText("dim-lang-dismissed");
+  // The "prefer to read this in Spanish?" bar and its dim-lang-dismissed cookie are gone.
+  await expect(body).not.toContainText("dim-lang-dismissed");
 });
 
 test("privacy page tables do not cause horizontal page overflow on mobile", async ({ page }) => {

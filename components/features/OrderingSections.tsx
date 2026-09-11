@@ -4,6 +4,9 @@ import Reveal from "@/components/ui/Reveal";
 import Eyebrow from "@/components/page/Eyebrow";
 import CardGrid from "@/components/page/CardGrid";
 import Card from "@/components/page/Card";
+import DeviceFrame from "@/components/ui/DeviceFrame";
+import Placeholder from "@/components/ui/Placeholder";
+import { Qr } from "@/components/home/ServiceArt";
 import SectionHead from "./SectionHead";
 import OrderingMoments from "./OrderingMoments";
 import OrderingFlow from "./OrderingFlow";
@@ -11,9 +14,9 @@ import OrderingTicketStats from "./OrderingTicketStats";
 import section from "./Section.module.css";
 import styles from "./OrderingSections.module.css";
 
-type Step = { title: string; body: string };
+type Step = { title: string; body: string; placeholder?: string };
 type Stat = { value: string; label: string };
-type CardCopy = { title: string; body: string };
+type CardCopy = { title: string; body: string; placeholder?: string };
 
 /**
  * Square's own published write-up of the figures quoted in the "average ticket" section. It is
@@ -26,6 +29,7 @@ const SQUARE_SOURCE =
 /** The body of `/features/ordering`: why guests stop ordering, the three steps, the published ticket figures, and where it pays off first. */
 export default async function OrderingSections() {
   const t = await getTranslations("features.pages.ordering");
+  const tAlt = await getTranslations("alt");
 
   const moments = t.raw("s1.moments") as string[];
   const steps = t.raw("s2.steps") as Step[];
@@ -45,11 +49,29 @@ export default async function OrderingSections() {
         </Container>
       </section>
 
-      {/* ---- Scan, order, print ---- */}
+      {/* ---- Scan, order, print. Each step carries what the guest and the kitchen actually see:
+              the real QR for Le Club's menu, Le Club's menu with a dish in the cart, and — until
+              the photograph exists — the space for the ticket coming out of the printer. ---- */}
       <Container>
         <section className={section.section}>
           <SectionHead eyebrow={t("s2.eyebrow")} title={t("s2.title")} />
-          <OrderingFlow steps={steps} />
+          <OrderingFlow
+            steps={steps}
+            visuals={[
+              <div key="scan" className={[styles.stepVisual, styles.stepVisualQr].join(" ")} aria-hidden="true">
+                <svg viewBox="0 0 120 90" className={styles.stepQr} focusable="false">
+                  <rect x="30" y="7" width="60" height="76" rx="6" className={styles.stepQrPaper} />
+                  <Qr x={36} y={13} size={48} />
+                  <rect x="46" y="67" width="28" height="4" rx="2" className={styles.stepQrLine} />
+                  <rect x="51" y="75" width="18" height="4" rx="2" className={styles.stepQrPill} />
+                </svg>
+              </div>,
+              <div key="order" className={[styles.stepVisual, styles.stepVisualPhone].join(" ")}>
+                <DeviceFrame kind="phone" compact src="/assets/services/ordering-leclub.webp" alt={tAlt("leclubPhone")} />
+              </div>,
+              <Placeholder key="print" label={steps[2]?.placeholder ?? ""} className={styles.stepVisual} />,
+            ]}
+          />
         </section>
       </Container>
 
@@ -80,7 +102,7 @@ export default async function OrderingSections() {
           <CardGrid columns={3}>
             {cards.map((card, i) => (
               <Reveal key={card.title} delay={i * 0.06} className={styles.cell}>
-                <Card title={card.title} body={card.body} />
+                <Card media={card.placeholder ? <Placeholder label={card.placeholder} /> : undefined} title={card.title} body={card.body} />
               </Reveal>
             ))}
           </CardGrid>

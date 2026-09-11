@@ -4,12 +4,13 @@ import Reveal from "@/components/ui/Reveal";
 import CardGrid from "@/components/page/CardGrid";
 import Card from "@/components/page/Card";
 import Faq from "@/components/page/Faq";
+import Placeholder from "@/components/ui/Placeholder";
 import SectionHead from "./SectionHead";
 import ReviewsFlow from "./ReviewsFlow";
 import section from "./Section.module.css";
 import styles from "./ReviewsSections.module.css";
 
-type CardCopy = { title: string; body: string };
+type CardCopy = { title: string; body: string; placeholder?: string };
 type FaqItem = { q: string; a: string };
 
 /**
@@ -93,14 +94,15 @@ export default async function ReviewsSections() {
         </Container>
       </section>
 
-      {/* ---- What a tagged reason gives you ---- */}
+      {/* ---- What a tagged reason gives you. Each card reserves the space for the dashboard
+              capture that will show that view (see TODO.md). ---- */}
       <Container>
         <section className={section.section}>
           <SectionHead eyebrow={t("s3.eyebrow")} title={t("s3.title")} />
           <CardGrid columns={3}>
             {cards.map((card, i) => (
               <Reveal key={card.title} delay={i * 0.06} className={styles.cell}>
-                <Card title={card.title} body={card.body} />
+                <Card media={card.placeholder ? <Placeholder label={card.placeholder} /> : undefined} title={card.title} body={card.body} />
               </Reveal>
             ))}
           </CardGrid>

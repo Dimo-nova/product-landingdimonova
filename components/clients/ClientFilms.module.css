@@ -60,17 +60,6 @@
   min-width: 0;
 }
 
-/* Decorative running number. Serif, oversized and set in --mist so it reads as a page mark
-   rather than as data; hidden from assistive tech, which gets the ordered list instead. */
-.index {
-  display: block;
-  font-family: var(--font-instrument-serif), Georgia, serif;
-  font-size: clamp(40px, 5vw, 64px);
-  line-height: 1;
-  color: var(--decor-ink);
-  margin-bottom: 12px;
-}
-
 .name {
   margin: 0 0 4px;
   font-size: var(--text-h3);

@@ -11,13 +11,16 @@ type WithoutImage = { image?: never; imageAlt?: never };
  */
 type Props = (WithImage | WithoutImage) & {
   icon?: React.ReactNode;
+  /** A visual that is not a plain screenshot — a Placeholder, a drawn QR — rendered in the
+   * same slot an `image` would take. Ignored when `image` is set. */
+  media?: React.ReactNode;
   title: string;
   body: string;
   footer?: React.ReactNode;
 };
 
 /** A single card for CardGrid: --paper surface, --mist border, lifts on hover/focus. */
-export default function Card({ icon, image, imageAlt, title, body, footer }: Props) {
+export default function Card({ icon, image, imageAlt, media, title, body, footer }: Props) {
   return (
     <div className={styles.card}>
       {image && (
@@ -25,6 +28,7 @@ export default function Card({ icon, image, imageAlt, title, body, footer }: Pro
           <Image src={image} alt={imageAlt} fill sizes="(max-width: 640px) 100vw, 33vw" className={styles.image} />
         </div>
       )}
+      {!image && media && <div className={styles.customMedia}>{media}</div>}
       {!image && icon && (
         <div className={styles.icon} aria-hidden="true">
           {icon}

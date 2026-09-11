@@ -5,7 +5,6 @@ import { pageMetadata } from "@/lib/meta";
 import { CASES_PUBLISHED } from "@/lib/config";
 import Container from "@/components/ui/Container";
 import Annotated from "@/components/ui/Annotated";
-import Pill from "@/components/ui/Pill";
 import Reveal from "@/components/ui/Reveal";
 import PageHero from "@/components/page/PageHero";
 import PageCta from "@/components/page/PageCta";
@@ -55,19 +54,7 @@ export default async function ClientsPage({ params }: { params: Promise<{ locale
         eyebrow={t("clients.eyebrow")}
         title={t.rich("clients.title", richTitle)}
         intro={t("clients.intro")}
-      >
-        {reviews.rating !== null && (
-          <Pill
-            tone="brand"
-            size="md"
-            className={styles.ratingPill}
-            href={reviews.profileUrl || undefined}
-            external={Boolean(reviews.profileUrl)}
-          >
-            {t("clients.badge", { rating: reviews.rating })}
-          </Pill>
-        )}
-      </PageHero>
+      />
 
       {empty ? (
         <Container>

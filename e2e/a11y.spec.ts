@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
-import { CASES_PUBLISHED } from "../lib/config";
+import { CASES_PUBLISHED, FEATURES_PUBLISHED } from "../lib/config";
 
 test("the skip link is the first tab stop on / and moves focus to #main", async ({ page }) => {
   await page.goto("/");
@@ -16,13 +16,12 @@ test("the skip link is the first tab stop on / and moves focus to #main", async 
 // Every real page, with /legal/privacy standing in for the three legal documents.
 const PAGES = [
   "/",
-  "/features",
-  // The three service pages (app/[locale]/features/[slug]/page.tsx). They carry the most motion
+  // The features index and the three service pages (app/[locale]/features/[slug]/page.tsx),
+  // only while published (FEATURES_PUBLISHED): unpublished they redirect home, and every check
+  // would just measure the home page again. They carry the most motion
   // and the most bespoke layout of any inner page, so they get the full sweep rather than a
   // spot check.
-  "/features/menu",
-  "/features/ordering",
-  "/features/reviews",
+  ...(FEATURES_PUBLISHED ? ["/features", "/features/menu", "/features/ordering", "/features/reviews"] : []),
   "/pricing",
   // Only while it is published: unpublished it redirects home, so there is nothing of its own
   // to sweep and every check would be measuring the home page twice.
@@ -107,7 +106,7 @@ for (const path of PAGES) {
 // ("PageHero-module__aBcDe__eyebrow"), so this matches on the local name after the last "__"
 // rather than the exact hash, and stays correct across rebuilds. The contrast formula mirrors
 // the `contrast()` helper in e2e/footer.spec.ts.
-const EYEBROW_PAGES = ["/features", "/features/menu", "/features/ordering", "/features/reviews", "/pricing", ...(CASES_PUBLISHED ? ["/cases"] : []), "/about", "/"];
+const EYEBROW_PAGES = [...(FEATURES_PUBLISHED ? ["/features", "/features/menu", "/features/ordering", "/features/reviews"] : []), "/pricing", ...(CASES_PUBLISHED ? ["/cases"] : []), "/about", "/"];
 
 for (const path of EYEBROW_PAGES) {
   test(`every eyebrow label on ${path} meets 4.5:1 contrast`, async ({ page }) => {

@@ -18,3 +18,16 @@
 }
 .item:hover { background: var(--cream); }
 .item[aria-current="true"] { color: var(--brand-deep); font-weight: 600; }
+
+/* `inline`: the languages as a row of pills, no popover (mobile nav). */
+/* Five equal pills in one row: they share the width rather than wrapping the last one alone. */
+.inline { display: flex; gap: 6px; }
+.inlineItem {
+  flex: 1; min-width: 0;
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  height: 40px; padding: 0 6px; border-radius: var(--radius-pill);
+  border: 1.5px solid var(--mist); background: var(--paper);
+  font-size: 13px; font-weight: 600; color: var(--ink);
+}
+.inlineItem:hover { border-color: var(--ink); }
+.inlineItem[aria-current="true"] { background: var(--brand-soft); border-color: var(--brand-soft); color: var(--brand-darkest); }

@@ -96,6 +96,52 @@
   object-fit: contain;
 }
 
+/* Phones: the four marks in one row, no names and no pill. The name is still in the link —
+   visually hidden, same recipe as .u-visually-hidden — so assistive tech and the e2e read
+   "ChatGPT", not "link". */
+@media (max-width: 640px) {
+  .providers {
+    flex-wrap: nowrap;
+    gap: 14px;
+  }
+
+  .provider {
+    padding: 0;
+    gap: 0;
+    background: transparent;
+    border: 0;
+  }
+
+  .provider:hover,
+  .provider:focus-visible {
+    background: transparent;
+  }
+
+  .label,
+  .icon {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .plate {
+    width: 60px;
+    height: 60px;
+    box-shadow: var(--shadow-hover);
+  }
+
+  .logo {
+    width: 32px;
+    height: 32px;
+  }
+}
+
 /* A self-contained white card, not the bare coral: everything inside it (including the
    13px label) sits on white, so the 18px-on-coral rule above never applies to it. */
 .fallback {

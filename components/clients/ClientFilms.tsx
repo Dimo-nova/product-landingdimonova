@@ -52,9 +52,6 @@ export default async function ClientFilms({ rows }: { rows: ReviewRow[] }) {
 
             const aside = (
               <div key="aside" className={styles.aside}>
-                <span className={styles.index} aria-hidden="true">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
                 <h3 className={styles.name}>{video.name}</h3>
                 <p className={styles.venue}>{video.venue}</p>
                 {review && (

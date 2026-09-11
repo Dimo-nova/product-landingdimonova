@@ -3,99 +3,172 @@
   overflow: hidden;
 }
 
+/*
+ * Desktop: the devices fill the left column top to bottom, the headline block sits at the foot
+ * of the upper right cell and the pitch at the head of the lower one, so the two meet in the
+ * middle and read as one column centred against the scene. Phones: one column, in reading
+ * order — headline, devices, pitch.
+ */
 .layout {
   padding-block: clamp(48px, 8vw, 96px);
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: clamp(32px, 6vw, 80px);
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas:
+    "visual head"
+    "visual copy";
+  column-gap: clamp(32px, 6vw, 80px);
+  row-gap: 0;
   align-items: center;
+}
+
+.head {
+  grid-area: head;
+  align-self: end;
+  max-width: 480px;
+  min-width: 0;
+}
+
+.copy {
+  grid-area: copy;
+  align-self: start;
+}
+
+.visual {
+  grid-area: visual;
 }
 
 @media (max-width: 900px) {
   .layout {
     grid-template-columns: 1fr;
-    gap: 48px;
+    grid-template-rows: none;
+    grid-template-areas:
+      "head"
+      "visual"
+      "copy";
+    row-gap: 36px;
+  }
+
+  .head,
+  .copy {
+    align-self: auto;
   }
 }
 
-/* ==== Left: tablet, rings, pills ==== */
+/* ==== Left: tablet, phone, glow, tags ==== */
 
 .visual {
-  /* Everything here is a percentage of this column, not of the viewport. The pills sit on the
-     inner ring and are about 150px wide, so a ring sized in `vw` fitted at 1440px and pushed
-     them past the section's edge by 960px. As a share of the column, the ring, the tablet and
-     the pill offsets all shrink together and the arrangement holds at every width.
-     --ring is the inner circle's diameter; --ring-r is what the pill offsets are built from. */
-  --device-w: min(380px, 58%);
-  --ring: 68%;
-  --ring-r: calc(var(--ring) / 2);
   position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   min-width: 0;
 }
 
-.rings {
+/*
+ * The scene is sized by its own width, never by the viewport: the tablet, the phone and every
+ * tag offset are percentages of this box, so the arrangement holds from a 1000px two-column
+ * layout up to the 1512px container. The tags overhang the devices on both sides, which is why
+ * the devices sit inset and the box carries no overflow clip.
+ */
+.stage {
+  position: relative;
+  aspect-ratio: 5 / 4;
+}
+
+/* A pool of warm light behind the devices instead of hairline rings. */
+.glow {
   position: absolute;
-  inset: 0;
-  z-index: 0;
+  inset: -6% -4%;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, var(--brand-soft), transparent);
   pointer-events: none;
 }
 
-@media (max-width: 900px) {
-  .rings {
-    display: none;
-  }
-}
-
-.ring {
+/* Tilted like a product shot: a plain transform, not an animation. */
+.tablet {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border: 1px solid var(--brand);
-  border-radius: 50%;
+  top: 9%;
+  left: 5%;
+  width: 78%;
+  transform: perspective(1400px) rotateY(-9deg) rotateX(4deg);
+  transform-origin: 40% 50%;
 }
 
-/* `aspect-ratio` rather than a matching height: a percentage height would resolve against the
-   column's height, not its width, and the "circle" would come out as an ellipse. */
-.ringSmall {
-  width: var(--ring);
-  aspect-ratio: 1;
-  opacity: 0.25;
-}
-
-.ringLarge {
-  width: calc(var(--ring) * 1.46);
-  aspect-ratio: 1;
-  opacity: 0.12;
-}
-
-.deviceWrap {
-  position: relative;
+/* In front of the tablet's lower-right corner, opened on a dish so the food is in the picture. */
+.phone {
+  position: absolute;
+  right: 6%;
+  bottom: 0;
+  width: 28%;
+  transform: rotate(5deg);
   z-index: 2;
-  width: var(--device-w);
 }
 
-/*
- * The pills sit on the inner ring, not around the device's own box: the ring is the thing the
- * eye reads as the orbit, so anchoring to it is what makes the arrangement look deliberate. The
- * box is the whole visual column, sharing its centre with `.rings`.
- */
-.pills {
+/* On desktop the tags are pinned round the devices, over the scene. */
+.tags {
   position: absolute;
   inset: 0;
   z-index: 3;
+  pointer-events: none;
 }
 
+.tag {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px 10px 12px;
+  border-radius: var(--radius-pill);
+  background: var(--paper);
+  color: var(--ink);
+  border: 1px solid var(--mist);
+  box-shadow: var(--shadow-hover);
+  font-weight: 600;
+  /* Scales with the column, so at a 1000px two-column layout the tags shrink with the devices
+     instead of crowding them. */
+  font-size: clamp(12px, 1.1vw, 14px);
+  line-height: 1;
+  white-space: nowrap;
+  pointer-events: auto;
+}
+
+/* A bare coral glyph, no disc: decorative, so it needs no contrast ratio of its own. */
+.tagIcon {
+  flex: none;
+  display: grid;
+  place-items: center;
+  color: var(--brand);
+}
+
+.tagIcon svg {
+  width: clamp(16px, 1.5vw, 20px);
+  height: clamp(16px, 1.5vw, 20px);
+}
+
+/* Five places round the devices, each with its own slight lean so the set reads as scattered
+   rather than laid out. Nothing sits over the phone's screen. */
+.tagReviews { top: 2%;   left: 4%;  transform: rotate(-4deg); }
+.tagDesign  { top: 0;    right: 6%; transform: rotate(3deg); }
+.tagWines   { top: 46%;  left: -2%; transform: rotate(-3deg); }
+.tagCellar  { top: 22%;  right: -2%; transform: rotate(2deg); }
+.tagSupport { bottom: 4%; left: 10%; transform: rotate(-2deg); }
+
 @media (max-width: 900px) {
-  .visual {
-    --device-w: min(440px, 92%);
+  .stage {
+    aspect-ratio: 4 / 3;
   }
 
-  .pills {
+  .tablet {
+    top: 2%;
+    left: 0;
+    width: 82%;
+  }
+
+  .phone {
+    right: 0;
+    width: 27%;
+  }
+
+  /* Below the devices, wrapped in a row: there is no room round them on a phone. */
+  .tags {
     position: static;
     display: flex;
     flex-wrap: wrap;
@@ -103,51 +176,18 @@
     gap: 10px;
     margin-top: 28px;
   }
-}
 
-/*
- * Five points on the ring, mirrored left to right: two at ±30° above the middle, two at the
- * horizontal, one straight up. Nothing sits below the tablet. Each slot is centred on the ring's
- * centre and then pushed out along its own angle with margins, so the transform stays free for
- * the centring.
- */
-.pillSlot {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-@media (max-width: 900px) {
-  .pillSlot {
+  .tag {
     position: static;
     transform: none;
-    margin: 0;
+    font-size: 13px;
+    padding: 8px 14px 8px 10px;
   }
-}
 
-/* cos/sin of 150°, 30°, 180°, 0° and 90°. */
-.upLeft {
-  margin-left: calc(var(--ring-r) * -0.866);
-  margin-top: calc(var(--ring-r) * -0.5);
-}
-
-.upRight {
-  margin-left: calc(var(--ring-r) * 0.866);
-  margin-top: calc(var(--ring-r) * -0.5);
-}
-
-.left {
-  margin-left: calc(var(--ring-r) * -1);
-}
-
-.right {
-  margin-left: var(--ring-r);
-}
-
-/* Above the tablet, not below it: the owner wants nothing sitting under the device. */
-.top {
-  margin-top: calc(var(--ring-r) * -1);
+  .tagIcon svg {
+    width: 17px;
+    height: 17px;
+  }
 }
 
 /* ==== Right: copy, CTA, stats ==== */
@@ -155,6 +195,14 @@
 .copy {
   max-width: 480px;
   min-width: 0;
+}
+
+/* Below the desktop breakpoint the layout's row gap does the spacing under the headline. Kept
+   after `.title` so it wins on source order. */
+@media (max-width: 900px) {
+  .title {
+    margin-bottom: 0;
+  }
 }
 
 /* The case label sits above the logo, not beside it. */

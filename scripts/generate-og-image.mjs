@@ -25,7 +25,9 @@ const ELLIPSE_PATH =
 
 function readHeadline() {
   const messages = JSON.parse(fs.readFileSync(path.join(ROOT, "messages/en.json"), "utf8"));
-  const raw = messages.home.hero.title; // e.g. "We take care of it. You <mark>grow</mark>."
+  // e.g. "We take care of it. <line>You <mark>grow</mark>.</line>" — the <line> tag is a layout
+  // hint for the hero (see components/home/Hero.tsx) and means nothing here, so it is stripped.
+  const raw = messages.home.hero.title.replace(/<\/?line>/g, "");
   const match = raw.match(/^(.*)<mark>(.*)<\/mark>(.*)$/s);
   if (!match) {
     throw new Error(`Could not find a <mark>...</mark> word in home.hero.title: ${raw}`);

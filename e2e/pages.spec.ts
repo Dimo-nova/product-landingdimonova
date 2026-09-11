@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test";
-import { CASES_PUBLISHED } from "../lib/config";
+import { CASES_PUBLISHED, FEATURES_PUBLISHED } from "../lib/config";
 
-const pages = ["features", "pricing", "about"];
+const pages = [...(FEATURES_PUBLISHED ? ["features"] : []), "pricing", "about"];
 for (const p of pages) {
   test(`${p} page renders a heading`, async ({ page }) => {
     await page.goto(`/${p}`);
@@ -18,6 +18,29 @@ for (const p of pages) {
 // #menu/#ai/#ordering/... scroll anchors that used to live on one long page are gone with the
 // four-block tour they belonged to — lib/services.ts links to the pages now, not to anchors.
 const SERVICE_SLUGS = ["menu", "ordering", "reviews"];
+
+// Unpublished (FEATURES_PUBLISHED in lib/config.ts): the index and the three service pages send
+// the visitor home, where the service cards open the walkthrough modal instead.
+test.describe("service pages, while unpublished", () => {
+  test.skip(FEATURES_PUBLISHED, "the service pages are published");
+
+  test("the features index and every service page redirect home", async ({ page }) => {
+    const paths = ["/features", ...SERVICE_SLUGS.map((s) => `/features/${s}`)];
+    // English first, Spanish after: visiting /es sets next-intl's locale cookie, after which the
+    // English redirect to "/" would itself be sent on to /es.
+    for (const path of paths) {
+      await page.goto(path);
+      await expect(page).toHaveURL(/\/$/);
+    }
+    for (const path of paths) {
+      await page.goto(`/es${path}`);
+      await expect(page).toHaveURL(/\/es$/);
+    }
+  });
+});
+
+test.describe("service pages, while published", () => {
+  test.skip(!FEATURES_PUBLISHED, "the service pages are unpublished");
 
 test("features page has exactly one h1", async ({ page }) => {
   await page.goto("/features");
@@ -93,6 +116,8 @@ test("the features index closing CTA opens the demo modal", async ({ page }) => 
   // Scoped to <main>: the header carries its own, differently-labelled "Request a demo" button.
   await page.locator("main").getByRole("button", { name: "Request a demo →" }).click();
   await expect(page.getByRole("dialog")).toBeVisible();
+});
+
 });
 
 // Pricing page: the footer, the mega menu and the mobile nav's Resources section all link to
@@ -183,15 +208,22 @@ test("the about page team section stays hidden behind TEAM_PUBLISHED", async ({ 
   await expect(page.getByAltText(/Sergio, co-owner/)).toHaveCount(0);
 });
 
-test("the about page hero plays the story video in place, and only on request", async ({ page }) => {
+test("the about page hero plays the story in place, with sound, only on request", async ({ page }) => {
   await page.goto("/about");
-  const play = page.locator("main").getByRole("button", { name: /How Dimonova started/i });
-  await expect(play).toBeVisible();
+  const hero = page.locator("[data-story-hero]");
+  // The page's one h1 sits over the poster.
+  await expect(hero.locator("h1")).toHaveCount(1);
   // Nothing is mounted up front: the .mp4 lives on Supabase, so a <video> in the initial DOM
   // would mean a third-party request on page load.
-  await expect(page.locator("main video")).toHaveCount(0);
-  await play.click();
-  await expect(page.locator("main video")).toHaveCount(1);
+  await expect(hero.locator("video")).toHaveCount(0);
+  await hero.getByRole("button", { name: "Play the story" }).click();
+  const video = hero.locator("video");
+  await expect(video).toHaveCount(1);
+  // With sound, and a working mute toggle.
+  await expect(video).toHaveJSProperty("muted", false);
+  await hero.getByRole("button", { name: "Mute" }).click();
+  await expect(video).toHaveJSProperty("muted", true);
+  await expect(hero.getByRole("button", { name: "Unmute" })).toBeVisible();
   // In place, not in a modal.
   await expect(page.getByRole("dialog")).toHaveCount(0);
 });

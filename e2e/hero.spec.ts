@@ -17,14 +17,28 @@ test("an invalid email is rejected without opening the modal", async ({ page }) 
   await expect(page.getByRole("dialog")).toHaveCount(0);
 });
 
-test("a valid email opens the demo modal already filled in", async ({ page }) => {
+test("a valid email opens the demo modal already filled in, and sends the early heads-up", async ({ page }) => {
   await page.goto("/");
+  // The first lead notification: the address goes to /api/demo-interest before the modal opens.
+  const sent: unknown[] = [];
+  await page.route("**/api/demo-interest", async (route) => {
+    sent.push(route.request().postDataJSON());
+    await route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ ok: true }) });
+  });
   const cta = page.getByRole("form", { name: "Book a demo" }).first();
   await cta.getByPlaceholder("Your email").fill("ana@bar.es");
   await cta.getByRole("button", { name: "Book a demo" }).click();
   const dialog = page.getByRole("dialog", { name: "Book your demo" });
   await expect(dialog).toBeVisible();
   await expect(dialog.getByLabel("Email")).toHaveValue("ana@bar.es");
+  await expect.poll(() => sent.length).toBe(1);
+  expect(sent[0]).toMatchObject({ email: "ana@bar.es", source: expect.any(String) });
+});
+
+test("the early heads-up refuses a bad address server-side", async ({ request }) => {
+  const res = await request.post("/api/demo-interest", { data: { email: "nope" } });
+  expect(res.status()).toBe(400);
+  await expect(res.json()).resolves.toEqual({ error: "invalid_email" });
 });
 
 test("the play pill opens the story video", async ({ page }) => {

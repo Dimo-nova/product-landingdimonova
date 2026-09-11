@@ -70,6 +70,14 @@
 /* ==== Reset / base ==== */
 *, *::before, *::after { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; }
+/* Next's layout router focuses <main tabIndex=-1> after every client navigation, and a browser
+   scrolls a focused element that is taller than the viewport so its top edge meets the viewport
+   top — 88px down past the sticky header (104px on the home page, whose hero inset collapses
+   through main). A full viewport of scroll-margin puts main's scroll box above the fold on
+   every page, so the focus never has anything to scroll to. The skip link's own jump is
+   unaffected: main already starts at the top. Guarded by e2e/header.spec.ts. */
+main { scroll-margin-top: 100vh; }
+
 body {
   margin: 0;
   background: var(--paper);
@@ -90,6 +98,22 @@ h2 { font-size: var(--text-h2); font-weight: 700; }
 h3 { font-size: var(--text-h3); font-weight: 700; }
 
 :focus-visible { outline: 3px solid var(--brand); outline-offset: 3px; }
+
+/* Chrome's autofill paints its own pale-blue background and text colour over any field it
+   fills, ignoring the field's styles. The inset shadow covers that wash with the field's own
+   ground and the fill-colour keeps the text ours, so an autofilled email in the hero pill or the
+   demo form looks like one the visitor typed. */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px var(--paper) inset;
+  box-shadow: 0 0 0 1000px var(--paper) inset;
+  -webkit-text-fill-color: var(--ink);
+  caret-color: var(--ink);
+  transition: background-color 9999s ease-out 0s;
+}
 
 /* Branded text selection. The colour is set explicitly rather than left to inherit: several
    sections put white or near-white type on --ink, and that copy would vanish against the pale

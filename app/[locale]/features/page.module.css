@@ -1,7 +1,7 @@
 /*
- * /features is now a short index of the three services, each linking to its own page under
- * /features/[slug]. The scroll-anchor spans, the rich-bullet mappings and the dark onboarding
- * band that lived here belonged to the old four-block tour and went with it.
+ * /features is a short index of the three services, each linking to its own page under
+ * /features/[slug]. The cards themselves are the home page's (components/home/ServiceCard.tsx),
+ * so only the grid lives here.
  */
 
 .index {
@@ -17,7 +17,13 @@
   gap: 20px;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1100px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
   .grid {
     grid-template-columns: 1fr;
   }
@@ -29,66 +35,4 @@
 
 .reveal {
   height: 100%;
-}
-
-.card {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  padding: 32px;
-  border-radius: var(--radius-card);
-  background: var(--paper);
-  border: 1px solid var(--mist);
-  transition: transform 0.25s var(--ease-out), box-shadow 0.25s var(--ease-out), border-color 0.25s var(--ease-out);
-}
-
-.card:hover,
-.card:focus-visible {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-hover);
-  border-color: var(--brand);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .card {
-    transition: none;
-  }
-}
-
-.icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 56px;
-  height: 56px;
-  margin-bottom: 24px;
-  border-radius: 50%;
-  background: var(--brand-soft);
-  color: var(--brand-deep);
-}
-
-.cardTitle {
-  margin: 0 0 12px;
-  font-size: var(--text-h3);
-}
-
-.cardBody {
-  margin: 0 0 24px;
-  color: var(--ink-2);
-  font-size: 16px;
-  line-height: 1.55;
-}
-
-.cardCta {
-  margin-top: auto;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 15px;
-  font-weight: 700;
-  color: var(--brand-deep);
-}
-
-.card:hover .cardCta {
-  gap: 12px;
 }

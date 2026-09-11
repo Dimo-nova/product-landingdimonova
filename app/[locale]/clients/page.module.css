@@ -1,13 +1,3 @@
-/* The Google rating badge in the hero.
-   Pill's `brand` tone pairs --brand-deep with --brand-soft, which measures 4.37:1 — just under
-   the 4.5:1 AA needs for text below 18px, and the axe sweep in e2e/a11y.spec.ts fails the page
-   on it. --brand-darkest exists for exactly this case (a coral ground where --brand-deep is not
-   dark enough) and clears ~5.9:1 against --brand-soft. The class is doubled so it beats Pill's
-   own single-class `.brand` rule whichever order the bundler emits the two CSS chunks in. */
-.ratingPill.ratingPill {
-  color: var(--brand-darkest);
-}
-
 /* Shown only when data/reviews.json holds nothing at all. */
 .pending {
   text-align: center;

@@ -24,8 +24,8 @@ theoretical. Tracked in `TODO.md`. The `_canva` in the second file's original na
 came out of Canva, whose licence terms depend on the plan and on whether the photo is a Canva
 stock asset, so that one needs checking specifically.
 
-`hero-stock.jpg` is kept in the repository as the fallback: it is CC0 and its provenance is
-documented, so switching back is a one-line change in `HeroBgPhoto.tsx`.
+`hero-stock.jpg` was the documented CC0 fallback until 2026-09-11, when it was deleted along
+with every other unused media file. Its record is kept below in case it is ever needed again.
 
 ## hero-stock.jpg
 

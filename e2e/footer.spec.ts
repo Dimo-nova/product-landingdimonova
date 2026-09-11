@@ -4,7 +4,8 @@ test("footer has 5 columns, service links, legal links and the wordmark", async 
   await page.goto("/");
   const footer = page.locator("footer");
   await expect(footer.getByRole("heading", { level: 2 })).toHaveCount(5);
-  await expect(footer.getByRole("link", { name: "Digital menu" })).toHaveAttribute("href", "/features/menu");
+  // Unpublished service pages (FEATURES_PUBLISHED): the entry is a button opening the walkthrough.
+  await expect(footer.getByRole("button", { name: "Digital menu" })).toBeVisible();
   await expect(footer.getByRole("link", { name: "Privacy" })).toHaveAttribute("href", "/legal/privacy");
   await expect(footer.getByRole("link", { name: "WhatsApp Spain" })).toHaveAttribute("href", /wa\.me\/34/);
   const mark = footer.locator("[data-wordmark]");

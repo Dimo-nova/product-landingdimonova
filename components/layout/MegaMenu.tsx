@@ -4,6 +4,8 @@ import { useTranslations } from "next-intl";
 import { AnimatePresence, motion } from "motion/react";
 import { Link, usePathname } from "@/lib/routing";
 import { SERVICES } from "@/lib/services";
+import { FEATURES_PUBLISHED } from "@/lib/config";
+import ServiceButton from "./ServiceButton";
 import styles from "./MegaMenu.module.css";
 
 type Key = "products" | "resources";
@@ -107,12 +109,20 @@ export default function MegaMenu() {
                 <>
                   <p className={styles.title}>{t("nav.mega.productsTitle")}</p>
                   <div className={styles.grid}>
-                    {SERVICES.map((s) => (
-                      <Link key={s.slug} href={s.href} className={styles.card} onClick={() => close()}>
-                        <span className={styles.cardTitle}>{t(`services.${s.slug}.title`)}</span>
-                        <span className={styles.cardLine}>{t(`services.${s.slug}.line`)}</span>
-                      </Link>
-                    ))}
+                    {SERVICES.map((s) =>
+                      FEATURES_PUBLISHED ? (
+                        <Link key={s.slug} href={s.href} className={styles.card} onClick={() => close()}>
+                          <span className={styles.cardTitle}>{t(`services.${s.slug}.title`)}</span>
+                          <span className={styles.cardLine}>{t(`services.${s.slug}.line`)}</span>
+                        </Link>
+                      ) : (
+                        /* Unpublished service pages: the entry opens the service walkthrough instead. */
+                        <ServiceButton key={s.slug} slug={s.slug} className={styles.card} onOpen={() => close()}>
+                          <span className={styles.cardTitle}>{t(`services.${s.slug}.title`)}</span>
+                          <span className={styles.cardLine}>{t(`services.${s.slug}.line`)}</span>
+                        </ServiceButton>
+                      ),
+                    )}
                   </div>
                 </>
               )}
