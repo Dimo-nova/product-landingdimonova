@@ -31,10 +31,10 @@ function ExternalIcon() {
 }
 
 /**
- * "Is it worth it? Don't ask us": hands the visitor the full, honest pitch as a prompt they
- * can open in whichever assistant they already trust, so the comparison comes from a third
- * party rather than from us. The lead says what the question asks and a folded <details>
- * shows its exact words, so nobody is invited to "ask" without knowing what. Each provider is shown with its own
+ * "Compare with your favourite AI": hands the visitor the full, honest pitch as a prompt they
+ * can open in whichever assistant they already trust, so the comparison with the competition
+ * comes from a third party rather than from us. The lead tells them to add details about their
+ * own venue to the message before sending it. Each provider is shown with its own
  * official mark and its name, which is ordinary nominative reference: it says where the
  * link goes, not that anyone endorses us. See `public/assets/ai/SOURCES.md` for where each
  * file came from and the permission question that remains open.
@@ -79,13 +79,6 @@ export default function AiCompare() {
         <Reveal className={styles.head}>
           <h2 className={styles.title}>{t("title")}</h2>
           <p className={styles.lead}>{t("lead")}</p>
-          {/* The question itself, folded: the lead says what it asks, this shows the exact words
-              each link carries, so nobody has to open an assistant to find out what they are
-              being invited to ask. A native disclosure — no state, works without JavaScript. */}
-          <details className={styles.question}>
-            <summary className={styles.questionSummary}>{t("show")}</summary>
-            <p className={styles.questionText}>{prompt}</p>
-          </details>
         </Reveal>
 
         <Reveal delay={0.1} className={styles.actions}>

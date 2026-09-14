@@ -280,10 +280,10 @@ the trademark-permission question that is still open. Do not redraw, recolour or
 marks; the white disc behind them in `AiCompare.module.css` exists so they sit on a neutral
 ground without being altered. `lib/aiPrompt.ts` holds the ids, labels, logo paths and deep
 links. Gemini is the one provider with no documented parameter for pre-filling its composer,
-which is why the section also offers a copy button. The copy (`home.aiCompare.*`) names what the
-question asks — what Dimonova includes, how it differs from a template QR menu, which restaurant
-it pays off for — and a native `<details>` ("Read the question") shows the full prompt in place,
-because the owner found "ask an AI" unclear without saying what to ask.
+which is why the section also offers a copy button. The copy (`home.aiCompare.title`/`lead`) is
+the owner's own wording — "Compara con tu IA favorita", compare our solution with the
+competition in the AI you prefer, add details about your venue to the message — because "ask an
+AI" on its own did not say what to ask. No "read the question" disclosure: the owner removed it.
 
 ### OG image
 

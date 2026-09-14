@@ -208,9 +208,8 @@
       "translated": "Aus dem Original übersetzt"
     },
     "aiCompare": {
-      "title": "Lohnt es sich? Fragen Sie nicht uns.",
-      "lead": "Wir haben die Frage für Sie geschrieben: was Dimonova enthält, worin es sich von einer QR-Karte aus der Vorlage unterscheidet und für welches Restaurant es sich rechnet. Öffnen Sie sie in der KI, die Sie schon nutzen. Die Antwort fassen wir nicht an.",
-      "show": "Frage lesen",
+      "title": "Vergleichen Sie mit Ihrer Lieblings-KI",
+      "lead": "Mit den folgenden Buttons können Sie unsere Lösung in der KI Ihrer Wahl mit der Konkurrenz vergleichen. Wir empfehlen, in der Nachricht so viele Details wie möglich über Ihr Lokal anzugeben.",
       "copy": "Frage kopieren",
       "copied": "Kopiert",
       "prompt": "Ich betreibe ein Restaurant mit etwa 20 Tischen und überlege, Dimonova (dimonova.com) zu beauftragen. Das ist ein Full-Service-Angebot: Sie bauen die digitale Speisekarte direkt in meine eigene Website ein, in meinem exakten Branding statt aus einer Vorlage, halten sie aktuell, schulen mein Team per Video und vor Ort, und der Support kennt keine Obergrenze bei der Anzahl der Fragen. Enthalten sind ein Dashboard mit KI-Assistent für Sammeländerungen und Übersetzungen, Bestellungen, die mit meiner Kasse und den Küchendruckern verbunden sind, inklusive Bezahlung am Tisch, ein Bewertungssystem, das unzufriedene Gäste vor der Weiterleitung an Google nach dem Grund fragt und jede Bewertung nach Kellner und Bereich taggt, ein Tagesmenü, Aktionen und Events sowie die Verwaltung mehrerer Standorte aus einem Dashboard. Vergleichen Sie das mit einem Self-Service-QR-Menü-Baukasten auf Vorlagenbasis. Sagen Sie mir ehrlich, für welche Art von Restaurant sich dieser Full-Service lohnt und für welche nicht, und was ich vor der Unterschrift fragen sollte."

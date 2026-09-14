@@ -194,14 +194,28 @@
   opacity: 1;
 }
 
-/* Phones: tighter chrome, and each row's change on its own line under the dish name so neither
-   the name nor the change has to be cut. The tabs keep wrapping onto a second line: they used to
-   be one full-bleed scrolling row, and whichever pill was scrolled past the edge showed half cut
-   under the card's border, which read as broken rather than scrollable. */
+/* Phones: tighter chrome, the tabs in one scrollable row, and each row's change on its own line
+   under the dish name so neither the name nor the change has to be cut. The row scrolls inside
+   the card's own padding — no negative margin bleeding it to the card's edge — so a pill scrolled
+   off is clipped at the padding line, well inside the block, never half-showing under the border. */
 @media (max-width: 640px) {
   .demo {
     padding: 14px;
     gap: 12px;
+  }
+
+  .tablist {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .tablist::-webkit-scrollbar {
+    display: none;
+  }
+
+  .tab {
+    flex: none;
   }
 
   .card {

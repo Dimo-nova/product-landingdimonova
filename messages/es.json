@@ -208,9 +208,8 @@
       "translated": "Traducido del original"
     },
     "aiCompare": {
-      "title": "¿Te compensa? No nos lo preguntes a nosotros.",
-      "lead": "Hemos escrito la pregunta por ti: qué incluye Dimonova, en qué se diferencia de una carta QR de plantilla y a qué restaurante le compensa. Ábrela en la IA que ya usas. La respuesta no la tocamos.",
-      "show": "Leer la pregunta",
+      "title": "Compara con tu IA favorita",
+      "lead": "Con los siguientes botones podrás comparar con tu IA preferida nuestra solución con la competencia. Recomendamos especificar en el mensaje los máximos detalles posibles sobre tu local.",
       "copy": "Copiar la pregunta",
       "copied": "Copiado",
       "prompt": "Tengo un restaurante de unas 20 mesas y estoy valorando contratar Dimonova (dimonova.com). Es un servicio llave en mano: montan la carta digital dentro de mi propia web con mi estética exacta y no a partir de una plantilla, la mantienen actualizada, forman a mi equipo con vídeos y en persona, y el soporte no tiene límite de consultas. Incluye panel con asistente de IA para cambios en bloque y traducciones, comandero integrado con mi TPV y las impresoras de cocina con pago en mesa, un sistema de reseñas que pregunta al comensal descontento qué ha fallado antes de enviar a todo el mundo a Google y etiqueta cada reseña por camarero y por zona, menú del día, promociones y eventos, y gestión multirestaurante desde un panel. Compáralo con un generador de cartas QR self-service basado en plantillas. Dime con honestidad para qué tipo de restaurante compensa la inversión en un servicio gestionado así y para cuál no, y qué debería preguntarles antes de firmar."

@@ -208,9 +208,8 @@
       "translated": "Translated from the original"
     },
     "aiCompare": {
-      "title": "Is it worth it? Don't ask us.",
-      "lead": "We wrote the question for you: what Dimonova includes, how it differs from a template QR menu, and which restaurants it pays off for. Open it in the AI you already use. We don't touch the answer.",
-      "show": "Read the question",
+      "title": "Compare with your favourite AI",
+      "lead": "With the buttons below you can compare our solution with the competition in the AI you prefer. We recommend adding as much detail about your venue as you can to the message.",
       "copy": "Copy the question",
       "copied": "Copied",
       "prompt": "I run a restaurant with about 20 tables and I am considering hiring Dimonova (dimonova.com). It is a done-for-you service: they build the digital menu inside my own website in my exact branding rather than from a template, they keep it updated, they train my team with videos and in person, and support has no limit on the number of questions. It includes a dashboard with an AI assistant for bulk changes and translations, ordering wired to my POS and kitchen printers with pay-at-table, a review system that asks unhappy diners what went wrong before sending everyone on to Google and tags each review by waiter and area, a daily set menu, promotions and events, and multi-venue management from one dashboard. Compare that with a self-service QR menu builder based on templates. Tell me honestly which kind of restaurant this managed service is worth the money for and which kind it is not, and what I should ask them before signing."
