@@ -27,6 +27,64 @@
   margin: 16px 0 0;
 }
 
+/* The folded question. Its summary is a pill in the section's own ink-on-coral fill (same
+   contrast reasoning as .provider below), and the open text sits in a white card so the 15px
+   body never lands on the bare coral. */
+.question {
+  margin: 24px auto 0;
+  max-width: 640px;
+}
+
+.questionSummary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  list-style: none;
+  padding: 10px 20px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--on-dark-border);
+  background: var(--on-brand-surface-ink);
+  color: var(--paper);
+  font-size: 16px;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.questionSummary::-webkit-details-marker {
+  display: none;
+}
+
+.questionSummary::before {
+  content: "";
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 6px solid currentColor;
+  transition: transform 0.2s var(--ease-out);
+}
+
+.question[open] .questionSummary::before {
+  transform: rotate(180deg);
+}
+
+.questionSummary:hover,
+.questionSummary:focus-visible {
+  background: var(--on-brand-surface-ink-strong);
+}
+
+.questionText {
+  margin: 16px 0 0;
+  text-align: left;
+  background: var(--paper);
+  color: var(--ink);
+  border-radius: var(--radius-card);
+  padding: 20px 24px;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
 .actions {
   display: flex;
   flex-direction: column;

@@ -67,9 +67,14 @@ export default function Modal({ open, onClose, labelledBy, children, tone = "lig
             exit={{ opacity: 0, y: 8, scale: 0.98 }}
             transition={{ duration: 0.25, ease: EASE_OUT }}
           >
-            <button type="button" className={styles.close} onClick={onClose} aria-label={closeLabel} data-modal-close>
-              ×
-            </button>
+            {/* A zero-height sticky bar at the top of the scroll container: the button stays in the
+                dialog's top-right corner while long content (the service walkthrough on a phone)
+                scrolls under it, instead of scrolling away with the first screen. */}
+            <div className={styles.closeBar}>
+              <button type="button" className={styles.close} onClick={onClose} aria-label={closeLabel} data-modal-close>
+                ×
+              </button>
+            </div>
             {children}
           </motion.div>
         </motion.div>

@@ -204,11 +204,13 @@
       "pending": "Avis bientôt disponibles.",
       "playVideo": "Lire l'avis de {name}",
       "stars": "{rating} sur 5",
-      "moreTitle": "Plus d'avis sur Google"
+      "moreTitle": "Plus d'avis sur Google",
+      "translated": "Traduit de l'original"
     },
     "aiCompare": {
-      "title": "Demandez à quelqu'un qui ne travaille pas ici.",
-      "lead": "Posez la question à l'IA que vous utilisez déjà. Nous ne touchons pas à la réponse.",
+      "title": "Est-ce que ça vaut le coup ? Ne nous le demandez pas.",
+      "lead": "Nous avons écrit la question pour vous : ce que comprend Dimonova, en quoi c'est différent d'une carte QR sur modèle et pour quel restaurant c'est rentable. Ouvrez-la dans l'IA que vous utilisez déjà. Nous ne touchons pas à la réponse.",
+      "show": "Lire la question",
       "copy": "Copier la question",
       "copied": "Copié",
       "prompt": "Je gère un restaurant d'environ 20 tables et j'envisage de faire appel à Dimonova (dimonova.com). C'est un service clé en main : ils construisent le menu digital directement sur mon propre site, dans mon identité visuelle exacte plutôt qu'à partir d'un modèle, ils le maintiennent à jour, forment mon équipe par vidéo et en personne, et le support n'a aucune limite de questions. Cela inclut un tableau de bord avec un assistant IA pour les changements en masse et les traductions, la commande connectée à ma caisse et aux imprimantes de cuisine avec paiement à table, un système d'avis qui demande aux clients mécontents ce qui n'a pas fonctionné avant d'envoyer tout le monde vers Google et qui classe chaque avis par serveur et par zone, un menu du jour, des promotions et des événements, et une gestion multi-établissements depuis un seul tableau de bord. Comparez cela à un créateur de menu QR en libre-service basé sur des modèles. Dites-moi honnêtement pour quel type de restaurant ce service géré vaut son prix et pour lequel ce n'est pas le cas, et ce que je devrais leur demander avant de signer."

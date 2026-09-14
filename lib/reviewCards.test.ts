@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test";
 // This runner (playwright.unit.config.ts) only resolves relative specifiers, not the `@/`
 // alias the rest of the app uses, so reach into components/home by relative path.
-import { buildReviewRows, type GoogleReview, type VideoReview } from "../components/home/reviews-types";
+import { buildReviewRows, reviewTextFor, type GoogleReview, type VideoReview } from "../components/home/reviews-types";
 
 function video(id: string, reviewId?: string): VideoReview {
   return { id, name: id, venue: "Venue", poster: `${id}.jpg`, src: `${id}.mp4`, reviewId };
@@ -65,4 +65,32 @@ test("no written reviews still gives every video its row", () => {
   expect(rows.map((r) => r.video.id)).toEqual(["v1", "v2"]);
   expect(rows.every((r) => r.review === undefined)).toBe(true);
   expect(unpaired).toEqual([]);
+});
+
+test("a review reads in the site's language when a translation exists, and says so", () => {
+  const review = { text: "Muy bien.", translations: { en: "Very good.", de: "Sehr gut." } };
+
+  expect(reviewTextFor(review, "en")).toEqual({ text: "Very good.", translated: true });
+  expect(reviewTextFor(review, "de")).toEqual({ text: "Sehr gut.", translated: true });
+});
+
+test("the review's own language always shows the original, even if a translation is listed", () => {
+  // The client wrote it in Spanish; a Spanish visitor must read exactly those words.
+  const review = { text: "Muy bien.", translations: { es: "Muy bien (editado).", en: "Very good." } };
+
+  expect(reviewTextFor(review, "es")).toEqual({ text: "Muy bien.", translated: false });
+});
+
+test("a locale with no translation falls back to the original, unmarked", () => {
+  const review = { text: "Muy bien.", translations: { en: "Very good." } };
+
+  expect(reviewTextFor(review, "fr")).toEqual({ text: "Muy bien.", translated: false });
+  expect(reviewTextFor({ text: "Muy bien." }, "en")).toEqual({ text: "Muy bien.", translated: false });
+});
+
+test("a review written in another language is treated as original there", () => {
+  const review = { lang: "en", text: "Very good.", translations: { es: "Muy bien." } };
+
+  expect(reviewTextFor(review, "en")).toEqual({ text: "Very good.", translated: false });
+  expect(reviewTextFor(review, "es")).toEqual({ text: "Muy bien.", translated: true });
 });

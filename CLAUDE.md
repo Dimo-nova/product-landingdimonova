@@ -245,6 +245,15 @@ Add a new video by transcoding it, uploading it to that bucket, saving a local p
 and adding an entry to the `videos` array. Do not add reviews that were not actually written or
 recorded by a client.
 
+**Translations.** The reviews were written in Spanish, and `text` is the client's exact words,
+never edited. Each `google[]` entry also carries `lang` (`es`) and `translations` keyed by site
+locale (`en`, `de`, `fr`, `pt`); `reviewTextFor` in `components/home/reviews-types.ts` picks the
+translation for the page's locale and the card prints "Translated from the original"
+(`home.reviews.translated`) under it. The review's own language always shows `text`, and a
+locale with no translation falls back to `text` with a `lang` attribute on the paragraph. Add
+translations for every locale when you add a review; `lib/reviewCards.test.ts` covers the
+selection and `e2e/home-sections.spec.ts` the note.
+
 ### Moving strips (Marquee)
 
 `components/ui/Marquee.tsx` has exactly one way to stop: `pauseOnHover`, which halts the strip
@@ -271,7 +280,10 @@ the trademark-permission question that is still open. Do not redraw, recolour or
 marks; the white disc behind them in `AiCompare.module.css` exists so they sit on a neutral
 ground without being altered. `lib/aiPrompt.ts` holds the ids, labels, logo paths and deep
 links. Gemini is the one provider with no documented parameter for pre-filling its composer,
-which is why the section also offers a copy button.
+which is why the section also offers a copy button. The copy (`home.aiCompare.*`) names what the
+question asks — what Dimonova includes, how it differs from a template QR menu, which restaurant
+it pays off for — and a native `<details>` ("Read the question") shows the full prompt in place,
+because the owner found "ask an AI" unclear without saying what to ask.
 
 ### OG image
 

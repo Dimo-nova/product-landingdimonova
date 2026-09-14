@@ -2,8 +2,8 @@
 
 .layout {
   display: grid;
-  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
-  min-height: 560px;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  min-height: 460px;
 }
 
 @media (max-width: 800px) {
@@ -18,7 +18,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: clamp(20px, 3vw, 36px);
+  padding: clamp(20px, 3vw, 32px);
   background: linear-gradient(180deg, var(--brand), var(--brand-deep));
   color: var(--paper);
   border-radius: var(--radius-panel) 0 0 var(--radius-panel);
@@ -26,26 +26,28 @@
 
 .art > svg {
   width: 100%;
-  max-width: 420px;
+  max-width: 340px;
   height: auto;
   aspect-ratio: 300 / 272;
 }
 
 @media (max-width: 800px) {
+  /* A phone: the scene is a header strip, not half the screen, so the steps are reachable
+     without a scroll and the whole dialog fits under the browser's toolbars. */
   .art {
     border-radius: var(--radius-panel) var(--radius-panel) 0 0;
-    padding: 20px 20px 0;
+    padding: 16px 20px 0;
   }
 
   .art > svg {
-    max-width: 300px;
+    max-width: 200px;
   }
 }
 
 .copy {
-  padding: clamp(28px, 4vw, 48px) clamp(24px, 4vw, 48px) clamp(28px, 4vw, 40px);
+  padding: clamp(24px, 3.5vw, 40px) clamp(20px, 3.5vw, 40px) clamp(24px, 3.5vw, 36px);
   /* Room for the dialog's own close button, which sits top-right over this column. */
-  padding-right: max(clamp(24px, 4vw, 48px), 64px);
+  padding-right: max(clamp(20px, 3.5vw, 40px), 64px);
   min-width: 0;
 }
 
@@ -59,8 +61,8 @@
 }
 
 .title {
-  margin: 0 0 24px;
-  font-size: clamp(26px, 3vw, 36px);
+  margin: 0 0 20px;
+  font-size: clamp(24px, 2.6vw, 32px);
 }
 
 /* ---- The three steps ---- */
@@ -146,7 +148,7 @@
 
 .stepTitle {
   font-family: var(--font-display);
-  font-size: 19px;
+  font-size: 18px;
   font-weight: 700;
   color: var(--ink-2);
   transition: color 0.3s var(--ease-out);
@@ -162,7 +164,7 @@
 
 .stepBody {
   margin: 0;
-  padding: 2px 0 12px 50px;
+  padding: 2px 0 10px 50px;
   font-size: 15px;
   line-height: 1.55;
   color: var(--ink-2);

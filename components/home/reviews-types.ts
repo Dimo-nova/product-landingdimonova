@@ -22,7 +22,16 @@ export type GoogleReview = {
   /** The reviewer's venue, when it is known. Google does not expose one for every reviewer, and
    * inventing one would put words in a real person's mouth, so the card simply omits the line. */
   venue?: string;
+  /** BCP 47 tag of the language the review was written in. Defaults to `es`: every review so
+   * far was left in Spanish on the Spanish-language profile. */
+  lang?: string;
+  /** The review exactly as the client wrote it, in `lang`. Never edited. */
   text: string;
+  /** Our translations of `text`, keyed by site locale. A locale with no entry (or the review's
+   * own language) shows `text` untouched; one with an entry shows the translation with a
+   * "translated from the original" note beside it, so the card never passes our words off as
+   * the client's. See `reviewTextFor`. */
+  translations?: Partial<Record<string, string>>;
   url: string;
   /** Star rating out of 5. Defaults to 5 when omitted (all reviews so far have been 5-star). */
   rating?: number;
@@ -64,4 +73,22 @@ export function buildReviewRows(
   });
 
   return { rows, unpaired: google.filter((review) => !paired.has(review.id)) };
+}
+
+/** The language a review was written in, `es` unless the entry says otherwise. */
+export const DEFAULT_REVIEW_LANG = "es";
+
+/**
+ * What a card prints for a review in the given site locale: the original when the locale is the
+ * review's own language or no translation exists, otherwise the translation — and a flag so the
+ * card can say so. The original text is never altered and never dropped from the data file; the
+ * translation is a courtesy layered on top of it.
+ */
+export function reviewTextFor(
+  review: Pick<GoogleReview, "text" | "lang" | "translations">,
+  locale: string,
+): { text: string; translated: boolean } {
+  const lang = review.lang ?? DEFAULT_REVIEW_LANG;
+  const translation = locale === lang ? undefined : review.translations?.[locale];
+  return translation ? { text: translation, translated: true } : { text: review.text, translated: false };
 }

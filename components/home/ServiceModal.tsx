@@ -40,7 +40,7 @@ export default function ServiceModal() {
 
   if (!slug) {
     return (
-      <Modal open={false} onClose={close} labelledBy="service-modal-title" closeLabel={t("services.modal.close")} maxWidth="980px">
+      <Modal open={false} onClose={close} labelledBy="service-modal-title" closeLabel={t("services.modal.close")} maxWidth="860px">
         {null}
       </Modal>
     );
@@ -50,7 +50,7 @@ export default function ServiceModal() {
   const bullets = t.raw(`services.${slug}.bullets`) as string[];
 
   return (
-    <Modal open onClose={close} labelledBy="service-modal-title" closeLabel={t("services.modal.close")} maxWidth="980px">
+    <Modal open onClose={close} labelledBy="service-modal-title" closeLabel={t("services.modal.close")} maxWidth="860px">
       <div className={styles.layout}>
         {/* The card's scene again, so the modal opens on the picture the visitor just clicked. */}
         <div className={styles.art} aria-hidden="true">

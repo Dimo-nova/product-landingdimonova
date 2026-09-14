@@ -105,6 +105,13 @@
   line-height: 1.6;
 }
 
+/* Under a translated review only: small, quiet, and honest about whose words these are. */
+.translated {
+  margin: -8px 0 0;
+  font-size: 13px;
+  color: var(--ink-2);
+}
+
 .byline {
   display: flex;
   flex-direction: column;

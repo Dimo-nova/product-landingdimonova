@@ -290,7 +290,26 @@ test("the review rows alternate: the first leads with its video, the second with
   const declared = (data.videos[0] as { reviewId?: string }).reviewId;
   const paired = data.google.find((review) => review.id === declared);
   test.skip(!paired, "the first video declares no written review yet");
-  await expect(cards.nth(1)).toContainText(paired!.text.slice(0, 40));
+  // The English page shows our English translation of the review when there is one, the
+  // original otherwise (see reviewTextFor in components/home/reviews-types.ts).
+  const shown = (paired as { translations?: { en?: string } }).translations?.en ?? paired!.text;
+  await expect(cards.nth(1)).toContainText(shown.slice(0, 40));
+});
+
+test("a translated review says so, and the original language shows the client's exact words", async ({ page }) => {
+  const { default: data } = await import("../data/reviews.json", { with: { type: "json" } });
+  const review = data.google.find((r) => (r as { translations?: { en?: string } }).translations?.en);
+  test.skip(!review, "no review carries an English translation yet");
+  const card = (p: typeof page) => p.locator(`#reviews [data-review-card="text"][data-review-id="${review!.id}"]`);
+
+  await page.goto("/#reviews");
+  await expect(card(page)).toContainText((review as { translations: { en: string } }).translations.en.slice(0, 40));
+  await expect(card(page)).toContainText("Translated from the original");
+  await expect(card(page)).not.toContainText(review!.text.slice(0, 40));
+
+  await page.goto("/es#reviews");
+  await expect(card(page)).toContainText(review!.text.slice(0, 40));
+  await expect(card(page)).not.toContainText("Traducido");
 });
 
 test("on a phone the rows read video, words, video, words — never two text cards in a row", async ({ page }) => {

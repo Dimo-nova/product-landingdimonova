@@ -8,11 +8,14 @@
   background: var(--paper); color: var(--ink);
   border-radius: var(--radius-panel);
   box-shadow: 0 40px 80px -30px rgba(15,14,13,.6);
-  max-height: calc(100vh - 32px); overflow: auto;
+  /* svh, not vh: on a phone 100vh is the viewport with the browser's toolbars retracted, so the
+     dialog overshot the screen while they were showing and its corners sat under them. */
+  max-height: calc(100svh - 32px); overflow: auto;
 }
 .dark { background: var(--ink); color: #fff; }
+.closeBar { position: sticky; top: 0; height: 0; z-index: 1; }
 .close {
-  position: absolute; top: 14px; right: 14px; z-index: 1;
+  position: absolute; top: 14px; right: 14px;
   width: 40px; height: 40px; border-radius: 50%;
   display: grid; place-items: center;
   background: rgba(15,14,13,.06); color: inherit; font-size: 20px; line-height: 1;

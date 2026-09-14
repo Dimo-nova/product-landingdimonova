@@ -1,10 +1,10 @@
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import Container from "@/components/ui/Container";
 import Reveal from "@/components/ui/Reveal";
 import Pill from "@/components/ui/Pill";
 import ReviewsVideo from "./ReviewsVideo";
 import rawReviews from "@/data/reviews.json";
-import { buildReviewRows, type GoogleReview, type ReviewRow, type ReviewsData } from "./reviews-types";
+import { DEFAULT_REVIEW_LANG, buildReviewRows, reviewTextFor, type GoogleReview, type ReviewRow, type ReviewsData } from "./reviews-types";
 import styles from "./Reviews.module.css";
 
 // Imported at build time (not fetched) so the section stays static; checked against the
@@ -27,9 +27,15 @@ const reviews = rawReviews satisfies ReviewsData;
  * invented quotes.
  *
  * No card links out to Google: the section's one outbound link is the rating badge in the head.
+ *
+ * The reviews were written in Spanish. On another locale a card shows our translation of the
+ * text (`translations` in the data file, chosen by `reviewTextFor`) with a "translated from the
+ * original" note under it, so the words are readable without being passed off as the client's
+ * own. The Spanish original is never edited.
  */
 export default async function Reviews() {
   const t = await getTranslations();
+  const locale = await getLocale();
   const { rows, unpaired } = buildReviewRows(reviews.videos, reviews.google);
 
   return (
@@ -49,7 +55,7 @@ export default async function Reviews() {
         ) : (
           <>
             {rows.map((row, i) => (
-              <Row key={row.video.id} row={row} flipped={i % 2 === 1} starsLabel={starsLabelFor(t, row.review)} />
+              <Row key={row.video.id} row={row} flipped={i % 2 === 1} starsLabel={starsLabelFor(t, row.review)} locale={locale} translatedLabel={t("home.reviews.translated")} />
             ))}
 
             {unpaired.length > 0 && (
@@ -61,6 +67,8 @@ export default async function Reviews() {
                       key={review.id}
                       review={review}
                       starsLabel={starsLabelFor(t, review)}
+                      locale={locale}
+                      translatedLabel={t("home.reviews.translated")}
                       className={styles.extraCard}
                     />
                   ))}
@@ -90,9 +98,21 @@ function clampRating(rating?: number) {
  * words instead of landing two text cards back to back where the second row flips. On desktop
  * a flipped row swaps the two columns in CSS (`.rowFlipped`), so the zig-zag is unchanged there.
  */
-function Row({ row, flipped, starsLabel }: { row: ReviewRow; flipped: boolean; starsLabel: string }) {
+function Row({
+  row,
+  flipped,
+  starsLabel,
+  locale,
+  translatedLabel,
+}: {
+  row: ReviewRow;
+  flipped: boolean;
+  starsLabel: string;
+  locale: string;
+  translatedLabel: string;
+}) {
   const words = row.review ? (
-    <TextCard review={row.review} starsLabel={starsLabel} />
+    <TextCard review={row.review} starsLabel={starsLabel} locale={locale} translatedLabel={translatedLabel} />
   ) : (
     <VenueCard video={row.video} />
   );
@@ -108,18 +128,28 @@ function Row({ row, flipped, starsLabel }: { row: ReviewRow; flipped: boolean; s
 /**
  * A written review: decorative (`aria-hidden`) filled/empty stars with a visually-hidden
  * "{rating} out of 5" equivalent for assistive tech, the reviewer's name, and the full text —
- * no clamp, no "read more", and no link out to Google.
+ * no clamp, no "read more", and no link out to Google. In the review's own language the text is
+ * the client's exact words; elsewhere it is our translation, labelled as such.
  */
 function TextCard({
   review,
   starsLabel,
+  locale,
+  translatedLabel,
   className,
 }: {
   review: GoogleReview;
   starsLabel: string;
+  locale: string;
+  translatedLabel: string;
   className?: string;
 }) {
   const rating = clampRating(review.rating);
+  const { text, translated } = reviewTextFor(review, locale);
+  // Shown untranslated on a foreign-language page: tell the browser (and screen readers) the
+  // language actually changes here.
+  const lang = review.lang ?? DEFAULT_REVIEW_LANG;
+  const textLang = !translated && lang !== locale ? lang : undefined;
 
   return (
     <div
@@ -133,7 +163,8 @@ function TextCard({
       </div>
       <span className="u-visually-hidden">{starsLabel}</span>
 
-      <p className={styles.text}>{review.text}</p>
+      <p className={styles.text} lang={textLang}>{text}</p>
+      {translated && <p className={styles.translated}>{translatedLabel}</p>}
 
       <div className={styles.byline}>
         <span className={styles.name}>{review.name}</span>

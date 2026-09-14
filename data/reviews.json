@@ -24,7 +24,14 @@
       "id": "calsot-google",
       "name": "David Suriol",
       "venue": "Calsot Restaurante",
+      "lang": "es",
       "text": "La experiencia de la carta digital que nos ha desarrollado Pablo es la mejor que hemos tenido hasta el momento. Muy intuitiva para el cliente, en 3 idiomas, con vídeos, gráfica e información que enriquece. Además, el proceso de trabajo con Pablo y su equipo ha sido siempre sencillo. Cuando voy a otros restaurantes no dejo de \"comparar\" lo que tenemos en Calsot y estamos en muy buen nivel. Lo más importante, cumplen plazos. Súper recomendable.",
+      "translations": {
+        "en": "The digital menu experience Pablo built for us is the best we have had so far. Very intuitive for the customer, in 3 languages, with videos, graphics and information that add real value. On top of that, working with Pablo and his team has always been straightforward. When I go to other restaurants I can't help \"comparing\" them with what we have at Calsot, and we are at a very good level. Most importantly, they meet deadlines. Highly recommended.",
+        "de": "Die digitale Speisekarte, die Pablo für uns entwickelt hat, ist die beste, die wir bisher hatten. Sehr intuitiv für den Gast, in 3 Sprachen, mit Videos, Grafiken und Informationen, die echten Mehrwert bieten. Außerdem war die Zusammenarbeit mit Pablo und seinem Team immer unkompliziert. Wenn ich in andere Restaurants gehe, „vergleiche“ ich unwillkürlich mit dem, was wir im Calsot haben, und wir sind auf einem sehr guten Niveau. Das Wichtigste: Sie halten Termine ein. Sehr empfehlenswert.",
+        "fr": "L'expérience de la carte digitale que Pablo nous a développée est la meilleure que nous ayons eue jusqu'à présent. Très intuitive pour le client, en 3 langues, avec des vidéos, des visuels et des informations qui enrichissent l'ensemble. De plus, le travail avec Pablo et son équipe a toujours été simple. Quand je vais dans d'autres restaurants, je ne peux pas m'empêcher de « comparer » avec ce que nous avons au Calsot, et nous sommes à un très bon niveau. Le plus important : ils respectent les délais. Hautement recommandable.",
+        "pt": "A experiência do menu digital que o Pablo desenvolveu para nós é a melhor que tivemos até agora. Muito intuitivo para o cliente, em 3 idiomas, com vídeos, gráficos e informação que enriquece. Além disso, o processo de trabalho com o Pablo e a sua equipa foi sempre simples. Quando vou a outros restaurantes não deixo de \"comparar\" com o que temos no Calsot, e estamos a um nível muito bom. O mais importante: cumprem prazos. Super recomendável."
+      },
       "url": "https://www.google.com/maps/place/Dimonova/@41.47935,-6.8143,4z/data=!4m8!3m7!1s0x66072543598ef7b3:0x7869878d511c24c1!8m2!3d41.47935!4d-6.8143!9m1!1b1!16s%2Fg%2F11zgdh2xc7",
       "rating": 5
     },
@@ -32,7 +39,14 @@
       "id": "antonio-hernandez",
       "name": "Antonio Hernández",
       "venue": "La Pulpería",
+      "lang": "es",
       "text": "La experiencia ha sido muy positiva, no solamente en el servicio, sino también en la formación del personal del restaurante, repetiré en otros establecimientos.",
+      "translations": {
+        "en": "The experience has been very positive, not only with the service itself but also with the training of the restaurant's staff. I will repeat it in my other establishments.",
+        "de": "Die Erfahrung war sehr positiv, nicht nur beim Service selbst, sondern auch bei der Schulung des Restaurantpersonals. Ich werde es in weiteren Betrieben wiederholen.",
+        "fr": "L'expérience a été très positive, non seulement pour le service, mais aussi pour la formation du personnel du restaurant. Je renouvellerai dans d'autres établissements.",
+        "pt": "A experiência foi muito positiva, não só no serviço, mas também na formação do pessoal do restaurante. Vou repetir noutros estabelecimentos."
+      },
       "url": "https://www.google.com/maps/place/Dimonova/@41.47935,-6.8143,4z/data=!4m8!3m7!1s0x66072543598ef7b3:0x7869878d511c24c1!8m2!3d41.47935!4d-6.8143!9m1!1b1!16s%2Fg%2F11zgdh2xc7",
       "rating": 5
     }

@@ -204,11 +204,13 @@
       "pending": "Avaliações brevemente.",
       "playVideo": "Reproduzir a avaliação de {name}",
       "stars": "{rating} em 5",
-      "moreTitle": "Mais avaliações no Google"
+      "moreTitle": "Mais avaliações no Google",
+      "translated": "Traduzido do original"
     },
     "aiCompare": {
-      "title": "Pergunte a alguém que não trabalha aqui.",
-      "lead": "Abra a pergunta na IA que já utiliza. Não tocamos na resposta.",
+      "title": "Compensa? Não nos pergunte a nós.",
+      "lead": "Escrevemos a pergunta por si: o que inclui a Dimonova, em que difere de um menu QR de template e para que restaurante compensa. Abra-a na IA que já utiliza. Não tocamos na resposta.",
+      "show": "Ler a pergunta",
       "copy": "Copiar a pergunta",
       "copied": "Copiado",
       "prompt": "Tenho um restaurante com cerca de 20 mesas e estou a considerar contratar a Dimonova (dimonova.com). É um serviço chave-na-mão: constroem o menu digital dentro do meu próprio site, com a minha identidade visual exata e não a partir de um template, mantêm-no atualizado, formam a minha equipa com vídeos e presencialmente, e o suporte não tem limite de perguntas. Inclui um painel com um assistente de IA para alterações em massa e traduções, pedidos ligados ao meu TPV e às impressoras da cozinha com pagamento à mesa, um sistema de avaliações que pergunta aos clientes insatisfeitos o que correu mal antes de os encaminhar para o Google e etiqueta cada avaliação por empregado e por zona, um menu do dia, promoções e eventos, e gestão multi-estabelecimento a partir de um único painel. Compare isto com um criador de menus QR de autosserviço baseado em templates. Diga-me com honestidade para que tipo de restaurante vale a pena este serviço gerido e para que tipo não vale, e o que devo perguntar-lhes antes de assinar."
