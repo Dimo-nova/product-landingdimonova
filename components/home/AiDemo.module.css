@@ -194,13 +194,14 @@
   opacity: 1;
 }
 
-/* Phones: tighter chrome, the tabs in one scrollable row, and each row's change on its own line
-   under the dish name so neither the name nor the change has to be cut. The row scrolls inside
-   the card's own padding — no negative margin bleeding it to the card's edge — so a pill scrolled
-   off is clipped at the padding line, well inside the block, never half-showing under the border. */
+/* Phones: tighter chrome, the tabs in one scrollable row bleeding to the card's edges, and each
+   row's change on its own line under the dish name so neither the name nor the change has to be
+   cut. The top padding equals the card's radius: the row used to start 14px down, inside the
+   corner's curve, so a pill scrolled to the edge poked out past the rounded corner. Starting it
+   where the curve ends keeps every pill inside the card's outline. */
 @media (max-width: 640px) {
   .demo {
-    padding: 14px;
+    padding: var(--radius-card) 14px 14px;
     gap: 12px;
   }
 
@@ -208,6 +209,8 @@
     flex-wrap: nowrap;
     overflow-x: auto;
     scrollbar-width: none;
+    margin: 0 -14px;
+    padding: 0 14px;
   }
 
   .tablist::-webkit-scrollbar {
