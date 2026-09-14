@@ -13,3 +13,5 @@ docs/*
 !docs/compliance/
 .env.local
 tsconfig.tsbuildinfo
+# Playwright MCP browser artefacts (snapshots, console logs)
+.playwright-mcp/
