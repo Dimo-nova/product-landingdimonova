@@ -21,8 +21,15 @@ export default function MobileNav() {
   const [section, setSection] = useState<Key | null>(null);
   const panelRef = useRef<HTMLDivElement>(null);
 
-  // Close when the route changes.
+  // Close when the route changes (back/forward, or a navigation started elsewhere).
   useEffect(() => { setOpen(false); }, [pathname]);
+
+  // Close on any link inside the panel, not just on a pathname change: a hash on the current
+  // page, the current page's own entry and a language switch (same locale-less pathname) all
+  // leave `pathname` untouched, and used to leave the panel open with the body scroll locked.
+  const closeOnLink = (e: React.MouseEvent<HTMLDivElement>) => {
+    if ((e.target as HTMLElement).closest("a")) setOpen(false);
+  };
 
   useFocusTrap(panelRef, open, () => panelRef.current?.querySelector<HTMLElement>("[data-mobile-close]") ?? undefined);
 
@@ -63,6 +70,7 @@ export default function MobileNav() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 12 }}
             transition={{ duration: 0.2 }}
+            onClick={closeOnLink}
           >
             <div className={styles.top}>
               <img src="/assets/logo_horizontal.svg" alt="Dimonova" height={40} width={100} />

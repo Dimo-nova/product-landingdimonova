@@ -143,6 +143,32 @@ test.describe("mobile header", () => {
     await expect(page).toHaveURL("/pricing");
   });
 
+  // The panel used to close only when the pathname changed, so a link that stays on the current
+  // page (a hash on the page you are on, the page's own nav entry, a language switch, whose
+  // locale-less pathname is identical) left it open over the page with the body scroll locked.
+  test("mobile panel closes on a link that stays on the current page", async ({ page }) => {
+    await page.goto("/");
+    const panel = page.getByRole("dialog", { name: "Menu" });
+    await expect(async () => {
+      await page.getByRole("button", { name: "Open menu" }).click();
+      await expect(panel).toBeVisible({ timeout: 2000 });
+    }).toPass({ timeout: 15000 });
+    await panel.getByRole("button", { name: "Resources" }).click();
+    await panel.getByRole("link", { name: /Compare with/ }).click();
+    await expect(panel).toBeHidden();
+    await expect(page).toHaveURL(/#ai-compare$/);
+    expect(await page.evaluate(() => document.body.style.overflow)).not.toBe("hidden");
+
+    // Same page, no hash: the current page's own entry.
+    await page.goto("/pricing");
+    await expect(async () => {
+      await page.getByRole("button", { name: "Open menu" }).click();
+      await expect(panel).toBeVisible({ timeout: 2000 });
+    }).toPass({ timeout: 15000 });
+    await panel.getByRole("link", { name: "Pricing" }).click();
+    await expect(panel).toBeHidden();
+  });
+
   test("mobile panel traps focus and restores it on Escape", async ({ page }) => {
     await page.goto("/");
     const toggle = page.getByRole("button", { name: "Open menu" });
