@@ -25,7 +25,8 @@ export type Block =
   | { kind: "list"; items: string[] }
   | { kind: "table"; head: string[]; rows: string[][] };
 
-export type LegalSection = { heading: string; blocks: Block[] };
+/** `id` is an anchor for links straight to one section (/whatsapp links to `#whatsapp`). */
+export type LegalSection = { id?: string; heading: string; blocks: Block[] };
 
 export type LegalDoc = {
   slug: LegalSlug;

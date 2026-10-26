@@ -42,6 +42,7 @@ app/
     cases/page.tsx
     about/page.tsx
     contact/page.tsx
+    whatsapp/page.tsx     # WhatsApp lead-capture service, for Meta's Tech Provider check (footer-only link)
     not-found.tsx         # localized 404
     [...rest]/page.tsx    # catch-all that renders the localized 404 for unknown routes
     legal/[slug]/page.tsx # terms/privacy/cookies, full text in content/legal/
@@ -308,7 +309,30 @@ Write new keys in `messages/en.json` and `messages/es.json`, then run `npm run s
 
 The WA panel state is managed by `components/WhatsAppWidget.tsx`, mounted once in `app/[locale]/layout.tsx`. It toggles on the FAB click and opens on the `dimonova:open-wa` window event (`openWa({ context? })` in `lib/events.ts`). Spanish visitors reach Pablo's number, everyone else Sergio's (`CONTACT.whatsapp*`).
 
-**Every link out carries a pre-filled `?text=`** — the chip's opener ("Hola, llevo un pub.", or "Hola." from the "Continue" button) plus one sentence for the flow, resolved in `lib/wa.ts` in this order: the `context` the opener passed (`formSent` from the contact form's success state), the last service walkthrough opened on the current page (`service:open`, forgotten on route change), then the route (`/` home, `/pricing`, `/clients`, `/about`, `/contact`, anything else `generic`). The error states of `DemoModal` and `ContactForm` link straight out with `formFailed`. Copy is under `wa.msg.*`; unit tests in `lib/wa.test.ts`, the flows in `e2e/footer-wa.spec.ts`, design note in `docs/superpowers/specs/2026-09-11-whatsapp-prefill-design.md`.
+**Every link out carries a pre-filled `?text=`** — the chip's opener ("Hola, llevo un pub.", or "Hola." from the "Continue" button) plus one sentence for the flow, resolved in `lib/wa.ts` in this order: the `context` the opener passed (`formSent` from the contact form's success state), the last service walkthrough opened on the current page (`service:open`, forgotten on route change), then the route (`/` home, `/pricing`, `/clients`, `/about`, `/contact`, `/whatsapp`, anything else `generic`). The error states of `DemoModal` and `ContactForm` link straight out with `formFailed`. Copy is under `wa.msg.*`; unit tests in `lib/wa.test.ts`, the flows in `e2e/footer-wa.spec.ts`, design note in `docs/superpowers/specs/2026-09-11-whatsapp-prefill-design.md`.
+
+### The WhatsApp service page (`/whatsapp`)
+
+A second service, separate from the digital menu: Dimonova connects a small business's WhatsApp
+Business number to its website, so whoever leaves a phone number there asking for information or
+a quote gets the document and a WhatsApp form at once. The page exists because Meta's **Tech
+Provider verification** asks for a public page showing the service and the provider's details
+(those are the footer's business line). It is **temporary**: the menu business will move to its
+own domain and dimonova.com will become a general digital-solutions brand.
+
+- **Reachable from the footer only** (product column, `footer.whatsappService`). It is not a
+  `lib/services.ts` service, so it stays out of the header, the mega menu and the mobile nav, by
+  the owner's instruction. It is public, in the sitemap, and must never get a `noindex`.
+- Copy under `whatsapp.*` / `seo.whatsapp.*`, in all five locales. Only describe what the
+  service really does: instant document + form, at most one confirmation message every 24 hours,
+  an organised notification per request, coexistence with the WhatsApp Business app, the client
+  pays Meta directly and **Dimonova does not resell messages**. No prices, figures or clients.
+- The closing `PageCta` takes `href="/contact"` instead of a `source`: the demo modal books a
+  digital-menu demo, which is not this page's subject.
+- The "your data" panel links to `/legal/privacy#whatsapp`, section 11 of the privacy policy,
+  where Dimonova is the **processor** for each client business. `LegalSection.id` is what gives
+  that section its anchor.
+- `e2e/whatsapp.spec.ts` locks the above; `/whatsapp` is also in the `e2e/a11y.spec.ts` sweep.
 
 ## Archive
 

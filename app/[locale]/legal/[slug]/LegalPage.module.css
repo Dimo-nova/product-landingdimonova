@@ -5,7 +5,8 @@
 .docNav a:hover { color: var(--ink); }
 .updated { margin-top: 12px; font-size: 13px; color: var(--ink-2); }
 .intro { margin-top: 20px; font-size: var(--text-lead); color: var(--ink-2); line-height: 1.6; }
-.page section { margin-top: 48px; }
+/* scroll-margin: sticky-header clearance for a link to one section, e.g. /legal/privacy#whatsapp. */
+.page section { margin-top: 48px; scroll-margin-top: var(--header-h); }
 .page h2 { font-size: 22px; margin-bottom: 16px; }
 .page p { line-height: 1.7; color: var(--ink-2); margin: 0 0 16px; }
 .page ul { line-height: 1.7; color: var(--ink-2); margin: 0 0 16px; padding-left: 20px; }

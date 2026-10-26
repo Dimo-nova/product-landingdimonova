@@ -116,6 +116,19 @@ Status legend: `[ ]` not started · `[~]` in progress · `[x]` done
 - [x] Playwright e2e suite (all six routes, i18n, interactive widgets, form)
 - [x] Deploy cleanup (`.vercelignore`, remove `.nojekyll`)
 
+## 📲 WhatsApp Tech Provider verification (Meta)
+
+- [~] **`/whatsapp` page + privacy section 11** written (2026-10-26) and committed, not deployed
+      yet. Submit `https://dimonova.com/whatsapp` in Meta's form once it is live.
+- [ ] **Retention in privacy section 11** ("mientras dure el servicio con el cliente…") is marked
+      `[REVISAR CON PABLO]` in `content/legal/es/privacy.ts` and `en/privacy.ts`, and the marker
+      shows on the public page. Confirm the commitment and delete the marker before deploying.
+- [ ] **Privacy section 5 still lists Notion** as a provider for the website's enquiries, and
+      section 6 says "the three providers", though Notion was dropped on 2026-09-11 (see
+      "Lead notifications" in CLAUDE.md). Pre-existing; correct both versions.
+- [ ] When the digital-menu business moves to its own domain, decide what happens to
+      `/whatsapp` and the footer link (CLAUDE.md, "The WhatsApp service page").
+
 ## 📝 Before launch — content (replace placeholders)
 
 - [~] The **cases page** carries the three real client case studies (Calsot, La Pulpería, Bálamo), written from the owner's own account of each project. No photography of the venues exists yet; each case is presented on its logo instead. The owner has taken it back down: `CASES_PUBLISHED` is `false`, so the route redirects home, the footer link and the home page's "see the case" button are gone, and the sitemap drops it. Flip the flag to publish it again.

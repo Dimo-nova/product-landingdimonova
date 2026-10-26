@@ -733,6 +733,44 @@
       "phone_lang_es": "· Español"
     }
   },
+  "whatsapp": {
+    "eyebrow": "WhatsApp Business",
+    "title": "WhatsApp para captar clientes <em>desde tu web</em>.",
+    "intro": "Conectamos el WhatsApp Business de tu empresa con tu web, para que cada persona que te pide información la reciba al momento.",
+    "does": {
+      "eyebrow": "Qué hace",
+      "title": "Cada solicitud de tu web, atendida en WhatsApp.",
+      "i1_title": "El documento y un formulario, al momento",
+      "i1_body": "Quien deja su teléfono en tu web para pedir información o presupuesto recibe al momento por WhatsApp el documento que ha pedido y un formulario sobre su proyecto, en la misma conversación.",
+      "i2_title": "Un solo mensaje de confirmación",
+      "i2_body": "Si la persona no escribe primero, le escribimos una vez para confirmar su solicitud. Nunca más de un mensaje así cada 24 horas.",
+      "i3_title": "Cada solicitud, ordenada",
+      "i3_body": "Recibes un aviso con los datos de cada solicitud, ya ordenados.",
+      "i4_title": "Tu número, tus mensajes",
+      "i4_body": "Conectas tu propio número y pagas tus mensajes directamente a Meta. Dimonova no revende mensajes."
+    },
+    "how": {
+      "eyebrow": "Cómo funciona",
+      "title": "Tres pasos, y sigues usando tu WhatsApp de siempre.",
+      "s1_title": "Conectas tu WhatsApp Business",
+      "s1_body": "Conectas tu número sin dejar de usarlo en el móvil: la app WhatsApp Business sigue funcionando como hasta ahora.",
+      "s2_title": "Lo integramos en tu web",
+      "s2_body": "Lo conectamos con tu web, para que cada persona que deja su teléfono pidiendo información o presupuesto la reciba por WhatsApp.",
+      "s3_title": "Recibes cada solicitud ordenada",
+      "s3_body": "Te llega un aviso con los datos de cada solicitud y sigues la conversación desde tu app, en el mismo número."
+    },
+    "data": {
+      "eyebrow": "Tus datos",
+      "title": "Solo para gestionar tus conversaciones.",
+      "body": "Usamos los datos de WhatsApp (teléfono, nombre de perfil, mensajes y respuestas a los formularios) solo para gestionar esas conversaciones y entregar cada solicitud a la empresa a la que va dirigida. No los vendemos, no los usamos para publicidad y no los compartimos con terceros.",
+      "link": "Lee cómo los tratamos en la política de privacidad"
+    },
+    "cta": {
+      "title": "¿Quieres conectarlo a tu web?",
+      "body": "Escríbenos y te contamos cómo encajaría con tu web y tu número.",
+      "button": "Habla con nosotros →"
+    }
+  },
   "seo": {
     "home": {
       "title": "Dimonova · Menús digitales para restaurantes, pubs y cafeterías",
@@ -761,6 +799,10 @@
     "contact": {
       "title": "Contacto y demo · Dimonova",
       "desc": "Reserva una demo de 20 minutos. Te mostramos el panel, repasamos configuraciones reales y respondemos tus preguntas. Sin compromiso."
+    },
+    "whatsapp": {
+      "title": "WhatsApp para captar clientes desde tu web · Dimonova",
+      "desc": "Conectamos el WhatsApp Business de tu empresa con tu web: quien pide información o presupuesto la recibe al momento por WhatsApp, y tú sigues atendiendo desde tu app."
     }
   },
   "errors": {
@@ -780,6 +822,7 @@
     "terms": "Términos",
     "whatsappEs": "WhatsApp España",
     "whatsappIe": "WhatsApp Irlanda",
+    "whatsappService": "WhatsApp para empresas",
     "madeIn": "Hecho en Dublín y Madrid",
     "copyright": "© {year} Dimonova. Todos los derechos reservados.",
     "emailCopied": "¡Copiado al portapapeles!"
@@ -806,6 +849,7 @@
         "about": "Me gustaría hablar con vosotros.",
         "contact": "Quiero pedir una demo.",
         "generic": "Quiero saber más de Dimonova.",
+        "whatsapp": "Me interesa conectar WhatsApp con mi web.",
         "serviceMenu": "Me interesa la carta digital.",
         "serviceOrdering": "Me interesan las comandas por QR.",
         "serviceReviews": "Me interesa el sistema de reseñas.",

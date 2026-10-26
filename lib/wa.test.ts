@@ -9,6 +9,7 @@ test("maps each page to its own context and everything else to generic", () => {
   expect(waContextForPath("/clients")).toBe("clients");
   expect(waContextForPath("/about")).toBe("about");
   expect(waContextForPath("/contact")).toBe("contact");
+  expect(waContextForPath("/whatsapp")).toBe("whatsapp");
   expect(waContextForPath("/legal/privacy")).toBe("generic");
   expect(waContextForPath("/features/menu")).toBe("generic");
   // A trailing slash must not turn a known page into "generic".

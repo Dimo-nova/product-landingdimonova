@@ -22,6 +22,9 @@ const PAGES = [
   { path: "/clients", priority: 0.7 },
   { path: "/about", priority: 0.7 },
   { path: "/contact", priority: 0.6 },
+  // The WhatsApp service page: public and indexable for Meta's Tech Provider verification, but
+  // linked only from the footer (see app/[locale]/whatsapp/page.tsx).
+  { path: "/whatsapp", priority: 0.5 },
   { path: "/legal/privacy", priority: 0.3 },
   { path: "/legal/cookies", priority: 0.3 },
   { path: "/legal/terms", priority: 0.3 },

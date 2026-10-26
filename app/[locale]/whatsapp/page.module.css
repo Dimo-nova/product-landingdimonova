@@ -1,0 +1,74 @@
+/* t.rich mapping for the <em> tag embedded in whatsapp.title — the same accent as /pricing. */
+.accent {
+  font-family: var(--font-instrument-serif), serif;
+  font-style: italic;
+  color: var(--brand);
+}
+
+.section {
+  padding-block: clamp(32px, 5vw, 56px);
+}
+
+.sectionTitle {
+  max-width: 680px;
+  margin: 0 0 40px;
+}
+
+/* ---- How it works: the step number in the Card's icon slot ---- */
+
+.numeral {
+  display: block;
+  font-family: var(--font-instrument-serif), serif;
+  font-style: italic;
+  font-size: 28px;
+  line-height: 1;
+  color: var(--brand);
+}
+
+/* ---- Your data: a dark panel, heading beside the text from 900px up ---- */
+
+.dataPanel {
+  background: var(--ink);
+  color: var(--on-dark-text);
+  border-radius: var(--radius-panel);
+  padding: clamp(32px, 5vw, 56px);
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: clamp(24px, 5vw, 64px);
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .dataPanel {
+    grid-template-columns: 1fr;
+  }
+}
+
+.dataHead,
+.dataBody {
+  min-width: 0;
+}
+
+.dataTitle {
+  font-size: var(--text-h3);
+  color: var(--paper);
+  margin: 0;
+}
+
+.dataBody p {
+  font-size: 16px;
+  line-height: 1.7;
+  margin: 0 0 24px;
+}
+
+.dataLink {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--paper);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.dataLink:hover {
+  color: var(--brand);
+}

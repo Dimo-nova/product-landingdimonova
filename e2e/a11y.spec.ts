@@ -29,6 +29,8 @@ const PAGES = [
   "/clients",
   "/about",
   "/contact",
+  // The WhatsApp service page (Meta Tech Provider verification), linked only from the footer.
+  "/whatsapp",
   "/legal/privacy",
 ];
 
@@ -106,7 +108,7 @@ for (const path of PAGES) {
 // ("PageHero-module__aBcDe__eyebrow"), so this matches on the local name after the last "__"
 // rather than the exact hash, and stays correct across rebuilds. The contrast formula mirrors
 // the `contrast()` helper in e2e/footer.spec.ts.
-const EYEBROW_PAGES = [...(FEATURES_PUBLISHED ? ["/features", "/features/menu", "/features/ordering", "/features/reviews"] : []), "/pricing", ...(CASES_PUBLISHED ? ["/cases"] : []), "/about", "/"];
+const EYEBROW_PAGES = [...(FEATURES_PUBLISHED ? ["/features", "/features/menu", "/features/ordering", "/features/reviews"] : []), "/pricing", ...(CASES_PUBLISHED ? ["/cases"] : []), "/about", "/whatsapp", "/"];
 
 for (const path of EYEBROW_PAGES) {
   test(`every eyebrow label on ${path} meets 4.5:1 contrast`, async ({ page }) => {

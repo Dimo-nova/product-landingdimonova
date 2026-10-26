@@ -733,6 +733,44 @@
       "phone_lang_es": "· Espagnol"
     }
   },
+  "whatsapp": {
+    "eyebrow": "WhatsApp Business",
+    "title": "WhatsApp pour gagner des clients <em>depuis votre site</em>.",
+    "intro": "Nous connectons le numéro WhatsApp Business de votre entreprise à votre site, pour que chaque personne qui vous demande des informations les reçoive immédiatement.",
+    "does": {
+      "eyebrow": "Ce que ça fait",
+      "title": "Chaque demande de votre site, traitée sur WhatsApp.",
+      "i1_title": "Le document et un formulaire, immédiatement",
+      "i1_body": "Quand quelqu'un laisse son numéro sur votre site pour demander des informations ou un devis, il reçoit immédiatement sur WhatsApp le document demandé et un formulaire sur son projet, dans la même conversation.",
+      "i2_title": "Un seul message de confirmation",
+      "i2_body": "Si la personne n'écrit pas en premier, nous lui écrivons une fois pour confirmer sa demande. Jamais plus d'un message de ce type toutes les 24 heures.",
+      "i3_title": "Chaque demande, bien rangée",
+      "i3_body": "Vous recevez une notification avec les informations de chaque demande, déjà organisées.",
+      "i4_title": "Votre numéro, vos messages",
+      "i4_body": "Vous connectez votre propre numéro et payez vos messages directement à Meta. Dimonova ne revend pas de messages."
+    },
+    "how": {
+      "eyebrow": "Comment ça marche",
+      "title": "Trois étapes, et vous gardez votre WhatsApp habituel.",
+      "s1_title": "Vous connectez votre WhatsApp Business",
+      "s1_body": "Vous connectez votre numéro sans cesser de l'utiliser sur votre téléphone : l'application WhatsApp Business continue de fonctionner comme avant.",
+      "s2_title": "Nous l'intégrons à votre site",
+      "s2_body": "Nous le relions à votre site, pour que chaque personne qui laisse son numéro pour demander des informations ou un devis les reçoive sur WhatsApp.",
+      "s3_title": "Vous recevez chaque demande organisée",
+      "s3_body": "Vous recevez une notification avec les informations de chaque demande et poursuivez la conversation depuis votre application, sur le même numéro."
+    },
+    "data": {
+      "eyebrow": "Vos données",
+      "title": "Utilisées uniquement pour vos conversations.",
+      "body": "Nous utilisons les données WhatsApp (numéro de téléphone, nom de profil, messages et réponses aux formulaires) uniquement pour gérer ces conversations et transmettre chaque demande à l'entreprise à laquelle elle est destinée. Nous ne les vendons pas, nous ne les utilisons pas pour de la publicité et nous ne les partageons pas avec des tiers.",
+      "link": "Lisez comment nous les traitons dans notre politique de confidentialité"
+    },
+    "cta": {
+      "title": "Vous voulez le connecter à votre site ?",
+      "body": "Écrivez-nous et nous vous expliquerons comment il s'intégrerait à votre site et à votre numéro.",
+      "button": "Parlez-nous →"
+    }
+  },
   "seo": {
     "home": {
       "title": "Dimonova · Menus digitaux pour restaurants, pubs et cafés",
@@ -761,6 +799,10 @@
     "contact": {
       "title": "Contact & démo · Dimonova",
       "desc": "Réservez une démo de 20 minutes. Nous vous montrerons le tableau de bord, passerons en revue de vrais cas d'établissements, et répondrons à vos questions. Sans engagement."
+    },
+    "whatsapp": {
+      "title": "WhatsApp pour gagner des clients depuis votre site · Dimonova",
+      "desc": "Nous connectons votre numéro WhatsApp Business à votre site : quiconque demande des informations ou un devis les reçoit immédiatement sur WhatsApp, et vous continuez à répondre depuis votre application."
     }
   },
   "errors": {
@@ -780,6 +822,7 @@
     "terms": "Conditions",
     "whatsappEs": "WhatsApp Espagne",
     "whatsappIe": "WhatsApp Irlande",
+    "whatsappService": "WhatsApp pour les entreprises",
     "madeIn": "Conçu à Dublin et à Madrid",
     "copyright": "© {year} Dimonova. Tous droits réservés.",
     "emailCopied": "Copied to clipboard!"
@@ -806,6 +849,7 @@
         "about": "I'd like to talk to you.",
         "contact": "I'd like to book a demo.",
         "generic": "I'd like to know more about Dimonova.",
+        "whatsapp": "Je voudrais connecter WhatsApp à mon site.",
         "serviceMenu": "I'm interested in the digital menu.",
         "serviceOrdering": "I'm interested in ordering at the table by QR.",
         "serviceReviews": "I'm interested in the reviews system.",

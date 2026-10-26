@@ -27,7 +27,7 @@ export const privacy: LegalDoc = {
       blocks: [
         {
           kind: "p",
-          text: "Esta política cubre únicamente este sitio web, dimonova.com. El panel de gestión de los clientes y las cartas de cada restaurante que publicamos son servicios distintos, regulados por el contrato que firma cada cliente.",
+          text: "Esta política cubre este sitio web, dimonova.com, y el servicio de WhatsApp que prestamos a empresas, descrito en la sección 11. El panel de gestión de los clientes y las cartas de cada restaurante que publicamos son servicios distintos, regulados por el contrato que firma cada cliente.",
         },
         {
           kind: "p",
@@ -208,7 +208,57 @@ export const privacy: LegalDoc = {
       ],
     },
     {
-      heading: "11. Cambios, última actualización y contacto",
+      id: "whatsapp",
+      heading: "11. Servicio de WhatsApp para clientes",
+      blocks: [
+        {
+          kind: "p",
+          text: "Prestamos a empresas un servicio que conecta su número de WhatsApp Business con su web, para atender por WhatsApp las solicitudes de información o presupuesto que reciben en ella. En este servicio, Dimonova trata los datos como encargado del tratamiento, por cuenta de cada empresa cliente, que es la responsable del tratamiento.",
+        },
+        {
+          kind: "p",
+          text: "Datos que tratamos:",
+        },
+        {
+          kind: "list",
+          items: [
+            "Teléfono, nombre de perfil de WhatsApp, mensajes y respuestas a los formularios de la conversación de WhatsApp.",
+            "Nombre y teléfono que la persona deja en la web de la empresa cliente.",
+          ],
+        },
+        {
+          kind: "p",
+          text: "Finalidad: gestionar esas conversaciones y entregar las solicitudes a la empresa cliente. Estos datos no se venden, no se usan para publicidad y no se ceden a terceros.",
+        },
+        {
+          kind: "p",
+          text: "Proveedores que intervienen:",
+        },
+        {
+          kind: "table",
+          head: ["Proveedor", "Qué hace"],
+          rows: [
+            [
+              "Meta (WhatsApp Business Platform)",
+              "Plataforma de mensajería: transmite los mensajes de WhatsApp. Cada empresa cliente conecta su propio número y paga sus mensajes directamente a Meta.",
+            ],
+            ["Vercel Inc.", "Alojamiento del servicio"],
+            ["Supabase Inc.", "Base de datos del servicio"],
+            ["Plus Five Five, Inc. (Resend)", "Envío de los correos del servicio"],
+          ],
+        },
+        {
+          kind: "p",
+          text: "Conservación: mientras dure el servicio con el cliente; se eliminan cuando el cliente lo solicita o termina el contrato. [REVISAR CON PABLO]",
+        },
+        {
+          kind: "p",
+          text: "Si escribiste a una de esas empresas, puedes ejercer tus derechos ante ella, como responsable del tratamiento. Si nos haces llegar la solicitud a nosotros, se la trasladaremos.",
+        },
+      ],
+    },
+    {
+      heading: "12. Cambios, última actualización y contacto",
       blocks: [
         {
           kind: "p",

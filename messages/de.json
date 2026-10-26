@@ -733,6 +733,44 @@
       "phone_lang_es": "· Spanisch"
     }
   },
+  "whatsapp": {
+    "eyebrow": "WhatsApp Business",
+    "title": "WhatsApp für neue Kunden <em>über Ihre Website</em>.",
+    "intro": "Wir verbinden die WhatsApp-Business-Nummer Ihres Unternehmens mit Ihrer Website, damit jede Person, die Informationen anfragt, sie sofort erhält.",
+    "does": {
+      "eyebrow": "Was es macht",
+      "title": "Jede Anfrage von Ihrer Website, beantwortet auf WhatsApp.",
+      "i1_title": "Das Dokument und ein Formular, sofort",
+      "i1_body": "Wer auf Ihrer Website seine Telefonnummer hinterlässt, um Informationen oder ein Angebot anzufragen, erhält sofort per WhatsApp das angefragte Dokument und ein Formular zu seinem Projekt, im selben Chat.",
+      "i2_title": "Nur eine Bestätigungsnachricht",
+      "i2_body": "Schreibt die Person nicht zuerst, schreiben wir ihr einmal, um ihre Anfrage zu bestätigen. Nie mehr als eine solche Nachricht alle 24 Stunden.",
+      "i3_title": "Jede Anfrage, geordnet",
+      "i3_body": "Sie erhalten eine Benachrichtigung mit den Daten jeder Anfrage, bereits geordnet.",
+      "i4_title": "Ihre Nummer, Ihre Nachrichten",
+      "i4_body": "Sie verbinden Ihre eigene Nummer und bezahlen Ihre Nachrichten direkt an Meta. Dimonova verkauft keine Nachrichten weiter."
+    },
+    "how": {
+      "eyebrow": "So funktioniert es",
+      "title": "Drei Schritte, und Sie nutzen WhatsApp weiter wie gewohnt.",
+      "s1_title": "Sie verbinden Ihr WhatsApp Business",
+      "s1_body": "Sie verbinden Ihre Nummer, ohne sie auf dem Handy aufzugeben: Die WhatsApp-Business-App funktioniert weiter wie bisher.",
+      "s2_title": "Wir binden es in Ihre Website ein",
+      "s2_body": "Wir verbinden es mit Ihrer Website, damit jede Person, die ihre Telefonnummer für Informationen oder ein Angebot hinterlässt, diese per WhatsApp erhält.",
+      "s3_title": "Sie erhalten jede Anfrage geordnet",
+      "s3_body": "Sie bekommen eine Benachrichtigung mit den Daten jeder Anfrage und führen das Gespräch in Ihrer App weiter, unter derselben Nummer."
+    },
+    "data": {
+      "eyebrow": "Ihre Daten",
+      "title": "Nur für Ihre Gespräche genutzt.",
+      "body": "Wir nutzen die WhatsApp-Daten (Telefonnummer, Profilname, Nachrichten und Antworten auf die Formulare) nur, um diese Gespräche abzuwickeln und jede Anfrage an das Unternehmen zu übermitteln, für das sie bestimmt ist. Wir verkaufen sie nicht, nutzen sie nicht für Werbung und geben sie nicht an Dritte weiter.",
+      "link": "Lesen Sie in unserer Datenschutzerklärung, wie wir sie verarbeiten"
+    },
+    "cta": {
+      "title": "Möchten Sie es mit Ihrer Website verbinden?",
+      "body": "Schreiben Sie uns, und wir erklären Ihnen, wie es zu Ihrer Website und Ihrer Nummer passt.",
+      "button": "Sprechen Sie mit uns →"
+    }
+  },
   "seo": {
     "home": {
       "title": "Dimonova · Digitale Speisekarten für Restaurants, Pubs & Cafés",
@@ -761,6 +799,10 @@
     "contact": {
       "title": "Kontakt & Demo · Dimonova",
       "desc": "Buchen Sie eine 20-minütige Demo. Wir zeigen Ihnen das Dashboard, gehen echte Lokal-Setups durch und beantworten Ihre Fragen. Unverbindlich."
+    },
+    "whatsapp": {
+      "title": "WhatsApp für neue Kunden über Ihre Website · Dimonova",
+      "desc": "Wir verbinden Ihre WhatsApp-Business-Nummer mit Ihrer Website: Wer Informationen oder ein Angebot anfragt, erhält sie sofort per WhatsApp, und Sie antworten weiter aus Ihrer App."
     }
   },
   "errors": {
@@ -780,6 +822,7 @@
     "terms": "AGB",
     "whatsappEs": "WhatsApp Spanien",
     "whatsappIe": "WhatsApp Irland",
+    "whatsappService": "WhatsApp für Unternehmen",
     "madeIn": "Gemacht in Dublin und Madrid",
     "copyright": "© {year} Dimonova. Alle Rechte vorbehalten.",
     "emailCopied": "Copied to clipboard!"
@@ -806,6 +849,7 @@
         "about": "I'd like to talk to you.",
         "contact": "I'd like to book a demo.",
         "generic": "I'd like to know more about Dimonova.",
+        "whatsapp": "Ich möchte WhatsApp mit meiner Website verbinden.",
         "serviceMenu": "I'm interested in the digital menu.",
         "serviceOrdering": "I'm interested in ordering at the table by QR.",
         "serviceReviews": "I'm interested in the reviews system.",

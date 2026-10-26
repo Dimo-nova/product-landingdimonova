@@ -31,6 +31,10 @@ export default async function Footer() {
                     )}
                   </li>
                 ))}
+                {/* Not a lib/services.ts service, so it stays out of the header, mega menu and
+                    mobile nav: /whatsapp exists for Meta's Tech Provider verification, and this
+                    link is how its reviewer reaches it from the home page. */}
+                <li><Link href="/whatsapp">{t("footer.whatsappService")}</Link></li>
               </ul>
             </div>
             <div className={styles.col}>

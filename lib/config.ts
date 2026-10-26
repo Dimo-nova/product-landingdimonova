@@ -46,7 +46,7 @@ export const COMPANY = {
 } as const;
 
 /** Last review date of the legal documents (ISO). Bump when you change their content. */
-export const LEGAL_UPDATED = "2026-09-07";
+export const LEGAL_UPDATED = "2026-10-26";
 
 /**
  * Max size for the "current menu" file the contact form attaches to the lead notification

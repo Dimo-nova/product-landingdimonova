@@ -733,6 +733,44 @@
       "phone_lang_es": "· Espanhol"
     }
   },
+  "whatsapp": {
+    "eyebrow": "WhatsApp Business",
+    "title": "WhatsApp para conquistar clientes <em>a partir do seu site</em>.",
+    "intro": "Ligamos o número WhatsApp Business da sua empresa ao seu site, para que cada pessoa que lhe pede informações as receba de imediato.",
+    "does": {
+      "eyebrow": "O que faz",
+      "title": "Cada pedido do seu site, tratado no WhatsApp.",
+      "i1_title": "O documento e um formulário, de imediato",
+      "i1_body": "Quem deixa o número de telefone no seu site para pedir informações ou um orçamento recebe de imediato no WhatsApp o documento que pediu e um formulário sobre o seu projeto, na mesma conversa.",
+      "i2_title": "Uma única mensagem de confirmação",
+      "i2_body": "Se a pessoa não escrever primeiro, escrevemos-lhe uma vez para confirmar o pedido. Nunca mais do que uma mensagem destas a cada 24 horas.",
+      "i3_title": "Cada pedido, organizado",
+      "i3_body": "Recebe um aviso com os dados de cada pedido, já organizados.",
+      "i4_title": "O seu número, as suas mensagens",
+      "i4_body": "Liga o seu próprio número e paga as suas mensagens diretamente à Meta. A Dimonova não revende mensagens."
+    },
+    "how": {
+      "eyebrow": "Como funciona",
+      "title": "Três passos, e continua a usar o seu WhatsApp de sempre.",
+      "s1_title": "Liga o seu WhatsApp Business",
+      "s1_body": "Liga o seu número sem deixar de o usar no telemóvel: a app WhatsApp Business continua a funcionar como até agora.",
+      "s2_title": "Integramo-lo no seu site",
+      "s2_body": "Ligamo-lo ao seu site, para que cada pessoa que deixa o número a pedir informações ou um orçamento as receba no WhatsApp.",
+      "s3_title": "Recebe cada pedido organizado",
+      "s3_body": "Recebe um aviso com os dados de cada pedido e continua a conversa a partir da sua app, no mesmo número."
+    },
+    "data": {
+      "eyebrow": "Os seus dados",
+      "title": "Usados só para gerir as suas conversas.",
+      "body": "Usamos os dados do WhatsApp (número de telefone, nome de perfil, mensagens e respostas aos formulários) apenas para gerir essas conversas e entregar cada pedido à empresa a que se destina. Não os vendemos, não os usamos para publicidade e não os partilhamos com terceiros.",
+      "link": "Leia como os tratamos na nossa política de privacidade"
+    },
+    "cta": {
+      "title": "Quer ligá-lo ao seu site?",
+      "body": "Escreva-nos e explicamos-lhe como encaixaria no seu site e no seu número.",
+      "button": "Fale connosco →"
+    }
+  },
   "seo": {
     "home": {
       "title": "Dimonova · Menus digitais para restaurantes, pubs e cafés",
@@ -761,6 +799,10 @@
     "contact": {
       "title": "Contacto e demonstração · Dimonova",
       "desc": "Marque uma demonstração de 20 minutos. Mostramos-lhe o painel, percorremos casos reais de outros estabelecimentos, e respondemos às suas perguntas. Sem compromisso."
+    },
+    "whatsapp": {
+      "title": "WhatsApp para conquistar clientes a partir do seu site · Dimonova",
+      "desc": "Ligamos o seu número WhatsApp Business ao seu site: quem pede informações ou um orçamento recebe-as de imediato no WhatsApp, e continua a responder a partir da sua app."
     }
   },
   "errors": {
@@ -780,6 +822,7 @@
     "terms": "Termos",
     "whatsappEs": "WhatsApp Espanha",
     "whatsappIe": "WhatsApp Irlanda",
+    "whatsappService": "WhatsApp para empresas",
     "madeIn": "Feito em Dublin e Madrid",
     "copyright": "© {year} Dimonova. Todos os direitos reservados.",
     "emailCopied": "Copied to clipboard!"
@@ -806,6 +849,7 @@
         "about": "I'd like to talk to you.",
         "contact": "I'd like to book a demo.",
         "generic": "I'd like to know more about Dimonova.",
+        "whatsapp": "Tenho interesse em ligar o WhatsApp ao meu site.",
         "serviceMenu": "I'm interested in the digital menu.",
         "serviceOrdering": "I'm interested in ordering at the table by QR.",
         "serviceReviews": "I'm interested in the reviews system.",

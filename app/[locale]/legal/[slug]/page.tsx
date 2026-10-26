@@ -59,7 +59,7 @@ export default async function LegalPage({ params }: { params: Promise<{ locale: 
           </p>
           <p className={styles.intro}>{doc.intro}</p>
           {doc.sections.map((section) => (
-            <section key={section.heading}>
+            <section key={section.heading} id={section.id}>
               <h2>{section.heading}</h2>
               {section.blocks.map((block, i) => {
                 if (block.kind === "p") return <p key={i}>{block.text}</p>;

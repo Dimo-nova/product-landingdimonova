@@ -27,7 +27,7 @@ export const privacy: LegalDoc = {
       blocks: [
         {
           kind: "p",
-          text: "This policy covers this website only, dimonova.com. The client dashboard and the published restaurant menus are separate services, governed by the contract each client signs.",
+          text: "This policy covers this website, dimonova.com, and the WhatsApp service we provide to businesses, described in section 11. The client dashboard and the published restaurant menus are separate services, governed by the contract each client signs.",
         },
         {
           kind: "p",
@@ -206,7 +206,57 @@ export const privacy: LegalDoc = {
       ],
     },
     {
-      heading: "11. Changes, last update and contact",
+      id: "whatsapp",
+      heading: "11. WhatsApp service for clients",
+      blocks: [
+        {
+          kind: "p",
+          text: "We provide businesses with a service that connects their WhatsApp Business number to their website, so the requests for information or quotes they receive there are handled on WhatsApp. In this service, Dimonova processes the data as a processor, on behalf of each client business, which is the controller.",
+        },
+        {
+          kind: "p",
+          text: "Data we process:",
+        },
+        {
+          kind: "list",
+          items: [
+            "Phone number, WhatsApp profile name, messages and answers to the forms in the WhatsApp conversation.",
+            "The name and phone number the person leaves on the client business's website.",
+          ],
+        },
+        {
+          kind: "p",
+          text: "Purpose: to manage those conversations and deliver the requests to the client business. This data is not sold, not used for advertising and not disclosed to third parties.",
+        },
+        {
+          kind: "p",
+          text: "Providers involved:",
+        },
+        {
+          kind: "table",
+          head: ["Provider", "What they do"],
+          rows: [
+            [
+              "Meta (WhatsApp Business Platform)",
+              "Messaging platform: carries the WhatsApp messages. Each client business connects its own number and pays for its messages directly to Meta.",
+            ],
+            ["Vercel Inc.", "Hosts the service"],
+            ["Supabase Inc.", "The service's database"],
+            ["Plus Five Five, Inc. (Resend)", "Sends the service's emails"],
+          ],
+        },
+        {
+          kind: "p",
+          text: "Retention: for as long as the service with the client lasts; the data is deleted when the client asks for it or the contract ends. [REVISAR CON PABLO]",
+        },
+        {
+          kind: "p",
+          text: "If you wrote to one of those businesses, you can exercise your rights with it, as the controller. If you send your request to us, we will pass it on.",
+        },
+      ],
+    },
+    {
+      heading: "12. Changes, last update and contact",
       blocks: [
         {
           kind: "p",

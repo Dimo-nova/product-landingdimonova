@@ -5,7 +5,7 @@ import { CONTACT } from "./config";
  * copy under `wa.msg.ctx.<context>` in messages/*.json, appended to the opener the chip chose
  * so the first message on the phone already says what the lead wants.
  *
- *  - `home` … `contact` come from the route (`waContextForPath`);
+ *  - `home` … `contact` and `whatsapp` come from the route (`waContextForPath`);
  *  - `service*` from the last service walkthrough opened on that page (`waContextForService`);
  *  - `formSent` / `formFailed` are passed explicitly by the contact form and the demo modal.
  */
@@ -15,6 +15,7 @@ export type WaContext =
   | "clients"
   | "about"
   | "contact"
+  | "whatsapp"
   | "generic"
   | "serviceMenu"
   | "serviceOrdering"
@@ -31,6 +32,9 @@ const PATH_CONTEXT: Record<string, WaContext> = {
   "/clients": "clients",
   "/about": "about",
   "/contact": "contact",
+  // The WhatsApp lead-capture service page: the default "tell me about Dimonova" line would
+  // read as a menu enquiry.
+  "/whatsapp": "whatsapp",
 };
 
 /** `pathname` as next-intl's `usePathname` reports it — locale prefix already stripped. */
