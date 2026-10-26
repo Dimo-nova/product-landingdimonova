@@ -249,7 +249,7 @@ export const privacy: LegalDoc = {
         },
         {
           kind: "p",
-          text: "Conservación: mientras dure el servicio con el cliente; se eliminan cuando el cliente lo solicita o termina el contrato. [REVISAR CON PABLO]",
+          text: "Conservación: mientras dure el servicio con el cliente; se eliminan cuando el cliente lo solicita o termina el contrato.",
         },
         {
           kind: "p",

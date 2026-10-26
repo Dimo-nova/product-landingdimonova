@@ -118,11 +118,10 @@ Status legend: `[ ]` not started · `[~]` in progress · `[x]` done
 
 ## 📲 WhatsApp Tech Provider verification (Meta)
 
-- [~] **`/whatsapp` page + privacy section 11** written (2026-10-26) and committed, not deployed
-      yet. Submit `https://dimonova.com/whatsapp` in Meta's form once it is live.
-- [ ] **Retention in privacy section 11** ("mientras dure el servicio con el cliente…") is marked
-      `[REVISAR CON PABLO]` in `content/legal/es/privacy.ts` and `en/privacy.ts`, and the marker
-      shows on the public page. Confirm the commitment and delete the marker before deploying.
+- [x] **`/whatsapp` page + privacy section 11** deployed to production on 2026-10-26.
+- [x] **Retention in privacy section 11** ("mientras dure el servicio con el cliente; se eliminan
+      cuando el cliente lo solicita o termina el contrato") confirmed by the owner on 2026-10-26.
+- [ ] **Submit `https://dimonova.com/whatsapp`** in Meta's Tech Provider verification form.
 - [ ] **Privacy section 5 still lists Notion** as a provider for the website's enquiries, and
       section 6 says "the three providers", though Notion was dropped on 2026-09-11 (see
       "Lead notifications" in CLAUDE.md). Pre-existing; correct both versions.

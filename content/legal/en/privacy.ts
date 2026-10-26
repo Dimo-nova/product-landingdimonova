@@ -247,7 +247,7 @@ export const privacy: LegalDoc = {
         },
         {
           kind: "p",
-          text: "Retention: for as long as the service with the client lasts; the data is deleted when the client asks for it or the contract ends. [REVISAR CON PABLO]",
+          text: "Retention: for as long as the service with the client lasts; the data is deleted when the client asks for it or the contract ends.",
         },
         {
           kind: "p",
