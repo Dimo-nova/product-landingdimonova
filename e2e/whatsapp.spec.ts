@@ -40,11 +40,11 @@ test("/whatsapp is indexable and listed in the sitemap", async ({ page, request 
   const response = await page.goto("/whatsapp");
   expect(response?.headers()["x-robots-tag"] ?? "").not.toContain("noindex");
   await expect(page.locator('meta[name="robots"][content*="noindex"]')).toHaveCount(0);
-  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", "https://dimonova.com/whatsapp");
+  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", "https://www.dimonova.com/whatsapp");
 
   const sitemap = await (await request.get("/sitemap.xml")).text();
-  expect(sitemap).toContain("<loc>https://dimonova.com/whatsapp</loc>");
-  expect(sitemap).toContain("<loc>https://dimonova.com/es/whatsapp</loc>");
+  expect(sitemap).toContain("<loc>https://www.dimonova.com/whatsapp</loc>");
+  expect(sitemap).toContain("<loc>https://www.dimonova.com/es/whatsapp</loc>");
 });
 
 test("the home page reaches /whatsapp through the footer and nowhere else", async ({ page }) => {

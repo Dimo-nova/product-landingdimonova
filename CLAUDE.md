@@ -416,6 +416,10 @@ The message-sync script has its own Node test runner spec:
 - `app/layout.tsx` exports `viewport: Viewport` (`themeColor`) and base `metadata`.
 - Each page's `generateMetadata` calls `pageMetadata(locale, "/path", titleKey, descKey)`.
 - `sitemap.ts` and `robots.ts` live under `app/`.
+- **The origin is `https://www.dimonova.com`** (`SITE_URL` in `lib/config.ts`): canonical,
+  hreflang, `metadataBase`, sitemap and robots.txt all read it. Vercel serves `www` and answers
+  the bare `dimonova.com` with a 307, so never hard-code the bare domain in a URL meant for
+  crawlers. `e2e/seo.spec.ts` checks every one of them.
 - Favicons live in `public/` (`favicon.svg`, `favicon-32.png`, `apple-touch-icon.png`).
 
 ## Conventions / gotchas

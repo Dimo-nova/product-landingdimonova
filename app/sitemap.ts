@@ -1,9 +1,8 @@
 import type { MetadataRoute } from "next";
 import { routing } from "@/lib/routing";
-import { CASES_PUBLISHED, FEATURES_PUBLISHED } from "@/lib/config";
+import { CASES_PUBLISHED, FEATURES_PUBLISHED, SITE_URL } from "@/lib/config";
 import { SERVICES } from "@/lib/services";
 
-const BASE = "https://dimonova.com";
 const PAGES = [
   { path: "", priority: 1.0 },
   // The features index and one entry per service page, derived from the registry so a fourth
@@ -35,8 +34,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   for (const { path, priority } of PAGES) {
     for (const locale of routing.locales) {
       const url = locale === routing.defaultLocale
-        ? `${BASE}${path || "/"}`
-        : `${BASE}/${locale}${path || ""}`;
+        ? `${SITE_URL}${path || "/"}`
+        : `${SITE_URL}/${locale}${path || ""}`;
       entries.push({ url, changeFrequency: "monthly", priority });
     }
   }

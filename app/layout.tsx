@@ -1,10 +1,11 @@
 import type { Metadata, Viewport } from "next";
+import { SITE_URL } from "@/lib/config";
 import "./globals.css";
 
 export const viewport: Viewport = { themeColor: "#FE5243" };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://dimonova.com"),
+  metadataBase: new URL(SITE_URL),
   icons: {
     icon: [
       { url: "/favicon.svg", type: "image/svg+xml" },

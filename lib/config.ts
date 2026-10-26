@@ -10,6 +10,14 @@ export const CONTACT = {
   whatsappIE: "https://wa.me/353852680856", // Sergio
 } as const;
 
+/**
+ * The site's public origin: canonical URLs, hreflang alternates, `metadataBase`, the sitemap and
+ * robots.txt are all built from it. It is the `www` host because that is the one Vercel serves
+ * directly — the bare `dimonova.com` answers with a 307 to `www`, and a canonical or sitemap URL
+ * that redirects tells crawlers (and Meta's reviewers) to index an address that is not the page.
+ */
+export const SITE_URL = "https://www.dimonova.com";
+
 /** Client dashboard (panel-admin). Linked from the header, mobile nav and footer. */
 export const ADMIN_URL = "https://menuadmin.dimonova.com";
 

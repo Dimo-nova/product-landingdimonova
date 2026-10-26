@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { routing } from "./routing";
-
-const BASE = "https://dimonova.com";
+import { SITE_URL } from "./config";
 
 function canonicalPath(locale: string, path: string): string {
   return locale === routing.defaultLocale
@@ -16,14 +15,14 @@ export function buildMetadata(
   title: string,
   description: string,
 ): Metadata {
-  const canonical = `${BASE}${canonicalPath(locale, path)}`;
+  const canonical = `${SITE_URL}${canonicalPath(locale, path)}`;
 
   const languages: Record<string, string> = {};
   for (const l of routing.locales) {
-    languages[l] = `${BASE}${canonicalPath(l, path)}`;
+    languages[l] = `${SITE_URL}${canonicalPath(l, path)}`;
   }
   // x-default points to the English canonical
-  languages["x-default"] = `${BASE}${canonicalPath(routing.defaultLocale, path)}`;
+  languages["x-default"] = `${SITE_URL}${canonicalPath(routing.defaultLocale, path)}`;
 
   return {
     title,

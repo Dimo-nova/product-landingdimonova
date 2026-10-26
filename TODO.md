@@ -121,7 +121,8 @@ Status legend: `[ ]` not started · `[~]` in progress · `[x]` done
 - [x] **`/whatsapp` page + privacy section 11** deployed to production on 2026-10-26.
 - [x] **Retention in privacy section 11** ("mientras dure el servicio con el cliente; se eliminan
       cuando el cliente lo solicita o termina el contrato") confirmed by the owner on 2026-10-26.
-- [ ] **Submit `https://dimonova.com/whatsapp`** in Meta's Tech Provider verification form.
+- [ ] **Submit `https://www.dimonova.com/whatsapp`** in Meta's Tech Provider verification form
+      (the `www` host: the bare domain redirects there, see `SITE_URL` in `lib/config.ts`).
 - [ ] **Privacy section 5 still lists Notion** as a provider for the website's enquiries, and
       section 6 says "the three providers", though Notion was dropped on 2026-09-11 (see
       "Lead notifications" in CLAUDE.md). Pre-existing; correct both versions.
